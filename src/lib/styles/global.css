@@ -1,0 +1,20 @@
+@import '@fontsource/fira-sans/700.css';
+@import '@fontsource/fira-sans/500.css';
+@import '@fontsource/public-sans';
+
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+  h1 {
+    @apply font-heading text-4xl md:text-6xl font-bold;
+  }
+  h2 {
+    @apply text-4xl font-medium;
+  }
+  h3,
+  h4 {
+    @apply text-2xl font-medium;
+  }
+}
