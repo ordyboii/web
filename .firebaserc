@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "one-off-hosting"
+  },
+  "targets": {
+    "one-off-hosting": {
+      "hosting": {
+        "web": [
+          "jakeord"
+        ]
+      }
+    }
+  }
+}
