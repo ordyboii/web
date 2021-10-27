@@ -6,21 +6,38 @@
 </script>
 
 {#if link}
-  <a
-    class={`inline-block px-6 py-4 rounded-md font-medium hover:shadow-lg hover:scale-95 hover:opacity-70 transition ${
-      secondary ? 'bg-yellow-200 text-black' : 'bg-blue-900 text-white'
-    }`}
-    {href}
-  >
+  <a class:secondary {href}>
     <slot />
   </a>
 {:else}
-  <button
-    class={`px-6 py-4 rounded-md font-medium hover:shadow-lg hover:scale-95 hover:opacity-70 transition cursor-pointer ${
-      secondary ? 'bg-yellow-200 text-black' : 'bg-blue-900 text-white'
-    }`}
-    on:click={onClick}
-  >
+  <button class:secondary on:click={onClick}>
     <slot />
   </button>
 {/if}
+
+<style>
+  a,
+  button {
+    padding: var(--spacer) calc(1.4 * var(--spacer));
+    border-radius: var(--brRadius);
+    background-color: var(--clrBlue);
+    color: var(--clrWhite);
+    font-weight: var(--fwMedium);
+    transition: var(--delay) ease-out;
+    cursor: pointer;
+  }
+  a {
+    display: inline-block;
+  }
+  a:hover,
+  button:hover {
+    box-shadow: var(--elevation);
+    transform: scale(var(--scaleDown));
+    opacity: var(--fade);
+  }
+
+  .secondary {
+    background-color: var(--clrYellow);
+    color: var(--clrBlack);
+  }
+</style>

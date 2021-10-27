@@ -12,6 +12,7 @@
 
 <script>
   import ContactCard from '$lib/components/ContactCard.svelte'
+  import Divider from '$lib/components/Divider.svelte'
   export let post = {}
 </script>
 
@@ -20,35 +21,68 @@
   <meta name="description" content={post.data.summary} />
 </svelte:head>
 
-<section class="relative bg-blue-900 pt-8 pb-48 text-white">
-  <div class="container space-y-8 animate-slide">
+<section>
+  <div class="container space-y animate-slide-up">
     <h1>{post.data.title}</h1>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div class="space-y-8">
-        <p>{post.data.date}</p>
+    <div class="grid">
+      <div class="space-y">
+        <p>{new Date(post.data.date).toLocaleDateString()}</p>
         <p>{post.data.keywords}</p>
       </div>
-      <div class="space-y-4">
+      <div class="space-y">
         <h4>Summary:</h4>
         <p>{post.data.summary}</p>
       </div>
     </div>
   </div>
 
-  <div class="absolute bottom-0 w-full rotate-180">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120">
-      <path
-        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-        class="fill-current text-white"
-      />
-    </svg>
-  </div>
+  <Divider />
 </section>
 
-<section class="py-20">
-  <article class="container p-8 mb-8  shadow-md">
+<section class="article">
+  <article class="container">
     {@html post.content}
   </article>
 </section>
 
 <ContactCard />
+
+<style>
+  section {
+    position: relative;
+    background-color: var(--clrBlue);
+    padding-top: calc(1.4 * var(--spacer));
+    padding-bottom: calc(14 * var(--spacer));
+    color: var(--clrWhite);
+  }
+  section > .space-y {
+    --y: calc(1.4 * var(--spacer));
+  }
+
+  .grid {
+    --cols: 1;
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: var(--spacer);
+  }
+  .grid > .space-y {
+    --y: calc(1.4 * var(--spacer));
+  }
+
+  @media (min-width: 40em) {
+    .grid {
+      --cols: 4;
+    }
+  }
+
+  .article {
+    padding: calc(3 * var(--spacer)) 0;
+    background-color: var(--clrWhite);
+    color: var(--clrBlack);
+  }
+  .article > article {
+    padding: calc(1.4 * var(--spacer));
+    margin-bottom: calc(1.4 * var(--spacer));
+    box-shadow: var(--elevation);
+  }
+</style>

@@ -6,11 +6,11 @@
 
 {#if post}
   <a href={`writing/${slug}`} aria-label={`Link to ${data.title}`}>
-    <article class="bg-white shadow-md rounded-md my-10 hover:scale-105 transition cursor-pointer">
-      <img class="w-full object-cover overflow-hidden" src={data.image[0].url} alt={data.title} />
-      <div class="space-y-4 p-8">
+    <article>
+      <img src={data.image[0].url} alt={data.title} />
+      <div class="space-y">
         <h3>{data.title}</h3>
-        <p>{data.date}</p>
+        <p>{new Date(data.date).toLocaleDateString()}</p>
         <p>{data.keywords}</p>
         <p>{data.summary}</p>
         <p>Read More</p>
@@ -19,21 +19,17 @@
   </a>
 {:else}
   <a href={`work/${slug}`} aria-label={`Link to ${data.title}`}>
-    <article class="bg-white shadow-md rounded-md my-10 hover:scale-105 transition">
-      <img
-        class="w-full object-cover h-96 overflow-hidden"
-        src={data.image[0].url}
-        alt={data.title}
-      />
-      <div class="space-y-4 p-8">
+    <article>
+      <img src={data.image[0].url} alt={data.title} />
+      <div class="space-y">
         <h3>{data.title}</h3>
         <div>
           <p>
-            <span class="font-semibold">Client:</span>
+            <span>Client:</span>
             {data.client}
           </p>
           <p>
-            <span class="font-semibold">Roles:</span>
+            <span>Roles:</span>
             {data.role}
           </p>
         </div>
@@ -43,3 +39,26 @@
     </article>
   </a>
 {/if}
+
+<style>
+  article {
+    margin: calc(1.6 * var(--spacer)) 0;
+    background-color: var(--clrWhite);
+    box-shadow: var(--elevation);
+    border-radius: var(--brRadius);
+    transition: var(--delay) ease-in-out;
+  }
+  article:hover {
+    transform: scale(var(--scaleUp));
+  }
+  article > img {
+    height: 24rem;
+    object-fit: cover;
+  }
+  article > div {
+    padding: calc(2 * var(--spacer));
+  }
+  article :is(span) {
+    font-weight: var(--fwBold);
+  }
+</style>

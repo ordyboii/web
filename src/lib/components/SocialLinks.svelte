@@ -5,20 +5,28 @@
   export let inverse = false
 </script>
 
-<ul class="flex items-center gap-4">
+<ul>
   <li>
     <a rel="external" href="https://www.linkedin.com/in/jake-o-853626196" target="_blank">
-      <Linkedin size={28} color={inverse ? 'white' : 'black'} />
+      <Linkedin size={28} color={inverse ? 'var(--clrWhite)' : 'var(--clrBhite)'} />
     </a>
   </li>
   <li>
     <a rel="external" href="https://www.instagram.com/jakeorddesign" target="_blank">
-      <Instagram size={28} color={inverse ? 'white' : 'black'} />
+      <Instagram size={28} color={inverse ? 'var(--clrWhite)' : 'var(--clrBhite)'} />
     </a>
   </li>
   <li>
     <a rel="external" href="https://github.com/jorddy" target="_blank">
-      <Github size={28} color={inverse ? 'white' : 'black'} />
+      <Github size={28} color={inverse ? 'var(--clrWhite)' : 'var(--clrBhite)'} />
     </a>
   </li>
 </ul>
+
+<style>
+  ul {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer);
+  }
+</style>
