@@ -7,10 +7,10 @@
   let menuOpen = false
 </script>
 
-<header role="banner">
+<header>
   <div class="container">
     <a href="/">
-      <img src="/logo.svg" alt="Jake Ord logo" />
+      <img src="/logo.svg" alt="Jake Ord logo" loading="lazy" decoding="async" />
     </a>
     <nav>
       <ul>

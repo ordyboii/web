@@ -7,7 +7,7 @@
 {#if post}
   <a href={`writing/${slug}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <img src={data.image[0].url} alt={data.title} />
+      <img src={data.image[0].url} alt={data.title} loading="lazy" decoding="async" />
       <div class="space-y">
         <h3>{data.title}</h3>
         <p>{new Date(data.date).toLocaleDateString()}</p>
@@ -20,7 +20,7 @@
 {:else}
   <a href={`work/${slug}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <img src={data.image[0].url} alt={data.title} />
+      <img src={data.image[0].url} alt={data.title} loading="lazy" decoding="async" />
       <div class="space-y">
         <h3>{data.title}</h3>
         <div>
