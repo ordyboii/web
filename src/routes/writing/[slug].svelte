@@ -1,10 +1,10 @@
 <script context="module">
   export async function load({ fetch, page }) {
-    const postRecord = await fetch(`/work/${page.params.slug}.json`)
+    const post = await fetch(`/writing/${page.params.slug}.json`)
 
     return {
       props: {
-        post: await postRecord.json()
+        post: await post.json()
       }
     }
   }
@@ -27,7 +27,7 @@
     <div class="grid">
       <div class="space-y">
         <p>{new Date(post.data.date).toLocaleDateString()}</p>
-        <p>{post.data.keywords}</p>
+        <p>{post.data.keywords.join(', ')}</p>
       </div>
       <div class="space-y">
         <h4>Summary:</h4>

@@ -21,11 +21,11 @@
     <div class="grid item-grid">
       {#if posts}
         {#each data as item}
-          <Card post data={item.data} slug={item.id} />
+          <Card post {item} />
         {/each}
       {:else}
         {#each data as item}
-          <Card data={item.data} slug={item.id} />
+          <Card {item} />
         {/each}
       {/if}
     </div>

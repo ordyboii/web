@@ -1,9 +1,7 @@
-import { base, minifyRecord } from '$lib/airtable'
+import getMarkdown from '$lib/utils/getMarkdown'
 
 export async function get() {
-  const records = await base.table('Projects').select().all()
-
   return {
-    body: records.map(record => minifyRecord(record))
+    body: getMarkdown('projects')
   }
 }

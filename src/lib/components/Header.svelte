@@ -18,7 +18,7 @@
           <SocialLinks inverse />
         </li>
         <li>
-          <Button link secondary href="https://airtable.com/shrPxJaKvGIqSoD2A">Get in touch</Button>
+          <Button link secondary href="mailto:jake.ord345@gmail.com">Get in touch</Button>
         </li>
       </ul>
       <button on:click={() => (menuOpen = !menuOpen)}>
@@ -34,9 +34,7 @@
           <SocialLinks />
         </li>
         <li>
-          <Button link secondary href="https://airtable.com/shrPxJaKvGIqSoD2A">
-            Get in touch!
-          </Button>
+          <Button link secondary href="mailto:jake.ord345@gmail.com">Get in touch!</Button>
         </li>
       </ul>
     </nav>

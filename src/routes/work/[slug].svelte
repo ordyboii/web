@@ -1,10 +1,10 @@
 <script context="module">
   export async function load({ fetch, page }) {
-    const projectRecord = await fetch(`/work/${page.params.slug}.json`)
+    const project = await fetch(`/work/${page.params.slug}.json`)
 
     return {
       props: {
-        project: await projectRecord.json()
+        project: await project.json()
       }
     }
   }

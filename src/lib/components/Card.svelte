@@ -1,17 +1,18 @@
 <script>
   export let post = false
-  export let data = []
-  export let slug = ''
+  export let item = []
+
+  const { data, slug } = item
 </script>
 
 {#if post}
   <a href={`writing/${slug}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <img src={data.image[0].url} alt={data.title} loading="lazy" decoding="async" />
+      <img src={data.image} alt={data.title} loading="lazy" decoding="async" />
       <div class="space-y">
         <h3>{data.title}</h3>
         <p>{new Date(data.date).toLocaleDateString()}</p>
-        <p>{data.keywords}</p>
+        <p>{data.keywords.join(', ')}</p>
         <p>{data.summary}</p>
         <p>Read More</p>
       </div>
@@ -20,7 +21,7 @@
 {:else}
   <a href={`work/${slug}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <img src={data.image[0].url} alt={data.title} loading="lazy" decoding="async" />
+      <img src={data.image} alt={data.title} loading="lazy" decoding="async" />
       <div class="space-y">
         <h3>{data.title}</h3>
         <div>

@@ -1,14 +1,7 @@
-import { base, minifyRecord } from '$lib/airtable'
-import marked from 'marked'
+import getSingleMarkdown from '$lib/utils/getSingleMarkdown'
 
 export async function get({ params }) {
-  const record = await base.table('Posts').find(params.slug)
-  const post = minifyRecord(record)
-
   return {
-    body: {
-      data: post.data,
-      content: marked(post.data.content)
-    }
+    body: getSingleMarkdown('posts', params.slug)
   }
 }
