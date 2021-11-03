@@ -18,6 +18,7 @@ collections:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Client", name: "client", widget: "string" }
       - { label: "Role", name: "role", widget: "string" }
+      - { label: "Content", name: "body", widget: "markdown" }
   - name: "posts" # Used in routes, e.g., /admin/collections/blog
     label: "Posts" # Used in the UI
     folder: "static/posts" # The path to the folder where our blog posts are stored
@@ -31,4 +32,4 @@ collections:
         name: "keywords" 
         widget: "list" 
         field: {label: "Keyword", name: "keyword", widget: "string"}
-      - { label: "Content", name: "content", widget: "markdown" }
+      - { label: "Content", name: "body", widget: "markdown" }
