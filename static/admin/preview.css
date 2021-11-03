@@ -8,7 +8,7 @@ body {
 body {
   padding: 1.4rem;
 }
-body > * + * {
+body div > * + * {
   margin-top: 1rem;
 }
 
