@@ -7,11 +7,12 @@ keywords:
   - Hey there
   - You know it
 ---
+
 # Content in all the best places
 
-## My fist 
+## My first
 
 It's a lovely thing you know
 
-* The best
-* You know
+- The best
+- You know

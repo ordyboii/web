@@ -7,17 +7,32 @@
 
 <ul>
   <li>
-    <a rel="external" href="https://www.linkedin.com/in/jake-o-853626196" target="_blank">
+    <a
+      aria-label="Link to my Linkedin"
+      rel="external"
+      href="https://www.linkedin.com/in/jake-o-853626196"
+      target="_blank"
+    >
       <Linkedin size={28} color={inverse ? 'var(--clrWhite)' : 'var(--clrBhite)'} />
     </a>
   </li>
   <li>
-    <a rel="external" href="https://www.instagram.com/jakeorddesign" target="_blank">
+    <a
+      aria-label="Link to my Instagram"
+      rel="external"
+      href="https://www.instagram.com/jakeorddesign"
+      target="_blank"
+    >
       <Instagram size={28} color={inverse ? 'var(--clrWhite)' : 'var(--clrBhite)'} />
     </a>
   </li>
   <li>
-    <a rel="external" href="https://github.com/jorddy" target="_blank">
+    <a
+      aria-label="Link to my Github"
+      rel="external"
+      href="https://github.com/jorddy"
+      target="_blank"
+    >
       <Github size={28} color={inverse ? 'var(--clrWhite)' : 'var(--clrBhite)'} />
     </a>
   </li>

@@ -2,7 +2,7 @@
   import Button from '$lib/components/Button.svelte'
 </script>
 
-<aside class="space-y">
+<aside aria-labelledby="Contact me" class="space-y">
   <h4>Want to contact me!</h4>
   <p>Get in touch with me below and I'll aim to respond back as soon as I can</p>
   <Button secondary link href="mailto:jake.ord345@gmail.com">Get in touch!</Button>
