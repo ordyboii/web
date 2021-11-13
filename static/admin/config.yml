@@ -1,5 +1,5 @@
 backend:
-  name: [github | gitlab]
+  name: github
   repo: jorddy/jakeord.dev
   branch: main # Branch to update
   base_url: https://netlify-cms.adrianub.vercel.app
