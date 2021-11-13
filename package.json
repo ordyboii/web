@@ -16,5 +16,8 @@
     "svelte": "^3.42.6",
     "svelte-material-icons": "^1.0.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@openlab/vercel-netlify-cms-github": "^1.1.1"
+  }
 }
