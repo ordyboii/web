@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: jorddy/jakeord.dev
-  base_url: https://jakeord.dev
+  base_url: https://jakeord.vercel.app
   auth_endpoint: api/auth
 
 publish_mode: editorial_workflow
