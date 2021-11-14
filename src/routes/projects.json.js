@@ -1,4 +1,4 @@
-import prismic, { predicates } from '$lib/utils/prismic'
+import prismic from '$lib/utils/prismic'
 import p from '@prismicio/client'
 
 export async function get() {
