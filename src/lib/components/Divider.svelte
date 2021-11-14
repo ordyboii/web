@@ -9,10 +9,10 @@
 <style>
   div {
     position: absolute;
-    bottom: calc(0 * var(--spacer));
+    bottom: 0;
     width: 100%;
     transform: rotate(180deg);
-    color: var(--clr-);
+    color: var(--clrBlue);
   }
 
   path {

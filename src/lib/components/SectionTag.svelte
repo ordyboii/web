@@ -7,7 +7,7 @@
     position: relative;
     text-transform: uppercase;
     font-size: var(--fsText);
-    padding-top: calc(0.4 * var(--spacer));
+    padding-top: 0.4rem;
     font-weight: var(--fwMedium);
   }
   p::before {

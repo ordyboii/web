@@ -15,11 +15,11 @@
 <style>
   article {
     background-color: var(--clrWhite-20);
-    padding: calc(3 * var(--spacer));
+    padding: 3rem;
   }
 
   ul {
     list-style: disc;
-    padding-left: var(--spacer);
+    padding-left: 1rem;
   }
 </style>

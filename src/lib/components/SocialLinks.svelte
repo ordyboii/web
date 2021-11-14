@@ -42,6 +42,6 @@
   ul {
     display: flex;
     align-items: center;
-    gap: var(--spacer);
+    gap: 1rem;
   }
 </style>

@@ -1,4 +1,5 @@
 <script>
+  import Image from './Image.svelte'
   import SectionTag from './SectionTag.svelte'
   import SocialLinks from './SocialLinks.svelte'
 </script>
@@ -47,11 +48,15 @@
     <SocialLinks />
   </div>
 
-  <img
-    src="/me.jpg"
-    alt="Picture of Jake Ord in standing in front of a gate"
-    loading="lazy"
-    decoding="async"
+  <Image
+    source={{
+      url: 'https://images.prismic.io/jakeord/961b6845-7a70-4483-a0d5-3716e0798c54_me.jpg?auto=compress,format',
+      alt: 'Jake Ord in standing in front of a gate',
+      dimensions: {
+        width: 1532,
+        height: 2596
+      }
+    }}
   />
 </section>
 
@@ -60,11 +65,11 @@
     --cols: 1;
     display: grid;
     grid-template-columns: repeat(var(--cols), 1fr);
-    gap: calc(3 * var(--spacer));
-    padding: calc(5 * var(--spacer)) 0;
+    gap: 3rem;
+    padding: 5rem 0;
   }
   section > .space-y {
-    --y: calc(2 * calc(var(--spacer)));
+    --y: 2rem;
   }
 
   .right {

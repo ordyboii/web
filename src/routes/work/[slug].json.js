@@ -1,7 +1,9 @@
-import getSingleMarkdown from '$lib/utils/getSingleMarkdown'
+import prismic from '$lib/utils/prismic'
 
 export async function get({ params }) {
+  const project = await prismic.getByUID('project', params.slug)
+
   return {
-    body: getSingleMarkdown('projects', params.slug)
+    body: project.data
   }
 }

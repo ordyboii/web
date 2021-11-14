@@ -26,8 +26,8 @@
     position: relative;
     background-color: var(--clrBlue);
     color: var(--clrWhite);
-    padding-top: calc(1.4 * var(--spacer));
-    padding-bottom: calc(14 * var(--spacer));
+    padding-top: 1.4rem;
+    padding-bottom: 14rem;
   }
   section :is(h1, p) {
     max-width: 38rem;

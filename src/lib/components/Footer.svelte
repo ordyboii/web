@@ -6,6 +6,12 @@
   <div class="container">
     <div>
       <p>© Jake Ord, {new Date().getFullYear()}</p>
+      <a
+        rel="external"
+        target="_blank"
+        href="https://prismic-io.s3.amazonaws.com/jakeord/2f8eda04-79f0-4fac-a1f1-0a3d7e271fe3_Jake_Ord_Design_CV.pdf"
+        >CV</a
+      >
     </div>
     <SocialLinks inverse />
   </div>
@@ -14,7 +20,7 @@
 <style>
   footer {
     background-color: var(--clrBlue);
-    padding: calc(1.4 * var(--spacer)) 0;
+    padding: 1.4rem 0;
   }
   footer :is(div) {
     display: flex;
@@ -22,10 +28,18 @@
   }
   footer > div {
     flex-direction: column;
-    gap: calc(2 * var(--spacer));
+    gap: 2rem;
   }
-  footer :is(p) {
+  footer :is(p, a) {
     color: var(--clrWhite);
+  }
+
+  a {
+    margin-left: 1rem;
+    text-decoration: underline;
+  }
+  a:hover {
+    opacity: var(--fade);
   }
 
   @media (min-width: 40em) {

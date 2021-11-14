@@ -14,8 +14,8 @@
     place-items: center;
 
     max-width: 56rem;
-    margin: calc(3 * var(--spacer)) auto;
-    padding: calc(2.4 * var(--spacer));
+    margin: 3rem auto;
+    padding: 2.4rem;
 
     background-color: var(--clrBlue);
     border-radius: var(--brRadius);

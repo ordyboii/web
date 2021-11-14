@@ -35,12 +35,12 @@
 <style>
   section {
     background-color: var(--clrWhite-20);
-    padding: calc(5 * var(--spacer)) 0;
+    padding: 5rem 0;
   }
 
   .intro {
     grid-column: span 2;
-    margin: var(--spacer) 0;
+    margin: 1rem 0;
   }
 
   .grid {
@@ -51,7 +51,7 @@
   }
 
   .item-grid {
-    gap: calc(1.4 * var(--spacer));
+    gap: 1.4rem;
   }
 
   @media (min-width: 40em) {

@@ -1,27 +1,32 @@
 <script>
+  import Image from './Image.svelte'
   export let post = false
   export let item = []
 
-  const { data, slug } = item
+  const { data, uid } = item
 </script>
 
 {#if post}
-  <a href={`writing/${slug}`} aria-label={`Link to ${data.title}`}>
+  <a href={`writing/${uid}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <img src={data.image} alt={data.title} loading="lazy" decoding="async" />
+      <Image source={data.image} />
       <div class="space-y">
         <h3>{data.title}</h3>
         <p>{new Date(data.date).toLocaleDateString()}</p>
-        <p>{data.keywords.join(', ')}</p>
+        <p>
+          {Object.values(data.keywords)
+            .map(item => item.keyword)
+            .join(', ')}
+        </p>
         <p>{data.summary}</p>
         <p>Read More</p>
       </div>
     </article>
   </a>
 {:else}
-  <a href={`work/${slug}`} aria-label={`Link to ${data.title}`}>
+  <a href={`work/${uid}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <img src={data.image} alt={data.title} loading="lazy" decoding="async" />
+      <Image source={data.image} />
       <div class="space-y">
         <h3>{data.title}</h3>
         <div>
@@ -43,7 +48,7 @@
 
 <style>
   article {
-    margin: calc(1.6 * var(--spacer)) 0;
+    margin: 1.6rem 0;
     background-color: var(--clrWhite);
     box-shadow: var(--elevation);
     border-radius: var(--brRadius);
@@ -52,12 +57,8 @@
   article:hover {
     transform: scale(var(--scaleUp));
   }
-  article > img {
-    height: 24rem;
-    object-fit: cover;
-  }
   article > div {
-    padding: calc(2 * var(--spacer));
+    padding: 2rem;
   }
   article :is(span) {
     font-weight: var(--fwBold);

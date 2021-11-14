@@ -3,6 +3,7 @@
   import Button from '$lib/components/Button.svelte'
   import SocialLinks from '$lib/components/SocialLinks.svelte'
   import { fly } from 'svelte/transition'
+  import Image from './Image.svelte'
 
   let menuOpen = false
 </script>
@@ -10,7 +11,16 @@
 <header>
   <div class="container">
     <a href="/">
-      <img src="/logo.svg" alt="Jake Ord logo" loading="lazy" decoding="async" />
+      <Image
+        source={{
+          url: 'https://jakeord.cdn.prismic.io/jakeord/99d6d305-6b4f-44a6-b7f5-12d1639f8388_logo.svg',
+          alt: 'Jake Ord Logo',
+          dimensions: {
+            width: 126,
+            height: 21
+          }
+        }}
+      />
     </a>
     <nav>
       <ul>
@@ -46,7 +56,7 @@
     position: relative;
     background-color: var(--clrBlue);
     color: var(--clrWhite);
-    padding: calc(2 * var(--spacer)) 0;
+    padding: 2rem 0;
   }
   header > div {
     display: flex;
@@ -55,7 +65,7 @@
   header > div :is(ul) {
     display: none;
     align-items: center;
-    gap: calc(1.4 * var(--spacer));
+    gap: 1.4rem;
   }
 
   header :is(a) {
@@ -80,9 +90,9 @@
 
   .mobile {
     position: absolute;
-    top: calc(4 * var(--spacer));
+    top: 4rem;
     width: 100%;
-    padding: calc(1.6 * var(--spacer));
+    padding: 1.6rem;
     background-color: var(--clrWhite);
     box-shadow: var(--elevation);
     z-index: var(--overlay);
@@ -90,7 +100,7 @@
   .mobile > ul {
     display: flex;
     flex-direction: column;
-    gap: calc(1.2 * var(--spacer));
+    gap: 1.2rem;
     justify-content: center;
     align-items: center;
     color: var(--clrBlack);

@@ -18,7 +18,7 @@
 <style>
   a,
   button {
-    padding: var(--spacer) calc(1.4 * var(--spacer));
+    padding: 1rem 1.4rem;
     border-radius: var(--brRadius);
     background-color: var(--clrBlue);
     color: var(--clrWhite);

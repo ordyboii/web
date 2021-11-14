@@ -37,23 +37,23 @@
 
 <style>
   section {
-    padding: calc(5 * var(--spacer)) 0;
+    padding: 5rem 0;
   }
   section > div {
     --cols: 1;
     display: grid;
     grid-template-columns: repeat(var(--cols), 1fr);
-    gap: calc(3 * var(--spacer));
-    margin-bottom: calc(2 * var(--spacer));
+    gap: 3rem;
+    margin-bottom: 2rem;
   }
 
   .intro {
     grid-column: span 2;
-    margin: var(--spacer) 0;
+    margin: 1rem 0;
   }
 
   .skills-grid {
-    gap: var(--spacer);
+    gap: 1rem;
   }
 
   @media (min-width: 40em) {

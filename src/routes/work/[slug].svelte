@@ -13,25 +13,26 @@
 <script>
   import ContactCard from '$lib/components/ContactCard.svelte'
   import Divider from '$lib/components/Divider.svelte'
+  import prismicDom from 'prismic-dom'
   export let project = {}
 </script>
 
 <svelte:head>
-  <title>{project.data.title}</title>
-  <meta name="description" content={project.data.summary} />
+  <title>{project.title}</title>
+  <meta name="description" content={project.summary} />
 </svelte:head>
 
 <section>
   <div class="container space-y animate-slide-up">
-    <h1>{project.data.title}</h1>
+    <h1>{project.title}</h1>
     <div class="grid">
       <div class="space-y">
-        <p><strong>Client:</strong> {project.data.client}</p>
-        <p><strong>Role:</strong> {project.data.role}</p>
+        <p><strong>Client:</strong> {project.client}</p>
+        <p><strong>Role:</strong> {project.role}</p>
       </div>
       <div class="space-y">
         <h4>Summary:</h4>
-        <p>{project.data.summary}</p>
+        <p>{project.summary}</p>
       </div>
     </div>
   </div>
@@ -41,7 +42,7 @@
 
 <section class="article">
   <article class="container">
-    {@html project.content}
+    {@html prismicDom.RichText.asHtml(project.content)}
   </article>
 </section>
 
@@ -50,23 +51,23 @@
 <style>
   section {
     position: relative;
-    background-color: var(--clrBlue);
-    padding-top: calc(1.4 * var(--spacer));
-    padding-bottom: calc(14 * var(--spacer));
+    padding-top: 1.4rem;
+    background: var(--clrBlue);
+    padding-bottom: 14rem;
     color: var(--clrWhite);
   }
   section > .space-y {
-    --y: calc(1.4 * var(--spacer));
+    --y: 1.4rem;
   }
 
   .grid {
     --cols: 1;
     display: grid;
     grid-template-columns: repeat(var(--cols), 1fr);
-    gap: var(--spacer);
+    gap: 1rem;
   }
   .grid > .space-y {
-    --y: calc(1.4 * var(--spacer));
+    --y: 1.4rem;
   }
 
   @media (min-width: 40em) {
@@ -76,13 +77,15 @@
   }
 
   .article {
-    padding: calc(3 * var(--spacer)) 0;
+    padding: 3rem 0;
     background-color: var(--clrWhite);
     color: var(--clrBlack);
   }
   .article > article {
-    padding: calc(1.4 * var(--spacer));
-    margin-bottom: calc(1.4 * var(--spacer));
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 3rem;
     box-shadow: var(--elevation);
   }
 </style>
