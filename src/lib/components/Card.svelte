@@ -1,32 +1,27 @@
 <script>
-  import Image from './Image.svelte'
-  export let post = false
-  export let item = []
-
-  const { data, uid } = item
+  export let post, item
+  const { data, slug } = item
 </script>
 
 {#if post}
-  <a href={`writing/${uid}`} aria-label={`Link to ${data.title}`}>
+  <a href={`writing/${slug}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <Image source={data.image} />
+      <img src={data.main_image} alt={data.title} />
       <div class="space-y">
         <h3>{data.title}</h3>
         <p>{new Date(data.date).toLocaleDateString()}</p>
         <p>
-          {Object.values(data.keywords)
-            .map(item => item.keyword)
-            .join(', ')}
+          {data.keywords.join(', ')}
         </p>
-        <p>{data.summary}</p>
+        <p>{data.description}</p>
         <p>Read More</p>
       </div>
     </article>
   </a>
 {:else}
-  <a href={`work/${uid}`} aria-label={`Link to ${data.title}`}>
+  <a href={`work/${slug}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <Image source={data.image} />
+      <img src={data.main_image} alt={data.title} />
       <div class="space-y">
         <h3>{data.title}</h3>
         <div>
@@ -39,7 +34,7 @@
             {data.role}
           </p>
         </div>
-        <p>{data.summary}</p>
+        <p>{data.description}</p>
         <p>Read Case Study</p>
       </div>
     </article>

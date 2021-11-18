@@ -3,9 +3,7 @@
     const project = await fetch(`/work/${page.params.slug}.json`)
 
     return {
-      props: {
-        project: await project.json()
-      }
+      props: { project: await project.json() }
     }
   }
 </script>
@@ -13,26 +11,25 @@
 <script>
   import ContactCard from '$lib/components/ContactCard.svelte'
   import Divider from '$lib/components/Divider.svelte'
-  import prismicDom from 'prismic-dom'
-  export let project = {}
+  export let project
 </script>
 
 <svelte:head>
-  <title>{project.title}</title>
-  <meta name="description" content={project.summary} />
+  <title>{project.data.title}</title>
+  <meta name="description" content={project.data.description} />
 </svelte:head>
 
 <section>
   <div class="container space-y animate-slide-up">
-    <h1>{project.title}</h1>
+    <h1>{project.data.title}</h1>
     <div class="grid">
       <div class="space-y">
-        <p><strong>Client:</strong> {project.client}</p>
-        <p><strong>Role:</strong> {project.role}</p>
+        <p><strong>Client:</strong> {project.data.client}</p>
+        <p><strong>Role:</strong> {project.data.role}</p>
       </div>
       <div class="space-y">
-        <h4>Summary:</h4>
-        <p>{project.summary}</p>
+        <h4>Description:</h4>
+        <p>{project.data.description}</p>
       </div>
     </div>
   </div>
@@ -42,7 +39,7 @@
 
 <section class="article">
   <article class="container">
-    {@html prismicDom.RichText.asHtml(project.content)}
+    {@html project.content}
   </article>
 </section>
 

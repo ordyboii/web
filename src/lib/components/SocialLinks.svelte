@@ -2,7 +2,7 @@
   import Github from 'svelte-material-icons/GithubCircle.svelte'
   import Linkedin from 'svelte-material-icons/Linkedin.svelte'
   import Instagram from 'svelte-material-icons/Instagram.svelte'
-  export let inverse = false
+  export let inverse
 </script>
 
 <ul>

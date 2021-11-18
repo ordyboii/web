@@ -3,9 +3,7 @@
     const post = await fetch(`/writing/${page.params.slug}.json`)
 
     return {
-      props: {
-        post: await post.json()
-      }
+      props: { post: await post.json() }
     }
   }
 </script>
@@ -13,30 +11,27 @@
 <script>
   import ContactCard from '$lib/components/ContactCard.svelte'
   import Divider from '$lib/components/Divider.svelte'
-  import prismicDom from 'prismic-dom'
-  export let post = {}
+  export let post
 </script>
 
 <svelte:head>
-  <title>{post.title}</title>
-  <meta name="description" content={post.summary} />
+  <title>{post.data.title}</title>
+  <meta name="description" content={post.data.description} />
 </svelte:head>
 
 <section>
   <div class="container space-y animate-slide-up">
-    <h1>{post.title}</h1>
+    <h1>{post.data.title}</h1>
     <div class="grid">
       <div class="space-y">
-        <p>{new Date(post.date).toLocaleDateString()}</p>
+        <p>{new Date(post.data.date).toLocaleDateString()}</p>
         <p>
-          {Object.values(post.keywords)
-            .map(item => item.keyword)
-            .join(', ')}
+          {post.data.keywords.join(', ')}
         </p>
       </div>
       <div class="space-y">
-        <h4>Summary:</h4>
-        <p>{post.summary}</p>
+        <h4>Description:</h4>
+        <p>{post.data.description}</p>
       </div>
     </div>
   </div>
@@ -46,7 +41,7 @@
 
 <section class="article">
   <article class="container">
-    {@html prismicDom.RichText.asHtml(post.content)}
+    {@html post.content}
   </article>
 </section>
 

@@ -1,11 +1,7 @@
 <script>
   import SectionTag from './SectionTag.svelte'
   import Card from './Card.svelte'
-  export let data
-  export let posts = false
-  export let tag = ''
-  export let title = ''
-  export let subtitle = ''
+  export let data, posts, tag, title, subtitle
 </script>
 
 <section id="work">

@@ -17,10 +17,6 @@
     name="keywords"
     content="UX/UI, designer, Newcastle, Newcastle-Upon-Tyne, graphics, web, code"
   />
-  <link
-    rel="icon"
-    href="https://images.prismic.io/jakeord/1529b5cf-eb20-4e6f-ac3d-0e4b644bf77a_favicon.png?auto=compress,format"
-  />
 </svelte:head>
 
 {#key $page.path}

@@ -1,8 +1,5 @@
 <script>
-  export let secondary = false
-  export let onClick
-  export let link = false
-  export let href = ''
+  export let secondary, onClick, link, href
 </script>
 
 {#if link}

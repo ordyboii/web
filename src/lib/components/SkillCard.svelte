@@ -1,6 +1,5 @@
 <script>
-  export let title = ''
-  export let skills = []
+  export let title, skills
 </script>
 
 <article class="space-y">

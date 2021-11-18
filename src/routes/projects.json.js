@@ -1,10 +1,7 @@
-import prismic from '$lib/utils/prismic'
-import p from '@prismicio/client'
+import getMarkdown from '$lib/getMarkdown'
 
 export async function get() {
-  const projects = await prismic.query(p.predicates.at('document.type', 'project'))
-
   return {
-    body: projects.results
+    body: await getMarkdown('projects')
   }
 }
