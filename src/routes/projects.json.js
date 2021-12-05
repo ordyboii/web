@@ -1,7 +1,7 @@
-import getMarkdown from '$lib/getMarkdown'
+import prismic from '$lib/prismic';
 
-export async function get() {
+export const get = async () => {
   return {
-    body: await getMarkdown('projects')
-  }
-}
+    body: await prismic.getAllByType('project')
+  };
+};

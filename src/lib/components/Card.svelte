@@ -1,27 +1,28 @@
 <script>
-  export let post, item
-  const { data, slug } = item
+  import Image from './Image.svelte';
+  export let post, item;
+  const { data, uid } = item;
 </script>
 
 {#if post}
-  <a href={`writing/${slug}`} aria-label={`Link to ${data.title}`}>
+  <a href={`writing/${uid}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <img src={data.main_image} alt={data.title} />
+      <Image source={data.image} />
       <div class="space-y">
         <h3>{data.title}</h3>
         <p>{new Date(data.date).toLocaleDateString()}</p>
         <p>
-          {data.keywords.join(', ')}
+          {data.keywords.map(({ keyword }) => keyword).join(', ')}
         </p>
-        <p>{data.description}</p>
+        <p>{data.summary}</p>
         <p>Read More</p>
       </div>
     </article>
   </a>
 {:else}
-  <a href={`work/${slug}`} aria-label={`Link to ${data.title}`}>
+  <a href={`work/${uid}`} aria-label={`Link to ${data.title}`}>
     <article>
-      <img src={data.main_image} alt={data.title} />
+      <Image source={data.image} />
       <div class="space-y">
         <h3>{data.title}</h3>
         <div>
@@ -34,7 +35,7 @@
             {data.role}
           </p>
         </div>
-        <p>{data.description}</p>
+        <p>{data.summary}</p>
         <p>Read Case Study</p>
       </div>
     </article>

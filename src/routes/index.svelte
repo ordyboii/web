@@ -1,31 +1,27 @@
 <script context="module">
-  export async function load({ fetch }) {
-    const projects = await fetch('/projects.json')
-    const posts = await fetch('/posts.json')
+  export const load = async ({ fetch }) => {
+    const projects = await fetch('/projects.json');
+    const posts = await fetch('/posts.json');
 
     return {
       props: {
         projects: await projects.json(),
         posts: await posts.json()
       }
-    }
-  }
+    };
+  };
 </script>
 
 <script>
-  import Hero from '$lib/components/Hero.svelte'
-  import Bio from '$lib/components/Bio.svelte'
-  import Featured from '$lib/components/Featured.svelte'
-  import Skills from '$lib/components/Skills.svelte'
-  import ContactCard from '$lib/components/ContactCard.svelte'
+  import Hero from '$lib/components/Hero.svelte';
+  import Bio from '$lib/components/Bio.svelte';
+  import Featured from '$lib/components/Featured.svelte';
+  import Skills from '$lib/components/Skills.svelte';
+  import ContactCard from '$lib/components/ContactCard.svelte';
 
-  export let projects = []
-  export let posts = []
+  export let projects = [];
+  export let posts = [];
 </script>
-
-<svelte:head>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</svelte:head>
 
 <Hero />
 <Bio />

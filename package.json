@@ -9,10 +9,10 @@
   "devDependencies": {
     "@fontsource/fira-sans": "^4.5.0",
     "@fontsource/public-sans": "^4.5.0",
+    "@prismicio/client": "^6.0.0-beta.4",
+    "@prismicio/helpers": "^2.0.0-beta.6",
     "@sveltejs/adapter-static": "^1.0.0-next.21",
     "@sveltejs/kit": "next",
-    "frontmatter": "^0.0.3",
-    "marked": "^4.0.3",
     "svelte": "^3.42.6",
     "svelte-material-icons": "^1.0.3"
   },

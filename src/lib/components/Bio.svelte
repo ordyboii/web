@@ -1,6 +1,8 @@
 <script>
-  import SectionTag from './SectionTag.svelte'
-  import SocialLinks from './SocialLinks.svelte'
+  import Image from './Image.svelte';
+
+  import SectionTag from './SectionTag.svelte';
+  import SocialLinks from './SocialLinks.svelte';
 </script>
 
 <section class="container">
@@ -47,7 +49,12 @@
     <SocialLinks />
   </div>
 
-  <img src="/images/me.jpg" alt="Jake Ord in standing in front of a gate" />
+  <Image
+    source={{
+      url: 'https://images.prismic.io/jakeord/961b6845-7a70-4483-a0d5-3716e0798c54_me.jpg?auto=compress,format',
+      alt: 'Jake Ord in standing in front of a gate'
+    }}
+  />
 </section>
 
 <style>

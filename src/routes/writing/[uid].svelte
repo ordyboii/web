@@ -1,37 +1,37 @@
 <script context="module">
-  export async function load({ fetch, page }) {
-    const post = await fetch(`/writing/${page.params.slug}.json`)
-
+  export const load = async ({ fetch, page }) => {
+    const post = await fetch(`/writing/${page.params.uid}.json`);
     return {
       props: { post: await post.json() }
-    }
-  }
+    };
+  };
 </script>
 
 <script>
-  import ContactCard from '$lib/components/ContactCard.svelte'
-  import Divider from '$lib/components/Divider.svelte'
-  export let post
+  import ContactCard from '$lib/components/ContactCard.svelte';
+  import Divider from '$lib/components/Divider.svelte';
+  import { asHTML } from '@prismicio/helpers';
+  export let post;
 </script>
 
 <svelte:head>
-  <title>{post.data.title}</title>
-  <meta name="description" content={post.data.description} />
+  <title>{post.title}</title>
+  <meta name="description" content={post.summary} />
 </svelte:head>
 
 <section>
   <div class="container space-y animate-slide-up">
-    <h1>{post.data.title}</h1>
+    <h1>{post.title}</h1>
     <div class="grid">
       <div class="space-y">
-        <p>{new Date(post.data.date).toLocaleDateString()}</p>
+        <p>{new Date(post.date).toLocaleDateString()}</p>
         <p>
-          {post.data.keywords.join(', ')}
+          {post.keywords.map(({ keyword }) => keyword).join(', ')}
         </p>
       </div>
       <div class="space-y">
-        <h4>Description:</h4>
-        <p>{post.data.description}</p>
+        <h4>Summary:</h4>
+        <p>{post.summary}</p>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@
 
 <section class="article">
   <article class="container">
-    {@html post.content}
+    {@html asHTML(post.content)}
   </article>
 </section>
 
