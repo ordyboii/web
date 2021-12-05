@@ -51,8 +51,8 @@
 
   <Image
     source={{
-      url: 'https://images.prismic.io/jakeord/961b6845-7a70-4483-a0d5-3716e0798c54_me.jpg?auto=compress,format',
-      alt: 'Jake Ord in standing in front of a gate'
+      url: 'https://images.ctfassets.net/fn3f7hx698nb/2Q8NUYH7B7FyKGV1sIUjQC/75a6249dea95936f6d7cfb93438baa69/me.jpeg',
+      alt: 'Jake Ord standing in front of a gate'
     }}
   />
 </section>

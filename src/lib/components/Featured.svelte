@@ -1,7 +1,7 @@
 <script>
-  import SectionTag from './SectionTag.svelte'
-  import Card from './Card.svelte'
-  export let data, posts, tag, title, subtitle
+  import SectionTag from './SectionTag.svelte';
+  import Card from './Card.svelte';
+  export let data, tag, title, subtitle;
 </script>
 
 <section id="work">
@@ -15,15 +15,9 @@
     </div>
 
     <div class="grid item-grid">
-      {#if posts}
-        {#each data as item}
-          <Card post {item} />
-        {/each}
-      {:else}
-        {#each data as item}
-          <Card {item} />
-        {/each}
-      {/if}
+      {#each data as item}
+        <Card fields={item.fields} />
+      {/each}
     </div>
   </div>
 </section>

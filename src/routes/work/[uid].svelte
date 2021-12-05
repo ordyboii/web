@@ -10,7 +10,7 @@
 <script>
   import ContactCard from '$lib/components/ContactCard.svelte';
   import Divider from '$lib/components/Divider.svelte';
-  import { asHTML } from '@prismicio/helpers';
+  import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
   export let project;
 </script>
 
@@ -39,7 +39,7 @@
 
 <section class="article">
   <article class="container">
-    {@html asHTML(project.content)}
+    {@html documentToHtmlString(project.content)}
   </article>
 </section>
 

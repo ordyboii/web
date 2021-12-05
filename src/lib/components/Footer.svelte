@@ -9,7 +9,7 @@
       <a
         rel="external"
         target="_blank"
-        href="https://prismic-io.s3.amazonaws.com/jakeord/2f8eda04-79f0-4fac-a1f1-0a3d7e271fe3_Jake_Ord_Design_CV.pdf"
+        href="https://assets.ctfassets.net/fn3f7hx698nb/7kpqEOhzKUsNCvMufjHI8X/48076d19d6b143829e111d2615dcf05e/Jake_Ord_Design_CV.pdf"
         >CV</a
       >
     </div>

@@ -13,7 +13,7 @@
     <a href="/">
       <Image
         source={{
-          url: 'https://jakeord.cdn.prismic.io/jakeord/99d6d305-6b4f-44a6-b7f5-12d1639f8388_logo.svg',
+          url: 'https://images.ctfassets.net/fn3f7hx698nb/6DdZzcfeO39uSsvSHprrrm/2cfb8ec33b95177dbe89d1d06700820d/logo.svg',
           alt: 'Jake Ord Logo'
         }}
       />
