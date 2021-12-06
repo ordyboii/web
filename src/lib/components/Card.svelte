@@ -1,24 +1,25 @@
 <script>
   import Image from './Image.svelte';
-  export let fields;
+  export let item;
+  const { data, uid } = item;
 </script>
 
-<a href={`work/${fields.slug}`} aria-label={`Link to ${fields.title}`}>
+<a href={`work/${uid}`} aria-label={`Link to ${data.title}`}>
   <article>
-    <Image source={fields.image} />
+    <Image source={data.image} />
     <div class="space-y">
-      <h3>{fields.title}</h3>
+      <h3>{data.title}</h3>
       <div>
         <p>
           <span>Client:</span>
-          {fields.client}
+          {data.client}
         </p>
         <p>
           <span>Roles:</span>
-          {fields.role}
+          {data.role}
         </p>
       </div>
-      <p>{fields.summary}</p>
+      <p>{data.summary}</p>
       <p>Read Case Study</p>
     </div>
   </article>

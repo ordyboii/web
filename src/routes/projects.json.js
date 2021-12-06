@@ -1,8 +1,7 @@
-import contentful from '$lib/contentful';
+import prismic from '$lib/prismic';
 
 export const get = async () => {
-  const projects = await contentful.getEntries({ content_type: 'projects' });
   return {
-    body: projects.items
+    body: await prismic.getAllByType('project')
   };
 };

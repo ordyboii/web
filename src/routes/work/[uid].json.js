@@ -1,12 +1,8 @@
-import contentful from '$lib/contentful';
+import prismic from '$lib/prismic';
 
 export const get = async ({ params }) => {
-  const { items } = await contentful.getEntries({
-    content_type: 'projects',
-    'fields.slug': params.slug
-  });
-
+  const projects = await prismic.getByUID('project', params.uid);
   return {
-    body: items[0].fields
+    body: projects.data
   };
 };

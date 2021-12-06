@@ -16,7 +16,7 @@
 
     <div class="grid item-grid">
       {#each data as item}
-        <Card fields={item.fields} />
+        <Card {item} />
       {/each}
     </div>
   </div>

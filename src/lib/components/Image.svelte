@@ -1,16 +1,17 @@
 <script>
   export let source;
-  const { fields } = source;
+  const { url, alt, dimensions } = source;
+  const src = url.replace(',format', '');
 </script>
 
 <picture>
-  <source srcset={`${source.url || fields?.file?.url}?fm=avif&q=50`} type="image/avif" />
-  <source srcset={`${source.url || fields?.file?.url}?fm=webp&q=50`} type="image/webp" />
+  <source srcset={`${src}&fm=avif`} type="image/avif" />
+  <source srcset={`${src}&fm=webp`} type="image/webp" />
   <img
-    src={`${source.url || fields?.file?.url}?q=50`}
-    alt={source.alt || fields?.title}
-    width={fields?.file?.details.width}
-    height={fields?.file?.details.height}
+    src={url}
+    {alt}
+    width={dimensions?.width}
+    height={dimensions?.height}
     loading="lazy"
     decoding="async"
   />
