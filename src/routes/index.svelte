@@ -8,11 +8,11 @@
 </script>
 
 <script>
-  import Hero from '$lib/components/Hero.svelte';
-  import Bio from '$lib/components/Bio.svelte';
-  import Featured from '$lib/components/Featured.svelte';
-  import Skills from '$lib/components/Skills.svelte';
-  import ContactCard from '$lib/components/ContactCard.svelte';
+  import Hero from '$lib/Hero.svelte';
+  import Bio from '$lib/Bio.svelte';
+  import Featured from '$lib/Featured.svelte';
+  import Skills from '$lib/Skills.svelte';
+  import ContactCard from '$lib/ContactCard.svelte';
   export let projects = [];
 </script>
 

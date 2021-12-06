@@ -1,6 +1,6 @@
 <script>
-  import SectionTag from '$lib/components/SectionTag.svelte'
-  import SkillCard from '$lib/components/SkillCard.svelte'
+  import SectionTag from './SectionTag.svelte';
+  import SkillCard from './SkillCard.svelte';
 </script>
 
 <section class="container">

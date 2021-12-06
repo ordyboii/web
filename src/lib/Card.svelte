@@ -1,12 +1,11 @@
 <script>
-  import Image from './Image.svelte';
   export let item;
-  const { data, uid } = item;
+  const { data, slug } = item;
 </script>
 
-<a href={`work/${uid}`} aria-label={`Link to ${data.title}`}>
+<a href={`work/${slug}`} aria-label={`Link to ${data.title}`}>
   <article>
-    <Image source={data.image} />
+    <img src={data.image} alt="Project" loading="lazy" decoding="async" />
     <div class="space-y">
       <h3>{data.title}</h3>
       <div>

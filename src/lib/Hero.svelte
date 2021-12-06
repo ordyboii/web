@@ -1,6 +1,6 @@
 <script>
-  import Button from '$lib/components/Button.svelte'
-  import Divider from './Divider.svelte'
+  import Button from './Button.svelte';
+  import Divider from './Divider.svelte';
 </script>
 
 <section>

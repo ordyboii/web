@@ -1,17 +1,12 @@
 <script>
-  import SocialLinks from '$lib/components/SocialLinks.svelte';
+  import SocialLinks from './SocialLinks.svelte';
 </script>
 
 <footer>
   <div class="container">
     <div>
       <p>© Jake Ord, {new Date().getFullYear()}</p>
-      <a
-        rel="external"
-        target="_blank"
-        href="https://prismic-io.s3.amazonaws.com/jakeord/2f8eda04-79f0-4fac-a1f1-0a3d7e271fe3_Jake_Ord_Design_CV.pdf"
-        >CV</a
-      >
+      <a rel="external" target="_blank" href="/Jake_Ord_Design_CV.pdf">CV</a>
     </div>
     <SocialLinks inverse />
   </div>

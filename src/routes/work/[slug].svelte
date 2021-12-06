@@ -1,6 +1,6 @@
 <script context="module">
   export const load = async ({ fetch, page }) => {
-    const project = await fetch(`/work/${page.params.uid}.json`);
+    const project = await fetch(`/work/${page.params.slug}.json`);
     return {
       props: { project: await project.json() }
     };
@@ -8,28 +8,27 @@
 </script>
 
 <script>
-  import ContactCard from '$lib/components/ContactCard.svelte';
-  import Divider from '$lib/components/Divider.svelte';
-  import * as helpers from '@prismicio/helpers';
+  import ContactCard from '$lib/ContactCard.svelte';
+  import Divider from '$lib/Divider.svelte';
   export let project;
 </script>
 
 <svelte:head>
-  <title>{project.title}</title>
-  <meta name="description" content={project.summary} />
+  <title>{project.data.title}</title>
+  <meta name="description" content={project.data.summary} />
 </svelte:head>
 
 <section>
   <div class="container space-y animate-slide-up">
-    <h1>{project.title}</h1>
+    <h1>{project.data.title}</h1>
     <div class="grid">
       <div class="space-y">
-        <p><strong>Client:</strong> {project.client}</p>
-        <p><strong>Role:</strong> {project.role}</p>
+        <p><strong>Client:</strong> {project.data.client}</p>
+        <p><strong>Role:</strong> {project.data.role}</p>
       </div>
       <div class="space-y">
         <h4>Summary:</h4>
-        <p>{project.summary}</p>
+        <p>{project.data.summary}</p>
       </div>
     </div>
   </div>
@@ -39,7 +38,7 @@
 
 <section class="article">
   <article class="container">
-    {@html helpers.asHTML(project.content)}
+    {@html project.content}
   </article>
 </section>
 

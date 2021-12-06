@@ -1,7 +1,7 @@
 <script>
   import Menu from 'svelte-material-icons/Menu.svelte';
-  import Button from '$lib/components/Button.svelte';
-  import SocialLinks from '$lib/components/SocialLinks.svelte';
+  import Button from './Button.svelte';
+  import SocialLinks from './SocialLinks.svelte';
   import { fly } from 'svelte/transition';
 
   let menuOpen = false;
@@ -10,10 +10,7 @@
 <header>
   <div class="container">
     <a href="/">
-      <img
-        src="https://jakeord.cdn.prismic.io/jakeord/99d6d305-6b4f-44a6-b7f5-12d1639f8388_logo.svg"
-        alt="Jake Ord Logo"
-      />
+      <img src="/logo.svg" alt="Jake Ord Logo" loading="lazy" decoding="async" />
     </a>
     <nav>
       <ul>

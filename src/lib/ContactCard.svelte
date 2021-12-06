@@ -1,5 +1,5 @@
 <script>
-  import Button from '$lib/components/Button.svelte'
+  import Button from './Button.svelte';
 </script>
 
 <aside aria-labelledby="Contact me" class="space-y">
