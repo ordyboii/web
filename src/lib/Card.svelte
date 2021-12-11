@@ -3,7 +3,7 @@
   const { data, slug } = item;
 </script>
 
-<a href={`work/${slug}`} aria-label={`Link to ${data.title}`}>
+<a href={`/work/${slug}`} aria-label={`Link to ${data.title}`}>
   <article>
     <img src={data.image} alt="Project" loading="lazy" decoding="async" />
     <div class="space-y">
