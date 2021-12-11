@@ -10,7 +10,7 @@
 <header>
   <div class="container">
     <a href="/">
-      <img src="/logo.svg" alt="Jake Ord Logo" loading="lazy" decoding="async" />
+      <img src="/images/logo.svg" alt="Jake Ord Logo" loading="lazy" decoding="async" />
     </a>
     <nav>
       <ul>

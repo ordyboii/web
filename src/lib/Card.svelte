@@ -5,7 +5,7 @@
 
 <a href={`/work/${slug}`} aria-label={`Link to ${data.title}`}>
   <article>
-    <img src={data.image} alt="Project" loading="lazy" decoding="async" />
+    <img src={data.image} alt={data.imageAlt} loading="lazy" decoding="async" />
     <div class="space-y">
       <h3>{data.title}</h3>
       <div>

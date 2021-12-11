@@ -47,7 +47,12 @@
     <SocialLinks />
   </div>
 
-  <img src="/me.jpeg" alt="Jake Ord standing in front of a gate" loading="lazy" decoding="async" />
+  <img
+    src="/images/me.jpeg"
+    alt="Jake Ord standing in front of a gate"
+    loading="lazy"
+    decoding="async"
+  />
 </section>
 
 <style>
