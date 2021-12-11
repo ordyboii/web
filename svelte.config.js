@@ -4,9 +4,7 @@ import Static from '@sveltejs/adapter-static';
 const config = {
   kit: {
     adapter: Static({
-      assets: 'build',
-      pages: 'build',
-      fallback: null
+      fallback: '500.html'
     }),
     target: '#svelte'
   }
