@@ -3,9 +3,7 @@ import Static from '@sveltejs/adapter-static';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: Static({
-      fallback: '500.html'
-    }),
+    adapter: Static(),
     target: '#svelte'
   }
 };
