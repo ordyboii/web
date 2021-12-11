@@ -1,6 +1,6 @@
 <script context="module">
   export const load = async ({ fetch, page }) => {
-    const project = await fetch(`${page.params.slug}.json`);
+    const project = await fetch(`/work/${page.params.slug}.json`);
     return {
       props: { project: await project.json() }
     };
