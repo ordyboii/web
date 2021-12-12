@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "clones-c81dd"
+  },
+  "targets": {
+    "clones-c81dd": {
+      "hosting": {
+        "web": [
+          "jakedesign"
+        ]
+      }
+    }
+  }
+}
