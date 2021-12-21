@@ -1,4 +1,5 @@
 <script context="module">
+  export const prerender = true;
   export const load = async ({ fetch, page }) => {
     const project = await fetch(`/work/${page.params.slug}.json`);
     return {
