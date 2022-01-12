@@ -1,6 +1,5 @@
 import SectionTag from "components/SectionTag";
 import SocialLinks from "components/SocialLinks";
-import Image from "next/image";
 
 export default function Bio() {
   return (
@@ -54,13 +53,11 @@ export default function Bio() {
         <SocialLinks />
       </div>
 
-      <Image
+      <img
         src='/images/me.jpeg'
         alt='Jake Ord standing in front of a gate'
-        height='100%'
-        width='100%'
-        objectFit='cover'
-        layout='responsive'
+        loading='lazy'
+        decoding='async'
       />
     </section>
   );

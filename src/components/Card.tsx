@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 interface Props {
   item: {
@@ -22,13 +21,11 @@ export default function Card({ item }: Props) {
     <Link href={`/work/${slug}`}>
       <a aria-label={`Link to ${data.title}`}>
         <article className='card'>
-          <Image
+          <img
             src={data.image}
             alt={data.imageAlt}
-            height='100%'
-            width='100%'
-            objectFit='cover'
-            layout='responsive'
+            loading='lazy'
+            decoding='async'
           />
           <div className='space-y'>
             <h3>{data.title}</h3>
