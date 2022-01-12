@@ -19,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = ({}) => {
 };
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const project = getSingleMarkdown(params.slug);
+  const project = getSingleMarkdown(params?.slug as string);
   return { props: { project } };
 };
 

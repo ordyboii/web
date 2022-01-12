@@ -1,7 +1,7 @@
 .skills {
   padding: 5rem 0;
 }
-.skills > div {
+.skills > :first-child {
   --cols: 1;
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
@@ -15,11 +15,14 @@
 }
 
 .skills-grid {
+  --cols: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
   gap: 1rem;
 }
 
 @media (min-width: 40em) {
-  .skills > div {
+  .skills > :first-child {
     --cols: 4;
   }
   .intro {

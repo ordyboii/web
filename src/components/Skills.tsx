@@ -15,7 +15,7 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className='grid skills-grid'>
+      <div className='skills-grid'>
         <SkillCard
           title='Design'
           skills={[
