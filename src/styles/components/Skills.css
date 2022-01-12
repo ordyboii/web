@@ -1,0 +1,31 @@
+.skills {
+  padding: 5rem 0;
+}
+.skills > div {
+  --cols: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.intro {
+  grid-column: span 2;
+  margin: 1rem 0;
+}
+
+.skills-grid {
+  gap: 1rem;
+}
+
+@media (min-width: 40em) {
+  .skills > div {
+    --cols: 4;
+  }
+  .intro {
+    margin: 0;
+  }
+  .skills-grid {
+    --cols: 2;
+  }
+}

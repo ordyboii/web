@@ -1,0 +1,27 @@
+.featured {
+  background-color: var(--clrWhite-20);
+  padding: 5rem 0;
+}
+
+.grid {
+  --cols: 1;
+
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+}
+
+.item-grid {
+  gap: 1.4rem;
+}
+
+@media (min-width: 40em) {
+  .grid {
+    --cols: 4;
+  }
+  .item-grid {
+    --cols: 3;
+  }
+  .intro {
+    margin: 0;
+  }
+}

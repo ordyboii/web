@@ -1,0 +1,12 @@
+.divider {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: rotate(180deg);
+  color: var(--clrBlue);
+  pointer-events: none;
+}
+
+.divider path {
+  fill: var(--clrWhite);
+}
