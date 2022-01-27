@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
-export function getMarkdown() {
+export const getMarkdown = () => {
   const files = fs.readdirSync(path.resolve("content"));
 
   const projects = files.map(file => {
@@ -18,9 +18,9 @@ export function getMarkdown() {
   });
 
   return projects;
-}
+};
 
-export function getSingleMarkdown(slug: string) {
+export const getSingleMarkdown = (slug: string) => {
   const file = fs.readFileSync(path.resolve(`content/${slug}.md`), "utf-8");
   const parsedMarkdown = matter(file);
 
@@ -29,4 +29,4 @@ export function getSingleMarkdown(slug: string) {
     data: parsedMarkdown.data,
     content: marked.parse(parsedMarkdown.content)
   };
-}
+};
