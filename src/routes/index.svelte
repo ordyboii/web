@@ -8,8 +8,7 @@
 
   export const load: Load = async ({ fetch }) => {
     const res = await fetch(`/projects.json`);
-    const data = await res.json();
-    return { props: { projects: data } };
+    return { props: { projects: await res.json() } };
   };
 </script>
 
