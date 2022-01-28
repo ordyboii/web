@@ -17,11 +17,9 @@
   aside {
     display: grid;
     place-items: center;
-
     max-width: 56rem;
     margin: 3rem auto;
     padding: 2.4rem;
-
     background-color: var(--clrBlue);
     border-radius: var(--brRadius);
     box-shadow: var(--elevation);

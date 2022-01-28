@@ -44,15 +44,31 @@
     background-color: var(--clrWhite);
     box-shadow: var(--elevation);
     border-radius: var(--brRadius);
-    transition: var(--delay) ease-in-out;
+    transition: var(--delay) ease;
   }
   article:hover {
     transform: scale(var(--scaleUp));
+    animation: shake 0.4s ease-in-out 0.5s;
   }
   article > div {
     padding: 2rem;
   }
   article :is(span) {
     font-weight: var(--fwBold);
+  }
+
+  @keyframes shake {
+    0% {
+      transform: scale(var(--scaleUp)) rotate(5deg);
+    }
+    25% {
+      transform: scale(var(--scaleUp)) rotate(5deg);
+    }
+    50% {
+      transform: scale(var(--scaleUp)) rotate(0deg);
+    }
+    75% {
+      transform: scale(var(--scaleUp)) rotate(-5deg);
+    }
   }
 </style>
