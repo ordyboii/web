@@ -13,11 +13,7 @@
   const { data, slug } = item;
 </script>
 
-<a
-  sveltekit:prefetch
-  href={`/work/${slug}`}
-  aria-label={`Link to ${data.title}`}
->
+<a href={`/work/${slug}`} aria-label={`Link to ${data.title}`}>
   <article>
     <img src={data.image} alt={data.imageAlt} loading="lazy" decoding="async" />
     <div class="space-y">
