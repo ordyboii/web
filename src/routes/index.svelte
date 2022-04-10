@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { browser } from "$app/env";
+
   import Bio from "$lib/components/Bio.svelte";
   import ContactCard from "$lib/components/ContactCard.svelte";
   import Featured from "$lib/components/Featured.svelte";
@@ -6,12 +8,10 @@
   import Skills from "$lib/components/Skills.svelte";
 
   export let projects: Project[];
-</script>
 
-<svelte:head>
-  <script
-    src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
+  if (browser) {
+    const script = document.createElement("script");
+    script.innerHTML = `
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
@@ -21,7 +21,14 @@
         }
       });
     }
-  </script>
+    `;
+    document.body.appendChild(script);
+  }
+</script>
+
+<svelte:head>
+  <script
+    src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </svelte:head>
 
 <Hero />
