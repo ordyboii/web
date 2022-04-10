@@ -102,7 +102,6 @@
 
   .mobile {
     position: absolute;
-    top: 5rem;
     width: 100%;
     padding: 1.6rem;
     background-color: var(--clrWhite);

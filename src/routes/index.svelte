@@ -1,18 +1,10 @@
-<script lang="ts" context="module">
+<script lang="ts">
   import Bio from "$lib/components/Bio.svelte";
   import ContactCard from "$lib/components/ContactCard.svelte";
   import Featured from "$lib/components/Featured.svelte";
   import Hero from "$lib/components/Hero.svelte";
   import Skills from "$lib/components/Skills.svelte";
-  import type { Load } from "@sveltejs/kit";
 
-  export const load: Load = async ({ fetch }) => {
-    const res = await fetch(`/projects.json`);
-    return { props: { projects: await res.json() } };
-  };
-</script>
-
-<script lang="ts">
   export let projects: Project[];
 </script>
 

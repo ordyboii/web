@@ -20,7 +20,7 @@
   button {
     padding: 1rem 1.4rem;
     border-radius: var(--brRadius);
-    background-color: var(--clrBlue);
+    border: 1px solid var(--clrBlue);
     color: var(--clrWhite);
     font-weight: var(--fwMedium);
     transition: var(--delay) ease-out;
@@ -33,13 +33,12 @@
 
   a:hover,
   button:hover {
-    box-shadow: var(--elevation);
+    background-color: var(--clrLightBlue);
     transform: scale(var(--scaleDown));
-    opacity: var(--fade);
   }
 
   .secondary {
-    background-color: var(--clrYellow);
-    color: var(--clrBlack);
+    border: 1px solid var(--clrLightBlue);
+    color: var(--clrWhite);
   }
 </style>

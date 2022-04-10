@@ -13,7 +13,8 @@
 
 <style>
   article {
-    background-color: var(--clrWhite-20);
+    border: 2px solid var(--clrBlue);
+    border-radius: var(--brRadius);
     padding: 3rem;
   }
 

@@ -39,10 +39,10 @@
   /* GLOBAL */
   :root {
     /* Colors */
-    --clrBlue: hsl(224, 64%, 33%);
-    --clrBlue-20: hsl(224, 64%, 43%);
-    --clrYellow: hsl(46, 97%, 75%);
-    --clrYellow-20: hsl(46, 97%, 65%);
+    --clrBlue: hsl(225, 5%, 15%);
+    --clrBlue-20: hsl(225, 5%, 25%);
+    --clrLightBlue: hsl(190, 49%, 60%);
+    --clrLightBlue-20: hsl(190, 49%, 50%);
     --clrWhite: hsl(0, 0%, 100%);
     --clrWhite-20: hsl(0, 0%, 96%);
     --clrBlack: hsl(0, 0%, 4%);
@@ -65,7 +65,7 @@
     --scaleDown: 0.95; /* Transform Scale */
     --fade: 0.7; /* Opacity */
     --brRadius: 0.4rem; /* Border Radius */
-    --elevation: 0 0.2rem 1.4rem hsla(0, 0%, 0%, 0.1); /* Box Shadow */
+    --elevation: 0.2rem 0.2rem 4rem 0.5rem hsla(190, 49%, 60%, 0.6); /* Box Shadow */
     --overlay: 10; /* z-index */
     --delay: 0.15s; /* Timing delay (transitions, animations etc.) */
   }
@@ -106,7 +106,7 @@
     position: absolute;
     top: 0.6rem;
     left: 0.6rem;
-    background-color: var(--clrYellow-20);
+    background-color: var(--clrLightBlue-20);
     padding: 0.8rem;
     opacity: 0;
     transition: var(--delay) ease-in;
@@ -162,7 +162,7 @@
   body,
   html {
     font-family: var(--ffBody);
-    line-height: 1.5;
+    line-height: 1.6;
     font-size: 16px;
     scroll-behavior: smooth;
   }

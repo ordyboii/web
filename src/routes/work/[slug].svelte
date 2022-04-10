@@ -1,15 +1,7 @@
-<script lang="ts" context="module">
+<script lang="ts">
   import ContactCard from "$lib/components/ContactCard.svelte";
   import Divider from "$lib/components/Divider.svelte";
-  import type { Load } from "@sveltejs/kit";
 
-  export const load: Load = async ({ fetch, params }) => {
-    const res = await fetch(`/work/${params.slug}.json`);
-    return { props: { project: await res.json() } };
-  };
-</script>
-
-<script lang="ts">
   export let project: Project;
 </script>
 
@@ -88,6 +80,6 @@
     flex-direction: column;
     gap: 1rem;
     padding: 3rem;
-    box-shadow: var(--elevation);
+    border: 2px solid var(--clrBlack);
   }
 </style>

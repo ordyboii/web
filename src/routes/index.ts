@@ -1,7 +1,7 @@
-import { getMarkdown } from "$lib/markdown";
+import { getMarkdown } from "$lib/utils/markdown";
 import type { RequestHandler } from "@sveltejs/kit";
 
 export const get: RequestHandler = async () => {
   const projects = getMarkdown();
-  return { body: projects };
+  return { body: { projects } };
 };

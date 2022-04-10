@@ -22,16 +22,13 @@
       <p>
         <strong>Interests</strong>
       </p>
-      <p>
-        Motorcycling, cooking, design, building apps, cinema, anime, figure
-        collecting
-      </p>
+      <p>Cooking, design, building apps, cinema, anime, figure collecting</p>
     </div>
   </div>
 
   <div class="bio space-y">
     <h2>
-      Welcome to my humble corner of the interent. If your curious to find out
+      Welcome to my humble corner of the internet. If your curious to find out
       more about me, read on...
     </h2>
     <p>
@@ -75,6 +72,11 @@
 
   .bio {
     grid-column: span 2;
+  }
+
+  img {
+    border: 2px solid var(--clrBlue);
+    border-radius: var(--brRadius);
   }
 
   @media (min-width: 40em) {
