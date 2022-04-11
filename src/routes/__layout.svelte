@@ -96,6 +96,10 @@
     font-size: var(--fsHeading-5);
   }
 
+  p {
+    line-height: 1.9;
+  }
+
   .app {
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -122,6 +126,10 @@
 
   .space-y > * + * {
     --y: 1.2rem;
+    margin-top: var(--y);
+  }
+  .space-y-6 > * + * {
+    --y: 2.4rem;
     margin-top: var(--y);
   }
   .space-x > * + * {

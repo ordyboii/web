@@ -1,7 +1,5 @@
 <script lang="ts">
   import ContactCard from "$lib/components/ContactCard.svelte";
-  import Divider from "$lib/components/Divider.svelte";
-
   export let project: Project;
 </script>
 
@@ -10,7 +8,11 @@
   <meta name="description" content={project.data.summary} />
 </svelte:head>
 
-<section class="project">
+<section
+  class="project"
+  style:background={`linear-gradient(hsla(225, 5%, 15%, 0.9), hsla(225, 5%, 15%, 0.6)), url(${project.data.image})`}
+  style:background-size="cover"
+>
   <div class="container space-y animate-slide-up">
     <h1>{project.data.title}</h1>
     <div class="project-grid">
@@ -30,8 +32,6 @@
       </div>
     </div>
   </div>
-
-  <Divider />
 </section>
 
 <section class="project-article">
@@ -44,11 +44,9 @@
 
 <style>
   .project {
-    position: relative;
-    padding-top: 1.4rem;
-    background: var(--clrBlue);
-    padding-bottom: 14rem;
+    padding-block: 6rem;
     color: var(--clrWhite);
+    border-bottom: 6px solid var(--clrLightBlue);
   }
   .project > .space-y {
     --y: 1.4rem;
@@ -78,7 +76,7 @@
   .project-article > article {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     padding: 3rem;
     border: 2px solid var(--clrBlack);
   }

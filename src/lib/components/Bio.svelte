@@ -79,7 +79,7 @@
     border-radius: var(--brRadius);
   }
 
-  @media (min-width: 40em) {
+  @media (min-width: 60em) {
     section {
       --cols: 4;
     }

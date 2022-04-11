@@ -1,10 +1,9 @@
 <script>
   import Button from "./Button.svelte";
-  import Divider from "./Divider.svelte";
 </script>
 
 <section>
-  <div class="container space-y animate-slide-up">
+  <div class="container space-y-6 animate-slide-up">
     <p>Hi I'm Jake Ord</p>
     <h1>
       An aloud <span>thinker</span> & <span>creative</span> go-getter
@@ -25,7 +24,6 @@
 
 <style>
   section {
-    position: relative;
     background-color: var(--clrBlue);
     color: var(--clrWhite);
     padding-top: 1.4rem;
@@ -54,6 +52,9 @@
   @media (max-width: 40em) {
     .buttons {
       flex-direction: column;
+    }
+    section :is(div) {
+      --y: 3rem;
     }
   }
 </style>

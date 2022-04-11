@@ -26,4 +26,10 @@
     text-align: center;
     color: var(--clrWhite);
   }
+
+  @media (max-width: 60em) {
+    aside {
+      margin: 3rem 2rem;
+    }
+  }
 </style>
