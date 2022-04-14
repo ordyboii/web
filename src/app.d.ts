@@ -1,5 +1,11 @@
 /// <reference types="@sveltejs/kit" />
 
+declare namespace App {
+  interface Session {}
+  interface Locals {}
+  interface Platform {}
+}
+
 interface Project {
   slug: string;
   data: ProjectData;
