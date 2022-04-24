@@ -1,0 +1,37 @@
+.project {
+  padding-block: 6rem;
+  color: var(--clrWhite);
+  border-bottom: 6px solid var(--clrLightBlue);
+}
+.project > .space-y {
+  --y: 1.4rem;
+}
+
+.projectGrid {
+  --cols: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 1rem;
+}
+.projectGrid > .space-y {
+  --y: 1.4rem;
+}
+
+@media (min-width: 40em) {
+  .projectGrid {
+    --cols: 4;
+  }
+}
+
+.projectArticle {
+  padding: 3rem 0;
+  background-color: var(--clrWhite);
+  color: var(--clrBlack);
+}
+.projectArticle > article {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem;
+  border: 2px solid var(--clrBlack);
+}

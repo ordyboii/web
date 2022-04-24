@@ -1,0 +1,16 @@
+.article {
+  margin: 1.6rem 0;
+  background-color: var(--clrWhite);
+  border: 2px solid var(--clrBlue);
+  border-radius: var(--brRadius);
+  transition: var(--delay) ease;
+}
+.article:hover {
+  transform: scale(var(--scaleUp));
+}
+.article > div {
+  padding: 2rem;
+}
+.article :is(span) {
+  font-weight: var(--fwBold);
+}

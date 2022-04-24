@@ -1,0 +1,26 @@
+.section {
+  background-color: var(--clrWhite-20);
+  padding: 5rem 0;
+}
+
+.grid {
+  --cols: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+}
+
+.itemGrid {
+  gap: 1.4rem;
+}
+
+@media (min-width: 40em) {
+  .grid {
+    --cols: 4;
+  }
+  .itemGrid {
+    --cols: 3;
+  }
+  .intro {
+    margin: 0;
+  }
+}

@@ -1,18 +1,10 @@
-/// <reference types="@sveltejs/kit" />
-
-declare namespace App {
-  interface Session {}
-  interface Locals {}
-  interface Platform {}
-}
-
-interface Project {
+export interface Project {
   slug: string;
   data: ProjectData;
   content: string;
 }
 
-interface ProjectData {
+export interface ProjectData {
   title: string;
   summary: string;
   date: string;
