@@ -1,6 +1,7 @@
 import styles from "styles/components/header.module.css";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "components/button";
 import SocialLinks from "components/social-links";
@@ -14,11 +15,11 @@ export default function Header() {
       <div className='container'>
         <Link href='/'>
           <a>
-            <img
+            <Image
               src='/images/logo.svg'
               alt='Jake Ord Logo'
-              loading='lazy'
-              decoding='async'
+              width='100%'
+              height='100%'
             />
           </a>
         </Link>

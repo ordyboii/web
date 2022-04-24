@@ -9,6 +9,11 @@
   grid-template-columns: repeat(var(--cols), 1fr);
 }
 
+.intro {
+  grid-column: span 2;
+  margin: 1rem 0;
+}
+
 .itemGrid {
   gap: 1.4rem;
 }
@@ -19,8 +24,5 @@
   }
   .itemGrid {
     --cols: 3;
-  }
-  .intro {
-    margin: 0;
   }
 }
