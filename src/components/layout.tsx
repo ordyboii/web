@@ -1,13 +1,26 @@
-import { ReactNode } from "react";
+import Head from "next/head";
+import { PropsWithChildren } from "react";
 import { GiSeaDragon } from "react-icons/gi";
 import Footer from "./footer";
 import Header from "./header";
+import SkipLink from "./skip-link";
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({
+  title,
+  children
+}: PropsWithChildren<{ title?: string }>) {
   return (
     <div className='grid grid-rows-[auto_1fr_auto] min-h-screen max-w-2xl mx-auto p-8 md:px-0'>
+      <SkipLink />
+
+      <Head>
+        <title>{title ? title : "Jake Ord - UX Designer"}</title>
+        <link rel='icon' href='/favicon.png' />
+      </Head>
       <Header />
-      <main className='container'>{children}</main>
+      <main className='container' id='content'>
+        {children}
+      </main>
       <Footer />
 
       {/* Background Icon */}

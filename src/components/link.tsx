@@ -16,7 +16,9 @@ export default function Link({
 
   return (
     <NextLink href={href}>
-      <a className='opacity-60 hover:opacity-100'>{children}</a>
+      <a className='opacity-60 hover:opacity-100 focus:opacity-100'>
+        {children}
+      </a>
     </NextLink>
   );
 }

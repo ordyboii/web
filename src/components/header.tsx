@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import NextLink from "next/link";
 import Link from "./link";
 import { useState } from "react";
+import Social from "./social";
 
 export default function Header() {
   const router = useRouter();
@@ -11,13 +12,17 @@ export default function Header() {
 
   return (
     <header className='flex gap-4 justify-between items-center'>
-      <Image
-        src='/images/logo.svg'
-        alt='Jake Ord logo'
-        width={100}
-        height={50}
-      />
-      <ul role='navigation' className='hidden md:flex gap-8'>
+      <NextLink href='/'>
+        <a className='hover:opacity-60 focus:opacity-60'>
+          <Image
+            src='/images/logo.svg'
+            alt='Jake Ord logo'
+            width={100}
+            height={50}
+          />
+        </a>
+      </NextLink>
+      <ul role='navigation' className='hidden sm:flex gap-8'>
         <li>
           <Link href='/' active={router.pathname === "/"}>
             Home
@@ -34,16 +39,11 @@ export default function Header() {
           </Link>
         </li>
         <li className='flex gap-4'>
-          <a href='/awd' className='hover:opacity-60'>
-            <FaLinkedin size={24} />
-          </a>
-          <a href='/awd' className='hover:opacity-60'>
-            <FaGithub size={24} />
-          </a>
+          <Social />
         </li>
       </ul>
 
-      <button onClick={() => setIsMenuOpen(true)} className='md:hidden'>
+      <button onClick={() => setIsMenuOpen(true)} className='sm:hidden'>
         <HiOutlineMenuAlt4 size={32} />
       </button>
 
@@ -84,12 +84,7 @@ export default function Header() {
             </ul>
 
             <div className='flex gap-4'>
-              <a href='/awd' className='hover:opacity-60'>
-                <FaLinkedin size={24} />
-              </a>
-              <a href='/awd' className='hover:opacity-60'>
-                <FaGithub size={24} />
-              </a>
+              <Social />
             </div>
           </div>
         </nav>

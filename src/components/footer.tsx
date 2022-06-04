@@ -1,7 +1,12 @@
+import Social from "./social";
+
 export default function Footer() {
   return (
-    <footer className='bg-gray-900'>
-      <h3>Footer</h3>
+    <footer className='border-t border-gray-500 flex justify-between'>
+      <h3>© Copyright Jake Ord, {new Date().getFullYear()}</h3>
+      <div className='flex gap-4'>
+        <Social />
+      </div>
     </footer>
   );
 }
