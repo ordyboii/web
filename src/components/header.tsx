@@ -29,14 +29,17 @@ export default function Header() {
           </Link>
         </li>
         <li>
-          <Link href='/work' active={router.pathname === "/work"}>
-            Work
+          <Link href='/projects' active={router.pathname === "/projects"}>
+            Projects
           </Link>
         </li>
         <li>
           <Link href='/blog' active={router.pathname === "/blog"}>
             Blog
           </Link>
+        </li>
+        <li>
+          <Link href='/cv.pdf'>CV</Link>
         </li>
         <li className='flex gap-4'>
           <Social />
@@ -80,6 +83,9 @@ export default function Header() {
                 <Link href='/blog' active={router.pathname === "/blog"}>
                   Blog
                 </Link>
+              </li>
+              <li>
+                <Link href='/cv.pdf'>CV</Link>
               </li>
             </ul>
 
