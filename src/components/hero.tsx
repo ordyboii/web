@@ -48,7 +48,8 @@ export default function Hero() {
         <div className='flex flex-col gap-8 sm:flex-row'>
           <a
             href='mailto:jake.ord345@gmail.com'
-            className='bg-gray-600 px-4 py-3 rounded-sm max-w-fit hover:bg-blue-400'
+            className='bg-gray-900 px-4 py-3 rounded-sm max-w-fit 
+            transition hover:bg-blue-400'
           >
             Contact me!
           </a>
@@ -56,7 +57,7 @@ export default function Hero() {
             href='/cv.pdf'
             className='flex items-center gap-2 underline hover:text-blue-400'
           >
-            Or read my cv <HiArrowNarrowRight size={24} />
+            Or read my CV <HiArrowNarrowRight size={24} />
           </a>
         </div>
       </div>

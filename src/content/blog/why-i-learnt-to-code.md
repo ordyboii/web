@@ -1,5 +1,5 @@
 ---
-title: Why I Learnt To Code
+title: Why I Learnt To Code As a UX Designer
 summary: A UX designer usually doesn't need to learn programming skills, but being the only designer in a software company changed my perspective on this
 date: "2022-06-05"
 image: "/images/why-i-learnt-to-code.jpg"

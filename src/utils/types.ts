@@ -13,3 +13,17 @@ export interface ProjectData {
   client: string;
   role: string;
 }
+
+export interface Post {
+  slug: string;
+  data: PostData;
+  content: string;
+}
+
+export interface PostData {
+  title: string;
+  summary: string;
+  date: string;
+  image: string;
+  imageAlt: string;
+}

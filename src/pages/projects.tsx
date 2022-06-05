@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps = () => {
 
 export default function Projects({ projects }: { projects: Project[] }) {
   const [filterQuery, setFilterQuery] = useState("");
-  const filteredProjects = useFilter(filterQuery, projects);
+  const filteredProjects = useFilter(filterQuery, projects) as Project[];
 
   return (
     <Layout title='Projects - Jake Ord'>
@@ -22,7 +22,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
         <div className='space-y-2'>
           <h1 className='text-4xl font-bold'>Projects</h1>
           <p className='text-lg'>
-            Cultivation of my best projects working as a UX designer
+            Cultivation of my best projects working as a UX designer.
           </p>
         </div>
 

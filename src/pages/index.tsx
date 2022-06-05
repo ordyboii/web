@@ -29,7 +29,7 @@ export default function Index({ projects }: { projects: Project[] }) {
           href='/projects'
           className='flex items-center gap-2 underline hover:text-blue-400'
         >
-          Or read all posts <HiArrowNarrowRight size={24} />
+          Or see all my projects <HiArrowNarrowRight size={24} />
         </a>
       </section>
 

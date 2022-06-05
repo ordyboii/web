@@ -22,11 +22,11 @@ export default function ProjectPage({ project }: { project: Project }) {
   return (
     <Layout title={project.data.title} description={project.data.summary}>
       <section className='mt-12'>
-        <div className='space-y-4'>
+        <div className='space-y-6'>
           <h1 className='text-4xl font-bold'>{project.data.title}</h1>
           <p>{project.data.summary}</p>
 
-          <div className='flex justify-between items-center'>
+          <div className='flex flex-wrap gap-4 justify-between items-center'>
             <p>{new Date(project.data.date).toLocaleDateString()}</p>
             <div>
               <p>

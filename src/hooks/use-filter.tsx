@@ -1,7 +1,7 @@
-import { Project } from "@/utils/types";
+import { Post, Project } from "@/utils/types";
 import { useEffect, useState } from "react";
 
-export const useFilter = (query: string, data: Project[]) => {
+export const useFilter = (query: string, data: Project[] | Post[]) => {
   const [filteredArray, setFilteredArray] = useState(data);
 
   useEffect(() => {
