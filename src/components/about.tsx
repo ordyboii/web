@@ -7,7 +7,7 @@ export default function About() {
       <div className='space-y-6'>
         <h2 className='text-2xl font-bold'>A little about me</h2>
 
-        <div className='border-4 border-gray-900 relative w-1/4 h-64'>
+        <div className='border-4 border-gray-900 relative w-3/4 h-64 sm:w-1/4'>
           <Image
             src='/images/me2.jpg'
             alt='Jake Ord standing on some stairs in Edinburgh'
@@ -17,8 +17,7 @@ export default function About() {
         </div>
 
         <p className='font-semibold'>
-          初めましてジェイクです。よろしくおねがいします。 (Pleased to meet you,
-          I&apos;m Jake)
+          初めましてジェイクです。 (I&apos;m Jake, nice to meet you)
         </p>
 
         <p>

@@ -52,7 +52,7 @@ export default function Header() {
 
       {isMenuOpen && (
         <nav
-          className='absolute top-2 left-2 right-2 p-6 space-y-4 rounded-sm 
+          className='absolute z-10 top-2 left-2 right-2 p-6 space-y-4 rounded-sm 
         bg-gray-700 border border-gray-500 animate-fade'
         >
           <div className='flex justify-between items-center'>
@@ -67,7 +67,7 @@ export default function Header() {
             </button>
           </div>
 
-          <div className='flex flex-wrap gap-2 justify-between'>
+          <div className='flex flex-wrap gap-8 justify-between'>
             <ul className='flex gap-4'>
               <li>
                 <Link href='/' active={router.pathname === "/"}>
@@ -75,8 +75,8 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href='/work' active={router.pathname === "/work"}>
-                  Work
+                <Link href='/projects' active={router.pathname === "/projects"}>
+                  Projects
                 </Link>
               </li>
               <li>
