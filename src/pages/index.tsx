@@ -1,8 +1,18 @@
-import Hero from "@/components/hero";
-import Layout from "@/components/layout";
+import { GetStaticProps } from "next";
 import { HiArrowNarrowRight } from "react-icons/hi";
+import { getMarkdown } from "@/utils/markdown";
+import { Project } from "@/utils/types";
+import Layout from "@/components/layout";
+import Hero from "@/components/hero";
+import ProjectsGrid from "@/components/projects-grid";
+import About from "@/components/about";
 
-export default function Index() {
+export const getStaticProps: GetStaticProps = () => {
+  const projects = getMarkdown("projects");
+  return { props: { projects } };
+};
+
+export default function Index({ projects }: { projects: Project[] }) {
   return (
     <Layout>
       <Hero />
@@ -13,13 +23,8 @@ export default function Index() {
           <p>Some of the work I&apos;m working on / been involved in:</p>
         </div>
 
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
-          {[...Array(3)].map((item, index) => (
-            <article key={index} className='bg-gray-900 rounded-sm p-4'>
-              {index}
-            </article>
-          ))}
-        </div>
+        <ProjectsGrid projects={projects} />
+
         <a
           href='/projects'
           className='flex items-center gap-2 underline hover:text-blue-400'
@@ -28,12 +33,7 @@ export default function Index() {
         </a>
       </section>
 
-      <section className='mt-12 md:mt-24'>
-        <div className='space-y-2'>
-          <h2 className='text-2xl font-bold'>About Me</h2>
-          <p>Here Be Dragons...</p>
-        </div>
-      </section>
+      <About />
     </Layout>
   );
 }

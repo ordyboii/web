@@ -22,14 +22,12 @@ export default function Hero() {
 
   useAnnotation(textRef2, {
     type: "underline",
-    colour: "#facc15",
-    iterations: 4
+    colour: "#facc15"
   });
 
   useAnnotation(textRef3, {
     type: "underline",
-    colour: "#facc15",
-    iterations: 4
+    colour: "#facc15"
   });
 
   return (
@@ -47,12 +45,12 @@ export default function Hero() {
           to use. I specialise in <strong ref={textRef2}>product</strong> and{" "}
           <strong ref={textRef3}>branding</strong> design for the web
         </p>
-        <div className='flex gap-8'>
+        <div className='flex flex-col gap-8 sm:flex-row'>
           <a
             href='mailto:jake.ord345@gmail.com'
-            className='bg-gray-600 px-4 py-3 rounded-sm hover:bg-blue-400'
+            className='bg-gray-600 px-4 py-3 rounded-sm max-w-fit hover:bg-blue-400'
           >
-            Contact Me!
+            Contact me!
           </a>
           <a
             href='/cv.pdf'

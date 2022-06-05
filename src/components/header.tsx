@@ -67,7 +67,7 @@ export default function Header() {
             </button>
           </div>
 
-          <div className='flex gap-2 justify-between'>
+          <div className='flex flex-wrap gap-2 justify-between'>
             <ul className='flex gap-4'>
               <li>
                 <Link href='/' active={router.pathname === "/"}>

@@ -3,12 +3,17 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
-export const getMarkdown = () => {
-  const files = fs.readdirSync(path.resolve("content"));
+type Folder = "projects" | "blog";
+
+export const getMarkdown = (folder: Folder) => {
+  const files = fs.readdirSync(path.resolve(`src/content/${folder}`));
 
   const projects = files.map(file => {
     const slug = file.replace(".md", "");
-    const rawFile = fs.readFileSync(path.resolve(`content/${file}`), "utf-8");
+    const rawFile = fs.readFileSync(
+      path.resolve(`src/content/${folder}/${file}`),
+      "utf-8"
+    );
     const parsedMarkdown = matter(rawFile);
 
     return {
@@ -20,8 +25,11 @@ export const getMarkdown = () => {
   return projects;
 };
 
-export const getSingleMarkdown = (slug: string) => {
-  const file = fs.readFileSync(path.resolve(`content/${slug}.md`), "utf-8");
+export const getSingleMarkdown = (folder: Folder, slug: string) => {
+  const file = fs.readFileSync(
+    path.resolve(`src/content/${folder}/${slug}.md`),
+    "utf-8"
+  );
   const parsedMarkdown = matter(file);
 
   return {

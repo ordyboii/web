@@ -1,22 +1,20 @@
-import Head from "next/head";
 import { PropsWithChildren } from "react";
 import { GiSeaDragon } from "react-icons/gi";
 import Footer from "./footer";
 import Header from "./header";
 import SkipLink from "./skip-link";
+import SEO from "./seo";
 
 export default function Layout({
   title,
+  description,
   children
-}: PropsWithChildren<{ title?: string }>) {
+}: PropsWithChildren<{ title?: string; description?: string }>) {
   return (
     <div className='grid grid-rows-[auto_1fr_auto] min-h-screen max-w-2xl mx-auto p-8 md:px-0'>
       <SkipLink />
+      <SEO title={title} description={description} />
 
-      <Head>
-        <title>{title ? title : "Jake Ord - UX Designer"}</title>
-        <link rel='icon' href='/favicon.png' />
-      </Head>
       <Header />
       <main className='container' id='content'>
         {children}
