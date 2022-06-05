@@ -1,27 +1,33 @@
 {
-  "name": "new",
-  "version": "0.0.1",
+  "name": "next-rebuild",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
-    "prepare": "svelte-kit sync",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "devDependencies": {
-    "@sveltejs/adapter-auto": "next",
-    "@sveltejs/kit": "next",
-    "svelte": "^3.44.0",
-    "svelte-check": "^2.2.6",
-    "svelte-preprocess": "^4.10.1",
-    "tslib": "^2.3.1",
-    "typescript": "~4.6.2"
-  },
-  "type": "module",
   "dependencies": {
     "gray-matter": "^4.0.3",
-    "marked": "^4.0.14"
+    "marked": "^4.0.16",
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-icons": "^4.4.0",
+    "rough-notation": "^0.5.1"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "^4.5.10",
+    "@tailwindcss/typography": "^0.5.2",
+    "@types/marked": "^4.0.3",
+    "@types/node": "^17.0.39",
+    "@types/react": "18.0.10",
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.0.24",
+    "typescript": "4.7.2"
   }
 }
