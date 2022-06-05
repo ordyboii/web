@@ -6,6 +6,7 @@ import Layout from "@/components/layout";
 import Hero from "@/components/hero";
 import ProjectsGrid from "@/components/projects-grid";
 import About from "@/components/about";
+import Link from "next/link";
 
 export const getStaticProps: GetStaticProps = () => {
   const projects = getMarkdown("projects");
@@ -25,12 +26,11 @@ export default function Index({ projects }: { projects: Project[] }) {
 
         <ProjectsGrid projects={projects} />
 
-        <a
-          href='/projects'
-          className='flex items-center gap-2 underline hover:text-blue-400'
-        >
-          Or see all my projects <HiArrowNarrowRight size={24} />
-        </a>
+        <Link href='/projects'>
+          <a className='flex items-center gap-2 underline hover:text-blue-400'>
+            Or see all my projects <HiArrowNarrowRight size={24} />
+          </a>
+        </Link>
       </section>
 
       <About />
