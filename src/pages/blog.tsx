@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useFilter } from "@/hooks/use-filter";
 import { Post } from "@/utils/types";
 import { getMarkdown } from "@/utils/markdown";
-import Layout from "@/components/layout";
+import SEO from "@/components/seo";
 import PostsGrid from "@/components/posts-grid";
 
 export const getStaticProps: GetStaticProps = () => {
@@ -17,7 +17,8 @@ export default function Blog({ posts }: { posts: Post[] }) {
   const filteredPosts = useFilter(filterQuery, posts) as Post[];
 
   return (
-    <Layout title='Blog - Jake Ord'>
+    <>
+      <SEO title='Blog - Jake Ord' />
       <section className='mt-12 space-y-6'>
         <div className='space-y-2'>
           <h1 className='text-4xl font-bold'>
@@ -43,6 +44,6 @@ export default function Blog({ posts }: { posts: Post[] }) {
           <PostsGrid posts={filteredPosts} />
         )}
       </section>
-    </Layout>
+    </>
   );
 }

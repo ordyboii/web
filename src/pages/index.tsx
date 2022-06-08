@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
-import Layout from "@/components/layout";
+import SEO from "@/components/seo";
 import Hero from "@/components/hero";
 import ProjectsGrid from "@/components/projects-grid";
 import About from "@/components/about";
@@ -15,8 +15,9 @@ export const getStaticProps: GetStaticProps = () => {
 
 export default function Index({ projects }: { projects: Project[] }) {
   return (
-    <Layout>
+    <>
       <Hero />
+      <SEO />
 
       <section className='mt-12 md:mt-24 space-y-8'>
         <div className='space-y-2'>
@@ -34,6 +35,6 @@ export default function Index({ projects }: { projects: Project[] }) {
       </section>
 
       <About />
-    </Layout>
+    </>
   );
 }

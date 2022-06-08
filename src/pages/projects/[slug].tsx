@@ -1,8 +1,8 @@
-import Layout from "@/components/layout";
 import { getMarkdown, getSingleMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
+import SEO from "@/components/seo";
 
 export const getStaticPaths: GetStaticPaths = () => {
   const projects = getMarkdown("projects");
@@ -20,7 +20,8 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
 
 export default function ProjectPage({ project }: { project: Project }) {
   return (
-    <Layout title={project.data.title} description={project.data.summary}>
+    <>
+      <SEO title={project.data.title} description={project.data.summary} />
       <section className='mt-12'>
         <div className='space-y-6'>
           <h1 className='text-4xl font-bold'>{project.data.title}</h1>
@@ -56,6 +57,6 @@ export default function ProjectPage({ project }: { project: Project }) {
           ></article>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

@@ -2,9 +2,9 @@ import { GetStaticProps } from "next";
 import { useState } from "react";
 import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
-import Layout from "@/components/layout";
-import ProjectsGrid from "@/components/projects-grid";
 import { useFilter } from "@/hooks/use-filter";
+import SEO from "@/components/seo";
+import ProjectsGrid from "@/components/projects-grid";
 import FilterBar from "@/components/filter-bar";
 
 export const getStaticProps: GetStaticProps = () => {
@@ -17,7 +17,8 @@ export default function Projects({ projects }: { projects: Project[] }) {
   const filteredProjects = useFilter(filterQuery, projects) as Project[];
 
   return (
-    <Layout title='Projects - Jake Ord'>
+    <>
+      <SEO title='Projects - Jake Ord' />
       <section className='mt-12 space-y-6'>
         <div className='space-y-2'>
           <h1 className='text-4xl font-bold'>Projects</h1>
@@ -40,6 +41,6 @@ export default function Projects({ projects }: { projects: Project[] }) {
           <ProjectsGrid projects={filteredProjects} />
         )}
       </section>
-    </Layout>
+    </>
   );
 }
