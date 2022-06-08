@@ -7,7 +7,7 @@ const Scene = dynamic(() => import("./scene"), {
   loading: () => (
     <div className='flex items-center gap-2'>
       <div className='loader'></div>
-      <p>Loading 3D Scene...</p>
+      <p>Loading scene...</p>
     </div>
   ),
   ssr: false

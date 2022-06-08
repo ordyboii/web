@@ -3,24 +3,17 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 
 const MacBook = (props: MeshProps) => {
-  const { scene } = useGLTF(
-    "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf"
-  );
-
+  const { scene } = useGLTF("/models/macbook.gltf");
   return <primitive object={scene} {...props} />;
 };
 
 const Book = (props: MeshProps) => {
-  const { scene } = useGLTF(
-    "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/open-book/model.gltf"
-  );
+  const { scene } = useGLTF("/models/book.gltf");
   return <primitive object={scene} {...props} />;
 };
 
 const Dog = (props: MeshProps) => {
-  const { scene } = useGLTF(
-    "https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/dogue/model.gltf"
-  );
+  const { scene } = useGLTF("/models/dog.gltf");
   return <primitive object={scene} {...props} />;
 };
 
