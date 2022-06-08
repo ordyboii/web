@@ -1,7 +1,17 @@
+import dynamic from "next/dynamic";
 import { useAnnotation } from "@/hooks/use-annotation";
-import Image from "next/image";
 import { useRef } from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
+
+const Scene = dynamic(() => import("./scene"), {
+  loading: () => (
+    <div className='flex items-center gap-2'>
+      <div className='loader'></div>
+      <p>Loading 3D Scene...</p>
+    </div>
+  ),
+  ssr: false
+});
 
 export default function Hero() {
   const headingRef = useRef<HTMLElement | null>(null);
@@ -32,7 +42,7 @@ export default function Hero() {
 
   return (
     <section className='mt-12 flex flex-col items-center gap-12 md:flex-row md:mt-24'>
-      <div className='space-y-6'>
+      <div className='space-y-6 max-w-full md:max-w-xs'>
         <div className='space-y-2'>
           <h1 className='text-4xl font-bold'>Hi I&apos;m Jake,</h1>
           <h2 className='text-xl'>
@@ -62,14 +72,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className='border-4 border-gray-900 relative w-full h-64'>
-        <Image
-          src='/images/me.jpeg'
-          alt='Photo of Jake Ord standing in potrait view'
-          layout='fill'
-          objectFit='cover'
-        />
-      </div>
+      <Scene />
     </section>
   );
 }
