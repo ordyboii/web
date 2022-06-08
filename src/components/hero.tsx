@@ -42,7 +42,7 @@ export default function Hero() {
 
   return (
     <section className='mt-12 flex flex-col items-center gap-12 md:flex-row md:mt-24'>
-      <div className='space-y-6 max-w-full md:max-w-xs'>
+      <div className='space-y-6 max-w-full lg:max-w-xs'>
         <div className='space-y-2'>
           <h1 className='text-4xl font-bold'>Hi I&apos;m Jake,</h1>
           <h2 className='text-xl'>

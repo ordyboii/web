@@ -44,7 +44,7 @@ export default function About() {
         <p>
           But who works all the time, right? In my downtime I&apos;m either
           binging Netflix, collecting figures, trying to keep my Duolingo streak
-          or cooking some crazy new dish I though of.
+          or cooking some crazy new dish I thought of.
         </p>
 
         <a
