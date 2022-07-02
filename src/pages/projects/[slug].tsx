@@ -1,8 +1,9 @@
+import Image from "next/future/image";
+import SEO from "@/components/seo";
+import { FC } from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { getMarkdown, getSingleMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
-import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
-import SEO from "@/components/seo";
 
 export const getStaticPaths: GetStaticPaths = () => {
   const projects = getMarkdown("projects");
@@ -18,7 +19,7 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
   return { props: { project } };
 };
 
-export default function ProjectPage({ project }: { project: Project }) {
+const ProjectPage: FC<{ project: Project }> = ({ project }) => {
   return (
     <>
       <SEO title={project.data.title} description={project.data.summary} />
@@ -43,12 +44,9 @@ export default function ProjectPage({ project }: { project: Project }) {
 
         <div className='mt-12'>
           <Image
+            className='object-cover'
             src={project.data.image}
             alt={project.data.imageAlt}
-            width='100%'
-            height='100%'
-            layout='responsive'
-            objectFit='cover'
           />
 
           <article
@@ -59,4 +57,6 @@ export default function ProjectPage({ project }: { project: Project }) {
       </section>
     </>
   );
-}
+};
+
+export default ProjectPage;

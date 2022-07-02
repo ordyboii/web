@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { FC, PropsWithChildren } from "react";
 import { GiSeaDragon } from "react-icons/gi";
 import Footer from "./footer";
 import Header from "./header";
 import SkipLink from "./skip-link";
 
-export default function Layout({ children }: { children: ReactNode }) {
+const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <div className='grid grid-rows-[auto_1fr_auto] min-h-screen max-w-2xl mx-auto p-8 md:px-0'>
       <SkipLink />
@@ -22,4 +22,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       />
     </div>
   );
-}
+};
+
+export default Layout;

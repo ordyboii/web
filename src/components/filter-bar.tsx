@@ -1,15 +1,11 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { HiSearch } from "react-icons/hi";
 
-export default function FilterBar({
-  placeholder,
-  filterQuery,
-  setFilterQuery
-}: {
+const FilterBar: FC<{
   placeholder: string;
   filterQuery: string;
   setFilterQuery: Dispatch<SetStateAction<string>>;
-}) {
+}> = ({ placeholder, filterQuery, setFilterQuery }) => {
   return (
     <div
       className='bg-gray-900 flex items-center gap-2 px-4 py-2 rounded-sm 
@@ -25,4 +21,6 @@ export default function FilterBar({
       <HiSearch size={20} />
     </div>
   );
-}
+};
+
+export default FilterBar;

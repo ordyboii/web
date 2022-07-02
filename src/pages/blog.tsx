@@ -1,18 +1,18 @@
+import SEO from "@/components/seo";
+import PostsGrid from "@/components/posts-grid";
 import FilterBar from "@/components/filter-bar";
 import { GetStaticProps } from "next";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { useFilter } from "@/hooks/use-filter";
 import { Post } from "@/utils/types";
 import { getMarkdown } from "@/utils/markdown";
-import SEO from "@/components/seo";
-import PostsGrid from "@/components/posts-grid";
 
 export const getStaticProps: GetStaticProps = () => {
   const posts = getMarkdown("blog");
   return { props: { posts } };
 };
 
-export default function Blog({ posts }: { posts: Post[] }) {
+const Blog: FC<{ posts: Post[] }> = ({ posts }) => {
   const [filterQuery, setFilterQuery] = useState("");
   const filteredPosts = useFilter(filterQuery, posts) as Post[];
 
@@ -46,4 +46,6 @@ export default function Blog({ posts }: { posts: Post[] }) {
       </section>
     </>
   );
-}
+};
+
+export default Blog;

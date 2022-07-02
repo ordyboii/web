@@ -13,7 +13,7 @@ const Scene = dynamic(() => import("./scene"), {
   ssr: false
 });
 
-export default function Hero() {
+const Hero = () => {
   const headingRef = useRef<HTMLElement | null>(null);
   const textRef = useRef<HTMLElement | null>(null);
   const textRef2 = useRef<HTMLElement | null>(null);
@@ -51,9 +51,10 @@ export default function Hero() {
         </div>
         <p className='leading-7'>
           Based in <strong ref={textRef}>Newcastle-Upon-Tyne.</strong> I focus
-          on creating experiences that are both accessible, approchable and easy
-          to use. I specialise in <strong ref={textRef2}>product</strong> and{" "}
-          <strong ref={textRef3}>branding</strong> design for the web
+          on creating experiences that are both accessible, approachable and
+          easy to use. I love to create experiences that makes people&apos;s
+          lives easier and specialise in <strong ref={textRef2}>product</strong>{" "}
+          and <strong ref={textRef3}>branding</strong> design for the web
         </p>
         <div className='flex flex-col gap-8 sm:flex-row'>
           <a
@@ -75,4 +76,6 @@ export default function Hero() {
       <Scene />
     </section>
   );
-}
+};
+
+export default Hero;

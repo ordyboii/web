@@ -1,4 +1,4 @@
-export default function SkipLink() {
+const SkipLink = () => {
   return (
     <a
       href='#content'
@@ -7,4 +7,6 @@ export default function SkipLink() {
       Skip to Content
     </a>
   );
-}
+};
+
+export default SkipLink;

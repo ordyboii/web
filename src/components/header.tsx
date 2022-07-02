@@ -1,26 +1,19 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
+import Image from "next/future/image";
 import NextLink from "next/link";
 import Link from "./link";
-import { useState } from "react";
 import Social from "./social";
+import { useRouter } from "next/router";
+import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
+import { useState } from "react";
 
-export default function Header() {
+const Header = () => {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className='flex gap-4 justify-between items-center'>
-      <NextLink href='/'>
-        <a className='hover:opacity-60 focus:opacity-60'>
-          <Image
-            src='/images/logo.svg'
-            alt='Jake Ord logo'
-            width={100}
-            height={50}
-          />
-        </a>
+      <NextLink href='/' className='hover:opacity-60 focus:opacity-60'>
+        <Image className='h-8' src='/images/logo.svg' alt='Jake Ord logo' />
       </NextLink>
       <ul role='navigation' className='hidden sm:flex gap-8'>
         <li>
@@ -56,12 +49,7 @@ export default function Header() {
         bg-gray-700 border border-gray-500 animate-fade'
         >
           <div className='flex justify-between items-center'>
-            <Image
-              src='/images/logo.svg'
-              alt='Jake Ord logo'
-              width={100}
-              height={50}
-            />
+            <Image className='h-8' src='/images/logo.svg' alt='Jake Ord logo' />
             <button onClick={() => setIsMenuOpen(false)}>
               <HiX size={28} />
             </button>
@@ -97,4 +85,6 @@ export default function Header() {
       )}
     </header>
   );
-}
+};
+
+export default Header;

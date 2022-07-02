@@ -1,18 +1,18 @@
-import { GetStaticProps } from "next";
-import { useState } from "react";
-import { getMarkdown } from "@/utils/markdown";
-import { Project } from "@/utils/types";
-import { useFilter } from "@/hooks/use-filter";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import FilterBar from "@/components/filter-bar";
+import { FC, useState } from "react";
+import { GetStaticProps } from "next";
+import { getMarkdown } from "@/utils/markdown";
+import { Project } from "@/utils/types";
+import { useFilter } from "@/hooks/use-filter";
 
 export const getStaticProps: GetStaticProps = () => {
   const projects = getMarkdown("projects");
   return { props: { projects } };
 };
 
-export default function Projects({ projects }: { projects: Project[] }) {
+const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
   const [filterQuery, setFilterQuery] = useState("");
   const filteredProjects = useFilter(filterQuery, projects) as Project[];
 
@@ -43,4 +43,6 @@ export default function Projects({ projects }: { projects: Project[] }) {
       </section>
     </>
   );
-}
+};
+
+export default Projects;

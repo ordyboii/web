@@ -1,6 +1,6 @@
 import Social from "./social";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer
       className='mt-12 pt-4 border-t border-gray-500 flex flex-col gap-4
@@ -12,4 +12,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

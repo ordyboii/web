@@ -1,19 +1,20 @@
-import { GetStaticProps } from "next";
-import { HiArrowNarrowRight } from "react-icons/hi";
-import { getMarkdown } from "@/utils/markdown";
-import { Project } from "@/utils/types";
+import Link from "next/link";
 import SEO from "@/components/seo";
 import Hero from "@/components/hero";
 import ProjectsGrid from "@/components/projects-grid";
 import About from "@/components/about";
-import Link from "next/link";
+import { FC } from "react";
+import { GetStaticProps } from "next";
+import { HiArrowNarrowRight } from "react-icons/hi";
+import { getMarkdown } from "@/utils/markdown";
+import { Project } from "@/utils/types";
 
 export const getStaticProps: GetStaticProps = () => {
   const projects = getMarkdown("projects");
   return { props: { projects } };
 };
 
-export default function Index({ projects }: { projects: Project[] }) {
+const Index: FC<{ projects: Project[] }> = ({ projects }) => {
   return (
     <>
       <Hero />
@@ -27,14 +28,17 @@ export default function Index({ projects }: { projects: Project[] }) {
 
         <ProjectsGrid projects={projects} />
 
-        <Link href='/projects'>
-          <a className='flex items-center gap-2 underline hover:text-blue-400'>
-            Or see all my projects <HiArrowNarrowRight size={24} />
-          </a>
+        <Link
+          href='/projects'
+          className='flex items-center gap-2 underline hover:text-blue-400'
+        >
+          Or see all my projects <HiArrowNarrowRight size={24} />
         </Link>
       </section>
 
       <About />
     </>
   );
-}
+};
+
+export default Index;

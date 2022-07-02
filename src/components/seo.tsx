@@ -1,21 +1,17 @@
 import Head from "next/head";
+import { FC } from "react";
 import { useRouter } from "next/router";
 
-export default function SEO({
+const SEO: FC<{ title?: string; description?: string }> = ({
   title,
   description
-}: {
-  title?: string;
-  description?: string;
-}) {
+}) => {
   const router = useRouter();
   const titleMeta = title ? title : "Jake Ord - UX Designer";
-  const canonical = "https://jakeord.netlify.app" + router.pathname;
+  const canonical = "https://jorddy.vercel.app" + router.pathname;
   const descriptionMeta = description
     ? description
-    : `Based in Newcastle-Upon-Tyne. I focus on creating experiences 
-      that are both accessible, approchable and easy to use. I specialise 
-      in product and branding design for the web`;
+    : "UX & web designer, UX/UI, coder, web designer, typescript nerd. Based in Newcastle-upon-tyne. I love to create experiences that make people's lives easier.";
 
   return (
     <Head>
@@ -23,9 +19,7 @@ export default function SEO({
       <meta name='description' content={descriptionMeta} />
       <meta
         name='keywords'
-        content=' Based in Newcastle-Upon-Tyne. I focus
-          on creating experiences that are both accessible, approchable and easy
-          to use. I specialise in product and branding design for the web'
+        content='Jake Ord, jorddy, UX Designer, UX, UX/UI Newcastle-Upon-Tyne, Newcastle, cesign, coding, Typescript, graphics, portfolio, web'
       />
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content='jakeord' />
@@ -40,4 +34,6 @@ export default function SEO({
       <link rel='icon' href='/favicon.png' />
     </Head>
   );
-}
+};
+
+export default SEO;

@@ -1,8 +1,9 @@
+import Image from "next/future/image";
+import SEO from "@/components/seo";
+import { FC } from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { getMarkdown, getSingleMarkdown } from "@/utils/markdown";
 import { Post } from "@/utils/types";
-import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
-import SEO from "@/components/seo";
 
 export const getStaticPaths: GetStaticPaths = () => {
   const posts = getMarkdown("blog");
@@ -18,7 +19,7 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
   return { props: { post } };
 };
 
-export default function postPage({ post }: { post: Post }) {
+const PostPage: FC<{ post: Post }> = ({ post }) => {
   return (
     <>
       <SEO title={post.data.title} description={post.data.summary} />
@@ -36,12 +37,9 @@ export default function postPage({ post }: { post: Post }) {
 
         <div className='mt-12'>
           <Image
+            className='object-cover'
             src={post.data.image}
             alt={post.data.imageAlt}
-            width='100%'
-            height='100%'
-            layout='responsive'
-            objectFit='cover'
           />
 
           <article
@@ -52,4 +50,6 @@ export default function postPage({ post }: { post: Post }) {
       </section>
     </>
   );
-}
+};
+
+export default PostPage;

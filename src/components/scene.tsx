@@ -35,7 +35,7 @@ const Models = () => {
   );
 };
 
-export default function Scene() {
+const Scene = () => {
   return (
     <Canvas shadows>
       <ambientLight />
@@ -44,4 +44,6 @@ export default function Scene() {
       <Models />
     </Canvas>
   );
-}
+};
+
+export default Scene;

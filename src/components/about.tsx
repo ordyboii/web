@@ -1,7 +1,7 @@
 import Image from "next/future/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-export default function About() {
+const About = () => {
   return (
     <section className='mt-12 md:mt-24'>
       <div className='space-y-6'>
@@ -53,4 +53,6 @@ export default function About() {
       </div>
     </section>
   );
-}
+};
+
+export default About;
