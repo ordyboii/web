@@ -9,7 +9,7 @@ const FilterBar: FC<{
   return (
     <div
       className='bg-gray-900 flex items-center gap-2 px-4 py-2 rounded-sm 
-          focus-within:outline-1 focus-within:outline-dashed focus-within:outline-yellow-400'
+      focus-within:outline-1 focus-within:outline-dashed focus-within:outline-yellow-400'
     >
       <input
         className='bg-transparent w-full focus:outline-none'
