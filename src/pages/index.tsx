@@ -2,70 +2,13 @@ import Link from "next/link";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { GetStaticProps } from "next";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
 import { useAnnotation } from "@/utils/use-annotation";
-import { Canvas, GroupProps, MeshProps, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef } from "react";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
-
-// const MacBook = (props: MeshProps) => {
-//   const { scene } = useGLTF("/models/macbook.gltf");
-//   return <primitive object={scene} {...props} />;
-// };
-
-// const Book = (props: MeshProps) => {
-//   const { scene } = useGLTF("/models/book.gltf");
-//   return <primitive object={scene} {...props} />;
-// };
-
-// const Dog = (props: MeshProps) => {
-//   const { scene } = useGLTF("/models/dog.gltf");
-//   return <primitive object={scene} {...props} />;
-// };
-
-// const Models = () => {
-//   const group = useRef<GroupProps>();
-
-//   useFrame(() => {
-//     if (group.current) {
-//       group.current.rotation.y -= 0.01;
-//     }
-//   });
-
-//   return (
-//     <group ref={group}>
-//       <MacBook receiveShadow scale={1.4} position={[0, -2.3, 0]} />
-//       <Book scale={4} position={[2, 0.5, 0]} rotation={[1, 0, 0]} />
-//       <Dog castShadow scale={1.4} position={[-1.6, -1.5, 0]} />
-//     </group>
-//   );
-// };
-
-// const Scene = () => {
-//   return (
-//     <Canvas shadows>
-//       <ambientLight />
-//       <pointLight castShadow position={[10, 10, 10]} />
-//       <OrbitControls />
-//       <Models />
-//     </Canvas>
-//   );
-// };
-
-// const LazyScene = dynamic(() => Promise.resolve(Scene), {
-//   loading: () => (
-//     <div className='flex items-center gap-2'>
-//       <div className='loader'></div>
-//       <p>Loading scene...</p>
-//     </div>
-//   ),
-//   ssr: false
-// });
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const Hero = () => {
   const headingRef = useRef<HTMLElement | null>(null);
