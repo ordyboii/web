@@ -2,47 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply scroll-smooth;
-}
-
-body {
-  @apply font-body min-h-screen bg-gray-800 text-white;
-}
-
-:focus {
-  @apply outline-dashed outline-offset-4 outline-1 outline-yellow-400;
-}
-
-:focus:not(:focus-visible) {
-  @apply outline-none;
-}
-
-.loader {
-  background: white;
-  border-radius: 50%;
-  margin: 10px;
-  height: 20px;
-  width: 20px;
-
-  box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
-  transform: scale(1);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+@layer base {
+  html {
+    @apply scroll-smooth;
   }
 
-  70% {
+  body {
+    @apply font-body min-h-screen bg-gray-800 text-white;
+  }
+
+  :focus {
+    @apply outline-dashed outline-offset-4 outline-1 outline-yellow-400;
+  }
+
+  :focus:not(:focus-visible) {
+    @apply outline-none;
+  }
+}
+
+@layer components {
+  .link {
+    @apply font-bold border-b-2 border-blue-400 pb-1;
+  }
+
+  .active {
+    @apply opacity-60 hover:opacity-100 focus:opacity-100;
+  }
+
+  .loader {
+    background: white;
+    border-radius: 50%;
+    margin: 10px;
+    height: 20px;
+    width: 20px;
+
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
     transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    animation: pulse 2s infinite;
   }
 
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
   }
 }

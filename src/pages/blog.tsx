@@ -3,7 +3,7 @@ import PostsGrid from "@/components/posts-grid";
 import FilterBar from "@/components/filter-bar";
 import { GetStaticProps } from "next";
 import { FC, useState } from "react";
-import { useFilter } from "@/hooks/use-filter";
+import { useFilter } from "@/utils/use-filter";
 import { Post } from "@/utils/types";
 import { getMarkdown } from "@/utils/markdown";
 

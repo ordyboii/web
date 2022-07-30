@@ -5,7 +5,7 @@ import { FC, useState } from "react";
 import { GetStaticProps } from "next";
 import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
-import { useFilter } from "@/hooks/use-filter";
+import { useFilter } from "@/utils/use-filter";
 
 export const getStaticProps: GetStaticProps = () => {
   const projects = getMarkdown("projects");
