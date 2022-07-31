@@ -11,73 +11,61 @@ import { useRef } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 
 const Hero = () => {
-  const headingRef = useRef<HTMLElement | null>(null);
-  const textRef = useRef<HTMLElement | null>(null);
-  const textRef2 = useRef<HTMLElement | null>(null);
-  const textRef3 = useRef<HTMLElement | null>(null);
+  // const textRef2 = useRef<HTMLElement | null>(null);
+  // const textRef3 = useRef<HTMLElement | null>(null);
 
-  useAnnotation(headingRef, {
-    type: "highlight",
-    colour: "#60a5fa",
-    iterations: 2
-  });
+  // useAnnotation(textRef2, {
+  //   type: "underline",
+  //   colour: "#facc15"
+  // });
 
-  useAnnotation(textRef, {
-    type: "underline",
-    colour: "#60a5fa"
-  });
-
-  useAnnotation(textRef2, {
-    type: "underline",
-    colour: "#facc15"
-  });
-
-  useAnnotation(textRef3, {
-    type: "underline",
-    colour: "#facc15"
-  });
+  // useAnnotation(textRef3, {
+  //   type: "underline",
+  //   colour: "#facc15"
+  // });
 
   return (
-    <section className='mt-12 flex flex-col items-center gap-12 md:flex-row md:mt-24'>
+    <section className='flex flex-col items-center gap-4 py-12 animate-fade md:flex-row md:gap-20'>
       <div className='space-y-6 max-w-xl'>
-        <div className='space-y-2'>
-          <p className='text-xl'>Hi I&apos;m Jake,</p>
-          <h2 className='text-xl'>
-            <strong ref={headingRef}>UX Designer</strong> at DEF Software Ltd
-          </h2>
-        </div>
-        <p className='leading-7'>
-          Based in <strong ref={textRef}>Newcastle-Upon-Tyne.</strong> I focus
-          on creating experiences that are both accessible, approachable and
-          easy to use. I love to create experiences that makes people&apos;s
-          lives easier and specialise in <strong ref={textRef2}>product</strong>{" "}
-          and <strong ref={textRef3}>branding</strong> design for the web
-        </p>
-        <div className='flex flex-col gap-8 sm:flex-row'>
+        <p className='text-lg'>Hi I&apos;m Jake,</p>
+
+        <h1 className='text-3xl font-black !leading-snug sm:text-5xl'>
+          A UX Designer based in Newcastle Upon Tyne
+        </h1>
+
+        <p className='font-bold text-lg text-sky-500'>日本語も少し話せます。</p>
+
+        <p className='text-lg'>
+          Creating experiences that are accessible, approachable and drive
+          business growth whether through visual design or collaborating with
+          users through research. I am currently a UX Designer at{" "}
           <a
-            href='mailto:jake.ord345@gmail.com'
-            className='bg-gray-900 px-4 py-3 rounded-sm max-w-fit 
-            transition hover:bg-blue-400'
+            className='link'
+            href='https://www.def.co.uk'
+            target='_blank'
+            rel='noreferrer'
           >
-            Contact me!
+            DEF Software Ltd
           </a>
-          <a
-            href='/cv.pdf'
-            className='flex items-center gap-2 underline hover:text-blue-400'
-          >
-            Or read my CV <HiArrowNarrowRight size={24} />
+        </p>
+
+        <div className='flex flex-col gap-8 sm:flex-row sm:items-center'>
+          <a href='#work' className='button'>
+            View my work
+          </a>
+          <a href='mailto:jake.ord345@gmail.com' className='link'>
+            Or email me
           </a>
         </div>
       </div>
 
-      <Player autoplay loop src='/dragon.json' className='w-full'></Player>
-      {/* <LazyScene /> */}
+      <Player autoplay loop src='/dragon.json' className='w-full' />
     </section>
   );
 };
 
 export const getStaticProps: GetStaticProps = () => {
-  const projects = getMarkdown("projects");
+  const projects = getMarkdown();
   return { props: { projects } };
 };
 
@@ -91,25 +79,24 @@ export default function Index({ projects }: Props) {
       <Hero />
       <SEO />
 
-      <section className='mt-12 md:mt-24 space-y-8'>
-        <div className='space-y-2'>
-          <h2 className='text-2xl font-bold'>Projects</h2>
-          <p>Some of the work I&apos;m working on / been involved in:</p>
+      <section id='work' className='py-12 space-y-8'>
+        <div className='space-y-4'>
+          <h2 className='text-4xl font-bold'>Projects</h2>
+          <p className='text-lg'>
+            Some of the work I&apos;m working on and been involved in:
+          </p>
         </div>
 
         <ProjectsGrid projects={projects} />
 
-        <Link
-          href='/projects'
-          className='flex items-center gap-2 underline hover:text-blue-400'
-        >
-          Or see all my projects <HiArrowNarrowRight size={24} />
+        <Link href='/projects' className='block link'>
+          View all projects
         </Link>
       </section>
 
-      <section className='mt-12 md:mt-24'>
+      <section className='py-12'>
         <div className='space-y-6'>
-          <h2 className='text-2xl font-bold'>A little about me</h2>
+          <h2 className='text-4xl font-bold'>A little about me</h2>
 
           <div className='relative'>
             <Image
@@ -120,8 +107,8 @@ export default function Index({ projects }: Props) {
             />
           </div>
 
-          <p className='font-semibold'>
-            初めましてジェイクです。 (I&apos;m Jake, nice to meet you)
+          <p className='text-sky-500 font-semibold'>
+            初めまして、ジェイクですよろしくお願いします。
           </p>
 
           <p>
@@ -137,7 +124,7 @@ export default function Index({ projects }: Props) {
               href='https://def.co.uk'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-400 underline font-semibold'
+              className='link'
             >
               DEF Software Ltd
             </a>{" "}
@@ -151,11 +138,8 @@ export default function Index({ projects }: Props) {
             streak or cooking some crazy new dish I thought of.
           </p>
 
-          <a
-            href='/cv.pdf'
-            className='flex items-center gap-2 underline hover:text-blue-400'
-          >
-            Read my CV <HiArrowNarrowRight size={24} />
+          <a href='/cv.pdf' className='block link'>
+            Read my CV
           </a>
         </div>
       </section>

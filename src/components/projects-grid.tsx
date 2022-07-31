@@ -9,10 +9,10 @@ const ProjectsGrid: FC<{ projects: Project[] }> = ({ projects }) => {
       {projects.map((project, idx) => (
         <Link key={idx} href={`/projects/${project.slug}`}>
           <article
-            className='bg-gray-900 rounded-sm border-4 border-gray-900 shadow-md 
-              transition cursor-pointer group hover:scale-105 hover:rotate-2'
+            className='bg-white rounded-sm border-2 border-gray-900 shadow-md 
+            transition cursor-pointer group hover:scale-105 hover:rotate-2'
           >
-            <div className='relative'>
+            <div className='relative w-full h-64'>
               <Image
                 className='object-cover w-full max-h-64 transition group-hover:opacity-20'
                 src={project.data.image}

@@ -8,7 +8,7 @@ import { Project } from "@/utils/types";
 import { useFilter } from "@/utils/use-filter";
 
 export const getStaticProps: GetStaticProps = () => {
-  const projects = getMarkdown("projects");
+  const projects = getMarkdown();
   return { props: { projects } };
 };
 

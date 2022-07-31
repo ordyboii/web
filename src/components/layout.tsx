@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { PropsWithChildren, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { GiSeaDragon } from "react-icons/gi";
 import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
 
 const Social = () => {
@@ -11,21 +10,27 @@ const Social = () => {
     <>
       <a
         href='https://www.linkedin.com/in/jorddy'
-        className='hover:opacity-60 focus:opacity-60'
+        target='_blank'
+        rel='noreferrer'
+        className='link'
         aria-label='Link to my LinkedIn page'
       >
         <FaLinkedin size={24} />
       </a>
       <a
         href='https://www.instagram.com/jakeorddy'
-        className='hover:opacity-60 focus:opacity-60'
+        target='_blank'
+        rel='noreferrer'
+        className='link'
         aria-label='Link to my Instagram page'
       >
         <FaInstagram size={24} />
       </a>
       <a
         href='https://github.com/jorddy'
-        className='hover:opacity-60 focus:opacity-60'
+        target='_blank'
+        rel='noreferrer'
+        className='link'
         aria-label='Link to my Github page'
       >
         <FaGithub size={24} />
@@ -36,31 +41,31 @@ const Social = () => {
 
 const MenuItems = () => {
   const { pathname } = useRouter();
+
   return (
     <>
       <li>
-        <Link href='/' className={`link ${pathname === "/" && "active"}`}>
+        <Link href='/' className={`nav-link ${pathname === "/" && "active"}`}>
           Home
         </Link>
       </li>
       <li>
         <Link
           href='/projects'
-          className={`link ${pathname === "/projects" && "active"}`}
+          className={`nav-link ${pathname === "/projects" && "active"}`}
         >
           Projects
         </Link>
       </li>
       <li>
-        <Link
-          href='/blog'
-          className={`link ${pathname === "/blog" && "active"}`}
+        <a
+          href='/jake-ord-cv-2022.pdf'
+          target='_blank'
+          rel='noopener'
+          className='nav-link'
         >
-          Blog
-        </Link>
-      </li>
-      <li>
-        <Link href='/cv.pdf'>CV</Link>
+          CV
+        </a>
       </li>
       <li className='flex gap-4'>
         <Social />
@@ -76,9 +81,9 @@ const Header = () => {
     <header className='flex gap-4 justify-between items-center'>
       <Link
         href='/'
-        className='relative w-12 h-10 hover:opacity-60 focus:opacity-60'
+        className='relative w-16 h-10 hover:opacity-60 focus:opacity-60'
       >
-        <Image layout='fill' src='/images/dragon.svg' alt='dragon icon' />
+        <Image src='/images/dragon.svg' alt='dragon icon' layout='fill' />
       </Link>
       <ul role='navigation' className='hidden sm:flex gap-8'>
         <MenuItems />
@@ -91,71 +96,66 @@ const Header = () => {
       {isMenuOpen && (
         <nav
           className='absolute z-10 top-2 left-2 right-2 p-6 space-y-4 rounded-sm 
-        bg-gray-700 border border-gray-500 animate-fade'
+        bg-sky-500 text-white border-2 border-gray-900 animate-fade'
         >
-          <div className='relative flex justify-between items-center'>
-            <Image
-              className='h-8'
-              layout='fill'
-              src='/images/logo.svg'
-              alt='Jake Ord logo'
-            />
+          <div className='flex justify-between items-center'>
+            <div className='relative '>
+              <Image
+                className='h-8'
+                layout='fill'
+                src='/images/logo.svg'
+                alt='Jake Ord logo'
+              />
+            </div>
             <button onClick={() => setIsMenuOpen(false)}>
               <HiX size={28} />
             </button>
           </div>
 
-          <div className='flex flex-wrap gap-8 justify-between'>
-            <ul className='flex gap-4'>
-              <MenuItems />
-            </ul>
-          </div>
+          <ul className='flex gap-4'>
+            <MenuItems />
+          </ul>
         </nav>
       )}
     </header>
   );
 };
 
-const Footer = () => {
-  return (
-    <footer
-      className='mt-12 pt-4 border-t border-gray-500 flex flex-col gap-4
-      justify-between md:mt-24 sm:flex-row sm:gap-0'
-    >
-      <h3>© Copyright Jake Ord, {new Date().getFullYear()}</h3>
-      <div className='flex gap-4'>
-        <Social />
-      </div>
-    </footer>
-  );
-};
-
-const SkipLink = () => {
-  return (
-    <a
-      href='#content'
-      className='absolute top-4 left-4 p-4 rounded-sm bg-gray-900 opacity-0 focus:opacity-100'
-    >
-      Skip to Content
-    </a>
-  );
-};
-
 export default function Layout({ children }: PropsWithChildren<{}>) {
   return (
-    <div className='grid grid-rows-[auto_1fr_auto] min-h-screen container mx-auto p-8'>
-      <SkipLink />
+    <div className='container mx-auto p-8'>
+      <a
+        href='#content'
+        className='absolute -top-24 left-4 p-4 rounded-sm bg-purple-800 text-white z-50 focus:top-4'
+      >
+        Skip to Content
+      </a>
+
       <Header />
+
       <main className='container' id='content'>
         {children}
       </main>
-      <Footer />
 
-      {/* Background Icon */}
-      <GiSeaDragon
-        className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 -z-10 
-        w-80 h-80 sm:w-[30rem] sm:h-[30rem] md:h-[44rem] md:w-[44rem]'
-      />
+      <footer
+        className='pt-4 border-t border-gray-500 flex flex-col gap-4
+        justify-between md:mt-24 sm:flex-row sm:gap-0'
+      >
+        <h3>© {new Date().getFullYear()}, Made with ❤️ and 🐉 by Jake Ord</h3>
+
+        <a
+          href='https://www.flaticon.com/free-icons/dragon'
+          target='_blank'
+          rel='noreferrer'
+          className='link'
+        >
+          Dragon icon created by max.icons
+        </a>
+
+        <div className='flex gap-4'>
+          <Social />
+        </div>
+      </footer>
     </div>
   );
 }

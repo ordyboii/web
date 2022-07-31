@@ -6,7 +6,7 @@ import { getMarkdown, getSingleMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const projects = getMarkdown("projects");
+  const projects = getMarkdown();
   const slugs = projects.map(project => {
     return { params: { slug: project.slug } };
   });
@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 };
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const project = getSingleMarkdown("projects", params?.slug as string);
+  const project = getSingleMarkdown(params?.slug as string);
   return { props: { project } };
 };
 
