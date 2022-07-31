@@ -6,5 +6,5 @@ module.exports = {
       body: ["Noto Sans", "sans-serif"]
     }
   },
-  plugins: [require("@tailwindcss/typography")]
+  plugins: []
 };

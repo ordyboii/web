@@ -9,24 +9,30 @@ const ProjectsGrid: FC<{ projects: Project[] }> = ({ projects }) => {
       {projects.map((project, idx) => (
         <Link key={idx} href={`/projects/${project.slug}`}>
           <article
-            className='bg-white rounded-sm border-2 border-gray-900 shadow-md 
-            transition cursor-pointer group hover:scale-105 hover:rotate-2'
+            className='bg-white rounded-sm border-2 border-gray-900 transition 
+            cursor-pointer hover:scale-105 hover:rotate-2'
           >
             <div className='relative w-full h-64'>
               <Image
-                className='object-cover w-full max-h-64 transition group-hover:opacity-20'
+                className='object-cover w-full max-h-64 transition'
                 src={project.data.image}
                 alt={project.data.imageAlt}
                 layout='fill'
               />
             </div>
 
-            <div className='p-8 space-y-4'>
-              <div>
-                <h3 className='text-lg font-semibold'>{project.data.title}</h3>
-                <p>{project.data.role}</p>
+            <div className='p-8 space-y-6'>
+              <p className='text-lg font-bold'>{project.data.client}</p>
+              <h3>{project.data.title}</h3>
+              <div className='flex gap-2'>
+                {project.data.tags.map(tag => (
+                  <p key={tag} className='tag'>
+                    {tag}
+                  </p>
+                ))}
               </div>
-              <hr className='w-4 bg-blue-400' />
+
+              <hr className='w-20  border-gray-900' />
               <p>{project.data.summary}</p>
             </div>
           </article>

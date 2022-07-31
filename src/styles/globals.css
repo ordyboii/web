@@ -4,7 +4,23 @@
 
 @layer base {
   html {
-    @apply scroll-smooth font-body min-h-screen bg-gray-50;
+    @apply scroll-smooth font-body min-h-screen bg-amber-100;
+  }
+
+  h1 {
+    @apply text-3xl font-black !leading-snug sm:text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl font-black;
+  }
+
+  p {
+    @apply text-lg leading-relaxed;
   }
 }
 
@@ -17,11 +33,23 @@
     @apply font-bold text-sky-500 border-b-2 border-sky-500 pb-1;
   }
 
+  .active-inverse {
+    @apply font-bold text-gray-900 border-b-2 border-gray-900 pb-1;
+  }
+
   .link {
     @apply underline font-bold hover:text-sky-500;
   }
 
+  .nav-link-inverse {
+    @apply hover:text-gray-900;
+  }
+
   .button {
     @apply bg-sky-500 text-white px-4 py-3 rounded-sm max-w-fit transition hover:scale-95;
+  }
+
+  .tag {
+    @apply bg-sky-500 px-4 py-2 rounded text-white text-sm uppercase tracking-wider;
   }
 }

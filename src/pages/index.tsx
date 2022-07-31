@@ -9,8 +9,10 @@ import { Project } from "@/utils/types";
 import { useAnnotation } from "@/utils/use-annotation";
 import { useRef } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { useLanguage } from "@/utils/language";
 
 const Hero = () => {
+  const { english } = useLanguage();
   // const textRef2 = useRef<HTMLElement | null>(null);
   // const textRef3 = useRef<HTMLElement | null>(null);
 
@@ -29,23 +31,33 @@ const Hero = () => {
       <div className='space-y-6 max-w-xl'>
         <p className='text-lg'>Hi I&apos;m Jake,</p>
 
-        <h1 className='text-3xl font-black !leading-snug sm:text-5xl'>
-          A UX Designer based in Newcastle Upon Tyne
-        </h1>
+        <h1>A UX Designer based in Newcastle Upon Tyne</h1>
 
-        <p className='font-bold text-lg text-sky-500'>日本語も少し話せます。</p>
+        <p className='font-bold text-lg text-sky-500'>
+          {!english && "日本語も少し話せます。"}
+          {english && "I also speak a little Japanese"}
+        </p>
 
         <p className='text-lg'>
           Creating experiences that are accessible, approachable and drive
           business growth whether through visual design or collaborating with
-          users through research. I am currently a UX Designer at{" "}
+          users on research. I am currently a UX Designer at{" "}
           <a
             className='link'
             href='https://www.def.co.uk'
             target='_blank'
             rel='noreferrer'
           >
-            DEF Software Ltd
+            DEF Software Ltd.
+          </a>{" "}
+          But have previously worked at{" "}
+          <a
+            className='link'
+            href='https://rgb-ltd.co.uk/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            R.G.B Media.
           </a>
         </p>
 
@@ -54,7 +66,7 @@ const Hero = () => {
             View my work
           </a>
           <a href='mailto:jake.ord345@gmail.com' className='link'>
-            Or email me
+            Or contact me
           </a>
         </div>
       </div>
@@ -74,6 +86,8 @@ type Props = {
 };
 
 export default function Index({ projects }: Props) {
+  const { english } = useLanguage();
+
   return (
     <>
       <Hero />
@@ -81,7 +95,7 @@ export default function Index({ projects }: Props) {
 
       <section id='work' className='py-12 space-y-8'>
         <div className='space-y-4'>
-          <h2 className='text-4xl font-bold'>Projects</h2>
+          <h2>Projects</h2>
           <p className='text-lg'>
             Some of the work I&apos;m working on and been involved in:
           </p>
@@ -94,54 +108,62 @@ export default function Index({ projects }: Props) {
         </Link>
       </section>
 
-      <section className='py-12'>
-        <div className='space-y-6'>
-          <h2 className='text-4xl font-bold'>A little about me</h2>
-
-          <div className='relative'>
+      <section className='py-12 space-y-8'>
+        <h2>A little about me</h2>
+        <div className='flex flex-col gap-12 sm:flex-row'>
+          <div className='relative w-full h-96 border-2 rounded border-gray-900'>
             <Image
-              className='border-4 border-gray-900 object-cover h-64'
+              className='object-cover'
               src='/images/me2.jpg'
               alt='Jake Ord standing on some stairs in Edinburgh'
               layout='fill'
             />
           </div>
 
-          <p className='text-sky-500 font-semibold'>
-            初めまして、ジェイクですよろしくお願いします。
-          </p>
+          <div className='space-y-4'>
+            <p className='text-sky-500 font-semibold'>
+              {english && "Nice to meet you, I'm Jake"}
+              {!english && "初めまして、ジェイクですよろしくお願いします。"}
+            </p>
 
-          <p>
-            I&apos;m a British born UX designer based in Newcastle, UK. I am
-            passionate about creating experiences that matter and experimenting
-            with new stuff. Oh, and I like dragons too - in case you hadn&apos;t
-            noticed!
-          </p>
+            <p>
+              I&apos;m a British born UX designer based in Newcastle, UK. I am
+              passionate about creating experiences that matter and
+              experimenting with new stuff. Oh, and I like dragons too - in case
+              you hadn&apos;t noticed!
+            </p>
 
-          <p>
-            I currently work for{" "}
-            <a
-              href='https://def.co.uk'
-              target='_blank'
-              rel='noreferrer'
-              className='link'
-            >
-              DEF Software Ltd
-            </a>{" "}
-            by day but by night you&apos;ll find me tinkering with code or
-            learning to read/write Japanese.
-          </p>
+            <p>
+              I currently work for{" "}
+              <a
+                href='https://def.co.uk'
+                target='_blank'
+                rel='noreferrer'
+                className='link'
+              >
+                DEF Software Ltd
+              </a>{" "}
+              by day but by night you&apos;ll find me tinkering with code or
+              learning to read/write Japanese.
+            </p>
 
-          <p>
-            But who works all the time, right? In my downtime I&apos;m either
-            binging Netflix, collecting figures, trying to beat my Duolingo
-            streak or cooking some crazy new dish I thought of.
-          </p>
+            <p>
+              But who works all the time, right? In my downtime I&apos;m either
+              binging Netflix, collecting figures, trying to beat my Duolingo
+              streak or cooking some crazy new dish I thought of.
+            </p>
 
-          <a href='/cv.pdf' className='block link'>
-            Read my CV
-          </a>
+            <h3>Ok...but why dragons?</h3>
+            <p>
+              {english && "Dragons"} {!english && "竜"} are my favourite
+              creatures from mythology. I&apos;ve always been fascinated by them
+            </p>
+          </div>
         </div>
+
+        <a href='/cv.pdf' className='block link'>
+          Read my CV
+        </a>
       </section>
     </>
   );

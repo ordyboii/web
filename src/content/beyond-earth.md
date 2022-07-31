@@ -1,11 +1,10 @@
 ---
-title: Beyond Earth
-summary: A cool case study
-date: "2021-11-23"
+title: "Beyond Earth - An app to take virtual holidays through interactive storyboards and virtual currency"
+summary: "A cool case study"
 image: "/images/featured-images.jpeg"
 imageAlt: "App screens"
-client: Personal
-role: UX Designer
+client: "Side Project"
+tags: ["App Design", "Campaign", "Event"]
 ---
 
 ## This is content
