@@ -1,73 +1,76 @@
-import { useLanguage } from "@/utils/language";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTranslate } from "@/utils/translate";
 import { PropsWithChildren, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
 
-const Social = () => {
+type Props = {
+  inverse?: boolean;
+};
+
+function Social({ inverse }: Props) {
+  const socialClass = `link ${inverse && "hover:text-gray-900"}`;
+
   return (
     <>
       <a
         href='https://www.linkedin.com/in/jorddy'
         target='_blank'
         rel='noreferrer'
-        className='link'
+        className={socialClass}
         aria-label='Link to my LinkedIn page'
       >
-        <FaLinkedin size={24} />
+        <FaLinkedin className='w-6 h-6' />
       </a>
       <a
         href='https://www.instagram.com/jakeorddy'
         target='_blank'
         rel='noreferrer'
-        className='link'
+        className={socialClass}
         aria-label='Link to my Instagram page'
       >
-        <FaInstagram size={24} />
+        <FaInstagram className='w-6 h-6' />
       </a>
       <a
         href='https://github.com/jorddy'
         target='_blank'
         rel='noreferrer'
-        className='link'
+        className={socialClass}
         aria-label='Link to my Github page'
       >
-        <FaGithub size={24} />
+        <FaGithub className='w-6 h-6' />
       </a>
     </>
   );
-};
+}
 
-type Props = {
-  inverse?: boolean;
-};
-
-const MenuItems = ({ inverse }: Props) => {
+function MenuItems({ inverse }: Props) {
   const { pathname } = useRouter();
-  const { english, setEnglish } = useLanguage();
+  const { english, setEnglish } = useTranslate();
 
   const navClass = (path: string) =>
-    `nav-link ${inverse && "nav-link-inverse"} ${
-      !inverse && pathname === path && "active"
-    } ${inverse && pathname === path && "active-inverse"}`;
+    `hover:text-sky-500 ${inverse && "hover:text-gray-900"} ${
+      !inverse &&
+      pathname === path &&
+      "font-bold text-sky-500 border-b-2 border-sky-500 pb-1"
+    } ${
+      inverse &&
+      pathname === path &&
+      "font-bold text-gray-900 border-b-2 border-gray-900 pb-1"
+    }`;
 
   return (
     <>
-      <li>
+      <li className='flex gap-6'>
         <Link href='/' className={navClass("/")}>
           Home
         </Link>
-      </li>
 
-      <li>
         <Link href='/projects' className={navClass("/projects")}>
           Projects
         </Link>
-      </li>
 
-      <li>
         <a
           href='/jake-ord-cv-2022.pdf'
           target='_blank'
@@ -79,20 +82,22 @@ const MenuItems = ({ inverse }: Props) => {
       </li>
 
       <li className='flex gap-4'>
-        <Social />
+        <Social inverse />
       </li>
 
       <li className='flex gap-4'>
         <strong>JP</strong>
         <button
           onClick={() => setEnglish(!english)}
-          className={`${
-            english ? "bg-sky-500" : "bg-red-500"
+          className={`${english && "bg-sky-500"} ${
+            english && inverse && "bg-gray-900"
+          } ${
+            !english && "bg-gray-300"
           } relative inline-flex h-6 w-11 items-center rounded-full`}
         >
           <span
-            className={`${
-              english ? "translate-x-6" : "translate-x-1"
+            className={`${english && "translate-x-6"} ${
+              !english && "translate-x-1"
             } transition ease-out inline-block h-4 w-4 transform rounded-full bg-white`}
           />
         </button>
@@ -100,28 +105,28 @@ const MenuItems = ({ inverse }: Props) => {
       </li>
     </>
   );
-};
+}
 
-const Header = () => {
-  const { english } = useLanguage();
+function Header() {
+  const { english } = useTranslate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className='flex gap-4 justify-between items-center'>
       <Link
         href='/'
-        className='text-3xl text-sky-500 font-bold hover:opacity-60 focus:opacity-60'
+        className='text-3xl font-bold hover:opacity-60 focus:opacity-60'
       >
         {english && "Jake Ord"}
         {!english && "オルドジェイク"}
       </Link>
 
-      <ul role='navigation' className='hidden sm:flex gap-8'>
+      <ul role='navigation' className='hidden md:flex gap-8'>
         <MenuItems />
       </ul>
 
-      <button onClick={() => setIsMenuOpen(true)} className='sm:hidden'>
-        <HiOutlineMenuAlt4 size={32} />
+      <button onClick={() => setIsMenuOpen(true)} className='md:hidden'>
+        <HiOutlineMenuAlt4 className='w-10 h-10 hover:opacity-60' />
       </button>
 
       {isMenuOpen && (
@@ -129,31 +134,26 @@ const Header = () => {
           className='absolute z-10 top-2 left-2 right-2 p-6 space-y-4 rounded-sm 
         bg-sky-500 text-white border-2 border-gray-900 animate-fade'
         >
-          <div className='flex justify-between items-center'>
-            <div className='relative w-8 h-8'>
-              <Image
-                layout='fill'
-                src='/images/dragon.svg'
-                alt='Jake Ord logo'
-              />
-            </div>
+          <div className='text-lg font-bold flex justify-between items-center'>
+            {english && "Jake Ord"}
+            {!english && "オルドジェイク"}
             <button onClick={() => setIsMenuOpen(false)}>
-              <HiX size={28} />
+              <HiX className='w-8 h-8' />
             </button>
           </div>
 
-          <ul className='flex gap-4'>
+          <ul className='flex gap-4 justify-between'>
             <MenuItems inverse />
           </ul>
         </nav>
       )}
     </header>
   );
-};
+}
 
 export default function Layout({ children }: PropsWithChildren<{}>) {
   return (
-    <div className='container mx-auto p-8'>
+    <div className='container p-8'>
       <a
         href='#content'
         className='absolute -top-24 left-4 p-4 rounded-sm bg-purple-800 text-white z-50 focus:top-4'

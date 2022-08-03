@@ -8,7 +8,7 @@ import {
   useState
 } from "react";
 
-const languageContext = createContext<{
+const translateContext = createContext<{
   english: boolean;
   setEnglish: Dispatch<SetStateAction<boolean>>;
 }>({
@@ -16,7 +16,7 @@ const languageContext = createContext<{
   setEnglish: () => {}
 });
 
-export const LanguageProvider = ({ children }: PropsWithChildren<{}>) => {
+export function TranslateProvider({ children }: PropsWithChildren<{}>) {
   const [english, setEnglish] = useState(false);
 
   const value = useMemo(() => {
@@ -24,10 +24,12 @@ export const LanguageProvider = ({ children }: PropsWithChildren<{}>) => {
   }, [english]);
 
   return (
-    <languageContext.Provider value={value}>
+    <translateContext.Provider value={value}>
       {children}
-    </languageContext.Provider>
+    </translateContext.Provider>
   );
-};
+}
 
-export const useLanguage = () => useContext(languageContext);
+export function useTranslate() {
+  return useContext(translateContext);
+}

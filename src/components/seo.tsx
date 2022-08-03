@@ -1,11 +1,12 @@
 import Head from "next/head";
-import { FC } from "react";
 import { useRouter } from "next/router";
 
-const SEO: FC<{ title?: string; description?: string }> = ({
-  title,
-  description
-}) => {
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+export default function SEO({ title, description }: Props) {
   const router = useRouter();
   const titleMeta = title
     ? title
@@ -36,6 +37,4 @@ const SEO: FC<{ title?: string; description?: string }> = ({
       <link rel='icon' href='/images/dragon.svg' />
     </Head>
   );
-};
-
-export default SEO;
+}

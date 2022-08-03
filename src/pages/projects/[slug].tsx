@@ -1,55 +1,64 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import SEO from "@/components/seo";
-import { FC, FormEvent, useRef, useState } from "react";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { FormEvent, useRef, useState } from "react";
+import {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult
+} from "next";
 import { getMarkdown, getSingleMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
 
-export const getStaticPaths: GetStaticPaths = () => {
+export function getStaticPaths(): GetStaticPathsResult {
   const projects = getMarkdown();
   const slugs = projects.map(project => {
-    return { params: { slug: project.slug } };
+    return {
+      params: { slug: project.slug }
+    };
   });
 
-  return { paths: slugs, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const project = getSingleMarkdown(params?.slug as string);
-  return { props: { project } };
-};
+  return {
+    paths: slugs,
+    fallback: false
+  };
+}
 
 type Props = {
   project: Project;
 };
 
+export async function getStaticProps({
+  params
+}: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
+  const project = getSingleMarkdown(params?.slug as string);
+  return {
+    props: { project }
+  };
+}
+
 export default function ProjectPage({ project }: Props) {
   const [authed, setAuthed] = useState(false);
-  console.log(authed);
-
   const [error, setError] = useState("");
   const input = useRef<HTMLInputElement>(null);
 
   const handleAuth = async (e: FormEvent) => {
     e.preventDefault();
-
-    const res = await fetch(`/api/token-check?token=${input.current?.value}`);
+    const res = await fetch(`/api/auth-secret?secret=${input.current?.value}`);
 
     if (res.ok) {
       const data = (await res.json()) as {
         auth: boolean;
       };
-
       if (data.auth) {
         setAuthed(true);
       }
     }
-    setError("Invalid token");
+    setError("Invalid secret");
   };
 
   if (!authed) {
     return (
-      <section className='py-12 space-y-8 animate-fade'>
+      <section className='py-12 space-y-8'>
         <SEO title={project.data.title} description={project.data.summary} />
         <h1>This project is locked</h1>
         <form
@@ -78,7 +87,7 @@ export default function ProjectPage({ project }: Props) {
   return (
     <>
       <SEO title={project.data.title} description={project.data.summary} />
-      <section className='mt-12 animate-fade'>
+      <section className='py-16 space-y-12 animate-fade-up'>
         <div className='space-y-6'>
           <p className='text-lg font-bold'>{project.data.client}</p>
           <h1>{project.data.title}</h1>
@@ -91,24 +100,21 @@ export default function ProjectPage({ project }: Props) {
               </p>
             ))}
           </div>
-          <hr className='border-gray-900' />
+          <hr className='border border-gray-900' />
         </div>
 
-        <div className='pt-12 animate-fade'>
-          <div className='relative w-full h-96'>
-            <Image
-              className='object-cover'
-              src={project.data.image}
-              alt={project.data.imageAlt}
-              layout='fill'
-            />
-          </div>
+        <Image
+          src={project.data.image}
+          alt={project.data.imageAlt}
+          width={1000}
+          height={1000}
+          className='object-cover w-full h-96'
+        />
 
-          <article
-            className='mt-12 space-y-8 max-w-full'
-            dangerouslySetInnerHTML={{ __html: project.content }}
-          />
-        </div>
+        <article
+          className='space-y-8 max-w-full'
+          dangerouslySetInnerHTML={{ __html: project.content }}
+        />
       </section>
     </>
   );

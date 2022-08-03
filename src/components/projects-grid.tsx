@@ -1,9 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import Image from "next/future/image";
 import { Project } from "@/utils/types";
 
-const ProjectsGrid: FC<{ projects: Project[] }> = ({ projects }) => {
+type Props = {
+  projects: Project[];
+};
+
+export default function ProjectsGrid({ projects }: Props) {
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {projects.map((project, idx) => (
@@ -12,14 +15,13 @@ const ProjectsGrid: FC<{ projects: Project[] }> = ({ projects }) => {
             className='bg-white rounded-sm border-2 border-gray-900 transition 
             cursor-pointer hover:scale-105 hover:rotate-2'
           >
-            <div className='relative w-full h-64'>
-              <Image
-                className='object-cover w-full max-h-64 transition'
-                src={project.data.image}
-                alt={project.data.imageAlt}
-                layout='fill'
-              />
-            </div>
+            <Image
+              src={project.data.image}
+              alt={project.data.imageAlt}
+              width={1000}
+              height={1000}
+              className='object-cover w-full max-h-64 transition'
+            />
 
             <div className='p-8 space-y-6'>
               <p className='text-lg font-bold'>{project.data.client}</p>
@@ -40,6 +42,4 @@ const ProjectsGrid: FC<{ projects: Project[] }> = ({ projects }) => {
       ))}
     </div>
   );
-};
-
-export default ProjectsGrid;
+}

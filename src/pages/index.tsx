@@ -1,40 +1,49 @@
 import Link from "next/link";
+import Image from "next/future/image";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
-import { GetStaticProps } from "next";
-import Image from "next/image";
-import { HiArrowNarrowRight } from "react-icons/hi";
+import { GetStaticPropsResult } from "next";
+import { RefObject, useEffect, useRef } from "react";
 import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
-import { useAnnotation } from "@/utils/use-annotation";
-import { useRef } from "react";
+import { useTranslate } from "@/utils/translate";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { useLanguage } from "@/utils/language";
+import { annotate } from "rough-notation";
 
-const Hero = () => {
-  const { english } = useLanguage();
-  // const textRef2 = useRef<HTMLElement | null>(null);
-  // const textRef3 = useRef<HTMLElement | null>(null);
+function useAnnotation(ref: RefObject<any>) {
+  useEffect(() => {
+    if (ref.current) {
+      const annotation = annotate(ref.current as HTMLElement, {
+        type: "box",
+        color: "#0ea5e9"
+      });
 
-  // useAnnotation(textRef2, {
-  //   type: "underline",
-  //   colour: "#facc15"
-  // });
+      annotation.show();
+      return () => annotation.remove();
+    }
+  }, [ref]);
+}
 
-  // useAnnotation(textRef3, {
-  //   type: "underline",
-  //   colour: "#facc15"
-  // });
+function Hero() {
+  const { english } = useTranslate();
+
+  const textRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLAnchorElement>(null);
+
+  useAnnotation(textRef);
+  useAnnotation(contactRef);
 
   return (
-    <section className='flex flex-col items-center gap-4 py-12 animate-fade md:flex-row md:gap-20'>
+    <section className='flex flex-col items-center gap-4 py-12 animate-fade-up md:flex-row md:gap-20'>
       <div className='space-y-6 max-w-xl'>
         <p className='text-lg'>Hi I&apos;m Jake,</p>
 
-        <h1>A UX Designer based in Newcastle Upon Tyne</h1>
+        <h1>
+          A <span ref={textRef}>UX Designer</span> based in Newcastle Upon Tyne.
+        </h1>
 
-        <p className='font-bold text-lg text-sky-500'>
-          {!english && "日本語も少し話せます。"}
+        <p className='font-bold text-lg'>
+          {!english && "少し日本語も話せます。"}
           {english && "I also speak a little Japanese"}
         </p>
 
@@ -65,7 +74,11 @@ const Hero = () => {
           <a href='#work' className='button'>
             View my work
           </a>
-          <a href='mailto:jake.ord345@gmail.com' className='link'>
+          <a
+            ref={contactRef}
+            href='mailto:jake.ord345@gmail.com'
+            className='link'
+          >
             Or contact me
           </a>
         </div>
@@ -74,19 +87,21 @@ const Hero = () => {
       <Player autoplay loop src='/dragon.json' className='w-full' />
     </section>
   );
-};
-
-export const getStaticProps: GetStaticProps = () => {
-  const projects = getMarkdown();
-  return { props: { projects } };
-};
+}
 
 type Props = {
   projects: Project[];
 };
 
+export function getStaticProps(): GetStaticPropsResult<Props> {
+  const projects = getMarkdown();
+  return {
+    props: { projects }
+  };
+}
+
 export default function Index({ projects }: Props) {
-  const { english } = useLanguage();
+  const { english } = useTranslate();
 
   return (
     <>
@@ -110,27 +125,26 @@ export default function Index({ projects }: Props) {
 
       <section className='py-12 space-y-8'>
         <h2>A little about me</h2>
-        <div className='flex flex-col gap-12 sm:flex-row'>
-          <div className='relative w-full h-96 border-2 rounded border-gray-900'>
-            <Image
-              className='object-cover'
-              src='/images/me2.jpg'
-              alt='Jake Ord standing on some stairs in Edinburgh'
-              layout='fill'
-            />
-          </div>
+        <div className='flex flex-col gap-12 md:flex-row'>
+          <Image
+            src='/images/me2.jpg'
+            alt='Jake Ord standing on some stairs in Edinburgh'
+            width={1000}
+            height={1000}
+            className='object-cover w-full border-2 rounded border-gray-900'
+          />
 
           <div className='space-y-4'>
-            <p className='text-sky-500 font-semibold'>
+            <p className='font-semibold'>
               {english && "Nice to meet you, I'm Jake"}
               {!english && "初めまして、ジェイクですよろしくお願いします。"}
             </p>
 
             <p>
-              I&apos;m a British born UX designer based in Newcastle, UK. I am
-              passionate about creating experiences that matter and
-              experimenting with new stuff. Oh, and I like dragons too - in case
-              you hadn&apos;t noticed!
+              I&apos;m a British-born UX designer based in Newcastle, UK. I am
+              driven by approachable design, driving business growth and pushing
+              expectations. Designing an experience so good - users never
+              question it.
             </p>
 
             <p>
@@ -153,17 +167,49 @@ export default function Index({ projects }: Props) {
               streak or cooking some crazy new dish I thought of.
             </p>
 
-            <h3>Ok...but why dragons?</h3>
+            <h3>Hold up...do you actually code?</h3>
             <p>
-              {english && "Dragons"} {!english && "竜"} are my favourite
-              creatures from mythology. I&apos;ve always been fascinated by them
+              Yes! I built this entire website from the ground up myself using{" "}
+              <a
+                href='https://nextjs.org/'
+                target='_blank'
+                rel='noreferrer'
+                className='link'
+              >
+                Next.js
+              </a>{" "}
+              and Markdown. I learned to code because I wanted to build the
+              stuff I was designing.
+            </p>
+
+            <h3>What&apos;s up with the dragons?</h3>
+            <p>
+              Dragons are my favourite mythological creatures. I&apos;ve always
+              been fascinated by them in movies, games and Asian culture. To me,
+              they were the beginning of my journey into design and what led me
+              towards art/graphics.
+            </p>
+
+            <h3>I noticed Japanese on your website - do you speak it?</h3>
+            <p>
+              {english &&
+                `Only a little bit. I'm nowhere near conversational but I can speak, read 
+                and understand common phrases.`}
+              {!english &&
+                `ちょっとだけ。僕は会話にはほど遠いですが、一般的なフレーズを話しり、
+                読んだ、理解したりすることはできます。`}
             </p>
           </div>
         </div>
 
-        <a href='/cv.pdf' className='block link'>
-          Read my CV
-        </a>
+        <div className='flex gap-4'>
+          <a href='/cv.pdf' className='block link'>
+            Read my CV
+          </a>
+          <a href='mailto:jake.ord345@gmail.com' className='block link'>
+            Contact me
+          </a>
+        </div>
       </section>
     </>
   );

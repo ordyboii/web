@@ -6,6 +6,9 @@ module.exports = {
     defaultLocale: "en"
   },
   experimental: {
-    newNextLinkBehavior: true
+    newNextLinkBehavior: true,
+    images: {
+      allowFutureImage: true
+    }
   }
 };
