@@ -9,7 +9,6 @@ import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
 import { useTranslate } from "@/utils/translate";
 import { annotate } from "rough-notation";
-import { Player } from "@lottiefiles/react-lottie-player";
 
 function useAnnotation(ref: RefObject<any>) {
   useEffect(() => {
@@ -24,6 +23,17 @@ function useAnnotation(ref: RefObject<any>) {
     }
   }, [ref]);
 }
+
+const LazyPlayer = dynamic(
+  () =>
+    import("@lottiefiles/react-lottie-player").then(
+      imports => imports.Player
+    ) as any,
+  {
+    ssr: false,
+    loading: () => <p className='justify-center'>Loading animation...</p>
+  }
+);
 
 function Hero() {
   const { english } = useTranslate();
@@ -86,7 +96,7 @@ function Hero() {
       </div>
 
       {/* @ts-ignore */}
-      <Player autoplay loop src='/dragon.json' className='w-full' />
+      <LazyPlayer autoplay loop src='/dragon.json' className='w-full' />
     </section>
   );
 }
