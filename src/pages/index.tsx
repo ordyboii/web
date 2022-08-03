@@ -30,7 +30,8 @@ const LazyPlayer = dynamic(
       imports => imports.Player
     ) as any,
   {
-    ssr: false
+    ssr: false,
+    loading: () => <p>Loading animation...</p>
   }
 );
 
