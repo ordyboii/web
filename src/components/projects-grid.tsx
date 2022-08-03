@@ -12,7 +12,7 @@ export default function ProjectsGrid({ projects }: Props) {
       {projects.map((project, idx) => (
         <Link key={idx} href={`/projects/${project.slug}`}>
           <article
-            className='bg-white rounded-sm border-2 border-gray-900 transition 
+            className='h-full bg-white rounded-sm border-2 border-gray-900 transition 
             cursor-pointer hover:scale-105 hover:rotate-2'
           >
             <Image

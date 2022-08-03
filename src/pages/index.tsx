@@ -34,7 +34,7 @@ function Hero() {
   useAnnotation(contactRef);
 
   return (
-    <section className='flex flex-col items-center gap-4 py-12 animate-fade-up md:flex-row md:gap-20'>
+    <section className='flex flex-col items-center gap-4 py-12 md:flex-row md:gap-20'>
       <div className='space-y-6 max-w-xl'>
         <p className='text-lg'>Hi I&apos;m Jake,</p>
 
