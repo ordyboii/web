@@ -31,5 +31,5 @@ p {
 }
 
 .tag {
-  @apply bg-sky-500 px-4 py-2 rounded text-white text-sm uppercase tracking-wider;
+  @apply bg-sky-500 px-4 py-2 rounded max-w-fit text-white text-sm uppercase tracking-wider;
 }

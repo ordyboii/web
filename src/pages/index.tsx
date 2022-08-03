@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/future/image";
+import dynamic from "next/dynamic";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { GetStaticPropsResult } from "next";
@@ -7,7 +8,6 @@ import { RefObject, useEffect, useRef } from "react";
 import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
 import { useTranslate } from "@/utils/translate";
-import { Player } from "@lottiefiles/react-lottie-player";
 import { annotate } from "rough-notation";
 
 function useAnnotation(ref: RefObject<any>) {
@@ -23,6 +23,16 @@ function useAnnotation(ref: RefObject<any>) {
     }
   }, [ref]);
 }
+
+const LazyPlayer = dynamic(
+  () =>
+    import("@lottiefiles/react-lottie-player").then(
+      imports => imports.Player
+    ) as any,
+  {
+    ssr: false
+  }
+);
 
 function Hero() {
   const { english } = useTranslate();
@@ -84,7 +94,8 @@ function Hero() {
         </div>
       </div>
 
-      <Player autoplay loop src='/dragon.json' className='w-full' />
+      {/* @ts-ignore */}
+      <LazyPlayer autoplay loop src='/dragon.json' className='w-full' />
     </section>
   );
 }

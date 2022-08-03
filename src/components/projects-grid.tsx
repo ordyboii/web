@@ -26,7 +26,7 @@ export default function ProjectsGrid({ projects }: Props) {
             <div className='p-8 space-y-6'>
               <p className='text-lg font-bold'>{project.data.client}</p>
               <h3>{project.data.title}</h3>
-              <div className='flex gap-2'>
+              <div className='flex gap-2 flex-col sm:flex-row'>
                 {project.data.tags.map(tag => (
                   <p key={tag} className='tag'>
                     {tag}

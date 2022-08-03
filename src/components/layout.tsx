@@ -112,7 +112,7 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className='flex gap-4 justify-between items-center'>
+    <header className='flex gap-8 justify-between items-center'>
       <Link
         href='/'
         className='text-3xl font-bold hover:opacity-60 focus:opacity-60'
@@ -121,7 +121,7 @@ function Header() {
         {!english && "オルドジェイク"}
       </Link>
 
-      <ul role='navigation' className='hidden md:flex gap-8'>
+      <ul role='navigation' className='hidden md:flex gap-10'>
         <MenuItems />
       </ul>
 
@@ -142,7 +142,7 @@ function Header() {
             </button>
           </div>
 
-          <ul className='flex gap-4 justify-between'>
+          <ul className='flex gap-6 justify-between flex-col sm:flex-row'>
             <MenuItems inverse />
           </ul>
         </nav>
