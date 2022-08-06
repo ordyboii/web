@@ -5,11 +5,10 @@ import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { GetStaticPropsResult } from "next";
 import { RefObject, useEffect, useRef } from "react";
-import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
+import { getProjects } from "@/utils/notion";
 import { useTranslate } from "@/utils/translate";
 import { annotate } from "rough-notation";
-import { getProject, getProjects } from "@/utils/notion";
 
 function useAnnotation(ref: RefObject<any>) {
   useEffect(() => {
@@ -118,9 +117,6 @@ export default function Index({ projects }: Props) {
 
   return (
     <>
-      <div>
-        <p>hihuihbn</p>
-      </div>
       <Hero />
       <SEO />
 

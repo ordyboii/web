@@ -10,9 +10,9 @@ function parseResponse(data: any): Project {
   return {
     title: data.properties.Name.title[0].plain_text,
     date: data.created_time,
-    image: data.cover?.external.url ?? null,
+    image: data.cover?.file.url ?? null,
     summary: data.properties.Summary.rich_text[0]?.plain_text ?? null,
-    client: data.properties.Notion.rich_text[0]?.plain_text ?? null,
+    client: data.properties.Client.rich_text[0]?.plain_text ?? null,
     tags: data.properties.Tags.multi_select.map(
       (tag: { name: string }) => tag.name
     )
@@ -23,6 +23,7 @@ export async function getProjects() {
   const { results } = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE!
   });
+  console.dir(results, { depth: Infinity });
 
   return results.map(result => parseResponse(result));
 }
