@@ -9,6 +9,7 @@ import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
 import { useTranslate } from "@/utils/translate";
 import { annotate } from "rough-notation";
+import { getProject, getProjects } from "@/utils/notion";
 
 function useAnnotation(ref: RefObject<any>) {
   useEffect(() => {
@@ -105,8 +106,8 @@ type Props = {
   projects: Project[];
 };
 
-export function getStaticProps(): GetStaticPropsResult<Props> {
-  const projects = getMarkdown();
+export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+  const projects = await getProjects();
   return {
     props: { projects }
   };
@@ -117,6 +118,9 @@ export default function Index({ projects }: Props) {
 
   return (
     <>
+      <div>
+        <p>hihuihbn</p>
+      </div>
       <Hero />
       <SEO />
 
@@ -139,7 +143,7 @@ export default function Index({ projects }: Props) {
         <h2>A little about me</h2>
         <div className='flex flex-col gap-12 md:flex-row'>
           <Image
-            src='/images/me2.jpg'
+            src='/me2.jpg'
             alt='Jake Ord standing on some stairs in Edinburgh'
             width={1000}
             height={1000}
