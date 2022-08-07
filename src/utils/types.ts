@@ -1,14 +1,11 @@
 export type Project = {
+  id: string;
   slug: string;
-  data: ProjectData;
-  content: string;
-};
-
-export type ProjectData = {
   title: string;
+  date: string;
   summary: string;
   image: string;
-  imageAlt: string;
   client: string;
   tags: string[];
+  content?: string;
 };

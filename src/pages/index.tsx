@@ -5,8 +5,8 @@ import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { GetStaticPropsResult } from "next";
 import { RefObject, useEffect, useRef } from "react";
-import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
+import { getProjects } from "@/utils/notion";
 import { useTranslate } from "@/utils/translate";
 import { annotate } from "rough-notation";
 
@@ -45,7 +45,7 @@ function Hero() {
   useAnnotation(contactRef);
 
   return (
-    <section className='flex flex-col items-center gap-4 py-12 md:flex-row md:gap-20'>
+    <section className='flex flex-col items-center gap-4 py-12 min-h-[600px] md:flex-row md:gap-20'>
       <div className='space-y-6 max-w-xl'>
         <p className='text-lg'>Hi I&apos;m Jake,</p>
 
@@ -105,8 +105,8 @@ type Props = {
   projects: Project[];
 };
 
-export function getStaticProps(): GetStaticPropsResult<Props> {
-  const projects = getMarkdown();
+export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+  const projects = await getProjects();
   return {
     props: { projects }
   };
@@ -139,7 +139,7 @@ export default function Index({ projects }: Props) {
         <h2>A little about me</h2>
         <div className='flex flex-col gap-12 md:flex-row'>
           <Image
-            src='/images/me2.jpg'
+            src='/me2.jpg'
             alt='Jake Ord standing on some stairs in Edinburgh'
             width={1000}
             height={1000}
@@ -190,8 +190,8 @@ export default function Index({ projects }: Props) {
               >
                 Next.js
               </a>{" "}
-              and Markdown. I learned to code because I wanted to build the
-              stuff I was designing.
+              and the Notion API. I learned to code because I wanted to build
+              the stuff I was designing.
             </p>
 
             <h3>What&apos;s up with the dragons?</h3>

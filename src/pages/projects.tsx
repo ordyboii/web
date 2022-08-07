@@ -2,16 +2,16 @@ import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { useMemo, useState } from "react";
 import { GetStaticPropsResult } from "next";
-import { getMarkdown } from "@/utils/markdown";
 import { Project } from "@/utils/types";
 import { HiSearch } from "react-icons/hi";
+import { getProjects } from "@/utils/notion";
 
 type Props = {
   projects: Project[];
 };
 
-export function getStaticProps(): GetStaticPropsResult<Props> {
-  const projects = getMarkdown();
+export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+  const projects = await getProjects();
   return {
     props: { projects }
   };
@@ -22,7 +22,7 @@ export default function Projects({ projects }: Props) {
   const filteredProjects = useMemo(
     () =>
       projects.filter(value =>
-        value.data.title.toLowerCase().includes(filterQuery.toLowerCase())
+        value.title.toLowerCase().includes(filterQuery.toLowerCase())
       ),
     [filterQuery, projects]
   );
