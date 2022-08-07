@@ -10,7 +10,7 @@ export default function ProjectsGrid({ projects }: Props) {
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {projects.map((project, idx) => (
-        <Link key={idx} href={`/projects/${project.title}`}>
+        <Link key={idx} href={`/projects/${project.slug}/${project.id}`}>
           <article
             className='h-full bg-white rounded-sm border-2 border-gray-900 transition 
             cursor-pointer hover:scale-105 hover:rotate-2'

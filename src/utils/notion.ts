@@ -6,8 +6,19 @@ import { Project } from "./types";
 const notion = new Client({ auth: process.env.NOTION_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
+function slugify(url: string) {
+  return url
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function parseResponse(data: any): Project {
   return {
+    id: data.id,
+    slug: slugify(data.properties.Name.title[0].plain_text),
     title: data.properties.Name.title[0].plain_text,
     date: data.created_time,
     image: data.cover?.file.url ?? null,
@@ -23,7 +34,6 @@ export async function getProjects() {
   const { results } = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE!
   });
-  console.dir(results, { depth: Infinity });
 
   return results.map(result => parseResponse(result));
 }
@@ -32,6 +42,7 @@ export async function getProject(id: string) {
   const project = await notion.pages.retrieve({
     page_id: id
   });
+
   const projectContent = await notion.blocks.children.list({
     block_id: id
   });
