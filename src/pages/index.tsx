@@ -190,8 +190,8 @@ export default function Index({ projects }: Props) {
               >
                 Next.js
               </a>{" "}
-              and Markdown. I learned to code because I wanted to build the
-              stuff I was designing.
+              and the Notion API. I learned to code because I wanted to build
+              the stuff I was designing.
             </p>
 
             <h3>What&apos;s up with the dragons?</h3>
