@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/future/image";
 import dynamic from "next/dynamic";
-import { Player } from "@lottiefiles/react-lottie-player";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { GetStaticPropsResult } from "next";
@@ -25,16 +24,16 @@ function useAnnotation(ref: RefObject<any>) {
   }, [ref]);
 }
 
-// const LazyPlayer = dynamic(
-//   () =>
-//     import("@lottiefiles/react-lottie-player").then(
-//       imports => imports.Player
-//     ) as any,
-//   {
-//     ssr: false,
-//     loading: () => <p className='justify-center'>Loading animation...</p>
-//   }
-// );
+const LazyPlayer = dynamic(
+  () =>
+    import("@lottiefiles/react-lottie-player").then(
+      imports => imports.Player
+    ) as any,
+  {
+    ssr: false,
+    loading: () => <p className='justify-center'>Loading animation...</p>
+  }
+);
 
 function Hero() {
   const { english } = useTranslate();
@@ -46,7 +45,7 @@ function Hero() {
   useAnnotation(contactRef);
 
   return (
-    <section className='flex flex-col items-center gap-4 py-12 md:flex-row md:gap-20'>
+    <section className='flex flex-col items-center gap-4 py-12 min-h-[600px] md:flex-row md:gap-20'>
       <div className='space-y-6 max-w-xl'>
         <p className='text-lg'>Hi I&apos;m Jake,</p>
 
@@ -97,7 +96,7 @@ function Hero() {
       </div>
 
       {/* @ts-ignore */}
-      <Player autoplay loop src='/dragon.json' className='w-full' />
+      <LazyPlayer autoplay loop src='/dragon.json' className='w-full' />
     </section>
   );
 }
