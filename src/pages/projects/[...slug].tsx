@@ -32,7 +32,6 @@ type Props = {
 export async function getStaticProps({
   params
 }: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
-  console.log(params?.slug);
   if (!params?.slug) {
     return { props: {} };
   }
