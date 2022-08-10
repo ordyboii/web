@@ -1,17 +1,25 @@
 import Image from "next/future/image";
 import SEO from "@/components/seo";
 import { FormEvent, useRef, useState } from "react";
-import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { Project } from "@/utils/types";
-import { getProject } from "@/utils/notion";
+import { getProject, getProjects } from "@/utils/notion";
+
+export const getStaticPaths: GetStaticPaths<{ slug: string[] }> = async () => {
+  const projects = await getProjects();
+  return {
+    paths: projects.map(project => ({
+      params: { slug: [project.slug, project.id] }
+    })),
+    fallback: false
+  };
+};
 
 type Props = {
   project?: Project;
 };
 
-export async function getServerSideProps({
-  params
-}: GetServerSidePropsContext): Promise<GetServerSidePropsResult<Props>> {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   if (!params?.slug) {
     return { props: {} };
   }
@@ -19,9 +27,10 @@ export async function getServerSideProps({
   const project = await getProject(params.slug[1]);
 
   return {
-    props: { project }
+    props: { project },
+    revalidate: 60
   };
-}
+};
 
 export default function ProjectPage({ project }: Props) {
   const [authed, setAuthed] = useState(false);

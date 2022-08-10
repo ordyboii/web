@@ -1,7 +1,7 @@
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { useMemo, useState } from "react";
-import { GetServerSidePropsResult } from "next";
+import { GetStaticProps } from "next";
 import { Project } from "@/utils/types";
 import { HiSearch } from "react-icons/hi";
 import { getProjects } from "@/utils/notion";
@@ -10,14 +10,13 @@ type Props = {
   projects: Project[];
 };
 
-export async function getServerSideProps(): Promise<
-  GetServerSidePropsResult<Props>
-> {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const projects = await getProjects();
   return {
-    props: { projects }
+    props: { projects },
+    revalidate: 60
   };
-}
+};
 
 export default function Projects({ projects }: Props) {
   const [filterQuery, setFilterQuery] = useState("");
