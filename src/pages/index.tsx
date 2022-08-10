@@ -3,7 +3,7 @@ import Image from "next/future/image";
 import dynamic from "next/dynamic";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
-import { GetStaticPropsResult } from "next";
+import { GetServerSidePropsResult } from "next";
 import { RefObject, useEffect, useRef } from "react";
 import { Project } from "@/utils/types";
 import { getProjects } from "@/utils/notion";
@@ -105,8 +105,11 @@ type Props = {
   projects: Project[];
 };
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+export async function getServerSideProps(): Promise<
+  GetServerSidePropsResult<Props>
+> {
   const projects = await getProjects();
+
   return {
     props: { projects }
   };
