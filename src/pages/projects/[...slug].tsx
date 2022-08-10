@@ -5,7 +5,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Project } from "@/utils/types";
 import { getProject, getProjects } from "@/utils/notion";
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<{ slug: string[] }> = async () => {
   const projects = await getProjects();
   return {
     paths: projects.map(project => ({
@@ -15,7 +15,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+type Props = {
+  project?: Project;
+};
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   if (!params?.slug) {
     return { props: {} };
   }
@@ -26,10 +30,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: { project },
     revalidate: 60
   };
-};
-
-type Props = {
-  project?: Project;
 };
 
 export default function ProjectPage({ project }: Props) {
