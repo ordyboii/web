@@ -1,19 +1,14 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-type Props = {
-  title?: string;
-  description?: string;
-};
-
-export default function SEO({ title, description }: Props) {
+const SEO = (props: { title?: string; description?: string }) => {
   const router = useRouter();
-  const titleMeta = title
-    ? title
+  const titleMeta = props.title
+    ? props.title
     : "Jake Ord - UX Designer based in Newcastle Upon Tyne";
   const canonical = "https://jakeord.space" + router.pathname;
-  const descriptionMeta = description
-    ? description
+  const descriptionMeta = props.description
+    ? props.description
     : "UX & web designer, UX/UI, web designer, typescript nerd. Based in Newcastle-upon-tyne. I love to create experiences that make people's lives easier.";
 
   return (
@@ -37,4 +32,6 @@ export default function SEO({ title, description }: Props) {
       <link rel='icon' href='/dragon.svg' />
     </Head>
   );
-}
+};
+
+export default SEO;

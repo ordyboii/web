@@ -3,14 +3,13 @@ import Image from "next/future/image";
 import dynamic from "next/dynamic";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
-import { GetServerSidePropsResult, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import { RefObject, useEffect, useRef } from "react";
-import { Project } from "@/utils/types";
-import { getProjects } from "@/utils/notion";
+import { getProjects, Project } from "@/utils/notion";
 import { useTranslate } from "@/utils/translate";
 import { annotate } from "rough-notation";
 
-function useAnnotation(ref: RefObject<any>) {
+const useAnnotation = (ref: RefObject<any>) => {
   useEffect(() => {
     if (ref.current) {
       const annotation = annotate(ref.current as HTMLElement, {
@@ -22,7 +21,7 @@ function useAnnotation(ref: RefObject<any>) {
       return () => annotation.remove();
     }
   }, [ref]);
-}
+};
 
 const LazyPlayer = dynamic(
   () =>
@@ -35,7 +34,7 @@ const LazyPlayer = dynamic(
   }
 );
 
-function Hero() {
+const Hero = () => {
   const { english } = useTranslate();
 
   const textRef = useRef<HTMLElement>(null);
@@ -99,13 +98,9 @@ function Hero() {
       <LazyPlayer autoplay loop src='/dragon.json' className='w-full' />
     </section>
   );
-}
-
-type Props = {
-  projects: Project[];
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const projects = await getProjects();
 
   return {
@@ -114,7 +109,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   };
 };
 
-export default function Index({ projects }: Props) {
+const Index = (props: { projects: Project[] }) => {
   const { english } = useTranslate();
 
   return (
@@ -130,7 +125,7 @@ export default function Index({ projects }: Props) {
           </p>
         </div>
 
-        <ProjectsGrid projects={projects} />
+        <ProjectsGrid projects={props.projects} />
 
         <Link href='/projects' className='block link'>
           View all projects
@@ -227,4 +222,6 @@ export default function Index({ projects }: Props) {
       </section>
     </>
   );
-}
+};
+
+export default Index;

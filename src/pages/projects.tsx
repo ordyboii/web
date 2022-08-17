@@ -2,15 +2,10 @@ import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { useMemo, useState } from "react";
 import { GetStaticProps } from "next";
-import { Project } from "@/utils/types";
 import { HiSearch } from "react-icons/hi";
-import { getProjects } from "@/utils/notion";
+import { getProjects, Project } from "@/utils/notion";
 
-type Props = {
-  projects: Project[];
-};
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const projects = await getProjects();
   return {
     props: { projects },
@@ -18,14 +13,14 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   };
 };
 
-export default function Projects({ projects }: Props) {
+const Projects = (props: { projects: Project[] }) => {
   const [filterQuery, setFilterQuery] = useState("");
   const filteredProjects = useMemo(
     () =>
-      projects.filter(value =>
+      props.projects.filter(value =>
         value.title.toLowerCase().includes(filterQuery.toLowerCase())
       ),
-    [filterQuery, projects]
+    [filterQuery, props.projects]
   );
 
   return (
@@ -63,4 +58,6 @@ export default function Projects({ projects }: Props) {
       </section>
     </>
   );
-}
+};
+
+export default Projects;

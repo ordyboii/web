@@ -1,21 +1,32 @@
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { marked } from "marked";
-import { Project } from "./types";
+
+export type Project = {
+  id: string;
+  slug: string;
+  title: string;
+  date: string;
+  summary: string;
+  image: string;
+  client: string;
+  tags: string[];
+  content?: string;
+};
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-function slugify(url: string) {
+const slugify = (url: string) => {
   return url
     .toLowerCase()
     .trim()
     .replace(/[^\w\s-]/g, "")
     .replace(/[\s_-]+/g, "-")
     .replace(/^-+|-+$/g, "");
-}
+};
 
-function parseResponse(data: any): Project {
+const parseResponse = (data: any): Project => {
   return {
     id: data.id,
     slug: slugify(data.properties.Name.title[0].plain_text),
@@ -28,17 +39,17 @@ function parseResponse(data: any): Project {
       (tag: { name: string }) => tag.name
     )
   };
-}
+};
 
-export async function getProjects() {
+export const getProjects = async () => {
   const { results } = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE!
   });
 
   return results.map(result => parseResponse(result));
-}
+};
 
-export async function getProject(id: string) {
+export const getProject = async (id: string) => {
   const project = await notion.pages.retrieve({
     page_id: id
   });
@@ -52,4 +63,4 @@ export async function getProject(id: string) {
   const convertedMarkdown = n2m.toMarkdownString(convertedBlocks);
 
   return { ...convertResponse, content: marked(convertedMarkdown) };
-}
+};

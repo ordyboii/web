@@ -6,7 +6,7 @@ import type { AppProps } from "next/app";
 import Layout from "@/components/layout";
 import { TranslateProvider } from "@/utils/translate";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <TranslateProvider>
       <Layout>
@@ -14,4 +14,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Layout>
     </TranslateProvider>
   );
-}
+};
+
+export default MyApp;
