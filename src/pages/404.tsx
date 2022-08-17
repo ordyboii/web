@@ -13,7 +13,7 @@ const LazyPlayer = dynamic(
   }
 );
 
-export default function ErrorPage() {
+const ErrorPage = () => {
   return (
     <section className='flex flex-col items-center sm:flex-row'>
       <SEO />
@@ -31,4 +31,6 @@ export default function ErrorPage() {
       </div>
     </section>
   );
-}
+};
+
+export default ErrorPage;

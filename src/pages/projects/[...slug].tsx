@@ -2,10 +2,9 @@ import Image from "next/future/image";
 import SEO from "@/components/seo";
 import { FormEvent, useRef, useState } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Project } from "@/utils/types";
-import { getProject, getProjects } from "@/utils/notion";
+import { getProject, getProjects, Project } from "@/utils/notion";
 
-export const getStaticPaths: GetStaticPaths<{ slug: string[] }> = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const projects = await getProjects();
   return {
     paths: projects.map(project => ({
@@ -15,11 +14,7 @@ export const getStaticPaths: GetStaticPaths<{ slug: string[] }> = async () => {
   };
 };
 
-type Props = {
-  project?: Project;
-};
-
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!params?.slug) {
     return { props: {} };
   }
@@ -32,7 +27,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   };
 };
 
-export default function ProjectPage({ project }: Props) {
+const ProjectPage = (props: { project?: Project }) => {
   const [authed, setAuthed] = useState(false);
   const [error, setError] = useState("");
   const input = useRef<HTMLInputElement>(null);
@@ -52,14 +47,14 @@ export default function ProjectPage({ project }: Props) {
     setError("Invalid secret");
   };
 
-  if (!project || !project.content) {
+  if (!props.project || !props.project.content) {
     return null;
   }
 
   if (!authed) {
     return (
       <section className='py-12 space-y-8'>
-        <SEO title={project.title} description={project.summary} />
+        <SEO title={props.project.title} description={props.project.summary} />
         <h1>This project is locked</h1>
         <form
           onSubmit={handleAuth}
@@ -86,15 +81,15 @@ export default function ProjectPage({ project }: Props) {
 
   return (
     <>
-      <SEO title={project.title} description={project.summary} />
+      <SEO title={props.project.title} description={props.project.summary} />
       <section className='py-16 space-y-12 animate-fade-up'>
         <div className='space-y-6'>
-          <p className='text-lg font-bold'>{project.client}</p>
-          <h1>{project.title}</h1>
-          <p className='text-lg'>{project.summary}</p>
+          <p className='text-lg font-bold'>{props.project.client}</p>
+          <h1>{props.project.title}</h1>
+          <p className='text-lg'>{props.project.summary}</p>
 
           <div className='flex gap-2'>
-            {project.tags.map(tag => (
+            {props.project.tags.map(tag => (
               <p key={tag} className='tag'>
                 {tag}
               </p>
@@ -104,8 +99,8 @@ export default function ProjectPage({ project }: Props) {
         </div>
 
         <Image
-          src={project.image}
-          alt={project.title}
+          src={props.project.image}
+          alt={props.project.title}
           width={1000}
           height={1000}
           className='object-cover w-full h-96'
@@ -113,9 +108,11 @@ export default function ProjectPage({ project }: Props) {
 
         <article
           className='space-y-8 max-w-full'
-          dangerouslySetInnerHTML={{ __html: project.content }}
+          dangerouslySetInnerHTML={{ __html: props.project.content }}
         />
       </section>
     </>
   );
-}
+};
+
+export default ProjectPage;

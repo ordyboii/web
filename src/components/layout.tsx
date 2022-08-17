@@ -5,12 +5,8 @@ import { PropsWithChildren, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
 
-type Props = {
-  inverse?: boolean;
-};
-
-function Social({ inverse }: Props) {
-  const socialClass = `link ${inverse && "hover:text-gray-900"}`;
+const Social = (props: { inverse?: boolean }) => {
+  const socialClass = `link ${props.inverse && "hover:text-gray-900"}`;
 
   return (
     <>
@@ -43,19 +39,19 @@ function Social({ inverse }: Props) {
       </a>
     </>
   );
-}
+};
 
-function MenuItems({ inverse }: Props) {
+const MenuItems = (props: { inverse?: boolean }) => {
   const { pathname } = useRouter();
   const { english, setEnglish } = useTranslate();
 
   const navClass = (path: string) =>
-    `hover:text-sky-500 ${inverse && "hover:text-gray-900"} ${
-      !inverse &&
+    `hover:text-sky-500 ${props.inverse && "hover:text-gray-900"} ${
+      !props.inverse &&
       pathname === path &&
       "font-bold text-sky-500 border-b-2 border-sky-500 pb-1"
     } ${
-      inverse &&
+      props.inverse &&
       pathname === path &&
       "font-bold text-gray-900 border-b-2 border-gray-900 pb-1"
     }`;
@@ -90,7 +86,7 @@ function MenuItems({ inverse }: Props) {
         <button
           onClick={() => setEnglish(!english)}
           className={`${english && "bg-sky-500"} ${
-            english && inverse && "bg-gray-900"
+            english && props.inverse && "bg-gray-900"
           } ${
             !english && "bg-gray-300"
           } relative inline-flex h-6 w-11 items-center rounded-full`}
@@ -105,9 +101,9 @@ function MenuItems({ inverse }: Props) {
       </li>
     </>
   );
-}
+};
 
-function Header() {
+const Header = () => {
   const { english } = useTranslate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -149,9 +145,9 @@ function Header() {
       )}
     </header>
   );
-}
+};
 
-export default function Layout({ children }: PropsWithChildren<{}>) {
+const Layout = (props: PropsWithChildren) => {
   return (
     <div className='container p-8'>
       <a
@@ -163,7 +159,7 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
 
       <Header />
 
-      <main id='content'>{children}</main>
+      <main id='content'>{props.children}</main>
 
       <footer
         className='pt-4 border-t border-gray-500 flex flex-col gap-4
@@ -176,4 +172,6 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
       </footer>
     </div>
   );
-}
+};
+
+export default Layout;
