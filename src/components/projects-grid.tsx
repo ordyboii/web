@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/future/image";
-import { Project } from "@/utils/types";
+import { Project } from "@/utils/notion";
 
 type Props = {
   projects: Project[];
