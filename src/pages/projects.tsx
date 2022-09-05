@@ -1,15 +1,14 @@
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { useMemo, useState } from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { HiSearch } from "react-icons/hi";
 import { getProjects, Project } from "@/utils/notion";
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const projects = await getProjects();
   return {
-    props: { projects },
-    revalidate: 60
+    props: { projects }
   };
 };
 

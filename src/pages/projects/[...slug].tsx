@@ -1,20 +1,10 @@
 import Image from "next/future/image";
 import SEO from "@/components/seo";
 import { FormEvent, useRef, useState } from "react";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { getProject, getProjects, Project } from "@/utils/notion";
+import { GetServerSideProps } from "next";
+import { getProject, Project } from "@/utils/notion";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = await getProjects();
-  return {
-    paths: projects.map(project => ({
-      params: { slug: [project.slug, project.id] }
-    })),
-    fallback: false
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (!params?.slug) {
     return { props: {} };
   }
@@ -22,8 +12,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const project = await getProject(params.slug[1]);
 
   return {
-    props: { project },
-    revalidate: 60
+    props: { project }
   };
 };
 

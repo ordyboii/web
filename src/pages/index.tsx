@@ -3,7 +3,7 @@ import Image from "next/future/image";
 import dynamic from "next/dynamic";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { RefObject, useEffect, useRef } from "react";
 import { getProjects, Project } from "@/utils/notion";
 import { useTranslate } from "@/utils/translate";
@@ -100,12 +100,10 @@ const Hero = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const projects = await getProjects();
-
   return {
-    props: { projects },
-    revalidate: 60
+    props: { projects }
   };
 };
 
@@ -140,7 +138,7 @@ const Index = (props: { projects: Project[] }) => {
             alt='Jake Ord standing on some stairs in Edinburgh'
             width={1000}
             height={1000}
-            className='object-cover w-full border-2 rounded border-gray-900'
+            className='object-cover sm:w-2/4 border-2 rounded border-gray-900'
           />
 
           <div className='space-y-4'>
