@@ -16,7 +16,7 @@ const translateContext = createContext<{
   setEnglish: () => {}
 });
 
-export const TranslateProvider = (props: PropsWithChildren) => {
+export const TranslateProvider = ({ children }: PropsWithChildren) => {
   const [english, setEnglish] = useState(false);
 
   const value = useMemo(() => {
@@ -25,11 +25,9 @@ export const TranslateProvider = (props: PropsWithChildren) => {
 
   return (
     <translateContext.Provider value={value}>
-      {props.children}
+      {children}
     </translateContext.Provider>
   );
 };
 
-export function useTranslate() {
-  return useContext(translateContext);
-}
+export const useTranslate = () => useContext(translateContext);

@@ -1,20 +1,39 @@
 import Image from "next/future/image";
 import SEO from "@/components/seo";
 import { FormEvent, useRef, useState } from "react";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { getProject, getProjects, Project } from "@/utils/notion";
+import { GetServerSideProps } from "next";
+import { getProject, Project } from "@/utils/notion";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = await getProjects();
-  return {
-    paths: projects.map(project => ({
-      params: { slug: [project.slug, project.id] }
-    })),
-    fallback: false
-  };
+const ProjectBody = ({ project }: { project: Project }) => {
+  return (
+    <>
+      <SEO title={project.title} description={project.summary} />
+      <section className='py-16 space-y-12 animate-fade-up'>
+        <div className='space-y-6'>
+          <p className='text-lg font-bold'>{project.client}</p>
+          <h1>{project.title}</h1>
+          <p className='text-lg'>{project.summary}</p>
+          <hr className='border border-gray-900' />
+        </div>
+
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={1000}
+          height={1000}
+          className='object-cover w-full h-96'
+        />
+
+        <article
+          className='space-y-8 max-w-full'
+          dangerouslySetInnerHTML={{ __html: project.content! }}
+        />
+      </section>
+    </>
+  );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (!params?.slug) {
     return { props: {} };
   }
@@ -22,12 +41,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const project = await getProject(params.slug[1]);
 
   return {
-    props: { project },
-    revalidate: 60
+    props: { project }
   };
 };
 
-const ProjectPage = (props: { project?: Project }) => {
+export default function ProjectPage({ project }: { project?: Project }) {
   const [authed, setAuthed] = useState(false);
   const [error, setError] = useState("");
   const input = useRef<HTMLInputElement>(null);
@@ -47,15 +65,29 @@ const ProjectPage = (props: { project?: Project }) => {
     setError("Invalid secret");
   };
 
-  if (!props.project || !props.project.content) {
+  if (!project || !project.content) {
     return null;
   }
 
-  if (!authed) {
-    return (
-      <section className='py-12 space-y-8'>
-        <SEO title={props.project.title} description={props.project.summary} />
+  if (project.protected) {
+    return authed ? (
+      <ProjectBody project={project} />
+    ) : (
+      <section className='py-12 space-y-6'>
+        <SEO title={project.title} description={project.summary} />
         <h1>This project is locked</h1>
+        <p>
+          If you are hitting this page it is likely because this project
+          contains sensitive data I cannot share publicly. If you are a
+          recruiter/hiring manager please request the auth token below and I
+          will try to get back to you as soon as I can.
+        </p>
+        <a
+          className='button block'
+          href="mailto:jake.ord345@gmail.com?subject='Request for auth token'&body='I'd like to request an auth token to view the sensitive work on your site please.'"
+        >
+          Request auth token
+        </a>
         <form
           onSubmit={handleAuth}
           className='flex gap-4 flex-col justify-center'
@@ -72,47 +104,12 @@ const ProjectPage = (props: { project?: Project }) => {
           {error.length > 0 && <p className='text-red-500'>{error}</p>}
 
           <button className='button' type='submit'>
-            Submit
+            Submit token
           </button>
         </form>
       </section>
     );
   }
 
-  return (
-    <>
-      <SEO title={props.project.title} description={props.project.summary} />
-      <section className='py-16 space-y-12 animate-fade-up'>
-        <div className='space-y-6'>
-          <p className='text-lg font-bold'>{props.project.client}</p>
-          <h1>{props.project.title}</h1>
-          <p className='text-lg'>{props.project.summary}</p>
-
-          <div className='flex gap-2'>
-            {props.project.tags.map(tag => (
-              <p key={tag} className='tag'>
-                {tag}
-              </p>
-            ))}
-          </div>
-          <hr className='border border-gray-900' />
-        </div>
-
-        <Image
-          src={props.project.image}
-          alt={props.project.title}
-          width={1000}
-          height={1000}
-          className='object-cover w-full h-96'
-        />
-
-        <article
-          className='space-y-8 max-w-full'
-          dangerouslySetInnerHTML={{ __html: props.project.content }}
-        />
-      </section>
-    </>
-  );
-};
-
-export default ProjectPage;
+  return <ProjectBody project={project} />;
+}
