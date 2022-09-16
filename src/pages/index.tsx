@@ -9,10 +9,10 @@ import { getProjects, Project } from "@/utils/notion";
 import { useTranslate } from "@/utils/translate";
 import { annotate } from "rough-notation";
 
-const useAnnotation = (ref: RefObject<any>) => {
+const useAnnotation = (ref: RefObject<HTMLElement>) => {
   useEffect(() => {
     if (ref.current) {
-      const annotation = annotate(ref.current as HTMLElement, {
+      const annotation = annotate(ref.current, {
         type: "box",
         color: "#0ea5e9"
       });
@@ -100,14 +100,15 @@ const Hero = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const projects = await getProjects();
+
   return {
     props: { projects }
   };
 };
 
-const Index = (props: { projects: Project[] }) => {
+export default function Home({ projects }: { projects: Project[] }) {
   const { english } = useTranslate();
 
   return (
@@ -123,7 +124,7 @@ const Index = (props: { projects: Project[] }) => {
           </p>
         </div>
 
-        <ProjectsGrid projects={props.projects} />
+        <ProjectsGrid projects={projects} />
 
         <Link href='/projects' className='block link'>
           View all projects
@@ -220,6 +221,4 @@ const Index = (props: { projects: Project[] }) => {
       </section>
     </>
   );
-};
-
-export default Index;
+}

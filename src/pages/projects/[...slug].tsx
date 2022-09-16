@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-const ProjectPage = (props: { project?: Project }) => {
+export default function ProjectPage({ project }: { project?: Project }) {
   const [authed, setAuthed] = useState(false);
   const [error, setError] = useState("");
   const input = useRef<HTMLInputElement>(null);
@@ -36,14 +36,14 @@ const ProjectPage = (props: { project?: Project }) => {
     setError("Invalid secret");
   };
 
-  if (!props.project || !props.project.content) {
+  if (!project || !project.content) {
     return null;
   }
 
   if (!authed) {
     return (
       <section className='py-12 space-y-8'>
-        <SEO title={props.project.title} description={props.project.summary} />
+        <SEO title={project.title} description={project.summary} />
         <h1>This project is locked</h1>
         <form
           onSubmit={handleAuth}
@@ -70,15 +70,15 @@ const ProjectPage = (props: { project?: Project }) => {
 
   return (
     <>
-      <SEO title={props.project.title} description={props.project.summary} />
+      <SEO title={project.title} description={project.summary} />
       <section className='py-16 space-y-12 animate-fade-up'>
         <div className='space-y-6'>
-          <p className='text-lg font-bold'>{props.project.client}</p>
-          <h1>{props.project.title}</h1>
-          <p className='text-lg'>{props.project.summary}</p>
+          <p className='text-lg font-bold'>{project.client}</p>
+          <h1>{project.title}</h1>
+          <p className='text-lg'>{project.summary}</p>
 
           <div className='flex gap-2'>
-            {props.project.tags.map(tag => (
+            {project.tags.map(tag => (
               <p key={tag} className='tag'>
                 {tag}
               </p>
@@ -88,8 +88,8 @@ const ProjectPage = (props: { project?: Project }) => {
         </div>
 
         <Image
-          src={props.project.image}
-          alt={props.project.title}
+          src={project.image}
+          alt={project.title}
           width={1000}
           height={1000}
           className='object-cover w-full h-96'
@@ -97,11 +97,9 @@ const ProjectPage = (props: { project?: Project }) => {
 
         <article
           className='space-y-8 max-w-full'
-          dangerouslySetInnerHTML={{ __html: props.project.content }}
+          dangerouslySetInnerHTML={{ __html: project.content }}
         />
       </section>
     </>
   );
-};
-
-export default ProjectPage;
+}

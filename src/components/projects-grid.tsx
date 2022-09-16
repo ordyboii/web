@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Project } from "@/utils/notion";
+import Image from "next/future/image";
 
 const ProjectsGrid = (props: { projects: Project[] }) => {
   return (
@@ -10,19 +11,18 @@ const ProjectsGrid = (props: { projects: Project[] }) => {
             className='h-full bg-white rounded-sm border-2 border-gray-900 transition 
             cursor-pointer hover:scale-105 hover:rotate-2'
           >
-            <img
+            <Image
               src={project.image}
               alt={project.title}
               width={1000}
               height={1000}
               className='object-cover w-full max-h-64 transition'
-              loading='lazy'
             />
 
             <div className='p-8 space-y-6'>
               <p className='text-lg font-bold'>{project.client}</p>
               <h3>{project.title}</h3>
-              <div className='flex gap-2 flex-col sm:flex-row'>
+              <div className='flex flex-wrap gap-2'>
                 {project.tags.map(tag => (
                   <p key={tag} className='tag'>
                     {tag}

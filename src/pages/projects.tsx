@@ -5,21 +5,23 @@ import { GetServerSideProps } from "next";
 import { HiSearch } from "react-icons/hi";
 import { getProjects, Project } from "@/utils/notion";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const projects = await getProjects();
+
   return {
     props: { projects }
   };
 };
 
-const Projects = (props: { projects: Project[] }) => {
+export default function Projects({ projects }: { projects: Project[] }) {
   const [filterQuery, setFilterQuery] = useState("");
+
   const filteredProjects = useMemo(
     () =>
-      props.projects.filter(value =>
+      projects.filter(value =>
         value.title.toLowerCase().includes(filterQuery.toLowerCase())
       ),
-    [filterQuery, props.projects]
+    [filterQuery, projects]
   );
 
   return (
@@ -57,6 +59,4 @@ const Projects = (props: { projects: Project[] }) => {
       </section>
     </>
   );
-};
-
-export default Projects;
+}
