@@ -1,26 +1,29 @@
-import Link from "next/link";
 import Image from "next/future/image";
 import dynamic from "next/dynamic";
 import SEO from "@/components/seo";
 import ProjectsGrid from "@/components/projects-grid";
 import { GetServerSideProps } from "next";
-import { RefObject, useEffect, useRef } from "react";
-import { getProjects, Project } from "@/utils/notion";
+import { RefObject, useEffect, useMemo, useRef, useState } from "react";
+import { getProjects, getSides, Project, Side } from "@/utils/notion";
 import { useTranslate } from "@/utils/translate";
 import { annotate } from "rough-notation";
+import { HiExternalLink } from "react-icons/hi";
 
-const useAnnotation = (ref: RefObject<HTMLElement>) => {
+const useAnnotation = (
+  ref: RefObject<HTMLElement>,
+  type: "box" | "underline"
+) => {
   useEffect(() => {
     if (ref.current) {
       const annotation = annotate(ref.current, {
-        type: "box",
+        type: type,
         color: "#0ea5e9"
       });
 
       annotation.show();
       return () => annotation.remove();
     }
-  }, [ref]);
+  }, [ref, type]);
 };
 
 const LazyPlayer = dynamic(
@@ -40,36 +43,30 @@ const Hero = () => {
   const textRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLAnchorElement>(null);
 
-  useAnnotation(textRef);
-  useAnnotation(contactRef);
+  useAnnotation(textRef, "box");
+  useAnnotation(contactRef, "box");
 
   return (
     <section className='flex flex-col items-center gap-4 py-12 min-h-[600px] md:flex-row md:gap-20'>
       <div className='space-y-6 max-w-xl'>
-        <p className='text-lg'>Hi I&apos;m Jake,</p>
-
         <h1>
           A <span ref={textRef}>UX Designer</span> based in Newcastle Upon Tyne.
         </h1>
 
-        <p className='font-bold text-lg'>
-          {!english && "少し日本語も話せます。"}
-          {english && "I also speak a little Japanese"}
-        </p>
-
         <p className='text-lg'>
-          Creating experiences that are accessible, approachable and drive
-          business growth whether through visual design or collaborating with
-          users on research. I am currently a UX Designer at{" "}
+          Blending together product strategy, visual design, accessibility and
+          web prototyping to deliver research-validated solutions. Creating
+          experiences that drive user/business growth. Currently a UX Designer
+          at{" "}
           <a
             className='link'
             href='https://www.def.co.uk'
             target='_blank'
             rel='noreferrer'
           >
-            DEF Software Ltd.
+            DEF Software.
           </a>{" "}
-          But have previously worked at{" "}
+          But have previously worked for{" "}
           <a
             className='link'
             href='https://rgb-ltd.co.uk/'
@@ -80,6 +77,11 @@ const Hero = () => {
           </a>
         </p>
 
+        <p className='font-bold text-lg'>
+          {!english && "少し日本語も話せます。"}
+          {english && "I also speak a little Japanese"}
+        </p>
+
         <div className='flex flex-col gap-8 sm:flex-row sm:items-center'>
           <a href='#work' className='button'>
             View my work
@@ -87,7 +89,7 @@ const Hero = () => {
           <a
             ref={contactRef}
             href='mailto:jake.ord345@gmail.com'
-            className='link'
+            className='link w-fit'
           >
             Or contact me
           </a>
@@ -100,16 +102,37 @@ const Hero = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const projects = await getProjects();
+  const sides = await getSides();
 
   return {
-    props: { projects }
+    props: { projects, sides }
   };
 };
 
-export default function Home({ projects }: { projects: Project[] }) {
+export default function Home({
+  projects,
+  sides
+}: {
+  projects: Project[];
+  sides: Side[];
+}) {
   const { english } = useTranslate();
+  const [sideShowing, setSideShowing] = useState<Side["id"]>(sides[0].id);
+
+  const filteredSide = useMemo(
+    () => sides.filter(side => side.id === sideShowing)[0],
+    [sideShowing, sides]
+  );
+
+  const workRef = useRef<HTMLHeadingElement>(null);
+  const aboutRef = useRef<HTMLHeadingElement>(null);
+  const sideRef = useRef<HTMLHeadingElement>(null);
+
+  useAnnotation(workRef, "underline");
+  useAnnotation(aboutRef, "underline");
+  useAnnotation(sideRef, "underline");
 
   return (
     <>
@@ -117,22 +140,68 @@ export default function Home({ projects }: { projects: Project[] }) {
       <SEO />
 
       <section id='work' className='py-12 space-y-8'>
-        <div className='space-y-4'>
-          <h2>Projects</h2>
-          <p className='text-lg'>
-            Some of the work I&apos;m working on and been involved in:
-          </p>
-        </div>
+        <h2 className='inline' ref={workRef}>
+          Select Work
+        </h2>
 
         <ProjectsGrid projects={projects} />
+      </section>
 
-        <Link href='/projects' className='block link'>
-          View all projects
-        </Link>
+      <section id='work' className='py-12 space-y-8'>
+        <div className='space-y-6'>
+          <h2 className='inline' ref={sideRef}>
+            Side work
+          </h2>
+          <p>Older projects and apps I have built to scratch my own itch.</p>
+        </div>
+
+        <div className='space-y-4'>
+          <div className='flex gap-4 flex-col sm:flex-row'>
+            {sides.map(side => (
+              <button
+                key={side.id}
+                onClick={() => setSideShowing(side.id)}
+                className={`px-4 py-2 rounded border border-sky-500 ${
+                  sideShowing === side.id &&
+                  "bg-sky-500 text-white shadow-lg shadow-sky-500/50"
+                } ${sideShowing !== side.id && "hover:bg-sky-200"}`}
+              >
+                {side.title}
+              </button>
+            ))}
+          </div>
+          {sideShowing && (
+            <div className='flex flex-col md:flex-row bg-white border-2 border-gray-600'>
+              <Image
+                src={filteredSide.image}
+                alt={filteredSide.title}
+                width={1000}
+                height={1000}
+                className='object-cover w-full sm:max-w-xl h-96 transition'
+              />
+              <div className='px-8 py-4 space-y-4'>
+                <h3>{filteredSide.title}</h3>
+                {filteredSide.link && (
+                  <a
+                    href={filteredSide.link}
+                    target='_blank'
+                    rel='noreferrer'
+                    className='link flex items-center gap-2'
+                  >
+                    View project <HiExternalLink className='w-5 h-5' />
+                  </a>
+                )}
+                <p>{filteredSide.summary}</p>
+              </div>
+            </div>
+          )}
+        </div>
       </section>
 
       <section className='py-12 space-y-8'>
-        <h2>A little about me</h2>
+        <h2 className='inline' ref={aboutRef}>
+          About Jake
+        </h2>
         <div className='flex flex-col gap-12 md:flex-row'>
           <Image
             src='/me2.jpg'
@@ -145,14 +214,14 @@ export default function Home({ projects }: { projects: Project[] }) {
           <div className='space-y-4'>
             <p className='font-semibold'>
               {english && "Nice to meet you, I'm Jake"}
-              {!english && "初めまして、ジェイクですよろしくお願いします。"}
+              {!english && "初めまして、ジェイクです。"}
             </p>
 
             <p>
-              I&apos;m a British-born UX designer based in Newcastle, UK. I am
-              driven by approachable design, driving business growth and pushing
-              expectations. Designing an experience so good - users never
-              question it.
+              I am a British-born designer based in Newcastle, UK. I am driven
+              by design that impacts people in a positive way, I thrive on team
+              collaboration and pushing boundaries. Always thinking of ways to
+              improve products and services in my everyday life.
             </p>
 
             <p>
@@ -163,49 +232,32 @@ export default function Home({ projects }: { projects: Project[] }) {
                 rel='noreferrer'
                 className='link'
               >
-                DEF Software Ltd
+                DEF Software
               </a>{" "}
-              by day but by night you&apos;ll find me tinkering with code or
-              learning to read/write Japanese.
+              by day but by night you will find me hacking on some side project
+              (may involve code).
             </p>
 
             <p>
-              But who works all the time, right? In my downtime I&apos;m either
-              binging Netflix, collecting figures, trying to beat my Duolingo
-              streak or cooking some crazy new dish I thought of.
-            </p>
-
-            <h3>Hold up...do you actually code?</h3>
-            <p>
-              Yes! I built this entire website from the ground up myself using{" "}
-              <a
-                href='https://nextjs.org/'
-                target='_blank'
-                rel='noreferrer'
-                className='link'
-              >
-                Next.js
-              </a>{" "}
-              and the Notion API. I learned to code because I wanted to build
-              the stuff I was designing.
+              But who works all the time, right? In my downtime I am either late
+              night driving, studying Japanese, cooking up some crazy dishes or
+              expanding my figure collection.
             </p>
 
             <h3>What&apos;s up with the dragons?</h3>
             <p>
-              Dragons are my favourite mythological creatures. I&apos;ve always
+              Dragons are my favourite mythological creatures. I have always
               been fascinated by them in movies, games and Asian culture. To me,
               they were the beginning of my journey into design and what led me
               towards art/graphics.
             </p>
 
-            <h3>I noticed Japanese on your website - do you speak it?</h3>
+            <h3>
+              I noticed Japanese phrases on your website - do you speak it?
+            </h3>
             <p>
-              {english &&
-                `Only a little bit. I'm nowhere near conversational but I can speak, read 
-                and understand common phrases.`}
-              {!english &&
-                `ちょっとだけ。僕は会話にはほど遠いですが、一般的なフレーズを話しり、
-                読んだ、理解したりすることはできます。`}
+              {english && `Only a little bit. I'm studying a lot`}
+              {!english && `ちょっとだけ、僕はたくさん勉強しています。`}
             </p>
           </div>
         </div>

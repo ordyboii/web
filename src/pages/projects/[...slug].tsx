@@ -4,6 +4,35 @@ import { FormEvent, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import { getProject, Project } from "@/utils/notion";
 
+const ProjectBody = ({ project }: { project: Project }) => {
+  return (
+    <>
+      <SEO title={project.title} description={project.summary} />
+      <section className='py-16 space-y-12 animate-fade-up'>
+        <div className='space-y-6'>
+          <p className='text-lg font-bold'>{project.client}</p>
+          <h1>{project.title}</h1>
+          <p className='text-lg'>{project.summary}</p>
+          <hr className='border border-gray-900' />
+        </div>
+
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={1000}
+          height={1000}
+          className='object-cover w-full h-96'
+        />
+
+        <article
+          className='space-y-8 max-w-full'
+          dangerouslySetInnerHTML={{ __html: project.content! }}
+        />
+      </section>
+    </>
+  );
+};
+
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (!params?.slug) {
     return { props: {} };
@@ -40,11 +69,25 @@ export default function ProjectPage({ project }: { project?: Project }) {
     return null;
   }
 
-  if (!authed) {
-    return (
-      <section className='py-12 space-y-8'>
+  if (project.protected) {
+    return authed ? (
+      <ProjectBody project={project} />
+    ) : (
+      <section className='py-12 space-y-6'>
         <SEO title={project.title} description={project.summary} />
         <h1>This project is locked</h1>
+        <p>
+          If you are hitting this page it is likely because this project
+          contains sensitive data I cannot share publicly. If you are a
+          recruiter/hiring manager please request the auth token below and I
+          will try to get back to you as soon as I can.
+        </p>
+        <a
+          className='button block'
+          href="mailto:jake.ord345@gmail.com?subject='Request for auth token'&body='I'd like to request an auth token to view the sensitive work on your site please.'"
+        >
+          Request auth token
+        </a>
         <form
           onSubmit={handleAuth}
           className='flex gap-4 flex-col justify-center'
@@ -61,45 +104,12 @@ export default function ProjectPage({ project }: { project?: Project }) {
           {error.length > 0 && <p className='text-red-500'>{error}</p>}
 
           <button className='button' type='submit'>
-            Submit
+            Submit token
           </button>
         </form>
       </section>
     );
   }
 
-  return (
-    <>
-      <SEO title={project.title} description={project.summary} />
-      <section className='py-16 space-y-12 animate-fade-up'>
-        <div className='space-y-6'>
-          <p className='text-lg font-bold'>{project.client}</p>
-          <h1>{project.title}</h1>
-          <p className='text-lg'>{project.summary}</p>
-
-          <div className='flex gap-2'>
-            {project.tags.map(tag => (
-              <p key={tag} className='tag'>
-                {tag}
-              </p>
-            ))}
-          </div>
-          <hr className='border border-gray-900' />
-        </div>
-
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={1000}
-          height={1000}
-          className='object-cover w-full h-96'
-        />
-
-        <article
-          className='space-y-8 max-w-full'
-          dangerouslySetInnerHTML={{ __html: project.content }}
-        />
-      </section>
-    </>
-  );
+  return <ProjectBody project={project} />;
 }

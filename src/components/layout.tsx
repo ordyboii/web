@@ -43,7 +43,6 @@ const Social = (props: { inverse?: boolean }) => {
 
 const MenuItems = (props: { inverse?: boolean }) => {
   const { pathname } = useRouter();
-  const { english, setEnglish } = useTranslate();
 
   const navClass = (path: string) =>
     `hover:text-sky-500 ${props.inverse && "hover:text-gray-900"} ${
@@ -63,10 +62,6 @@ const MenuItems = (props: { inverse?: boolean }) => {
           Home
         </Link>
 
-        <Link href='/projects' className={navClass("/projects")}>
-          Projects
-        </Link>
-
         <a
           href='/jake-ord-cv-2022.pdf'
           target='_blank'
@@ -79,25 +74,6 @@ const MenuItems = (props: { inverse?: boolean }) => {
 
       <li className='flex gap-4'>
         <Social inverse />
-      </li>
-
-      <li className='flex gap-4'>
-        <strong>JP</strong>
-        <button
-          onClick={() => setEnglish(!english)}
-          className={`${english && "bg-sky-500"} ${
-            english && props.inverse && "bg-gray-900"
-          } ${
-            !english && "bg-gray-300"
-          } relative inline-flex h-6 w-11 items-center rounded-full`}
-        >
-          <span
-            className={`${english && "translate-x-6"} ${
-              !english && "translate-x-1"
-            } transition ease-out inline-block h-4 w-4 transform rounded-full bg-white`}
-          />
-        </button>
-        <strong>EN</strong>
       </li>
     </>
   );
@@ -148,14 +124,33 @@ const Header = () => {
 };
 
 const Layout = (props: PropsWithChildren) => {
+  const { english, setEnglish } = useTranslate();
+
   return (
-    <div className='container p-8'>
+    <div className='max-w-5xl mx-auto p-8'>
       <a
         href='#content'
-        className='absolute -top-24 left-4 p-4 rounded-sm bg-purple-800 text-white z-50 focus:top-4'
+        className='absolute -top-24 left-4 p-4 rounded-sm bg-sky-500 text-white z-50 focus:top-4'
       >
         Skip to Content
       </a>
+
+      <li className='flex gap-4 fixed bottom-4 right-4 p-4 bg-white border-2 border-gray-600 rounded-xl z-50'>
+        <strong>JP</strong>
+        <button
+          onClick={() => setEnglish(!english)}
+          className={`${
+            english ? "bg-sky-500" : "bg-gray-300"
+          } relative inline-flex h-6 w-11 items-center rounded-full`}
+        >
+          <span
+            className={`${
+              english ? "translate-x-6" : "translate-x-1"
+            } transition ease-out inline-block h-4 w-4 transform rounded-full bg-white`}
+          />
+        </button>
+        <strong>EN</strong>
+      </li>
 
       <Header />
 
