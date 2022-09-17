@@ -78,16 +78,11 @@ export default function ProjectPage({ project }: { project?: Project }) {
         <h1>This project is protected</h1>
         <p>
           If you are hitting this page it is likely because this project is
-          still ongoing and contains sensitive information. If you are a
-          recruiter/hiring manager please request the auth token below and I
-          will try to get back to you as soon as I can.
+          still ongoing and contains sensitive information. Unfortunately, I
+          cannot share the token to access this page. If you are a
+          recruiter/hiring manager and wanting to see this project, please get
+          in touch with me and we can work something out.
         </p>
-        <a
-          className='button block'
-          href="mailto:jake.ord345@gmail.com?subject=Request for auth token&body='I'd like to request an auth token to view the sensitive work on your site please.'"
-        >
-          Request auth token
-        </a>
         <form
           onSubmit={handleAuth}
           className='flex gap-4 flex-col justify-center'
