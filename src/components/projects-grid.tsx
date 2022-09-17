@@ -20,7 +20,7 @@ const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
             />
 
             <div className='p-8 space-y-6'>
-              <p className='text-lg font-bold'>{project.client}</p>
+              <p className='text-lg font-bold'>Client: {project.client}</p>
               <h3>{project.title}</h3>
               <hr className='w-20  border-gray-900' />
               <p>{project.summary}</p>
