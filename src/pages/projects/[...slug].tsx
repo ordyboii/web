@@ -75,16 +75,16 @@ export default function ProjectPage({ project }: { project?: Project }) {
     ) : (
       <section className='py-12 space-y-6'>
         <SEO title={project.title} description={project.summary} />
-        <h1>This project is locked</h1>
+        <h1>This project is protected</h1>
         <p>
-          If you are hitting this page it is likely because this project
-          contains sensitive data I cannot share publicly. If you are a
+          If you are hitting this page it is likely because this project is
+          still ongoing and contains sensitive information. If you are a
           recruiter/hiring manager please request the auth token below and I
           will try to get back to you as soon as I can.
         </p>
         <a
           className='button block'
-          href="mailto:jake.ord345@gmail.com?subject='Request for auth token'&body='I'd like to request an auth token to view the sensitive work on your site please.'"
+          href="mailto:jake.ord345@gmail.com?subject=Request for auth token&body='I'd like to request an auth token to view the sensitive work on your site please.'"
         >
           Request auth token
         </a>
