@@ -52,13 +52,7 @@ const parseProjectResponse = (data: any): Project => {
 
 export const getProjects = async () => {
   const { results } = await notion.databases.query({
-    database_id: process.env.NOTION_PROJECTS_DATABASE!,
-    sorts: [
-      {
-        property: "Date",
-        direction: "descending"
-      }
-    ]
+    database_id: process.env.NOTION_PROJECTS_DATABASE!
   });
 
   return results.map(result => parseProjectResponse(result));
@@ -94,13 +88,7 @@ const parseSideResponse = (data: any): Side => {
 
 export const getSides = async () => {
   const { results } = await notion.databases.query({
-    database_id: process.env.NOTION_SIDE_DATABASE!,
-    sorts: [
-      {
-        property: "Date",
-        direction: "descending"
-      }
-    ]
+    database_id: process.env.NOTION_SIDE_DATABASE!
   });
 
   return results.map(result => parseSideResponse(result));
