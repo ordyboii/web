@@ -25,7 +25,7 @@ const ProjectBody = ({ project }: { project: Project }) => {
         />
 
         <article
-          className='space-y-8 max-w-full'
+          className='max-w-full prose md:prose-lg'
           dangerouslySetInnerHTML={{ __html: project.content! }}
         />
       </section>
