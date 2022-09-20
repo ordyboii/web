@@ -63,7 +63,7 @@ const MenuItems = (props: { inverse?: boolean }) => {
         </Link>
 
         <a
-          href='/jake-ord-cv-2022.pdf'
+          href='/jakeord-cv.pdf'
           target='_blank'
           rel='noopener'
           className={navClass("/cv")}
