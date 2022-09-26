@@ -213,8 +213,8 @@ export default function Home({
 
           <div className='space-y-4'>
             <p className='font-semibold'>
-              {english && "Nice to meet you, I'm Jake"}
-              {!english && "初めまして、ジェイクです。"}
+              {english && "Nice to meet you"}
+              {!english && "初めまして。"}
             </p>
 
             <p>
@@ -257,7 +257,7 @@ export default function Home({
             </h3>
             <p>
               {english && `Only a little bit. I'm studying a lot`}
-              {!english && `ちょっとだけ、僕はたくさん勉強しています。`}
+              {!english && `ちょっとだけ。たくさん勉強しています。`}
             </p>
           </div>
         </div>
