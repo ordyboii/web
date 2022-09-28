@@ -141,7 +141,7 @@ export default function Home({
         <ProjectsGrid projects={projects} />
       </section>
 
-      <section id='work' className='py-12 space-y-8'>
+      <section className='py-12 space-y-8'>
         <div className='space-y-6'>
           <h2 className='inline' ref={sideRef}>
             Side work
