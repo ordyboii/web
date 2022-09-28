@@ -1,11 +1,11 @@
 import Image from "next/future/image";
 import dynamic from "next/dynamic";
-import SEO from "@/components/seo";
-import ProjectsGrid from "@/components/projects-grid";
-import { GetServerSideProps } from "next";
+import SEO from "components/seo";
+import ProjectsGrid from "components/projects-grid";
+import { getProjects, getSides } from "utils/markdown";
+import { InferGetStaticPropsType } from "next";
 import { RefObject, useEffect, useMemo, useRef, useState } from "react";
-import { getProjects, getSides, Project, Side } from "@/utils/notion";
-import { useTranslate } from "@/utils/translate";
+import { useTranslate } from "utils/translate";
 import { annotate } from "rough-notation";
 import { HiExternalLink } from "react-icons/hi";
 
@@ -102,27 +102,21 @@ const Hero = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const projects = await getProjects();
-  const sides = await getSides();
-
+export const getStaticProps = async () => {
   return {
-    props: { projects, sides }
+    props: { projects: getProjects(), sides: getSides() }
   };
 };
 
 export default function Home({
   projects,
   sides
-}: {
-  projects: Project[];
-  sides: Side[];
-}) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const { english } = useTranslate();
-  const [sideShowing, setSideShowing] = useState<Side["id"]>(sides[0].id);
+  const [sideShowing, setSideShowing] = useState(sides[0].data.title);
 
   const filteredSide = useMemo(
-    () => sides.filter(side => side.id === sideShowing)[0],
+    () => sides.filter(side => side.data.title === sideShowing)[0],
     [sideShowing, sides]
   );
 
@@ -159,31 +153,32 @@ export default function Home({
           <div className='flex gap-4 flex-col sm:flex-row'>
             {sides.map(side => (
               <button
-                key={side.id}
-                onClick={() => setSideShowing(side.id)}
+                key={side.data.title}
+                onClick={() => setSideShowing(side.data.title)}
                 className={`px-4 py-2 rounded border border-sky-500 ${
-                  sideShowing === side.id &&
-                  "bg-sky-500 text-white shadow-lg shadow-sky-500/50"
-                } ${sideShowing !== side.id && "hover:bg-sky-200"}`}
+                  sideShowing === side.data.title
+                    ? "bg-sky-500 text-white shadow-lg shadow-sky-500/50"
+                    : "hover:bg-sky-200"
+                }`}
               >
-                {side.title}
+                {side.data.title}
               </button>
             ))}
           </div>
           {sideShowing && (
             <div className='flex flex-col md:flex-row bg-white border-2 border-gray-600'>
               <Image
-                src={filteredSide.image}
-                alt={filteredSide.title}
+                src={filteredSide.data.image}
+                alt={filteredSide.data.title}
                 width={1000}
                 height={1000}
                 className='object-cover w-full sm:max-w-xl h-96 transition'
               />
               <div className='px-8 py-4 space-y-4'>
-                <h3>{filteredSide.title}</h3>
-                {filteredSide.link && (
+                <h3>{filteredSide.data.title}</h3>
+                {filteredSide.data.link && (
                   <a
-                    href={filteredSide.link}
+                    href={filteredSide.data.link}
                     target='_blank'
                     rel='noreferrer'
                     className='link flex items-center gap-2'
@@ -191,7 +186,9 @@ export default function Home({
                     View project <HiExternalLink className='w-5 h-5' />
                   </a>
                 )}
-                <p>{filteredSide.summary}</p>
+                <article
+                  dangerouslySetInnerHTML={{ __html: filteredSide.content }}
+                />
               </div>
             </div>
           )}
@@ -204,7 +201,7 @@ export default function Home({
         </h2>
         <div className='flex flex-col gap-12 md:flex-row'>
           <Image
-            src='/me2.jpg'
+            src='/me.jpg'
             alt='Jake Ord standing on some stairs in Edinburgh'
             width={1000}
             height={1000}
@@ -263,7 +260,12 @@ export default function Home({
         </div>
 
         <div className='flex gap-4'>
-          <a href='/cv.pdf' className='block link'>
+          <a
+            href='/jakeord-cv.pdf'
+            rel='noreferrer'
+            target='_blank'
+            className='block link'
+          >
             Read my CV
           </a>
           <a href='mailto:jake.ord345@gmail.com' className='block link'>

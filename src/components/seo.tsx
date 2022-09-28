@@ -35,7 +35,7 @@ const SEO = ({
       <meta name='og:title' content={titleMeta} />
       <meta name='og:description' content={descriptionMeta} />
       <link rel='canonical' href={canonical} />
-      <link rel='icon' href='/dragon.svg' />
+      <link rel='icon' href='/favicon.svg' />
     </Head>
   );
 };
