@@ -30,7 +30,10 @@ const ProjectBody = ({
           className='object-cover w-full h-96'
         />
 
-        <article dangerouslySetInnerHTML={{ __html: project.content }} />
+        <article
+          className='prose prose-slate'
+          dangerouslySetInnerHTML={{ __html: project.content }}
+        />
       </section>
     </>
   );
