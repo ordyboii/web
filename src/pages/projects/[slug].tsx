@@ -1,8 +1,8 @@
 import Image from "next/future/image";
-import SEO from "@/components/seo";
+import SEO from "components/seo";
 import { FormEvent, useRef, useState } from "react";
-import { GetServerSideProps } from "next";
-import { getProject, Project } from "@/utils/notion";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { Project, allProjects } from "generated";
 
 const ProjectBody = ({ project }: { project: Project }) => {
   return (
@@ -26,22 +26,29 @@ const ProjectBody = ({ project }: { project: Project }) => {
 
         <article
           className='max-w-full prose md:prose-lg'
-          dangerouslySetInnerHTML={{ __html: project.content! }}
+          dangerouslySetInnerHTML={{ __html: project.body.html! }}
         />
       </section>
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  if (!params?.slug) {
-    return { props: {} };
-  }
-
-  const project = await getProject(params.slug[1]);
-
+export const getStaticPaths: GetStaticPaths = () => {
   return {
-    props: { project }
+    paths: allProjects.map(project => ({
+      params: { slug: project._raw.flattenedPath }
+    })),
+    fallback: false
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  return {
+    props: {
+      project: allProjects.find(project =>
+        project._raw.flattenedPath.includes(params?.slug as string)
+      )
+    }
   };
 };
 
@@ -65,7 +72,7 @@ export default function ProjectPage({ project }: { project?: Project }) {
     setError("Invalid secret");
   };
 
-  if (!project || !project.content) {
+  if (!project || !project.body) {
     return null;
   }
 

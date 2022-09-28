@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-module.exports = {
+import { withContentlayer } from "next-contentlayer";
+
+export default withContentlayer({
   reactStrictMode: true,
   images: {
     domains: ["s3.us-west-2.amazonaws.com"]
@@ -11,4 +12,4 @@ module.exports = {
   experimental: {
     newNextLinkBehavior: true
   }
-};
+});

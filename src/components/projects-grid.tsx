@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Project } from "@/utils/notion";
 import Image from "next/future/image";
+import { Project } from "generated";
 
 const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
   return (
     <div className='flex flex-col gap-4'>
       {projects.map((project, idx) => (
-        <Link key={idx} href={`/projects/${project.slug}/${project.id}`}>
+        <Link key={idx} href={`/${project._raw.flattenedPath}`}>
           <article
             className='bg-white rounded-sm border-2 border-gray-900 transition 
             cursor-pointer hover:scale-105 hover:rotate-2'

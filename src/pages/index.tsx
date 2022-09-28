@@ -1,13 +1,13 @@
 import Image from "next/future/image";
 import dynamic from "next/dynamic";
-import SEO from "@/components/seo";
-import ProjectsGrid from "@/components/projects-grid";
-import { GetServerSideProps } from "next";
+import SEO from "components/seo";
+import ProjectsGrid from "components/projects-grid";
+import { GetStaticProps } from "next";
 import { RefObject, useEffect, useMemo, useRef, useState } from "react";
-import { getProjects, getSides, Project, Side } from "@/utils/notion";
-import { useTranslate } from "@/utils/translate";
+import { useTranslate } from "utils/translate";
 import { annotate } from "rough-notation";
 import { HiExternalLink } from "react-icons/hi";
+import { allProjects, allSides, Project, Side } from "generated";
 
 const useAnnotation = (
   ref: RefObject<HTMLElement>,
@@ -102,12 +102,9 @@ const Hero = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const projects = await getProjects();
-  const sides = await getSides();
-
+export const getStaticProps: GetStaticProps = async () => {
   return {
-    props: { projects, sides }
+    props: { projects: allProjects, sides: allSides }
   };
 };
 
@@ -119,10 +116,10 @@ export default function Home({
   sides: Side[];
 }) {
   const { english } = useTranslate();
-  const [sideShowing, setSideShowing] = useState<Side["id"]>(sides[0].id);
+  const [sideShowing, setSideShowing] = useState<Side["_id"]>(sides[0]._id);
 
   const filteredSide = useMemo(
-    () => sides.filter(side => side.id === sideShowing)[0],
+    () => sides.filter(side => side._id === sideShowing)[0],
     [sideShowing, sides]
   );
 
@@ -159,12 +156,12 @@ export default function Home({
           <div className='flex gap-4 flex-col sm:flex-row'>
             {sides.map(side => (
               <button
-                key={side.id}
-                onClick={() => setSideShowing(side.id)}
+                key={side._id}
+                onClick={() => setSideShowing(side._id)}
                 className={`px-4 py-2 rounded border border-sky-500 ${
-                  sideShowing === side.id &&
+                  sideShowing === side._id &&
                   "bg-sky-500 text-white shadow-lg shadow-sky-500/50"
-                } ${sideShowing !== side.id && "hover:bg-sky-200"}`}
+                } ${sideShowing !== side._id && "hover:bg-sky-200"}`}
               >
                 {side.title}
               </button>
@@ -191,7 +188,9 @@ export default function Home({
                     View project <HiExternalLink className='w-5 h-5' />
                   </a>
                 )}
-                <p>{filteredSide.summary}</p>
+                <div
+                  dangerouslySetInnerHTML={{ __html: filteredSide.body.html }}
+                ></div>
               </div>
             </div>
           )}

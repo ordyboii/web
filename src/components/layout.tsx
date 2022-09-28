@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useTranslate } from "@/utils/translate";
+import { useTranslate } from "utils/translate";
 import { PropsWithChildren, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
