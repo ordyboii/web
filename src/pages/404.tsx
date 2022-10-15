@@ -1,6 +1,7 @@
 import SEO from "components/seo";
+import { HeadingOne, Link } from "components/typography";
+import NextLink from "next/link";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 
 const LazyPlayer = dynamic(
   () =>
@@ -13,21 +14,19 @@ const LazyPlayer = dynamic(
   }
 );
 
-export default function ErrorPage() {
+export default function Error() {
   return (
-    <section className='flex flex-col items-center sm:flex-row'>
+    <section className='flex flex-col-reverse items-center gap-12 py-16 sm:flex-row'>
       <SEO />
-      <div className=''>
-        {/* @ts-ignore */}
-        <LazyPlayer autoplay loop src='/dragon.json' className='w-full' />
-      </div>
+      {/* @ts-ignore */}
+      <LazyPlayer autoplay loop src='/dragon.json' />
       <div className='flex flex-col gap-6'>
-        <h1 className='flex-1'>
+        <HeadingOne className='flex-1'>
           Error 404: It appears you are lost, I cannot seem to find that page
-        </h1>
-        <Link href='/' className='link'>
-          Go back to the homepage
-        </Link>
+        </HeadingOne>
+        <NextLink href={{ pathname: "/" }}>
+          <Link>Go back to the homepage</Link>
+        </NextLink>
       </div>
     </section>
   );
