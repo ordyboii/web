@@ -1,11 +1,11 @@
 import {
   createContext,
-  Dispatch,
-  PropsWithChildren,
-  SetStateAction,
   useContext,
   useMemo,
-  useState
+  useState,
+  type Dispatch,
+  type PropsWithChildren,
+  type SetStateAction
 } from "react";
 
 const translateContext = createContext<{

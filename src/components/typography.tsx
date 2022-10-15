@@ -1,0 +1,128 @@
+import { useRouter } from "next/router";
+import {
+  type AnchorHTMLAttributes,
+  type DetailedHTMLProps,
+  forwardRef,
+  type HTMLAttributes
+} from "react";
+import { HiExternalLink } from "react-icons/hi";
+
+export const HeadingOne = forwardRef<
+  HTMLHeadingElement,
+  DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
+>((props, ref) => {
+  return (
+    <h1
+      ref={ref}
+      className='text-3xl font-black !leading-snug sm:text-5xl'
+      {...props}
+    >
+      {props.children}
+    </h1>
+  );
+});
+
+export const HeadingTwo = forwardRef<
+  HTMLHeadingElement,
+  DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
+>((props, ref) => {
+  return (
+    <h2 ref={ref} className='inline text-4xl font-bold' {...props}>
+      {props.children}
+    </h2>
+  );
+});
+
+export const HeadingThree = forwardRef<
+  HTMLHeadingElement,
+  DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
+>((props, ref) => {
+  return (
+    <h3 ref={ref} className='text-2xl font-black' {...props}>
+      {props.children}
+    </h3>
+  );
+});
+
+type Weights = "bold" | "regular";
+
+const TEXT_WEIGHTS: Record<Weights, string> = {
+  regular: "font-normal",
+  bold: "font-semibold"
+};
+
+export const Text = forwardRef<
+  HTMLParagraphElement,
+  DetailedHTMLProps<
+    HTMLAttributes<HTMLParagraphElement>,
+    HTMLParagraphElement
+  > & { weight?: Weights }
+>(({ weight = "regular", ...props }, ref) => {
+  return (
+    <p
+      ref={ref}
+      className={`text-lg leading-relaxed ${TEXT_WEIGHTS[weight]}`}
+      {...props}
+    >
+      {props.children}
+    </p>
+  );
+});
+
+type LinkType = "default" | "inverse";
+
+const LINK_TYPES: Record<LinkType, string> = {
+  default: "hover:text-sky-500",
+  inverse: "hover:text-gray-900"
+};
+
+export const Link = forwardRef<
+  HTMLAnchorElement,
+  DetailedHTMLProps<
+    AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  > & { variant?: "icon"; type?: LinkType }
+>(({ type = "default", ...props }, ref) => {
+  return (
+    <a
+      ref={ref}
+      className={`w-fit font-bold underline ${LINK_TYPES[type]}`}
+      {...props}
+    >
+      {props.variant === "icon" ? (
+        <div className='flex items-center gap-2 pt-2'>
+          View project <HiExternalLink className='h-5 w-5' />
+        </div>
+      ) : (
+        props.children
+      )}
+    </a>
+  );
+});
+
+export const NavLink = forwardRef<
+  HTMLAnchorElement,
+  DetailedHTMLProps<
+    AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  > & { inverse?: boolean; path: string }
+>((props, ref) => {
+  const { pathname } = useRouter();
+
+  const navClass = (path: string) =>
+    `${props.inverse ? "hover:text-gray-900" : "hover:text-sky-500"} ${
+      !props.inverse &&
+      pathname === path &&
+      "font-bold text-sky-500 border-b-2 border-sky-500 pb-1"
+    } ${
+      props.inverse &&
+      pathname === path &&
+      "font-bold text-gray-900 border-b-2 border-gray-900 pb-1"
+    }`;
+
+  return (
+    <a ref={ref} className={navClass(props.path)} {...props}>
+      {props.children}
+    </a>
+  );
+});

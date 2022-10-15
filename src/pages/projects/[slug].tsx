@@ -1,24 +1,26 @@
 import Image from "next/future/image";
 import SEO from "components/seo";
-import {
+import type {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType
 } from "next";
-import { FormEvent, useRef, useState } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import { getProjects } from "utils/markdown";
+import { HeadingOne, Text } from "components/typography";
+import { Button } from "components/button";
 
-const ProjectBody = ({
-  project
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+type ProjectBodyProps = InferGetStaticPropsType<typeof getStaticProps>;
+
+const ProjectBody = ({ project }: ProjectBodyProps) => {
   return (
     <>
       <SEO title={project.data.title} description={project?.data.summary} />
-      <section className='py-16 space-y-12 animate-fade-up'>
+      <section className='animate-fade-up space-y-12 py-16'>
         <div className='space-y-6'>
-          <p className='text-lg font-bold'>{project.data.client}</p>
-          <h1>{project.data.title}</h1>
-          <p className='text-lg'>{project.data.summary}</p>
+          <Text>{project.data.client}</Text>
+          <HeadingOne>{project.data.title}</HeadingOne>
+          <Text>{project.data.summary}</Text>
           <hr className='border border-gray-900' />
         </div>
 
@@ -27,11 +29,11 @@ const ProjectBody = ({
           alt={project.data.title}
           width={1000}
           height={1000}
-          className='object-cover w-full h-96'
+          className='h-96 w-full object-cover'
         />
 
         <article
-          className='prose prose-slate'
+          className='prose prose-stone max-w-full marker:text-slate-900 prose-blockquote:border-slate-900'
           dangerouslySetInnerHTML={{ __html: project.content }}
         />
       </section>
@@ -58,9 +60,9 @@ export const getStaticProps = ({ params }: GetStaticPropsContext) => {
   return { props: { project } };
 };
 
-export default function ProjectPage({
-  project
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
+
+export default function Project({ project }: ProjectProps) {
   const [authed, setAuthed] = useState(false);
   const [error, setError] = useState("");
   const input = useRef<HTMLInputElement>(null);
@@ -88,19 +90,19 @@ export default function ProjectPage({
     return authed ? (
       <ProjectBody project={project} />
     ) : (
-      <section className='py-12 space-y-6'>
+      <section className='space-y-6 py-12'>
         <SEO title={project.data.title} description={project.data.summary} />
-        <h1>This project is protected</h1>
-        <p>
+        <HeadingOne>This project is protected</HeadingOne>
+        <Text>
           If you are hitting this page it is likely because this project is
           still ongoing and contains sensitive information. Unfortunately, I
           cannot share the token to access this page. If you are a
           recruiter/hiring manager and wanting to see this project, please get
           in touch with me and we can work something out.
-        </p>
+        </Text>
         <form
           onSubmit={handleAuth}
-          className='flex gap-4 flex-col justify-center'
+          className='flex flex-col justify-center gap-4'
         >
           <label htmlFor='token'>Enter auth token:</label>
           <input
@@ -110,12 +112,8 @@ export default function ProjectPage({
             id='token'
             className='border border-gray-900 p-2'
           />
-
           {error.length > 0 && <p className='text-red-500'>{error}</p>}
-
-          <button className='button' type='submit'>
-            Submit token
-          </button>
+          <Button type='submit'>Submit token</Button>
         </form>
       </section>
     );

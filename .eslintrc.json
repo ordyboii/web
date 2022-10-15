@@ -1,3 +1,8 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended"],
+  "plugins": ["@typescript-eslint", "tailwindcss"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "warn",
+    "react/display-name": "off"
+  }
 }
