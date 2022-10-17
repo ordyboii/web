@@ -12,7 +12,7 @@ export const Button = forwardRef<
   return (
     <button
       ref={ref}
-      className='max-w-fit rounded-sm bg-sky-500 px-4 py-3 text-white transition hover:scale-95'
+      className='max-w-fit rounded-sm bg-sky-900 px-4 py-3 text-white transition hover:scale-95'
       {...props}
     >
       {props.children}
@@ -27,7 +27,7 @@ export const ButtonLink = forwardRef<
   return (
     <a
       ref={ref}
-      className='max-w-fit rounded-sm bg-sky-500 px-4 py-3 text-white transition hover:scale-95'
+      className='max-w-fit rounded-sm bg-sky-900 px-4 py-3 text-white transition hover:scale-95'
       {...props}
     >
       {props.children}
