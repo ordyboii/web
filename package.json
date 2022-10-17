@@ -11,6 +11,23 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.5.0"
+    "@astrojs/solid-js": "^1.2.0",
+    "@astrojs/tailwind": "^2.1.0",
+    "@lottiefiles/lottie-player": "^1.5.7",
+    "astro": "^1.5.0",
+    "rough-notation": "^0.5.1",
+    "solid-js": "^1.5.8",
+    "tailwindcss": "^3.1.8"
+  },
+  "devDependencies": {
+    "@fontsource/noto-sans": "^4.5.11",
+    "@tailwindcss/typography": "^0.5.7",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "eslint-plugin-astro": "^0.20.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-tailwindcss": "^3.6.2",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.6.0"
   }
 }
