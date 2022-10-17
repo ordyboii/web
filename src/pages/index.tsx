@@ -25,7 +25,7 @@ const useAnnotation = (
     if (ref.current) {
       const annotation = annotate(ref.current, {
         type: type,
-        color: "#0ea5e9"
+        color: "#0c4a6e"
       });
 
       annotation.show();
@@ -99,7 +99,7 @@ type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Home({ projects, sides }: HomeProps) {
   const { english } = useTranslate();
-  const [sideShowing, setSideShowing] = useState(sides[0].data.title);
+  const [sideShowing, setSideShowing] = useState(sides[0]?.data.title);
 
   const filteredSide = useMemo(
     () => sides.filter(side => side.data.title === sideShowing)[0],
@@ -138,17 +138,17 @@ export default function Home({ projects, sides }: HomeProps) {
               <button
                 key={side.data.title}
                 onClick={() => setSideShowing(side.data.title)}
-                className={`rounded border border-sky-500 px-4 py-2 ${
+                className={`rounded border border-sky-900 px-4 py-2 ${
                   sideShowing === side.data.title
-                    ? "bg-sky-500 text-white shadow-lg shadow-sky-500/50"
-                    : "hover:bg-sky-200"
+                    ? "bg-sky-900 text-white shadow-lg shadow-sky-900/50"
+                    : "hover:bg-sky-50"
                 }`}
               >
                 {side.data.title}
               </button>
             ))}
           </div>
-          {sideShowing && (
+          {sideShowing && filteredSide && (
             <div className='flex flex-col border-2 border-gray-600 bg-white md:flex-row'>
               <Image
                 src={filteredSide.data.image}

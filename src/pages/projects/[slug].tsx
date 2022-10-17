@@ -16,7 +16,7 @@ const ProjectBody = ({ project }: ProjectBodyProps) => {
   return (
     <>
       <SEO title={project.data.title} description={project?.data.summary} />
-      <section className='animate-fade-up space-y-12 py-16'>
+      <section className='space-y-12 py-16'>
         <div className='space-y-6'>
           <Text>{project.data.client}</Text>
           <HeadingOne>{project.data.title}</HeadingOne>
@@ -33,7 +33,8 @@ const ProjectBody = ({ project }: ProjectBodyProps) => {
         />
 
         <article
-          className='prose prose-stone max-w-full marker:text-slate-900 prose-blockquote:border-slate-900'
+          className='prose prose-stone prose-p:text-lg prose-li:text-lg 
+          prose-blockquote:border-slate-900 max-w-full marker:text-slate-900'
           dangerouslySetInnerHTML={{ __html: project.content }}
         />
       </section>

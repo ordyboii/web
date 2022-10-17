@@ -72,7 +72,7 @@ export const Text = forwardRef<
 type LinkType = "default" | "inverse";
 
 const LINK_TYPES: Record<LinkType, string> = {
-  default: "hover:text-sky-500",
+  default: "hover:text-sky-900",
   inverse: "hover:text-gray-900"
 };
 
@@ -110,15 +110,11 @@ export const NavLink = forwardRef<
   const { pathname } = useRouter();
 
   const navClass = (path: string) =>
-    `${props.inverse ? "hover:text-gray-900" : "hover:text-sky-500"} ${
-      !props.inverse &&
-      pathname === path &&
-      "font-bold text-sky-500 border-b-2 border-sky-500 pb-1"
+    `px-3 py-2 rounded-md transition ease-in ${
+      props.inverse ? "hover:text-sky-500" : "hover:bg-sky-900 hover:text-white"
     } ${
-      props.inverse &&
-      pathname === path &&
-      "font-bold text-gray-900 border-b-2 border-gray-900 pb-1"
-    }`;
+      !props.inverse && pathname === path && "font-bold bg-sky-900 text-white"
+    } ${props.inverse && pathname === path && "font-bold text-white"}`;
 
   return (
     <a ref={ref} className={navClass(props.path)} {...props}>

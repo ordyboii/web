@@ -1,5 +1,4 @@
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import { useTranslate } from "utils/translate";
 import { type PropsWithChildren, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
@@ -9,6 +8,10 @@ import { Link, NavLink, Text } from "./typography";
 type ItemProps = { inverse?: boolean };
 
 const Social = ({ inverse }: ItemProps) => {
+  const socialClass = `h-6 w-6 ${
+    inverse ? "hover:text-sky-500" : "hover:text-sky-900"
+  }`;
+
   return (
     <>
       <Link
@@ -18,7 +21,7 @@ const Social = ({ inverse }: ItemProps) => {
         type={inverse ? "inverse" : "default"}
         aria-label='Link to my LinkedIn page'
       >
-        <FaLinkedin className='h-6 w-6' />
+        <FaLinkedin className={socialClass} />
       </Link>
       <Link
         href='https://www.instagram.com/jakeorddy'
@@ -27,7 +30,7 @@ const Social = ({ inverse }: ItemProps) => {
         type={inverse ? "inverse" : "default"}
         aria-label='Link to my Instagram page'
       >
-        <FaInstagram className='h-6 w-6' />
+        <FaInstagram className={socialClass} />
       </Link>
       <Link
         href='https://github.com/jorddy'
@@ -36,7 +39,7 @@ const Social = ({ inverse }: ItemProps) => {
         type={inverse ? "inverse" : "default"}
         aria-label='Link to my Github page'
       >
-        <FaGithub className='h-6 w-6' />
+        <FaGithub className={socialClass} />
       </Link>
     </>
   );
@@ -45,7 +48,7 @@ const Social = ({ inverse }: ItemProps) => {
 const MenuItems = ({ inverse }: ItemProps) => {
   return (
     <>
-      <li className='flex gap-6'>
+      <li className='flex gap-2'>
         <NextLink href={{ pathname: "/" }}>
           <NavLink inverse={inverse} path='/'>
             Home
@@ -82,7 +85,7 @@ const Header = () => {
         </a>
       </NextLink>
 
-      <ul role='navigation' className='hidden gap-10 md:flex'>
+      <ul role='navigation' className='hidden gap-4 md:flex md:items-center'>
         <MenuItems />
       </ul>
 
@@ -93,7 +96,7 @@ const Header = () => {
       {isMenuOpen && (
         <nav
           className='absolute inset-x-2 top-2 z-10 space-y-4 rounded-sm 
-          border-2 border-gray-900 bg-sky-500 p-6 text-white'
+          border-2 border-gray-900 bg-sky-900 p-6 text-white'
         >
           <div className='flex items-center justify-between text-lg font-bold'>
             {english ? "Jake Ord" : "オルドジェイク"}
@@ -118,7 +121,7 @@ export default function Layout({ children }: PropsWithChildren) {
     <div className='mx-auto max-w-5xl p-8'>
       <a
         href='#content'
-        className='absolute -top-24 left-4 z-50 rounded-sm bg-sky-500 p-4 text-white focus:top-4'
+        className='absolute -top-24 left-4 z-50 rounded-sm bg-sky-900 p-4 text-white focus:top-4'
       >
         Skip to Content
       </a>
@@ -128,7 +131,7 @@ export default function Layout({ children }: PropsWithChildren) {
         <button
           onClick={() => setEnglish(!english)}
           className={`${
-            english ? "bg-sky-500" : "bg-gray-300"
+            english ? "bg-sky-900" : "bg-gray-300"
           } relative inline-flex h-6 w-11 items-center rounded-full`}
         >
           <span
