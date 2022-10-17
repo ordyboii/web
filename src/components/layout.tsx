@@ -1,5 +1,4 @@
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import { useTranslate } from "utils/translate";
 import { type PropsWithChildren, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
