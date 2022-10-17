@@ -1,14 +1,14 @@
 import Image from "next/future/image";
-import SEO from "../old-site/src/components/seo";
+import SEO from "components/seo";
 import type {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType
 } from "next";
 import { type FormEvent, useRef, useState } from "react";
-import { getProjects } from "../old-site/src/utils/markdown";
-import { HeadingOne, Text } from "../old-site/src/components/typography";
-import { Button } from "../old-site/src/components/button";
+import { getProjects } from "utils/markdown";
+import { HeadingOne, Text } from "components/typography";
+import { Button } from "components/button";
 
 type ProjectBodyProps = InferGetStaticPropsType<typeof getStaticProps>;
 

@@ -1,5 +1,6 @@
 import NextLink from "next/link";
-import { useTranslate } from "../old-site/src/utils/translate";
+import { useRouter } from "next/router";
+import { useTranslate } from "utils/translate";
 import { type PropsWithChildren, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";

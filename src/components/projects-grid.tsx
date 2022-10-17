@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 import Image from "next/future/image";
-import type { Project } from "../old-site/src/utils/markdown";
+import type { Project } from "utils/markdown";
 import { HeadingThree, Link, Text } from "./typography";
 
 type ProjectGridProps = { projects: Project[] };
