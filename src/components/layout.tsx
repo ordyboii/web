@@ -78,7 +78,7 @@ const Header = () => {
     <header className='flex items-center justify-between gap-8'>
       <NextLink href={{ pathname: "/" }}>
         <a className='text-3xl font-bold hover:opacity-60 focus:opacity-60'>
-          {english ? "Jake Ord" : "オルドジェイク"}
+          {english ? "Jake Ord" : "オードジェイク"}
         </a>
       </NextLink>
 
