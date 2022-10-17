@@ -1,12 +1,12 @@
 import Image from "next/future/image";
 import dynamic from "next/dynamic";
-import SEO from "components/seo";
-import ProjectsGrid from "components/projects-grid";
-import { getProjects, getSides } from "utils/markdown";
+import SEO from "../old-site/src/components/seo";
+import ProjectsGrid from "../old-site/src/components/projects-grid";
+import { getProjects, getSides } from "../old-site/src/utils/markdown";
 import type { InferGetStaticPropsType } from "next";
 import type { RefObject } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useTranslate } from "utils/translate";
+import { useTranslate } from "../old-site/src/utils/translate";
 import { annotate } from "rough-notation";
 import {
   Link,
@@ -14,8 +14,8 @@ import {
   HeadingThree,
   HeadingTwo,
   Text
-} from "components/typography";
-import { ButtonLink } from "components/button";
+} from "../old-site/src/components/typography";
+import { ButtonLink } from "../old-site/src/components/button";
 
 const useAnnotation = (
   ref: RefObject<HTMLElement>,

@@ -1,5 +1,5 @@
-import SEO from "components/seo";
-import { HeadingOne, Link } from "components/typography";
+import SEO from "../old-site/src/components/seo";
+import { HeadingOne, Link } from "../old-site/src/components/typography";
 import NextLink from "next/link";
 import dynamic from "next/dynamic";
 
