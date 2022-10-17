@@ -67,7 +67,7 @@ const MenuItems = ({ inverse }: ItemProps) => {
       </li>
 
       <li className='flex gap-4'>
-        <Social inverse />
+        <Social inverse={inverse} />
       </li>
     </>
   );
