@@ -82,7 +82,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <Suspense fallback={<p>HERE BE DRAGONS...</p>}>
+      <Suspense fallback={"HERE BE DRAGONS..."}>
         <Dragon size={300} />
       </Suspense>
     </section>

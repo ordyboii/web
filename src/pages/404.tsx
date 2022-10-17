@@ -12,7 +12,7 @@ export default function Error() {
   return (
     <section className='flex flex-col-reverse items-center gap-12 py-16 sm:flex-row'>
       <SEO />
-      <Suspense fallback={<p>HERE BE DRAGONS...</p>}>
+      <Suspense fallback={"HERE BE DRAGONS..."}>
         <Dragon size={500} />
       </Suspense>
       <div className='flex flex-col gap-6'>
