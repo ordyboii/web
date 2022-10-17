@@ -4,7 +4,7 @@ import SEO from "components/seo";
 import ProjectsGrid from "components/projects-grid";
 import { getProjects, getSides } from "utils/markdown";
 import type { InferGetStaticPropsType } from "next";
-import type { RefObject } from "react";
+import { type RefObject, Suspense } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslate } from "utils/translate";
 import { annotate } from "rough-notation";
@@ -34,16 +34,9 @@ const useAnnotation = (
   }, [ref, type]);
 };
 
-const LazyPlayer = dynamic(
-  () =>
-    import("@lottiefiles/react-lottie-player").then(
-      imports => imports.Player
-    ) as any,
-  {
-    ssr: false,
-    loading: () => <p className='justify-center'>Loading animation...</p>
-  }
-);
+const Dragon = dynamic(() => import("components/dragon"), {
+  suspense: true
+});
 
 const Hero = () => {
   const { english } = useTranslate();
@@ -89,8 +82,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* @ts-ignore */}
-      <LazyPlayer autoplay loop src='/dragon.json' className='w-full' />
+      <Suspense fallback={<p>HERE BE DRAGONS...</p>}>
+        <Dragon size={300} />
+      </Suspense>
     </section>
   );
 };
