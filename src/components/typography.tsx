@@ -14,7 +14,7 @@ export const HeadingOne = forwardRef<
   return (
     <h1
       ref={ref}
-      className='text-3xl font-black !leading-snug sm:text-4xl'
+      className='w-fit text-3xl font-black !leading-snug sm:text-4xl'
       {...props}
     >
       {props.children}
@@ -27,7 +27,7 @@ export const HeadingTwo = forwardRef<
   DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
 >((props, ref) => {
   return (
-    <h2 ref={ref} className='inline text-3xl font-bold' {...props}>
+    <h2 ref={ref} className='w-fit text-3xl font-bold' {...props}>
       {props.children}
     </h2>
   );
@@ -38,7 +38,7 @@ export const HeadingThree = forwardRef<
   DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
 >((props, ref) => {
   return (
-    <h3 ref={ref} className='text-xl font-black' {...props}>
+    <h3 ref={ref} className='w-fit text-xl font-black' {...props}>
       {props.children}
     </h3>
   );

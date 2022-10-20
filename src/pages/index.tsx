@@ -37,7 +37,8 @@ const Hero = () => {
         <Text className='text-lg'>
           I blend together product, usability, accessibility and technical
           design to deliver research-validated solutions that drive business
-          growth. Currently leading the UX design at{" "}
+          growth. Nerdy about all things Typescript. Currently leading the UX
+          design at{" "}
           <Link href='https://www.def.co.uk' target='_blank' rel='noreferrer'>
             DEF Software.
           </Link>{" "}
