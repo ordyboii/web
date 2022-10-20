@@ -1,9 +1,8 @@
 ---
-title: A new online platform for planning applications
-summary: Dorset Council had commissioned DEF to undertake transforming their entire planning online infrastructure. As part of this I was tasked with collaborating with Dorset’s UX team to re-imagine the online portal for different audiences - including members of the public, ward officers and consultees.
+title: Why I Learnt To Code As A UX Designer
+summary: Designers sometimes say that learning to code is not required. While that is true, I found the experience of learning to code enriched my understanding of my designs and helped me develop a closer relationship with the developers on my team.
 image: /images/dorset-planning-online.png
-client: Dorset Council
-protected: true
+date: 20/10/2022
 ---
 
 ## An overhaul to planning online

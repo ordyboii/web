@@ -110,11 +110,13 @@ export const NavLink = forwardRef<
   const { pathname } = useRouter();
 
   const navClass = (path: string) =>
-    `px-3 py-2 rounded-md transition ease-in ${
-      props.inverse ? "hover:text-sky-500" : "hover:bg-sky-900 hover:text-white"
+    `px-3 py-2 rounded-md transition ease-in cursor-pointer ${
+      props.inverse ? "hover:bg-sky-500" : "hover:bg-sky-900 hover:text-white"
     } ${
       !props.inverse && pathname === path && "font-bold bg-sky-900 text-white"
-    } ${props.inverse && pathname === path && "font-bold text-white"}`;
+    } ${
+      props.inverse && pathname === path && "font-bold bg-sky-500 text-white"
+    }`;
 
   return (
     <a ref={ref} className={navClass(props.path)} {...props}>

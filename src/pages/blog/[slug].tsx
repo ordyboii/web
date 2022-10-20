@@ -6,7 +6,7 @@ import type {
   InferGetStaticPropsType
 } from "next";
 import { type FormEvent, useRef, useState } from "react";
-import { getContent, type Project } from "utils/markdown";
+import { getProjects } from "utils/markdown";
 import { HeadingOne, Text } from "components/typography";
 import { Button } from "components/button";
 
@@ -44,7 +44,7 @@ const ProjectBody = ({ project }: ProjectBodyProps) => {
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
-    paths: getContent<Project["data"]>("projects").map(project => ({
+    paths: getProjects().map(project => ({
       params: { slug: project.slug }
     })),
     fallback: false
@@ -52,9 +52,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 };
 
 export const getStaticProps = ({ params }: GetStaticPropsContext) => {
-  const project = getContent<Project["data"]>("projects").find(
-    project => project!.slug === params?.slug
-  );
+  const project = getProjects().find(project => project.slug === params?.slug);
 
   if (!project) {
     throw new Error("Project not found");

@@ -7,8 +7,11 @@ declare module "nextjs-routes" {
   export type Route =
     | { pathname: "/404"; query?: Query | undefined }
     | { pathname: "/api/auth-secret"; query?: Query | undefined }
+    | { pathname: "/blog/[slug]"; query: Query<{ "slug": string }> }
+    | { pathname: "/blog"; query?: Query | undefined }
     | { pathname: "/"; query?: Query | undefined }
-    | { pathname: "/projects/[slug]"; query: Query<{ "slug": string }> };
+    | { pathname: "/projects/[slug]"; query: Query<{ "slug": string }> }
+    | { pathname: "/projects"; query?: Query | undefined };
 
   type Query<Params = {}> = Params & { [key: string]: string | string[] | undefined };
 

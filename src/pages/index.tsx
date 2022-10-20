@@ -2,12 +2,11 @@ import Image from "next/future/image";
 import dynamic from "next/dynamic";
 import SEO from "components/seo";
 import ProjectsGrid from "components/projects-grid";
-import { getProjects, getSides } from "utils/markdown";
+import { getContent, type Side, type Project } from "utils/markdown";
 import type { InferGetStaticPropsType } from "next";
-import { type RefObject, Suspense } from "react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useTranslate } from "utils/translate";
-import { annotate } from "rough-notation";
 import {
   Link,
   HeadingOne,
@@ -16,23 +15,7 @@ import {
   Text
 } from "components/typography";
 import { ButtonLink } from "components/button";
-
-const useAnnotation = (
-  ref: RefObject<HTMLElement>,
-  type: "box" | "underline"
-) => {
-  useEffect(() => {
-    if (ref.current) {
-      const annotation = annotate(ref.current, {
-        type: type,
-        color: "#0c4a6e"
-      });
-
-      annotation.show();
-      return () => annotation.remove();
-    }
-  }, [ref, type]);
-};
+import { useAnnotation } from "utils/annotation";
 
 const Dragon = dynamic(() => import("components/dragon"), {
   suspense: true
@@ -40,12 +23,8 @@ const Dragon = dynamic(() => import("components/dragon"), {
 
 const Hero = () => {
   const { english } = useTranslate();
-
   const textRef = useRef<HTMLElement>(null);
-  const contactRef = useRef<HTMLAnchorElement>(null);
-
   useAnnotation(textRef, "box");
-  useAnnotation(contactRef, "box");
 
   return (
     <section className='flex min-h-[600px] flex-col items-center gap-4 py-12 md:flex-row md:gap-20'>
@@ -74,11 +53,9 @@ const Hero = () => {
             : "少し日本語も話せます。"}
         </Text>
 
-        <div className='flex flex-col gap-8 sm:flex-row sm:items-center'>
+        <div className='flex flex-col gap-6 sm:flex-row sm:items-center'>
           <ButtonLink href='#work'>View my work</ButtonLink>
-          <Link ref={contactRef} href='mailto:jake.ord345@gmail.com'>
-            Or contact me
-          </Link>
+          <Link href='mailto:jake.ord345@gmail.com'>Contact me</Link>
         </div>
       </div>
 
@@ -91,7 +68,10 @@ const Hero = () => {
 
 export const getStaticProps = async () => {
   return {
-    props: { projects: getProjects(), sides: getSides() }
+    props: {
+      projects: getContent<Project["data"]>("projects"),
+      sides: getContent<Side>("sides")
+    }
   };
 };
 
