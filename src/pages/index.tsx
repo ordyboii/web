@@ -1,7 +1,7 @@
 import Image from "next/future/image";
 import dynamic from "next/dynamic";
 import SEO from "components/seo";
-import ProjectsGrid from "components/projects-grid";
+import { ProjectsGrid } from "components/grids";
 import { getContent, type Side, type Project } from "utils/markdown";
 import type { InferGetStaticPropsType } from "next";
 import { Suspense } from "react";
@@ -27,17 +27,17 @@ const Hero = () => {
   useAnnotation(textRef, "box");
 
   return (
-    <section className='flex min-h-[600px] flex-col items-center gap-4 py-12 md:flex-row md:gap-20'>
+    <section className='flex min-h-[600px] flex-col items-center gap-10 py-12 sm:gap-6 md:flex-row md:gap-20'>
       <div className='max-w-xl space-y-6'>
         <HeadingOne>
-          A <span ref={textRef}>UX Designer</span> based in Newcastle Upon Tyne.
+          Hi I&apos;m Jake, A <span ref={textRef}>multidisciplinary</span>{" "}
+          designer that loves the web
         </HeadingOne>
 
         <Text className='text-lg'>
-          Blending together product strategy, visual design, accessibility and
-          web prototyping to deliver research-validated solutions. Creating
-          experiences that drive user/business growth. Currently a UX Designer
-          at{" "}
+          I blend together product, usability, accessibility and technical
+          design to deliver research-validated solutions that drive business
+          growth. Currently leading the UX design at{" "}
           <Link href='https://www.def.co.uk' target='_blank' rel='noreferrer'>
             DEF Software.
           </Link>{" "}
@@ -47,15 +47,24 @@ const Hero = () => {
           </Link>
         </Text>
 
-        <Text className='text-lg font-bold'>
-          {english
-            ? "I also speak a little Japanese"
-            : "少し日本語も話せます。"}
-        </Text>
+        <div className='flex flex-wrap items-center gap-2'>
+          <Image
+            src='/me-tenerife-profile.jpg'
+            alt='Jake Ord standing on some stairs in Edinburgh'
+            width={1000}
+            height={1000}
+            className='h-16 w-16 rounded-full border-2 border-gray-900 object-cover'
+          />
+          <Text className='text-lg font-bold'>
+            {english
+              ? "I also speak a little Japanese"
+              : "「初めまして、少し日本語も話せます」"}
+          </Text>
+        </div>
 
-        <div className='flex flex-col gap-6 sm:flex-row sm:items-center'>
+        <div className='flex flex-wrap items-center gap-6'>
           <ButtonLink href='#work'>View my work</ButtonLink>
-          <Link href='mailto:jake.ord345@gmail.com'>Contact me</Link>
+          <Link href='mailto:jake.ord345@gmail.com'>Or say hello</Link>
         </div>
       </div>
 
@@ -66,12 +75,12 @@ const Hero = () => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps = () => {
+  const projects = getContent<Project["data"]>("projects");
+  const sides = getContent<Side>("sides");
+
   return {
-    props: {
-      projects: getContent<Project["data"]>("projects"),
-      sides: getContent<Side>("sides")
-    }
+    props: { projects, sides }
   };
 };
 
@@ -89,7 +98,6 @@ export default function Home({ projects, sides }: HomeProps) {
   const workRef = useRef<HTMLHeadingElement>(null);
   const aboutRef = useRef<HTMLHeadingElement>(null);
   const sideRef = useRef<HTMLHeadingElement>(null);
-
   useAnnotation(workRef, "underline");
   useAnnotation(aboutRef, "underline");
   useAnnotation(sideRef, "underline");
@@ -100,16 +108,14 @@ export default function Home({ projects, sides }: HomeProps) {
       <SEO />
 
       <section id='work' className='space-y-8 py-12'>
-        <HeadingTwo ref={workRef}>Select Work</HeadingTwo>
+        <HeadingTwo ref={workRef}>Select work</HeadingTwo>
         <ProjectsGrid projects={projects} />
       </section>
 
       <section className='space-y-8 py-12'>
         <div className='space-y-6'>
           <HeadingTwo ref={sideRef}>Side work</HeadingTwo>
-          <Text>
-            Older projects and apps I have built to scratch my own itch.
-          </Text>
+          <Text>Projects and apps I&apos;ve built in the past.</Text>
         </div>
 
         <div className='space-y-4'>
@@ -159,18 +165,32 @@ export default function Home({ projects, sides }: HomeProps) {
       <section className='space-y-8 py-12'>
         <HeadingTwo ref={aboutRef}>About Jake</HeadingTwo>
         <div className='flex flex-col gap-12 md:flex-row'>
-          <Image
-            src='/me.jpg'
-            alt='Jake Ord standing on some stairs in Edinburgh'
-            width={1000}
-            height={1000}
-            className='rounded border-2 border-gray-900 object-cover sm:w-2/4'
-          />
+          <div className='isolate grid grid-cols-2 grid-rows-3 gap-4'>
+            <Image
+              src='/me-work.jpg'
+              alt='Jake Ord sketching on projects with a sharpie'
+              width={1000}
+              height={1000}
+              className='col-span-2 row-span-2 h-full object-cover shadow-xl'
+            />
+            <Image
+              src='/me-london.jpg'
+              alt='Jake Ord posing for a framed shot in Tenerife'
+              width={1000}
+              height={1000}
+              className='col-span-1 row-span-1 h-full object-cover shadow-xl lg:-mt-44 lg:-ml-12'
+            />
+            <Image
+              src='/me-tenerife.jpg'
+              alt='Jake Ord looking out towards Trafalgar Square, London'
+              width={1000}
+              height={1000}
+              className='col-span-1 row-span-1 h-full object-cover shadow-xl lg:-mt-12 lg:-ml-6'
+            />
+          </div>
 
           <div className='space-y-4'>
-            <Text weight='bold'>
-              {english ? "Nice to meet you" : "初めまして。"}
-            </Text>
+            <HeadingThree>So...who are you?</HeadingThree>
 
             <Text>
               I am a British-born designer based in Newcastle, UK. I am driven
@@ -203,12 +223,12 @@ export default function Home({ projects, sides }: HomeProps) {
             </Text>
 
             <HeadingThree>
-              I noticed Japanese phrases on your website - do you speak it?
+              What&apos;s up with the Japanese? Do you speak it?
             </HeadingThree>
             <Text>
               {english
                 ? `Only a little bit. I'm studying a lot`
-                : "ちょっとだけ。たくさん勉強しています。"}
+                : "ちょっとだけ。たくさん勉強してるよ。"}
             </Text>
           </div>
         </div>

@@ -5,9 +5,9 @@ import { HeadingThree, Link, Text } from "./typography";
 
 type ProjectGridProps = { projects: Project[] };
 
-export default function ProjectsGrid({ projects }: ProjectGridProps) {
+export const ProjectsGrid = ({ projects }: ProjectGridProps) => {
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {projects.map((project, idx) => (
         <NextLink
           key={idx}
@@ -37,4 +37,4 @@ export default function ProjectsGrid({ projects }: ProjectGridProps) {
       ))}
     </div>
   );
-}
+};

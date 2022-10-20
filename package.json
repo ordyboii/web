@@ -20,7 +20,6 @@
     "rough-notation": "^0.5.1"
   },
   "devDependencies": {
-    "@fontsource/noto-sans": "^4.5.10",
     "@tailwindcss/typography": "^0.5.7",
     "@types/marked": "^4.0.7",
     "@types/node": "^18.0.0",

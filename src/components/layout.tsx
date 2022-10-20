@@ -9,7 +9,7 @@ import { Link, NavLink, Text } from "./typography";
 type ItemProps = { inverse?: boolean };
 
 const Social = ({ inverse }: ItemProps) => {
-  const socialClass = `h-6 w-6 ${
+  const socialClass = `h-7 w-7 ${
     inverse ? "hover:text-sky-500" : "hover:text-sky-900"
   }`;
 
@@ -43,7 +43,7 @@ const MenuItems = ({ inverse }: ItemProps) => {
       <li className='flex gap-2'>
         <NextLink href={{ pathname: "/projects" }}>
           <NavLink inverse={inverse} path='/projects'>
-            My Work
+            Work
           </NavLink>
         </NextLink>
 
@@ -130,9 +130,9 @@ export default function Layout({ children }: PropsWithChildren) {
       </a>
 
       <aside className='fixed bottom-4 right-4 z-50 flex flex-col items-center gap-4'>
-        <div className='hidden animate-bounce items-center gap-4 xl:flex'>
+        <div className='hidden animate-bounce items-center gap-4 motion-reduce:animate-none xl:flex'>
           <BsArrow90DegDown className='h-5 w-5' />
-          <p>Translate</p>
+          <p>Translate me!</p>
         </div>
         <li className='flex gap-4 rounded-xl border-2 border-gray-600 bg-white p-4'>
           <strong>JP</strong>
