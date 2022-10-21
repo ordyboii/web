@@ -2,7 +2,6 @@
 title: Designing a flexible, unified web based planning system for back-office
 summary: I was tasked with leading the UX/UI process of Manifold, a web-based replacement for back-office planning solutions. Everything from research analysis, stakeholder/developer collaboration, design system, and UI/wireframing.
 image: /images/manifold.png
-date: 2021/01/11
 client: Local authorities across the UK
 protected: true
 ---

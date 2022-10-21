@@ -2,7 +2,6 @@
 title: Improving the experience of finding planning applications
 summary: I lead the redesign of the old Norfolk planning register to improve the experience of finding applications, which receives hundreds of visits from members of the public every week.
 image: /images/norfolk-register-cover.png
-date: 2021/01/11
 client: Norfolk County Council
 protected: false
 ---

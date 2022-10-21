@@ -10,59 +10,45 @@ export type Project = {
     title: string;
     summary: string;
     image: string;
-    date: string;
     client: string;
     protected: boolean;
   };
 };
 
 export type Side = {
+  title: string;
+  image: string;
+  link?: string;
+};
+
+export type Post = {
+  slug: string;
   content: string;
   data: {
     title: string;
+    summary: string;
     image: string;
-    link?: string;
+    date: string;
   };
 };
 
-export const getProjects = (): Project[] => {
-  const files = fs.readdirSync(path.join("content/projects"));
+type Content = "projects" | "posts" | "sides";
+
+export const getContent = <TContentData>(content: Content) => {
+  const files = fs.readdirSync(path.join(`content/${content}`));
 
   return files.map(file => {
     const slug = file.replace(".md", "");
-
     const markdown = fs.readFileSync(
-      path.join(`content/projects/${file}`),
+      path.join(`content/${content}/${file}`),
       "utf-8"
     );
-
     const parsed = matter(markdown);
 
     return {
       slug,
       content: marked.parse(parsed.content),
-      data: parsed.data as Project["data"]
-    };
-  });
-};
-
-export const getSides = (): Side[] => {
-  const files = fs.readdirSync(path.join("content/sides"));
-
-  return files.map(file => {
-    const slug = file.replace(".md", "");
-
-    const markdown = fs.readFileSync(
-      path.join(`content/sides/${file}`),
-      "utf-8"
-    );
-
-    const parsed = matter(markdown);
-
-    return {
-      slug,
-      content: marked.parse(parsed.content),
-      data: parsed.data as Side["data"]
+      data: parsed.data as TContentData
     };
   });
 };

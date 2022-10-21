@@ -6,7 +6,7 @@ import type {
   InferGetStaticPropsType
 } from "next";
 import { type FormEvent, useRef, useState } from "react";
-import { getProjects } from "utils/markdown";
+import { getContent, type Project } from "utils/markdown";
 import { HeadingOne, Text } from "components/typography";
 import { Button } from "components/button";
 
@@ -33,8 +33,8 @@ const ProjectBody = ({ project }: ProjectBodyProps) => {
         />
 
         <article
-          className='prose prose-stone prose-p:text-lg prose-li:text-lg 
-          prose-blockquote:border-slate-900 max-w-full marker:text-slate-900'
+          className='prose prose-stone max-w-full marker:text-slate-900 
+          prose-p:text-lg prose-blockquote:border-slate-900 prose-li:text-lg'
           dangerouslySetInnerHTML={{ __html: project.content }}
         />
       </section>
@@ -44,7 +44,7 @@ const ProjectBody = ({ project }: ProjectBodyProps) => {
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
-    paths: getProjects().map(project => ({
+    paths: getContent<Project["data"]>("projects").map(project => ({
       params: { slug: project.slug }
     })),
     fallback: false
@@ -52,13 +52,14 @@ export const getStaticPaths: GetStaticPaths = () => {
 };
 
 export const getStaticProps = ({ params }: GetStaticPropsContext) => {
-  const project = getProjects().find(project => project.slug === params?.slug);
+  const project = getContent<Project["data"]>("projects").find(
+    project => project!.slug === params?.slug
+  );
+  if (!project) throw new Error("Project not found");
 
-  if (!project) {
-    throw new Error("Project not found");
-  }
-
-  return { props: { project } };
+  return {
+    props: { project }
+  };
 };
 
 type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
@@ -92,7 +93,10 @@ export default function Project({ project }: ProjectProps) {
       <ProjectBody project={project} />
     ) : (
       <section className='space-y-6 py-12'>
-        <SEO title={project.data.title} description={project.data.summary} />
+        <SEO
+          title={`${project.data.title} - Jake Ord`}
+          description={project.data.summary}
+        />
         <HeadingOne>This project is protected</HeadingOne>
         <Text>
           If you are hitting this page it is likely because this project is

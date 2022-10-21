@@ -14,7 +14,7 @@ export const HeadingOne = forwardRef<
   return (
     <h1
       ref={ref}
-      className='text-3xl font-black !leading-snug sm:text-5xl'
+      className='w-fit text-3xl font-black !leading-snug sm:text-4xl'
       {...props}
     >
       {props.children}
@@ -27,7 +27,7 @@ export const HeadingTwo = forwardRef<
   DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
 >((props, ref) => {
   return (
-    <h2 ref={ref} className='inline text-4xl font-bold' {...props}>
+    <h2 ref={ref} className='w-fit text-3xl font-bold' {...props}>
       {props.children}
     </h2>
   );
@@ -38,7 +38,7 @@ export const HeadingThree = forwardRef<
   DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
 >((props, ref) => {
   return (
-    <h3 ref={ref} className='text-2xl font-black' {...props}>
+    <h3 ref={ref} className='w-fit text-xl font-black' {...props}>
       {props.children}
     </h3>
   );
@@ -110,11 +110,11 @@ export const NavLink = forwardRef<
   const { pathname } = useRouter();
 
   const navClass = (path: string) =>
-    `px-3 py-2 rounded-md transition ease-in ${
-      props.inverse ? "hover:text-sky-500" : "hover:bg-sky-900 hover:text-white"
-    } ${
-      !props.inverse && pathname === path && "font-bold bg-sky-900 text-white"
-    } ${props.inverse && pathname === path && "font-bold text-white"}`;
+    `px-3 py-2 rounded-md transition ease-in cursor-pointer ${
+      props.inverse ? "hover:bg-sky-500" : "hover:bg-sky-900 hover:text-white"
+    } ${!props.inverse && pathname === path && "bg-sky-900 text-white"} ${
+      props.inverse && pathname === path && "bg-sky-500 text-white"
+    }`;
 
   return (
     <a ref={ref} className={navClass(props.path)} {...props}>

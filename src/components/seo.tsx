@@ -10,11 +10,11 @@ export default function SEO({ title, description }: Props) {
   const router = useRouter();
   const titleMeta = title
     ? title
-    : "Jake Ord - UX Designer based in Newcastle Upon Tyne";
+    : "Jake Ord - Multidisciplinary designer that loves the web";
   const canonical = "https://jakeord.space" + router.asPath;
   const descriptionMeta = description
     ? description
-    : "UX & web designer, UX/UI, web designer, typescript nerd. Based in Newcastle-upon-tyne. I love to create experiences that make people's lives easier.";
+    : "Multidisciplinary designer and typescript nerd. Based in Newcastle-Upon-Tyne. I blend together product, usability, accessibility and technical design to deliver research-validated solutions that drive business growth.";
 
   return (
     <Head>
@@ -22,14 +22,14 @@ export default function SEO({ title, description }: Props) {
       <meta name='description' content={descriptionMeta} />
       <meta
         name='keywords'
-        content='Jake Ord, jorddy, UX Designer, UX, UX/UI Newcastle-Upon-Tyne, Newcastle, cesign, coding, Typescript, graphics, portfolio, web'
+        content='Jake Ord, jorddy, UX Designer, UX, UX/UI Newcastle-Upon-Tyne, Newcastle, design, coding, typescript, graphics, portfolio, web'
       />
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content='jakeord' />
-      <meta name='twitter:image' content='/images/me.jpeg' />
+      <meta name='twitter:image' content='/images/me-tenerife.jpg' />
       <meta name='og:site_name' content='Jake Ord' />
       <meta name='og:type' content='website' />
-      <meta name='og:image' content='/images/me.jpeg' />
+      <meta name='og:image' content='/images/me-tenerife.jpg' />
       <meta name='og:url' content={canonical} />
       <meta name='og:title' content={titleMeta} />
       <meta name='og:description' content={descriptionMeta} />
