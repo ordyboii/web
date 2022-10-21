@@ -1,68 +1,28 @@
 ---
 title: Why I Learnt To Code As A UX Designer
 summary: Designers sometimes say that learning to code is not required. While that is true, I found the experience of learning to code enriched my understanding of my designs and helped me develop a closer relationship with the developers on my team.
-image: /images/dorset-planning-online.png
-date: 20/10/2022
+image: /images/coding.jpg
+date: 2022/09/26
 ---
 
-## An overhaul to planning online
+## The elephant in the room
 
-Dorset Council were going through a period of digital transformation in planning and as part of this had received funding from the Department for Levelling Up, Housing and Communities \*\*\*\*to help improve their services to the general public, consultees and ward/parish officers.
+Should you learn to code? "But it gives you all these benefits" I hear you say! Learning to code as a designer is... tough, to say the least. I don't remember a time where I didn't come across an article that encouraged the benefits of learning to code as a designer. For many years I believed that a designer is a designer and a developer is a developer and that the industry should respect the differences in the job roles. If I wanted to specialise as a UX designer, I should be able to; and there's nothing stopping you from doing that. However, when I got my first real design job at a software house I quickly learned the hard way that not knowing anything about code would prove ineffective at communicating why my designs will benefit the product.
 
-Dorset commissioned DEF Software to help transform their planning register into an online platform offering services such as tracking applications, subscribing to applications and RBAC-based login to offer better services to internal/external consultations.
+Convincing developers is hard. Imagine this you order some takeout food, you heard the food was good but they had no prices on the menu, but still you carry on because the reviews were good and you had no reason to distrust the place. Then, your food arrives, but it turns out they charge you 10x more than you were expecting. You can't afford it, and now you have to convince the delivery driver to give you the food without paying the costs set by the restaurant - it's an uphill battle. Do you see why developers have a hard time with this? Developers work programmatically, they aren't all the creative bunch like we are a great idea to you may be an impossible technical feat to them, but nevertheless you push them to do it. Many teams I've read up on even go so far as to separate the teams, and only the project managers relay the communication between design and development. I think this is wrong!
 
-I was brought into the project to help collaborate with Dorset on the designs for the online platform.
+DEVELOPERS SHOULD BE A PART OF THE DESIGN PROCESS! I cannot stress that any more, everyone has great ideas and I have learned so much by going out of my way to take an interest in the "WHY" things can't be built. Not only do I grow as a designer, but I now approach my designs with not only a creative mindset but a technical one, and this is something that can only be gained by learning a little code.
 
-**_Timeline: 2022-Ongoing_**
+## How it feels being the elusive "unicorn"
 
-**_Process: Agile_**
+We've all heard of the design "unicorn" before. The elusive designer that not only knows how to design but to build the design. They exist, but not how you think they exist. Sure, I reckon that there are designers out there who are full-stack and could build an entire application with developement best practices whilst simultaneously designing a beautiful UI. In fact, in many startups you'll find a lot of these designers actually exist as the "wear-many-hats" role.
 
-**_Roles: UX/UI design, service design, UX research_**
+As for myself, I exist on both ends of the spectrum, and let me tell you, it's not for everyone. In the world of Javascript right now, more developers than ever are jumping into full-stack. As tools get better, so does the capability of each developer. I like to think in the near future designers will be able to build apps using low-code tools where with a little technical knowledge a designer could build whatever they wanted.
 
-## Finding the weak spots
+## So... should you learn how to code?
 
-![Pain points with the old register](/images/dorset-planning-online-1.png)
+The short answer... it depends on where you want to go in your career. The long answer... I recommend every designer to try to at least learn a programming language. Every designer should have developers within their company, why don't the next time you see them you chat to them about their job, what it's like, the struggles they deal with, how you could communicate better, if I wanted to learn code, where would I start? Etc.
 
-When I first got brought into the project I collaborated with Dorset to analyse the research they had done so far and do some of my own. I found that DHLUC had invested the money mainly into a new service to allow members of the public to set up their own alerting rules to keep track of applications in a way that best fits them.
+We are all learning everyday, but we only learn if we put in the effort. By teaching myself how to code, I not only gained an appreciation for the work developers do but it allowed me to be confident in delivering designs that could be done and have better in-depth communication with my co-workers without them holding back trying to explain technical concepts to me.
 
-Originally, this was what I was first tasked with but I also wanted to take on board what I learnt from re-designing the Norfolk register and bring my findings over to this new platform. I also saw an opportunity to create a modern website that would serve as a good basis for all the future registers we create; I took this idea to my manager and he agreed it’d be a great time/cost saving if we get this right.
-
-![Process flow diagram](/images/dorset-planning-online-2.png)
-
-## The first major task
-
-One of the major goals of the project was getting the alerting service to work well. Based on the pain points and user research Dorset had done, I was able to put together a rough prototype of my ideas which we reviewed and continued to iterate.
-
-![First low-fidelity wireframes](/images/dorset-planning-online-3.png)
-
-> One of the earliest prototypes
-
-We wanted a simple dashboard for logged in users to view alerts and turn them off with ease, but the simple dashboard served a twofold: making alerts easier to view and allowed easy expansion for new areas of the platform that members of the public wouldn’t have access to e.g. consultation area. RBAC would control this, however, I wanted room in the prototype if we decided to add more features.
-
-![More low-fi wireframes](/images/dorset-planning-online-4.png)
-
-We trailed out different ways of creating alerts: through a 2 step wizard and with maps. Ideally, we wanted different ways users could create these alert rules. For example, a ward officer may track applications in an area where as a member of the public may just want to receive updates on the extension their neighbour is getting.
-
-![Designs around alert tracking to enhance application tracking](/images/dorset-planning-online-5.png)
-
-We continued to iterate the prototype based on feedback from the team until we reached a higher fidelity state to user test with officers and the general public alike. The higher fidelity started to come together in the dashboard area where the user could configure and see all their alert rules
-
-![High-fidelity designs for the dashboard of a user account](/images/dorset-planning-online-6.png)
-
-## Meanwhile in other areas…
-
-Alongside the alerts I started pushing the other areas of the platform when I had time. Taking inspiration from other councils planning websites I implemented some new ideas for viewing an application’s lifecycle. This new design showed the lifecycle of the application from received all the way to decision but it broke down the steps in a timeline with a colour to indicate the status.
-
-![High-fidelity design for the application page](/images/dorset-planning-online-7.png)
-
-I also started to push the designs for mobile on the side to make sure what we were designing on desktop could work on a smaller device.
-
-![Example of the mobile design](/images/dorset-planning-online-8.png)
-
-## The result
-
-So far officers at Dorset have expressed delight and interest in the project and some of the iterated designs have been a major hit in terms of simplifying usability, accessibility and more options for different audiences to track planning applications.
-
-In the future, Dorset hopes to get different users across the target audiences we’re aiming at for user testing of these prototypes.
-
-**This project is still ongoing…**
+While we're here, it goes both ways! I'd highly recommend developers to learn a bit of design. By respecting each others domains of expertise but just learning a little about them, the collaborative power we have to build products is unmatched.

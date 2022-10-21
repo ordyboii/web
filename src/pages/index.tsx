@@ -17,6 +17,12 @@ import {
 import { ButtonLink } from "components/button";
 import { useAnnotation } from "utils/annotation";
 
+// Static image imports
+import meTenerife from "../../public/me-tenerife.jpg";
+import meProfile from "../../public/me-tenerife-profile.jpg";
+import meWork from "../../public/me-work.jpg";
+import meLondon from "../../public/me-london.jpg";
+
 const Dragon = dynamic(() => import("components/dragon"), {
   suspense: true
 });
@@ -30,7 +36,7 @@ const Hero = () => {
     <section className='flex min-h-[600px] flex-col items-center gap-10 py-12 sm:gap-6 md:flex-row md:gap-20'>
       <div className='max-w-xl space-y-6'>
         <HeadingOne>
-          Hi I&apos;m Jake, A <span ref={textRef}>multidisciplinary</span>{" "}
+          Hi I&apos;m Jake, a <span ref={textRef}>multidisciplinary</span>{" "}
           designer that loves the web
         </HeadingOne>
 
@@ -50,10 +56,9 @@ const Hero = () => {
 
         <div className='flex flex-wrap items-center gap-2'>
           <Image
-            src='/me-tenerife-profile.jpg'
+            src={meProfile}
             alt='Jake Ord standing on some stairs in Edinburgh'
-            width={1000}
-            height={1000}
+            placeholder='blur'
             className='h-16 w-16 rounded-full border-2 border-gray-900 object-cover'
           />
           <Text className='text-lg font-bold'>
@@ -168,24 +173,21 @@ export default function Home({ projects, sides }: HomeProps) {
         <div className='flex flex-col gap-12 md:flex-row'>
           <div className='isolate grid grid-cols-2 grid-rows-3 gap-4'>
             <Image
-              src='/me-work.jpg'
+              src={meWork}
               alt='Jake Ord sketching on projects with a sharpie'
-              width={1000}
-              height={1000}
+              placeholder='blur'
               className='col-span-2 row-span-2 h-full object-cover shadow-xl'
             />
             <Image
-              src='/me-london.jpg'
+              src={meLondon}
               alt='Jake Ord posing for a framed shot in Tenerife'
-              width={1000}
-              height={1000}
+              placeholder='blur'
               className='col-span-1 row-span-1 h-full object-cover shadow-xl lg:-mt-44 lg:-ml-12'
             />
             <Image
-              src='/me-tenerife.jpg'
+              src={meTenerife}
               alt='Jake Ord looking out towards Trafalgar Square, London'
-              width={1000}
-              height={1000}
+              placeholder='blur'
               className='col-span-1 row-span-1 h-full object-cover shadow-xl lg:-mt-12 lg:-ml-6'
             />
           </div>
@@ -231,14 +233,14 @@ export default function Home({ projects, sides }: HomeProps) {
                 ? `Only a little bit. I'm studying a lot`
                 : "ちょっとだけ。たくさん勉強してるよ。"}
             </Text>
-          </div>
-        </div>
 
-        <div className='flex gap-4'>
-          <Link href='/jakeord-cv.pdf' rel='noreferrer' target='_blank'>
-            Read my CV
-          </Link>
-          <Link href='mailto:jake.ord345@gmail.com'>Contact me</Link>
+            <div className='flex gap-4'>
+              <Link href='/jakeord-cv.pdf' rel='noreferrer' target='_blank'>
+                Read my CV
+              </Link>
+              <Link href='mailto:jake.ord345@gmail.com'>Contact me</Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

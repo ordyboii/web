@@ -1,3 +1,4 @@
+import { PostsGrid } from "components/grids";
 import SEO from "components/seo";
 import { HeadingOne } from "components/typography";
 import type { InferGetStaticPropsType } from "next";
@@ -24,7 +25,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
       <SEO title='Jake Ord - Blog' />
       <section className='grid gap-6 py-16'>
         <HeadingOne ref={headingRef}>Blog</HeadingOne>
-        {/* <BlogsGrid Blogs={Blogs} /> */}
+        <PostsGrid posts={posts} />
       </section>
     </>
   );

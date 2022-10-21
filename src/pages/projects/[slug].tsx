@@ -55,12 +55,11 @@ export const getStaticProps = ({ params }: GetStaticPropsContext) => {
   const project = getContent<Project["data"]>("projects").find(
     project => project!.slug === params?.slug
   );
+  if (!project) throw new Error("Project not found");
 
-  if (!project) {
-    throw new Error("Project not found");
-  }
-
-  return { props: { project } };
+  return {
+    props: { project }
+  };
 };
 
 type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
@@ -94,7 +93,10 @@ export default function Project({ project }: ProjectProps) {
       <ProjectBody project={project} />
     ) : (
       <section className='space-y-6 py-12'>
-        <SEO title={project.data.title} description={project.data.summary} />
+        <SEO
+          title={`${project.data.title} - Jake Ord`}
+          description={project.data.summary}
+        />
         <HeadingOne>This project is protected</HeadingOne>
         <Text>
           If you are hitting this page it is likely because this project is

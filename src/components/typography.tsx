@@ -112,10 +112,8 @@ export const NavLink = forwardRef<
   const navClass = (path: string) =>
     `px-3 py-2 rounded-md transition ease-in cursor-pointer ${
       props.inverse ? "hover:bg-sky-500" : "hover:bg-sky-900 hover:text-white"
-    } ${
-      !props.inverse && pathname === path && "font-bold bg-sky-900 text-white"
-    } ${
-      props.inverse && pathname === path && "font-bold bg-sky-500 text-white"
+    } ${!props.inverse && pathname === path && "bg-sky-900 text-white"} ${
+      props.inverse && pathname === path && "bg-sky-500 text-white"
     }`;
 
   return (
