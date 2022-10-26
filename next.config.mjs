@@ -1,8 +1,8 @@
-import withRoutes from "nextjs-routes/config";
-
-const defineConfig = withRoutes({ outDir: "./src/types" });
+/** @param {import('next').NextConfig} config */
+const defineConfig = config => config;
 
 export default defineConfig({
   reactStrictMode: true,
-  swcMinify: true
+  swcMinify: true,
+  experimental: { appDir: true }
 });

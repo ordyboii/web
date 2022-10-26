@@ -8,7 +8,7 @@ import type {
 import { type FormEvent, useRef, useState } from "react";
 import { getContent, type Project } from "utils/markdown";
 import { HeadingOne, Text } from "components/typography";
-import { Button } from "components/button";
+import { Button } from "app/button";
 
 type ProjectBodyProps = InferGetStaticPropsType<typeof getStaticProps>;
 
