@@ -8,6 +8,7 @@ import { TranslateText } from "components/translate";
 import { HeadingOne, HeadingThree, Link, Text } from "components/typography";
 import ProjectGrid from "components/project-grid.astro";
 import Sides from "components/sides";
+import SkipToTranslate from "components/skip-to-translate.astro";
 
 const projects = await Astro.glob<Project>("./projects/*.md");
 const sides = await Astro.glob<Side>("../sides/*.md");
@@ -18,13 +19,15 @@ const sides = await Astro.glob<Side>("../sides/*.md");
     class='flex min-h-[600px] flex-col items-center gap-10 py-12 sm:gap-6 md:flex-row md:gap-20'
   >
     <div class='max-w-xl space-y-6'>
-      <HeadingOne>
+      <HeadingOne
+        aria-label='Hi I am Jake, a product designer that loves the web'
+      >
         Hi I'm Jake, a <AnnotatedText
           client:visible
           type='box'
-          content='product'
+          content='product designer'
         />
-        designer that loves the web
+        that loves the web
       </HeadingOne>
 
       <Text class='text-lg'>
@@ -33,8 +36,8 @@ const sides = await Astro.glob<Side>("../sides/*.md");
         Nerdy about all things Typescript. Currently leading the UX design at
         <Link href='https://www.def.co.uk' target='_blank' rel='noreferrer'>
           DEF Software.
-        </Link>{" "}
-        But have previously worked for{" "}
+        </Link>
+        But have previously worked for
         <Link href='https://rgb-ltd.co.uk/' target='_blank' rel='noreferrer'>
           R.G.B Media.
         </Link>
@@ -43,7 +46,7 @@ const sides = await Astro.glob<Side>("../sides/*.md");
       <div class='flex flex-wrap items-center gap-2'>
         <Image
           src='/me-profile.jpg'
-          alt='Jake Ord standing on some stairs in Edinburgh'
+          alt='Profile shot of Jake Ord'
           format='webp'
           width={1000}
           height={1000}
@@ -57,6 +60,7 @@ const sides = await Astro.glob<Side>("../sides/*.md");
             jp='「初めまして、少し日本語も話せます」'
           />
         </Text>
+        <SkipToTranslate />
       </div>
 
       <div class='flex flex-wrap items-center gap-6'>
@@ -85,8 +89,9 @@ const sides = await Astro.glob<Side>("../sides/*.md");
       type='underline'
       content='Side work'
     />
-    <Text>Projects and apps I've built in the past.</Text>
-    <Sides client:visible sides={sides} />
+    <div>
+      <Sides client:visible sides={sides} />
+    </div>
   </section>
 
   <section class='space-y-8 py-12'>
@@ -97,30 +102,30 @@ const sides = await Astro.glob<Side>("../sides/*.md");
       content='About Jake'
     />
     <div class='flex flex-col gap-12 md:flex-row'>
-      <div class='isolate grid grid-cols-2 grid-rows-3 gap-4'>
+      <div class='isolate grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 gap-4'>
         <Image
           src='/me-work.jpg'
-          alt='Jake Ord sketching on projects with a sharpie'
-          format='webp'
-          width={1000}
-          height={1300}
-          class='col-span-2 row-span-2 object-cover shadow-xl'
-        />
-        <Image
-          src='/me-london.jpg'
-          alt='Jake Ord posing for a framed shot in Tenerife'
+          alt='Jake Ord sketching wireframes on a sheet of paper with a sharpie pen'
           format='webp'
           width={1000}
           height={1000}
-          class='col-span-1 row-span-1 object-cover shadow-xl lg:-mt-44 lg:-ml-12'
+          class='sm:col-span-2 sm:row-span-2 object-cover shadow-xl'
+        />
+        <Image
+          src='/me-london.jpg'
+          alt='Jake Ord looking out towards Trafalgar Square in London'
+          format='webp'
+          width={1000}
+          height={1000}
+          class='sm:col-span-1 sm:row-span-1 object-cover shadow-xl lg:-mt-44 lg:-ml-12'
         />
         <Image
           src='/me-tenerife.jpg'
-          alt='Jake Ord looking out towards Trafalgar Square, London'
+          alt='Jake Ord posing for a framed shot near some palm trees in Tenerife'
           format='webp'
           width={900}
           height={1200}
-          class='col-span-1 row-span-1 object-cover shadow-xl lg:-mt-24 lg:-ml-6'
+          class='sm:col-span-1 sm:row-span-1 object-cover shadow-xl lg:-mt-24 lg:-ml-6'
         />
       </div>
 
@@ -167,6 +172,7 @@ const sides = await Astro.glob<Side>("../sides/*.md");
             jp='ちょっとだけ。たくさん勉強してるよ。'
           />
         </Text>
+        <SkipToTranslate />
 
         <div class='flex gap-4'>
           <Link href='/jakeord-cv.pdf' rel='noreferrer' target='_blank'>

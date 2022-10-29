@@ -15,6 +15,7 @@ export default function Dragon({ size }: Props) {
       loop
       src='/dragon.json'
       style={{ width: `${size}px` }}
+      aria-label='Dragon typing on a keyboard animation'
     />
   );
 }

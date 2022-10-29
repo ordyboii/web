@@ -6,8 +6,8 @@ import { TranslateToggle } from "components/translate";
 import { Text } from "components/typography";
 
 const {
-  title = "Jake Ord - Multidisciplinary designer that loves the web",
-  description = "Multidisciplinary designer and typescript nerd. Based in Newcastle-Upon-Tyne. I blend together product, usability, accessibility and technical design to deliver research-validated solutions that drive business growth."
+  title = "Jake Ord - Product designer that loves the web",
+  description = "Product designer and typescript nerd. Based in Newcastle-Upon-Tyne. I blend together product, usability, accessibility and technical design to deliver research-validated solutions that drive business growth."
 } = Astro.props as {
   title: string;
   description: string;
@@ -22,20 +22,21 @@ const canonical = new URL(Astro.url.pathname, Astro.url.origin);
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta content='width=device-width' />
     <meta content={Astro.generator} />
-    <title>Astro</title>
-    <meta content={description} />
+    <title>{title}</title>
+    <meta name='description' content={description} />
     <meta
+      name='keywords'
       content='Jake Ord, jorddy, UX Designer, UX, UX/UI Newcastle-Upon-Tyne, Newcastle, design, coding, typescript, graphics, portfolio, web'
     />
-    <meta content='summary_large_image' />
-    <meta content='jakeord' />
-    <meta content='/images/me-tenerife.jpg' />
-    <meta content='Jake Ord' />
-    <meta content='website' />
-    <meta content='/images/me-tenerife.jpg' />
-    <meta content={canonical} />
-    <meta content={title} />
-    <meta content={description} />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:site' content='jakeord' />
+    <meta name='twitter:image' content='/images/me-tenerife.jpg' />
+    <meta name='og:site_name' content='Jake Ord' />
+    <meta name='og:type' content='website' />
+    <meta name='og:image' content='/images/me-tenerife.jpg' />
+    <meta name='og:url' content={canonical} />
+    <meta name='og:title' content={title} />
+    <meta name='og:description' content={description} />
     <link rel='canonical' href={canonical} />
     <link rel='icon' href='/favicon.svg' />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
@@ -52,15 +53,23 @@ const canonical = new URL(Astro.url.pathname, Astro.url.origin);
   <body class='min-h-screen bg-amber-100 font-body'>
     <div class='mx-auto max-w-5xl p-8'>
       <a
+        href='#translate'
+        class='absolute -top-24 left-4 z-50 rounded-sm bg-sky-900 p-4 text-white focus:top-4'
+        aria-label='Some phrases of my site are in Japanese click here to skip to translate button'
+      >
+        Skip to translate button
+      </a>
+
+      <a
         href='#content'
         class='absolute -top-24 left-4 z-50 rounded-sm bg-sky-900 p-4 text-white focus:top-4'
       >
-        Skip to Content
+        Skip to content
       </a>
 
       <Header />
 
-      <main id='#content'><slot /></main>
+      <main id='content'><slot /></main>
 
       <footer
         class='flex flex-col justify-between gap-4 border-t border-gray-500 pt-4 sm:flex-row sm:gap-0'
@@ -72,20 +81,20 @@ const canonical = new URL(Astro.url.pathname, Astro.url.origin);
           <Social />
         </div>
       </footer>
-    </div>
 
-    <aside class='fixed bottom-4 right-4 z-50 flex flex-col items-center gap-4'>
-      <div
-        class='hidden animate-bounce items-center gap-4 motion-reduce:animate-none xl:flex'
-      >
-        <Icon name='ph:arrow-bend-left-down' class='h-5 w-5' />
-        <p>Translate me!</p>
+      <div class='fixed bottom-4 right-4 z-50 flex flex-col items-center gap-4'>
+        <div
+          class='hidden animate-bounce items-center gap-4 motion-reduce:animate-none xl:flex'
+        >
+          <Icon name='ph:arrow-bend-left-down' class='h-5 w-5' />
+          <p>Translate me!</p>
+        </div>
+        <li class='flex gap-4 rounded-xl border-2 border-gray-600 bg-white p-4'>
+          <strong>JP</strong>
+          <TranslateToggle client:visible />
+          <strong>EN</strong>
+        </li>
       </div>
-      <li class='flex gap-4 rounded-xl border-2 border-gray-600 bg-white p-4'>
-        <strong>JP</strong>
-        <TranslateToggle client:visible />
-        <strong>EN</strong>
-      </li>
-    </aside>
+    </div>
   </body>
 </html>

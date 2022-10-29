@@ -65,7 +65,7 @@ export const Link: ParentComponent<
     <a class={`w-fit font-bold underline ${LINK_TYPES[type]}`} {...props}>
       {props.variant === "icon" ? (
         <div class='flex items-center gap-2 pt-2'>
-          View project View project <HiSolidExternalLink class='h-5 w-5' />
+          View project <HiSolidExternalLink class='h-5 w-5' />
         </div>
       ) : (
         props.children

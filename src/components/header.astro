@@ -1,6 +1,7 @@
 ---
 import MenuItems from "./menu-items.astro";
 import MobileMenu from "./mobile-menu";
+import SkipToTranslate from "./skip-to-translate.astro";
 import { TranslateText } from "./translate";
 ---
 
@@ -8,6 +9,7 @@ import { TranslateText } from "./translate";
   <a href='/' class='text-3xl font-bold hover:opacity-60 focus:opacity-60'>
     <TranslateText client:visible en='Jake Ord' jp='オードジェイク' />
   </a>
+  <SkipToTranslate />
 
   <ul role='navigation' class='hidden gap-4 md:flex md:items-center'>
     <MenuItems />
