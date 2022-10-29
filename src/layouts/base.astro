@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon";
+import TranslateToggle from "components/translate";
+
+const { title, description } = Astro.props as {
+  title: string;
+  description: string;
+};
+
+const canonical = new URL(Astro.url.pathname, Astro.url.origin);
+---
+
+<html lang='en' class='scroll-smooth'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta content='width=device-width' />
+    <meta content={Astro.generator} />
+    <title>Astro</title>
+    <meta content={description} />
+    <meta
+      content='Jake Ord, jorddy, UX Designer, UX, UX/UI Newcastle-Upon-Tyne, Newcastle, design, coding, typescript, graphics, portfolio, web'
+    />
+    <meta content='summary_large_image' />
+    <meta content='jakeord' />
+    <meta content='/images/me-tenerife.jpg' />
+    <meta content='Jake Ord' />
+    <meta content='website' />
+    <meta content='/images/me-tenerife.jpg' />
+    <meta content={canonical} />
+    <meta content={title} />
+    <meta content={description} />
+    <link rel='canonical' href={canonical} />
+    <link rel='icon' href='/favicon.svg' />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link
+      rel='preconnect'
+      href='https://fonts.gstatic.com'
+      crossorigin='true'
+    />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;900&display=swap'
+      rel='stylesheet'
+    />
+  </head>
+  <body class='min-h-screen bg-amber-100 font-body'>
+    <div class='mx-auto max-w-5xl p-8'>
+      <a
+        href='#content'
+        class='absolute -top-24 left-4 z-50 rounded-sm bg-sky-900 p-4 text-white focus:top-4'
+      >
+        Skip to Content
+      </a>
+      <main id='#content'><slot /></main>
+    </div>
+
+    <aside class='fixed bottom-4 right-4 z-50 flex flex-col items-center gap-4'>
+      <div
+        class='hidden animate-bounce items-center gap-4 motion-reduce:animate-none xl:flex'
+      >
+        <Icon name='ph:arrow-bend-left-down' class='h-5 w-5' />
+        <p>Translate me!</p>
+      </div>
+      <li class='flex gap-4 rounded-xl border-2 border-gray-600 bg-white p-4'>
+        <strong>JP</strong>
+        <TranslateToggle client:visible />
+        <strong>EN</strong>
+      </li>
+    </aside>
+  </body>
+</html>
