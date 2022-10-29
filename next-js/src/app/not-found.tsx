@@ -1,17 +1,15 @@
-import SEO from "components/seo";
-import { HeadingOne, Link } from "components/typography";
+import { HeadingOne, Link } from "./typography";
 import NextLink from "next/link";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-const Dragon = dynamic(() => import("components/dragon"), {
+const Dragon = dynamic(() => import("./dragon"), {
   suspense: true
 });
 
 export default function Error() {
   return (
     <section className='flex flex-col-reverse items-center gap-12 py-16 sm:flex-row'>
-      <SEO />
       <Suspense fallback={"HERE BE DRAGONS..."}>
         <Dragon size={500} />
       </Suspense>
@@ -19,7 +17,7 @@ export default function Error() {
         <HeadingOne>
           Error 404: It appears you are lost, I cannot seem to find that page
         </HeadingOne>
-        <NextLink href={{ pathname: "/" }}>
+        <NextLink href='/'>
           <Link>Go to homepage</Link>
         </NextLink>
       </div>

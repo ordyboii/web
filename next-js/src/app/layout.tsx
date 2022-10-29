@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { useTranslate } from "utils/translate";
+import { TranslateProvider, useTranslate } from "utils/translate";
 import { type PropsWithChildren, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { BsArrow90DegDown } from "react-icons/bs";
@@ -121,52 +121,70 @@ export default function Layout({ children }: PropsWithChildren) {
   const { english, setEnglish } = useTranslate();
 
   return (
-    <div className='mx-auto max-w-5xl p-8'>
-      <a
-        href='#content'
-        className='absolute -top-24 left-4 z-50 rounded-sm bg-sky-900 p-4 text-white focus:top-4'
-      >
-        Skip to Content
-      </a>
-
-      <aside className='fixed bottom-4 right-4 z-50 flex flex-col items-center gap-4'>
-        <div className='hidden animate-bounce items-center gap-4 motion-reduce:animate-none xl:flex'>
-          <BsArrow90DegDown className='h-5 w-5' />
-          <p>Translate me!</p>
-        </div>
-        <li className='flex gap-4 rounded-xl border-2 border-gray-600 bg-white p-4'>
-          <strong>JP</strong>
-          <button
-            onClick={() => setEnglish(!english)}
-            className={`${
-              english ? "bg-sky-900" : "bg-gray-300"
-            } relative inline-flex h-6 w-11 items-center rounded-full`}
+    <html lang='en' className='scroll-smooth'>
+      <head>
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin='true'
+        />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;900&display=swap'
+          rel='stylesheet'
+        />
+      </head>
+      <body className='min-h-screen bg-amber-100 font-body'>
+        <div className='mx-auto max-w-5xl p-8'>
+          <a
+            href='#content'
+            className='absolute -top-24 left-4 z-50 rounded-sm bg-sky-900 p-4 text-white focus:top-4'
           >
-            <span
-              className={`${
-                english ? "translate-x-6" : "translate-x-1"
-              } inline-block h-4 w-4 rounded-full bg-white transition ease-out`}
-            />
-          </button>
-          <strong>EN</strong>
-        </li>
-      </aside>
+            Skip to Content
+          </a>
 
-      <Header />
+          <aside className='fixed bottom-4 right-4 z-50 flex flex-col items-center gap-4'>
+            <div className='hidden animate-bounce items-center gap-4 motion-reduce:animate-none xl:flex'>
+              <BsArrow90DegDown className='h-5 w-5' />
+              <p>Translate me!</p>
+            </div>
+            <li className='flex gap-4 rounded-xl border-2 border-gray-600 bg-white p-4'>
+              <strong>JP</strong>
+              <button
+                onClick={() => setEnglish(!english)}
+                className={`${
+                  english ? "bg-sky-900" : "bg-gray-300"
+                } relative inline-flex h-6 w-11 items-center rounded-full`}
+              >
+                <span
+                  className={`${
+                    english ? "translate-x-6" : "translate-x-1"
+                  } inline-block h-4 w-4 rounded-full bg-white transition ease-out`}
+                />
+              </button>
+              <strong>EN</strong>
+            </li>
+          </aside>
 
-      <main id='content'>{children}</main>
+          <Header />
 
-      <footer
-        className='flex flex-col justify-between gap-4 border-t border-gray-500
-        pt-4 sm:flex-row sm:gap-0'
-      >
-        <Text>
-          © {new Date().getFullYear()}, Made with ❤️ and 🐉 by Jake Ord
-        </Text>
-        <div className='flex gap-4'>
-          <Social />
+          <TranslateProvider>
+            <main id='content'>{children}</main>
+          </TranslateProvider>
+
+          <footer
+            className='flex flex-col justify-between gap-4 border-t border-gray-500
+            pt-4 sm:flex-row sm:gap-0'
+          >
+            <Text>
+              © {new Date().getFullYear()}, Made with ❤️ and 🐉 by Jake Ord
+            </Text>
+            <div className='flex gap-4'>
+              <Social />
+            </div>
+          </footer>
         </div>
-      </footer>
-    </div>
+      </body>
+    </html>
   );
 }

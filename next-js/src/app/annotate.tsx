@@ -1,10 +1,14 @@
+"use client";
+
 import { type RefObject, useEffect } from "react";
 import { annotate } from "rough-notation";
 
-export const useAnnotation = (
-  ref: RefObject<HTMLElement>,
-  type: "box" | "underline"
-) => {
+type Props = {
+  ref: RefObject<HTMLElement>;
+  type: "box" | "underline";
+};
+
+export const useAnnotation = ({ ref, type }: Props) => {
   useEffect(() => {
     if (ref.current) {
       const annotation = annotate(ref.current, {
@@ -17,3 +21,9 @@ export const useAnnotation = (
     }
   }, [ref, type]);
 };
+
+export default function Annotate({ ref, type }: Props) {
+  useAnnotation({ ref, type });
+
+  return <div>UnderlineContent</div>;
+}

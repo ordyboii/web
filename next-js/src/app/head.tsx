@@ -1,23 +1,11 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-
-type Props = {
-  title?: string;
-  description?: string;
-};
-
-export default function SEO({ title, description }: Props) {
-  const router = useRouter();
-  const titleMeta = title
-    ? title
-    : "Jake Ord - Multidisciplinary designer that loves the web";
-  const canonical = "https://jakeord.space" + router.asPath;
-  const descriptionMeta = description
-    ? description
-    : "Multidisciplinary designer and typescript nerd. Based in Newcastle-Upon-Tyne. I blend together product, usability, accessibility and technical design to deliver research-validated solutions that drive business growth.";
+export default function Head() {
+  const titleMeta = "Jake Ord - Multidisciplinary designer that loves the web";
+  const canonical = "https://jakeord.space";
+  const descriptionMeta =
+    "Multidisciplinary designer and typescript nerd. Based in Newcastle-Upon-Tyne. I blend together product, usability, accessibility and technical design to deliver research-validated solutions that drive business growth.";
 
   return (
-    <Head>
+    <>
       <title>{titleMeta}</title>
       <meta name='description' content={descriptionMeta} />
       <meta
@@ -35,6 +23,6 @@ export default function SEO({ title, description }: Props) {
       <meta name='og:description' content={descriptionMeta} />
       <link rel='canonical' href={canonical} />
       <link rel='icon' href='/favicon.svg' />
-    </Head>
+    </>
   );
 }

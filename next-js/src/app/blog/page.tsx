@@ -1,22 +1,12 @@
-import { PostsGrid } from "components/grids";
-import SEO from "components/seo";
-import { HeadingOne } from "components/typography";
-import type { InferGetStaticPropsType } from "next";
+import { PostsGrid } from "../grids";
+import SEO from "../seo";
+import { HeadingOne } from "../typography";
 import { useRef } from "react";
 import { useAnnotation } from "utils/annotation";
 import { getContent, type Post } from "utils/markdown";
 
-export const getStaticProps = () => {
+export default function BlogPage() {
   const posts = getContent<Post["data"]>("posts");
-
-  return {
-    props: { posts }
-  };
-};
-
-type BlogPageProps = InferGetStaticPropsType<typeof getStaticProps>;
-
-export default function BlogPage({ posts }: BlogPageProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
   useAnnotation(headingRef, "box");
 

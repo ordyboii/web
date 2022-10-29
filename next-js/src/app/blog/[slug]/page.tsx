@@ -1,12 +1,12 @@
-import Image from "next/future/image";
-import SEO from "components/seo";
+import Image from "next/image";
+import SEO from "../../seo";
 import type {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType
 } from "next";
 import { getContent, type Post } from "utils/markdown";
-import { HeadingOne, Text } from "components/typography";
+import { HeadingOne, Text } from "../../typography";
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
