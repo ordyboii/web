@@ -11,7 +11,7 @@ const { posts } = Astro.props as {
   {
     posts.map(post => (
       <a
-        href={`/blog/${post.url}`}
+        href={post.url}
         class='cursor-pointer rounded-sm border-2 border-gray-900 bg-white 
           transition hover:rotate-2 hover:scale-105'
         aria-label={`Link to ${post.frontmatter.title}`}

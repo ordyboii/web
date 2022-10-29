@@ -11,7 +11,7 @@ const { projects } = Astro.props as {
   {
     projects.map(project => (
       <a
-        href={`/projects/${project.url}`}
+        href={project.url}
         class='cursor-pointer rounded-sm border-2 border-gray-900 bg-white 
           transition hover:rotate-2 hover:scale-105'
         aria-label={`Link to ${project.frontmatter.title}`}

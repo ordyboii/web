@@ -1,7 +1,39 @@
 ---
 import Base from "layouts/base.astro";
+import { HeadingOne, Text } from "components/typography";
+
+const { frontmatter } = Astro.props as {
+  frontmatter: Post;
+};
 ---
 
-<Base>
-  <h1>awd</h1>
+<Base
+  title={`${frontmatter.title} - Jake Ord`}
+  description={frontmatter.summary}
+>
+  <section class='space-y-12 py-16'>
+    <div class='space-y-6'>
+      <Text>
+        Published: {new Date(frontmatter.date).toLocaleDateString()}
+      </Text>
+      <HeadingOne>{frontmatter.title}</HeadingOne>
+      <Text>{frontmatter.summary}</Text>
+      <hr class='border border-gray-900' />
+    </div>
+
+    <img
+      src={frontmatter.image}
+      alt={frontmatter.title}
+      width={1000}
+      height={1000}
+      loading='lazy'
+      class='h-96 w-full object-cover'
+    />
+
+    <article
+      class='prose prose-stone max-w-full marker:text-slate-900 prose-p:text-lg prose-blockquote:border-slate-900 prose-li:text-lg'
+    >
+      <slot />
+    </article>
+  </section>
 </Base>
