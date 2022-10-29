@@ -1,6 +1,7 @@
 ---
 import Base from "layouts/base.astro";
 import { HeadingOne, Text } from "components/typography";
+import { Image } from "@astrojs/image/components";
 
 const { frontmatter } = Astro.props as {
   frontmatter: Project;
@@ -19,12 +20,12 @@ const { frontmatter } = Astro.props as {
       <hr class='border border-gray-900' />
     </div>
 
-    <img
+    <Image
       src={frontmatter.image}
       alt={frontmatter.title}
+      format='webp'
       width={1000}
       height={1000}
-      loading='lazy'
       class='h-96 w-full object-cover'
     />
 

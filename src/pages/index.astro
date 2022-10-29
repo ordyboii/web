@@ -1,5 +1,6 @@
 ---
 import Base from "layouts/base.astro";
+import { Image } from "@astrojs/image/components";
 import AnnotatedText from "components/annotated-text";
 import { ButtonLink } from "components/button";
 import Dragon from "components/dragon";
@@ -35,10 +36,13 @@ import { HeadingOne, Link, Text } from "components/typography";
       </Text>
 
       <div class='flex flex-wrap items-center gap-2'>
-        <img
+        <Image
           src='/me-profile.jpg'
           alt='Jake Ord standing on some stairs in Edinburgh'
-          loading='lazy'
+          format='webp'
+          width={1000}
+          height={1000}
+          fit='contain'
           class='h-16 w-16 rounded-full border-2 border-gray-900 object-cover'
         />
         <Text class='text-lg font-bold'>

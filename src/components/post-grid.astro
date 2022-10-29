@@ -1,6 +1,7 @@
 ---
 import type { MarkdownInstance } from "astro";
 import { HeadingThree, Text } from "./typography";
+import { Image } from "@astrojs/image/components";
 
 const { posts } = Astro.props as {
   posts: MarkdownInstance<Post>[];
@@ -16,13 +17,13 @@ const { posts } = Astro.props as {
           transition hover:rotate-2 hover:scale-105'
         aria-label={`Link to ${post.frontmatter.title}`}
       >
-        <img
+        <Image
           src={post.frontmatter.image}
           alt={post.frontmatter.title}
-          width={1000}
-          height={1000}
-          loading='lazy'
-          class='max-h-96 w-full object-contain transition'
+          format='webp'
+          width={1200}
+          height={800}
+          class='max-h-96 w-full object-cover transition'
         />
 
         <div class='space-y-6 p-8'>
