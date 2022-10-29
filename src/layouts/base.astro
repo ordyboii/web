@@ -1,6 +1,9 @@
 ---
 import { Icon } from "astro-icon";
+import Header from "components/header.astro";
+import Social from "components/social.astro";
 import { TranslateToggle } from "components/translate";
+import { Text } from "components/typography";
 
 const {
   title = "Jake Ord - Multidisciplinary designer that loves the web",
@@ -54,7 +57,21 @@ const canonical = new URL(Astro.url.pathname, Astro.url.origin);
       >
         Skip to Content
       </a>
+
+      <Header />
+
       <main id='#content'><slot /></main>
+
+      <footer
+        class='flex flex-col justify-between gap-4 border-t border-gray-500 pt-4 sm:flex-row sm:gap-0'
+      >
+        <Text>
+          © {new Date().getFullYear()}, Made with ❤️ and 🐉 by Jake Ord
+        </Text>
+        <div class='flex gap-4'>
+          <Social />
+        </div>
+      </footer>
     </div>
 
     <aside class='fixed bottom-4 right-4 z-50 flex flex-col items-center gap-4'>

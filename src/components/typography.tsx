@@ -1,4 +1,5 @@
 import type { JSX, ParentComponent } from "solid-js";
+import { HiSolidExternalLink } from "solid-icons/hi";
 
 export const HeadingOne: ParentComponent<
   JSX.HTMLAttributes<HTMLHeadingElement>
@@ -64,8 +65,7 @@ export const Link: ParentComponent<
     <a class={`w-fit font-bold underline ${LINK_TYPES[type]}`} {...props}>
       {props.variant === "icon" ? (
         <div class='flex items-center gap-2 pt-2'>
-          View project
-          {/* View project <HiExternalLink className='h-5 w-5' /> */}
+          View project View project <HiSolidExternalLink class='h-5 w-5' />
         </div>
       ) : (
         props.children
@@ -77,7 +77,7 @@ export const Link: ParentComponent<
 export const NavLink: ParentComponent<
   JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
     inverse?: boolean;
-    pathname: string;
+    pathname?: string;
     path: string;
   }
 > = props => {
@@ -89,7 +89,7 @@ export const NavLink: ParentComponent<
     }`;
 
   return (
-    <a class={navClass(props.path)} {...props}>
+    <a class={navClass(props.path)} href={props.path} {...props}>
       {props.children}
     </a>
   );

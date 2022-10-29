@@ -5,7 +5,12 @@ import AnnotatedText from "components/annotated-text";
 import { ButtonLink } from "components/button";
 import Dragon from "components/dragon";
 import { TranslateText } from "components/translate";
-import { HeadingOne, Link, Text } from "components/typography";
+import { HeadingOne, HeadingThree, Link, Text } from "components/typography";
+import ProjectGrid from "components/project-grid.astro";
+import Sides from "components/sides";
+
+const projects = await Astro.glob<Project>("./projects/*.md");
+const sides = await Astro.glob<Side>("../sides/*.md");
 ---
 
 <Base>
@@ -17,7 +22,7 @@ import { HeadingOne, Link, Text } from "components/typography";
         Hi I'm Jake, a <AnnotatedText
           client:visible
           type='box'
-          content='multidisciplinary'
+          content='product'
         />
         designer that loves the web
       </HeadingOne>
@@ -61,5 +66,115 @@ import { HeadingOne, Link, Text } from "components/typography";
     </div>
 
     <Dragon client:visible size={300} />
+  </section>
+
+  <section id='work' class='space-y-8 py-12'>
+    <AnnotatedText
+      client:visible
+      component='HeadingTwo'
+      type='underline'
+      content='Select work'
+    />
+    <ProjectGrid projects={projects} />
+  </section>
+
+  <section class='space-y-8 py-12'>
+    <AnnotatedText
+      client:visible
+      component='HeadingTwo'
+      type='underline'
+      content='Side work'
+    />
+    <Text>Projects and apps I've built in the past.</Text>
+    <Sides client:visible sides={sides} />
+  </section>
+
+  <section class='space-y-8 py-12'>
+    <AnnotatedText
+      client:visible
+      component='HeadingTwo'
+      type='underline'
+      content='About Jake'
+    />
+    <div class='flex flex-col gap-12 md:flex-row'>
+      <div class='isolate grid grid-cols-2 grid-rows-3 gap-4'>
+        <Image
+          src='/me-work.jpg'
+          alt='Jake Ord sketching on projects with a sharpie'
+          format='webp'
+          width={1000}
+          height={1300}
+          class='col-span-2 row-span-2 object-cover shadow-xl'
+        />
+        <Image
+          src='/me-london.jpg'
+          alt='Jake Ord posing for a framed shot in Tenerife'
+          format='webp'
+          width={1000}
+          height={1000}
+          class='col-span-1 row-span-1 object-cover shadow-xl lg:-mt-44 lg:-ml-12'
+        />
+        <Image
+          src='/me-tenerife.jpg'
+          alt='Jake Ord looking out towards Trafalgar Square, London'
+          format='webp'
+          width={900}
+          height={1200}
+          class='col-span-1 row-span-1 object-cover shadow-xl lg:-mt-24 lg:-ml-6'
+        />
+      </div>
+
+      <div class='space-y-4'>
+        <HeadingThree>So...who are you?</HeadingThree>
+
+        <Text>
+          I am a British-born designer based in Newcastle, UK. I am driven by
+          design that impacts people in a positive way, I thrive on team
+          collaboration and pushing boundaries. Always thinking of ways to
+          improve products and services in my everyday life.
+        </Text>
+
+        <Text>
+          I currently work for
+          <Link href='https://def.co.uk' target='_blank' rel='noreferrer'>
+            DEF Software
+          </Link>
+          by day but by night you will find me hacking on some side project (may
+          involve code).
+        </Text>
+
+        <Text>
+          But who works all the time, right? In my downtime I am either late
+          night driving, studying Japanese, cooking up some crazy dishes or
+          expanding my figure collection.
+        </Text>
+
+        <HeadingThree>What's up with the dragons?</HeadingThree>
+        <Text>
+          Dragons are my favourite mythological creatures. I have always been
+          fascinated by them in movies, games and Asian culture. To me, they
+          were the beginning of my journey into design and what led me towards
+          art/graphics.
+        </Text>
+
+        <HeadingThree>
+          What's up with the Japanese? Do you speak it?
+        </HeadingThree>
+        <Text>
+          <TranslateText
+            client:visible
+            en='Only a little bit. I am studying a lot'
+            jp='ちょっとだけ。たくさん勉強してるよ。'
+          />
+        </Text>
+
+        <div class='flex gap-4'>
+          <Link href='/jakeord-cv.pdf' rel='noreferrer' target='_blank'>
+            Read my CV
+          </Link>
+          <Link href='mailto:jake.ord345@gmail.com'>Contact me</Link>
+        </div>
+      </div>
+    </div>
   </section>
 </Base>

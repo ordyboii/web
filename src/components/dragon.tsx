@@ -10,6 +10,11 @@ export default function Dragon({ size }: Props) {
   });
 
   return (
-    <lottie-player autoplay loop src='/dragon.json' style={{ width: size }} />
+    <lottie-player
+      autoplay
+      loop
+      src='/dragon.json'
+      style={{ width: `${size}px` }}
+    />
   );
 }
