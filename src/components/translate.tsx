@@ -1,8 +1,15 @@
-import { createSignal } from "solid-js";
+import { type Component, createSignal } from "solid-js";
 
 export const [translate, setTranslate] = createSignal(false);
 
-export default function TranslateToggle() {
+export const TranslateText: Component<{ en: string; jp: string }> = ({
+  en,
+  jp
+}) => {
+  return <>{translate() ? en : jp}</>;
+};
+
+export const TranslateToggle: Component = () => {
   return (
     <button
       onClick={() => setTranslate(prev => !prev)}
@@ -17,4 +24,4 @@ export default function TranslateToggle() {
       ></span>
     </button>
   );
-}
+};
