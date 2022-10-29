@@ -55,7 +55,10 @@ const LINK_TYPES: Record<LinkType, string> = {
 };
 
 export const Link: ParentComponent<
-  JSX.HTMLAttributes<HTMLAnchorElement> & { variant?: "icon"; type?: LinkType }
+  JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    variant?: "icon";
+    type?: LinkType;
+  }
 > = ({ type = "default", ...props }) => {
   return (
     <a class={`w-fit font-bold underline ${LINK_TYPES[type]}`} {...props}>
@@ -72,7 +75,7 @@ export const Link: ParentComponent<
 };
 
 export const NavLink: ParentComponent<
-  JSX.HTMLAttributes<HTMLAnchorElement> & {
+  JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
     inverse?: boolean;
     pathname: string;
     path: string;

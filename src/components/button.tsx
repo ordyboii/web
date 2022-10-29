@@ -14,7 +14,7 @@ export const Button: ParentComponent<
 };
 
 export const ButtonLink: ParentComponent<
-  JSX.HTMLAttributes<HTMLAnchorElement>
+  JSX.AnchorHTMLAttributes<HTMLAnchorElement>
 > = props => {
   return (
     <a
