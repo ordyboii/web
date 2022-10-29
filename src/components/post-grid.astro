@@ -1,0 +1,39 @@
+---
+import type { MarkdownInstance } from "astro";
+import { HeadingThree, Text } from "./typography";
+
+const { posts } = Astro.props as {
+  posts: MarkdownInstance<Post>[];
+};
+---
+
+<div class='grid grid-cols-1 gap-4 md:grid-cols-2'>
+  {
+    posts.map(post => (
+      <a
+        href={`/blog/${post.url}`}
+        class='cursor-pointer rounded-sm border-2 border-gray-900 bg-white 
+          transition hover:rotate-2 hover:scale-105'
+        aria-label={`Link to ${post.frontmatter.title}`}
+      >
+        <img
+          src={post.frontmatter.image}
+          alt={post.frontmatter.title}
+          width={1000}
+          height={1000}
+          loading='lazy'
+          class='max-h-96 w-full object-contain transition'
+        />
+
+        <div class='space-y-6 p-8'>
+          <Text>
+            Published: {new Date(post.frontmatter.date).toLocaleDateString()}
+          </Text>
+          <HeadingThree>{post.frontmatter.title}</HeadingThree>
+          <hr class='w-20 border-gray-900' />
+          <Text>{post.frontmatter.summary}</Text>
+        </div>
+      </a>
+    ))
+  }
+</div>

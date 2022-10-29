@@ -2,7 +2,10 @@
 import { Icon } from "astro-icon";
 import TranslateToggle from "components/translate";
 
-const { title, description } = Astro.props as {
+const {
+  title = "Jake Ord - Multidisciplinary designer that loves the web",
+  description = "Multidisciplinary designer and typescript nerd. Based in Newcastle-Upon-Tyne. I blend together product, usability, accessibility and technical design to deliver research-validated solutions that drive business growth."
+} = Astro.props as {
   title: string;
   description: string;
 };

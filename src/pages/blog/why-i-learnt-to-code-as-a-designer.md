@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/post.astro"
+layout: "../../layouts/post.astro"
 title: Why I Learnt To Code As A UX Designer
 summary: Designers sometimes say that learning to code is not required. While that is true, I found the experience of learning to code enriched my understanding of my designs and helped me develop a closer relationship with the developers on my team.
 image: /images/coding.jpg
