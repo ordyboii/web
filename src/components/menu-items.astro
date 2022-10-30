@@ -1,0 +1,31 @@
+---
+import Social from "./social.astro";
+import { NavLink } from "./typography";
+
+const { inverse } = Astro.props as {
+  inverse: boolean;
+};
+---
+
+<li class='flex gap-2'>
+  <NavLink inverse={inverse} path='/projects' pathname={Astro.url.pathname}
+    >Work</NavLink
+  >
+
+  <NavLink inverse={inverse} path='/blog' pathname={Astro.url.pathname}
+    >Blog</NavLink
+  >
+
+  <NavLink
+    inverse={inverse}
+    path='/jakeord-cv.pdf'
+    target='_blank'
+    rel='noopener'
+  >
+    My CV
+  </NavLink>
+</li>
+
+<li class='flex gap-3'>
+  <Social inverse={inverse} />
+</li>

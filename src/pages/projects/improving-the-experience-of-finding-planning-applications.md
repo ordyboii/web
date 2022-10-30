@@ -1,9 +1,9 @@
 ---
+layout: "../../layouts/project.astro"
 title: Improving the experience of finding planning applications
 summary: I lead the redesign of the old Norfolk planning register to improve the experience of finding applications, which receives hundreds of visits from members of the public every week.
 image: /images/norfolk-register-cover.png
 client: Norfolk County Council
-protected: false
 ---
 
 ## In need of an upgrade

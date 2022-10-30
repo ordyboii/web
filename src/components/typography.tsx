@@ -1,48 +1,35 @@
-import { useRouter } from "next/router";
-import {
-  type AnchorHTMLAttributes,
-  type DetailedHTMLProps,
-  forwardRef,
-  type HTMLAttributes
-} from "react";
-import { HiExternalLink } from "react-icons/hi";
+import type { JSX, ParentComponent } from "solid-js";
+import { HiSolidExternalLink } from "solid-icons/hi";
 
-export const HeadingOne = forwardRef<
-  HTMLHeadingElement,
-  DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
->((props, ref) => {
+export const HeadingOne: ParentComponent<
+  JSX.HTMLAttributes<HTMLHeadingElement>
+> = props => {
   return (
-    <h1
-      ref={ref}
-      className='w-fit text-3xl font-black !leading-snug sm:text-4xl'
-      {...props}
-    >
+    <h1 class='w-fit text-3xl font-black !leading-snug sm:text-4xl' {...props}>
       {props.children}
     </h1>
   );
-});
+};
 
-export const HeadingTwo = forwardRef<
-  HTMLHeadingElement,
-  DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
->((props, ref) => {
+export const HeadingTwo: ParentComponent<
+  JSX.HTMLAttributes<HTMLHeadingElement>
+> = props => {
   return (
-    <h2 ref={ref} className='w-fit text-3xl font-bold' {...props}>
+    <h2 class='w-fit text-3xl font-bold' {...props}>
       {props.children}
     </h2>
   );
-});
+};
 
-export const HeadingThree = forwardRef<
-  HTMLHeadingElement,
-  DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
->((props, ref) => {
+export const HeadingThree: ParentComponent<
+  JSX.HTMLAttributes<HTMLHeadingElement>
+> = props => {
   return (
-    <h3 ref={ref} className='w-fit text-xl font-black' {...props}>
+    <h3 class='w-fit text-xl font-black' {...props}>
       {props.children}
     </h3>
   );
-});
+};
 
 type Weights = "bold" | "regular";
 
@@ -51,23 +38,15 @@ const TEXT_WEIGHTS: Record<Weights, string> = {
   bold: "font-semibold"
 };
 
-export const Text = forwardRef<
-  HTMLParagraphElement,
-  DetailedHTMLProps<
-    HTMLAttributes<HTMLParagraphElement>,
-    HTMLParagraphElement
-  > & { weight?: Weights }
->(({ weight = "regular", ...props }, ref) => {
+export const Text: ParentComponent<
+  JSX.HTMLAttributes<HTMLParagraphElement> & { weight?: Weights }
+> = ({ weight = "regular", ...props }) => {
   return (
-    <p
-      ref={ref}
-      className={`text-lg leading-relaxed ${TEXT_WEIGHTS[weight]}`}
-      {...props}
-    >
+    <p class={`text-lg leading-relaxed ${TEXT_WEIGHTS[weight]}`} {...props}>
       {props.children}
     </p>
   );
-});
+};
 
 type LinkType = "default" | "inverse";
 
@@ -76,49 +55,42 @@ const LINK_TYPES: Record<LinkType, string> = {
   inverse: "hover:text-gray-900"
 };
 
-export const Link = forwardRef<
-  HTMLAnchorElement,
-  DetailedHTMLProps<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
-  > & { variant?: "icon"; type?: LinkType }
->(({ type = "default", ...props }, ref) => {
+export const Link: ParentComponent<
+  JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    variant?: "icon";
+    type?: LinkType;
+  }
+> = ({ type = "default", ...props }) => {
   return (
-    <a
-      ref={ref}
-      className={`w-fit font-bold underline ${LINK_TYPES[type]}`}
-      {...props}
-    >
+    <a class={`w-fit font-bold underline ${LINK_TYPES[type]}`} {...props}>
       {props.variant === "icon" ? (
-        <div className='flex items-center gap-2 pt-2'>
-          View project <HiExternalLink className='h-5 w-5' />
+        <div class='flex items-center gap-2 pt-2'>
+          View project <HiSolidExternalLink class='h-5 w-5' />
         </div>
       ) : (
         props.children
       )}
     </a>
   );
-});
+};
 
-export const NavLink = forwardRef<
-  HTMLAnchorElement,
-  DetailedHTMLProps<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
-  > & { inverse?: boolean; path: string }
->((props, ref) => {
-  const { pathname } = useRouter();
-
+export const NavLink: ParentComponent<
+  JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    inverse?: boolean;
+    pathname?: string;
+    path: string;
+  }
+> = props => {
   const navClass = (path: string) =>
     `px-3 py-2 rounded-md transition ease-in cursor-pointer ${
       props.inverse ? "hover:bg-sky-500" : "hover:bg-sky-900 hover:text-white"
-    } ${!props.inverse && pathname === path && "bg-sky-900 text-white"} ${
-      props.inverse && pathname === path && "bg-sky-500 text-white"
+    } ${!props.inverse && props.pathname === path && "bg-sky-900 text-white"} ${
+      props.inverse && props.pathname === path && "bg-sky-500 text-white"
     }`;
 
   return (
-    <a ref={ref} className={navClass(props.path)} {...props}>
+    <a class={navClass(props.path)} href={props.path} {...props}>
       {props.children}
     </a>
   );
-});
+};

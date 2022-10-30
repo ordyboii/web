@@ -1,9 +1,9 @@
 ---
+layout: "../../layouts/project.astro"
 title: Designing a flexible, unified web based planning system for back-office
 summary: I was tasked with leading the UX/UI process of Manifold, a web-based replacement for back-office planning solutions. Everything from research analysis, stakeholder/developer collaboration, design system, and UI/wireframing.
 image: /images/manifold.png
 client: Local authorities across the UK
-protected: true
 ---
 
 ## A “modern” approach to back-office planning

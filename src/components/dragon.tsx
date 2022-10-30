@@ -1,15 +1,21 @@
-import { useEffect } from "react";
+import { createEffect } from "solid-js";
 
 type Props = {
   size: number;
 };
 
 export default function Dragon({ size }: Props) {
-  useEffect(() => {
+  createEffect(() => {
     import("@lottiefiles/lottie-player");
   });
 
   return (
-    <lottie-player autoplay loop src='/dragon.json' style={{ width: size }} />
+    <lottie-player
+      autoplay
+      loop
+      src='/dragon.json'
+      style={{ width: `${size}px` }}
+      aria-label='Dragon typing on a keyboard animation'
+    />
   );
 }

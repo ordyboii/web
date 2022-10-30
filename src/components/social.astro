@@ -1,0 +1,31 @@
+---
+import { Link } from "./typography";
+import { Icon } from "astro-icon";
+
+const { inverse } = Astro.props as {
+  inverse?: boolean;
+};
+
+const socialClass = `h-7 w-7 ${
+  inverse ? "hover:text-sky-500" : "hover:text-sky-900"
+}`;
+---
+
+<Link
+  href='https://www.linkedin.com/in/jorddy'
+  target='_blank'
+  rel='noreferrer'
+  type={inverse ? "inverse" : "default"}
+  aria-label='Link to my LinkedIn page'
+>
+  <Icon name='fa-brands:linkedin' class={socialClass} />
+</Link>
+<Link
+  href='https://github.com/jorddy'
+  target='_blank'
+  rel='noreferrer'
+  type={inverse ? "inverse" : "default"}
+  aria-label='Link to my Github page'
+>
+  <Icon name='fa-brands:github' class={socialClass} />
+</Link>

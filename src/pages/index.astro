@@ -1,0 +1,186 @@
+---
+import Base from "layouts/base.astro";
+import { Image } from "@astrojs/image/components";
+import AnnotatedText from "components/annotated-text";
+import { ButtonLink } from "components/button";
+import Dragon from "components/dragon";
+import { TranslateText } from "components/translate";
+import { HeadingOne, HeadingThree, Link, Text } from "components/typography";
+import ProjectGrid from "components/project-grid.astro";
+import Sides from "components/sides";
+import SkipToTranslate from "components/skip-to-translate.astro";
+
+const projects = await Astro.glob<Project>("./projects/*.md");
+const sides = await Astro.glob<Side>("../sides/*.md");
+---
+
+<Base>
+  <section
+    class='flex min-h-[600px] flex-col items-center gap-10 py-12 sm:gap-6 md:flex-row md:gap-20'
+  >
+    <div class='max-w-xl space-y-6'>
+      <HeadingOne
+        aria-label='Hi I am Jake, a product designer that loves the web'
+      >
+        Hi I'm Jake, a <AnnotatedText
+          client:visible
+          type='box'
+          content='product designer'
+        />
+        that loves the web
+      </HeadingOne>
+
+      <Text class='text-lg'>
+        I blend together product, usability, accessibility and technical design
+        to deliver research-validated solutions that drive business growth.
+        Nerdy about all things Typescript. Currently leading the UX design at
+        <Link href='https://www.def.co.uk' target='_blank' rel='noreferrer'>
+          DEF Software.
+        </Link>
+        But have previously worked for
+        <Link href='https://rgb-ltd.co.uk/' target='_blank' rel='noreferrer'>
+          R.G.B Media.
+        </Link>
+      </Text>
+
+      <div class='flex flex-wrap items-center gap-2'>
+        <Image
+          src='/me-profile.jpg'
+          alt='Profile shot of Jake Ord'
+          format='webp'
+          width={1000}
+          height={1000}
+          fit='contain'
+          class='h-16 w-16 rounded-full border-2 border-gray-900 object-cover'
+        />
+        <Text class='text-lg font-bold'>
+          <TranslateText
+            client:visible
+            en='I also speak a little Japanese'
+            jp='「初めまして、少し日本語も話せます」'
+          />
+        </Text>
+        <SkipToTranslate />
+      </div>
+
+      <div class='flex flex-wrap items-center gap-6'>
+        <ButtonLink href='#work'>View my work</ButtonLink>
+        <Link href='mailto:jake.ord345@gmail.com'>Or say hello</Link>
+      </div>
+    </div>
+
+    <Dragon client:visible size={300} />
+  </section>
+
+  <section id='work' class='space-y-8 py-12'>
+    <AnnotatedText
+      client:visible
+      component='HeadingTwo'
+      type='underline'
+      content='Select work'
+    />
+    <ProjectGrid projects={projects} />
+  </section>
+
+  <section class='space-y-8 py-12'>
+    <AnnotatedText
+      client:visible
+      component='HeadingTwo'
+      type='underline'
+      content='Side work'
+    />
+    <div>
+      <Sides client:visible sides={sides} />
+    </div>
+  </section>
+
+  <section class='space-y-8 py-12'>
+    <AnnotatedText
+      client:visible
+      component='HeadingTwo'
+      type='underline'
+      content='About Jake'
+    />
+    <div class='flex flex-col gap-12 md:flex-row'>
+      <div class='isolate grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 gap-4'>
+        <Image
+          src='/me-work.jpg'
+          alt='Jake Ord sketching wireframes on a sheet of paper with a sharpie pen'
+          format='webp'
+          width={1000}
+          height={1000}
+          class='sm:col-span-2 sm:row-span-2 object-cover shadow-xl'
+        />
+        <Image
+          src='/me-london.jpg'
+          alt='Jake Ord looking out towards Trafalgar Square in London'
+          format='webp'
+          width={1000}
+          height={1000}
+          class='sm:col-span-1 sm:row-span-1 object-cover shadow-xl lg:-mt-44 lg:-ml-12'
+        />
+        <Image
+          src='/me-tenerife.jpg'
+          alt='Jake Ord posing for a framed shot near some palm trees in Tenerife'
+          format='webp'
+          width={900}
+          height={1200}
+          class='sm:col-span-1 sm:row-span-1 object-cover shadow-xl lg:-mt-24 lg:-ml-6'
+        />
+      </div>
+
+      <div class='space-y-4'>
+        <HeadingThree>So...who are you?</HeadingThree>
+
+        <Text>
+          I am a British-born designer based in Newcastle, UK. I am driven by
+          design that impacts people in a positive way, I thrive on team
+          collaboration and pushing boundaries. Always thinking of ways to
+          improve products and services in my everyday life.
+        </Text>
+
+        <Text>
+          I currently work for
+          <Link href='https://def.co.uk' target='_blank' rel='noreferrer'>
+            DEF Software
+          </Link>
+          by day but by night you will find me hacking on some side project (may
+          involve code).
+        </Text>
+
+        <Text>
+          But who works all the time, right? In my downtime I am either late
+          night driving, studying Japanese, cooking up some crazy dishes or
+          expanding my figure collection.
+        </Text>
+
+        <HeadingThree>What's up with the dragons?</HeadingThree>
+        <Text>
+          Dragons are my favourite mythological creatures. I have always been
+          fascinated by them in movies, games and Asian culture. To me, they
+          were the beginning of my journey into design and what led me towards
+          art/graphics.
+        </Text>
+
+        <HeadingThree>
+          What's up with the Japanese? Do you speak it?
+        </HeadingThree>
+        <Text>
+          <TranslateText
+            client:visible
+            en='Only a little bit. I am studying a lot'
+            jp='ちょっとだけ。たくさん勉強してるよ。'
+          />
+        </Text>
+        <SkipToTranslate />
+
+        <div class='flex gap-4'>
+          <Link href='/jakeord-cv.pdf' rel='noreferrer' target='_blank'>
+            Read my CV
+          </Link>
+          <Link href='mailto:jake.ord345@gmail.com'>Contact me</Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

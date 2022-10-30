@@ -1,9 +1,9 @@
 ---
+layout: "../../layouts/project.astro"
 title: A new online platform for planning applications
 summary: Dorset Council had commissioned DEF to undertake transforming their entire planning online infrastructure. As part of this I was tasked with collaborating with Dorset’s UX team to re-imagine the online portal for different audiences - including members of the public, ward officers and consultees.
 image: /images/dorset-planning-online.png
 client: Dorset Council
-protected: true
 ---
 
 ## An overhaul to planning online
