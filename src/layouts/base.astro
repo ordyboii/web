@@ -1,4 +1,8 @@
 ---
+import "@fontsource/noto-sans/400.css";
+import "@fontsource/noto-sans/600.css";
+import "@fontsource/noto-sans/700.css";
+import "@fontsource/noto-sans/900.css";
 import { Icon } from "astro-icon";
 import Header from "components/header.astro";
 import Social from "components/social.astro";
@@ -38,16 +42,6 @@ const canonical = new URL(Astro.url.pathname, Astro.url.origin);
     <meta name='og:description' content={description} />
     <link rel='canonical' href={canonical} />
     <link rel='icon' href='/favicon.svg' />
-    <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link
-      rel='preconnect'
-      href='https://fonts.gstatic.com'
-      crossorigin='true'
-    />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;900&display=swap'
-      rel='stylesheet'
-    />
   </head>
   <body class='min-h-screen bg-amber-100 font-body'>
     <div class='mx-auto max-w-5xl p-8'>

@@ -24,6 +24,7 @@
     "tailwindcss": "^3.2.1"
   },
   "devDependencies": {
+    "@fontsource/noto-sans": "^4.5.11",
     "@tailwindcss/typography": "^0.5.7"
   }
 }
