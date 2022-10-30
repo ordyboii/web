@@ -1,4 +1,4 @@
-import { type Component, createSignal } from "solid-js";
+import { type Component, createSignal, Show } from "solid-js";
 
 export const [translate, setTranslate] = createSignal(false);
 
@@ -6,7 +6,11 @@ export const TranslateText: Component<{ en: string; jp: string }> = ({
   en,
   jp
 }) => {
-  return <>{translate() ? en : jp}</>;
+  return (
+    <Show when={translate()} fallback={jp}>
+      {en}
+    </Show>
+  );
 };
 
 export const TranslateToggle: Component = () => {
