@@ -2,7 +2,6 @@ import { signal } from "@preact/signals";
 import type { FunctionComponent } from "preact";
 
 export const translation = signal(false);
-export const count = signal(false);
 
 export const TranslateText: FunctionComponent<{ en: string; jp: string }> = ({
   en,
