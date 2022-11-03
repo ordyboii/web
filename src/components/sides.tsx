@@ -1,18 +1,18 @@
 import type { MarkdownInstance } from "astro";
-import { createMemo, createSignal } from "solid-js";
+import { useMemo, useRef, useState } from "preact/hooks";
 import { HeadingThree, Link, Text } from "./typography";
 
 export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
-  let buttonRefs: HTMLButtonElement[] = [];
+  const buttonRefs = useRef<HTMLButtonElement[]>();
 
-  const [sideShowing, setSideShowing] = createSignal(
-    sides?.[0]?.frontmatter.title
-  );
+  const [sideShowing, setSideShowing] = useState(sides?.[0]?.frontmatter.title);
 
-  const filteredSide = createMemo(
-    () => sides.filter(side => side.frontmatter.title === sideShowing())[0],
+  const filteredSide = useMemo(
+    () => sides.filter(side => side.frontmatter.title === sideShowing)[0],
     [sideShowing, sides]
   );
+
+  const content = filteredSide?.compiledContent();
 
   return (
     <div class='space-y-4'>
@@ -26,7 +26,7 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
           // Accessibility moving the tab selection
           if (e.key === "ArrowLeft") {
             const currentSideIndex = sides.findIndex(
-              side => side.frontmatter.title === sideShowing()
+              side => side.frontmatter.title === sideShowing
             );
 
             // Move the array selection left
@@ -34,7 +34,7 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
           }
           if (e.key === "ArrowRight") {
             const currentSideIndex = sides.findIndex(
-              side => side.frontmatter.title === sideShowing()
+              side => side.frontmatter.title === sideShowing
             );
 
             // Move the array selection right
@@ -42,22 +42,22 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
           }
 
           // Find the correct button ref in the array and focus that tab button
-          buttonRefs
-            .find(ref => ref.id === filteredSide()?.frontmatter.image)
+          buttonRefs.current
+            ?.find(ref => ref.id === filteredSide?.frontmatter.image)
             ?.focus();
         }}
       >
         {sides.map(side => (
           <button
-            ref={ref => buttonRefs.push(ref)}
+            ref={ref => buttonRefs?.current?.push(ref!)}
             role='tab'
             id={side.frontmatter.image}
-            tabIndex={sideShowing() === side.frontmatter.title ? 1 : -1}
-            aria-selected={sideShowing() === side.frontmatter.title}
+            tabIndex={sideShowing === side.frontmatter.title ? 1 : -1}
+            aria-selected={sideShowing === side.frontmatter.title}
             aria-controls={side.frontmatter.title}
             onClick={() => setSideShowing(side.frontmatter.title)}
             class={`rounded border border-sky-900 px-4 py-2 ${
-              sideShowing() === side.frontmatter.title
+              sideShowing === side.frontmatter.title
                 ? "bg-sky-900 text-white shadow-lg shadow-sky-900/50"
                 : "hover:bg-sky-50"
             }`}
@@ -66,19 +66,19 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
           </button>
         ))}
       </div>
-      {sideShowing() && filteredSide() && (
+      {sideShowing && filteredSide && (
         <>
           <div
             role='tabpanel'
-            id={filteredSide()!.frontmatter.title}
+            id={filteredSide.frontmatter.title}
             tabIndex={0}
-            aria-labelledby={filteredSide()!.frontmatter.image}
+            aria-labelledby={filteredSide.frontmatter.image}
             aria-expanded={true}
             class='flex flex-col border-2 border-gray-600 bg-white md:flex-row'
           >
             <img
-              src={filteredSide()!.frontmatter.image}
-              alt={filteredSide()!.frontmatter.title}
+              src={filteredSide.frontmatter.image}
+              alt={filteredSide.frontmatter.title}
               width={1000}
               height={1000}
               loading='lazy'
@@ -86,26 +86,23 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
               class='h-96 w-full object-cover transition sm:max-w-xl'
             />
             <div class='space-y-4 px-8 py-4'>
-              <HeadingThree>{filteredSide()!.frontmatter.title}</HeadingThree>
-              {filteredSide()!.frontmatter.link && (
+              <HeadingThree>{filteredSide.frontmatter.title}</HeadingThree>
+              {filteredSide.frontmatter.link && (
                 <Link
-                  href={filteredSide()!.frontmatter.link!}
+                  href={filteredSide.frontmatter.link!}
                   target='_blank'
                   rel='noreferrer'
                   variant='icon'
                 />
               )}
-              <div
-                innerHTML={filteredSide()!.compiledContent as unknown as string}
-              />
+              <div dangerouslySetInnerHTML={{ __html: content! }} />
             </div>
           </div>
 
           {/* Accessibility for showing other tabpanels as expanded "false" +2 as missing first and default to first */}
           {sides
             .filter(
-              side =>
-                filteredSide()?.frontmatter.title !== side.frontmatter.title
+              side => filteredSide.frontmatter.title !== side.frontmatter.title
             )
             .map(side => (
               <div

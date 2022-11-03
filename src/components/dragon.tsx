@@ -1,13 +1,13 @@
-import { createEffect } from "solid-js";
+import { useEffect } from "preact/hooks";
 
 type Props = {
   size: number;
 };
 
 export default function Dragon({ size }: Props) {
-  createEffect(() => {
+  useEffect(() => {
     import("@lottiefiles/lottie-player");
-  });
+  }, []);
 
   return (
     <lottie-player

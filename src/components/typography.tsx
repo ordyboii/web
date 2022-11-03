@@ -1,7 +1,6 @@
-import type { JSX, ParentComponent } from "solid-js";
-import { HiSolidExternalLink } from "solid-icons/hi";
+import type { JSX, FunctionComponent } from "preact";
 
-export const HeadingOne: ParentComponent<
+export const HeadingOne: FunctionComponent<
   JSX.HTMLAttributes<HTMLHeadingElement>
 > = props => {
   return (
@@ -11,7 +10,7 @@ export const HeadingOne: ParentComponent<
   );
 };
 
-export const HeadingTwo: ParentComponent<
+export const HeadingTwo: FunctionComponent<
   JSX.HTMLAttributes<HTMLHeadingElement>
 > = props => {
   return (
@@ -21,7 +20,7 @@ export const HeadingTwo: ParentComponent<
   );
 };
 
-export const HeadingThree: ParentComponent<
+export const HeadingThree: FunctionComponent<
   JSX.HTMLAttributes<HTMLHeadingElement>
 > = props => {
   return (
@@ -38,7 +37,7 @@ const TEXT_WEIGHTS: Record<Weights, string> = {
   bold: "font-semibold"
 };
 
-export const Text: ParentComponent<
+export const Text: FunctionComponent<
   JSX.HTMLAttributes<HTMLParagraphElement> & { weight?: Weights }
 > = ({ weight = "regular", ...props }) => {
   return (
@@ -48,24 +47,36 @@ export const Text: ParentComponent<
   );
 };
 
-type LinkType = "default" | "inverse";
+type Link = "default" | "inverse";
 
-const LINK_TYPES: Record<LinkType, string> = {
+const LINKS: Record<Link, string> = {
   default: "hover:text-sky-900",
   inverse: "hover:text-gray-900"
 };
 
-export const Link: ParentComponent<
-  JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
+export const Link: FunctionComponent<
+  JSX.HTMLAttributes<HTMLElement> & {
     variant?: "icon";
-    type?: LinkType;
+    link?: "default" | "inverse";
   }
-> = ({ type = "default", ...props }) => {
+> = ({ link = "default", ...props }) => {
   return (
-    <a class={`w-fit font-bold underline ${LINK_TYPES[type]}`} {...props}>
+    <a class={`w-fit font-bold underline ${LINKS[link]}`} {...props}>
       {props.variant === "icon" ? (
         <div class='flex items-center gap-2 pt-2'>
-          View project <HiSolidExternalLink class='h-5 w-5' />
+          View project{" "}
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 24 24'
+            fill='currentColor'
+            class='w-5 h-5'
+          >
+            <path
+              fill-rule='evenodd'
+              d='M15.75 2.25H21a.75.75 0 01.75.75v5.25a.75.75 0 01-1.5 0V4.81L8.03 17.03a.75.75 0 01-1.06-1.06L19.19 3.75h-3.44a.75.75 0 010-1.5zm-10.5 4.5a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V10.5a.75.75 0 011.5 0v8.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V8.25a3 3 0 013-3h8.25a.75.75 0 010 1.5H5.25z'
+              clip-rule='evenodd'
+            />
+          </svg>
         </div>
       ) : (
         props.children
@@ -74,8 +85,8 @@ export const Link: ParentComponent<
   );
 };
 
-export const NavLink: ParentComponent<
-  JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
+export const NavLink: FunctionComponent<
+  JSX.HTMLAttributes<HTMLAnchorElement> & {
     inverse?: boolean;
     pathname?: string;
     path: string;
