@@ -22,6 +22,7 @@ type Side = {
   title: string;
   image: string;
   link?: string;
+  description: string;
 };
 
 type Post = {

@@ -12,8 +12,6 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
     [sideShowing, sides]
   );
 
-  const content = filteredSide?.compiledContent();
-
   return (
     <div class='space-y-4'>
       <Text>Projects and apps I've built in the past.</Text>
@@ -22,30 +20,6 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
         tabIndex={0}
         aria-label='Side work'
         class='flex flex-col gap-4 sm:flex-row'
-        onKeyDown={e => {
-          // Accessibility moving the tab selection
-          if (e.key === "ArrowLeft") {
-            const currentSideIndex = sides.findIndex(
-              side => side.frontmatter.title === sideShowing
-            );
-
-            // Move the array selection left
-            setSideShowing(sides[currentSideIndex - 1]?.frontmatter.title);
-          }
-          if (e.key === "ArrowRight") {
-            const currentSideIndex = sides.findIndex(
-              side => side.frontmatter.title === sideShowing
-            );
-
-            // Move the array selection right
-            setSideShowing(sides[currentSideIndex + 1]?.frontmatter.title);
-          }
-
-          // Find the correct button ref in the array and focus that tab button
-          buttonRefs.current
-            ?.find(ref => ref.id === filteredSide?.frontmatter.image)
-            ?.focus();
-        }}
       >
         {sides.map(side => (
           <button
@@ -95,7 +69,7 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
                   variant='icon'
                 />
               )}
-              <div dangerouslySetInnerHTML={{ __html: content! }} />
+              <p>{filteredSide.frontmatter.description}</p>
             </div>
           </div>
 
