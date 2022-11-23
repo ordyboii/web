@@ -11,7 +11,7 @@ import Sides from "components/sides";
 import SkipToTranslate from "components/skip-to-translate.astro";
 
 const projects = await Astro.glob<Project>("./projects/*.md");
-const sides = await Astro.glob<Side>("../sides/*.md");
+const sides = await Astro.glob<Side>("./sides/*.md");
 ---
 
 <Base>

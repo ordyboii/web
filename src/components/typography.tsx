@@ -84,24 +84,3 @@ export const Link: FunctionComponent<
     </a>
   );
 };
-
-export const NavLink: FunctionComponent<
-  JSX.HTMLAttributes<HTMLAnchorElement> & {
-    inverse?: boolean;
-    pathname?: string;
-    path: string;
-  }
-> = props => {
-  const navClass = (path: string) =>
-    `px-3 py-2 rounded-md transition ease-in cursor-pointer ${
-      props.inverse ? "hover:bg-sky-500" : "hover:bg-sky-900 hover:text-white"
-    } ${!props.inverse && props.pathname === path && "bg-sky-900 text-white"} ${
-      props.inverse && props.pathname === path && "bg-sky-500 text-white"
-    }`;
-
-  return (
-    <a class={navClass(props.path)} href={props.path} {...props}>
-      {props.children}
-    </a>
-  );
-};
