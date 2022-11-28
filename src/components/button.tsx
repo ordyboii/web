@@ -1,6 +1,6 @@
-import type { FunctionComponent, JSX } from "preact";
+import type { ParentComponent, JSX } from "solid-js";
 
-export const Button: FunctionComponent<
+export const Button: ParentComponent<
   JSX.HTMLAttributes<HTMLButtonElement>
 > = props => {
   return (
@@ -13,8 +13,8 @@ export const Button: FunctionComponent<
   );
 };
 
-export const ButtonLink: FunctionComponent<
-  JSX.HTMLAttributes<HTMLAnchorElement>
+export const ButtonLink: ParentComponent<
+  JSX.AnchorHTMLAttributes<HTMLAnchorElement>
 > = props => {
   return (
     <a

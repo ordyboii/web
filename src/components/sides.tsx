@@ -1,16 +1,19 @@
 import type { MarkdownInstance } from "astro";
-import { useMemo, useRef, useState } from "preact/hooks";
+import { createSignal, createMemo } from "solid-js";
 import { HeadingThree, Link, Text } from "./typography";
 
 export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
-  const buttonRefs = useRef<HTMLButtonElement[]>();
+  let buttonRefs: HTMLButtonElement[] = [];
 
-  const [sideShowing, setSideShowing] = useState(sides?.[0]?.frontmatter.title);
-
-  const filteredSide = useMemo(
-    () => sides.filter(side => side.frontmatter.title === sideShowing)[0],
-    [sideShowing, sides]
+  const [sideShowing, setSideShowing] = createSignal(
+    sides?.[0]?.frontmatter.title
   );
+
+  const filteredSide = createMemo(
+    () => sides.filter(side => side.frontmatter.title === sideShowing())[0]
+  );
+
+  console.log(filteredSide());
 
   return (
     <div class='space-y-4'>
@@ -23,15 +26,15 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
       >
         {sides.map(side => (
           <button
-            ref={ref => buttonRefs?.current?.push(ref!)}
+            ref={ref => buttonRefs.push(ref)}
             role='tab'
             id={side.frontmatter.image}
-            tabIndex={sideShowing === side.frontmatter.title ? 1 : -1}
-            aria-selected={sideShowing === side.frontmatter.title}
+            tabIndex={sideShowing() === side.frontmatter.title ? 1 : -1}
+            aria-selected={sideShowing() === side.frontmatter.title}
             aria-controls={side.frontmatter.title}
             onClick={() => setSideShowing(side.frontmatter.title)}
             class={`rounded border border-sky-900 px-4 py-2 ${
-              sideShowing === side.frontmatter.title
+              sideShowing() === side.frontmatter.title
                 ? "bg-sky-900 text-white shadow-lg shadow-sky-900/50"
                 : "hover:bg-sky-50"
             }`}
@@ -40,19 +43,19 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
           </button>
         ))}
       </div>
-      {sideShowing && filteredSide && (
+      {sideShowing() && filteredSide() && (
         <>
           <div
             role='tabpanel'
-            id={filteredSide.frontmatter.title}
+            id={filteredSide()!.frontmatter.title}
             tabIndex={0}
-            aria-labelledby={filteredSide.frontmatter.image}
+            aria-labelledby={filteredSide()!.frontmatter.image}
             aria-expanded={true}
             class='flex flex-col border-2 border-gray-600 bg-white md:flex-row'
           >
             <img
-              src={filteredSide.frontmatter.image}
-              alt={filteredSide.frontmatter.title}
+              src={filteredSide()!.frontmatter.image}
+              alt={filteredSide()!.frontmatter.title}
               width={1000}
               height={1000}
               loading='lazy'
@@ -60,23 +63,24 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
               class='h-96 w-full object-cover transition sm:max-w-xl'
             />
             <div class='space-y-4 px-8 py-4'>
-              <HeadingThree>{filteredSide.frontmatter.title}</HeadingThree>
-              {filteredSide.frontmatter.link && (
+              <HeadingThree>{filteredSide()!.frontmatter.title}</HeadingThree>
+              {filteredSide()!.frontmatter.link && (
                 <Link
-                  href={filteredSide.frontmatter.link!}
+                  href={filteredSide()!.frontmatter.link!}
                   target='_blank'
                   rel='noreferrer'
                   variant='icon'
                 />
               )}
-              <p>{filteredSide.frontmatter.description}</p>
+              <p>{filteredSide()!.frontmatter.description}</p>
             </div>
           </div>
 
           {/* Accessibility for showing other tabpanels as expanded "false" +2 as missing first and default to first */}
           {sides
             .filter(
-              side => filteredSide.frontmatter.title !== side.frontmatter.title
+              side =>
+                filteredSide()!.frontmatter.title !== side.frontmatter.title
             )
             .map(side => (
               <div

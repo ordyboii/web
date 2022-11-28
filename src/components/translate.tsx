@@ -1,29 +1,28 @@
-import { signal } from "@preact/signals";
-import type { FunctionComponent } from "preact";
+import { type Component, createSignal } from "solid-js";
 
-export const translation = signal(false);
+export const [translation, setTranslation] = createSignal(false);
 
-export const TranslateText: FunctionComponent<{ en: string; jp: string }> = ({
+export const TranslateText: Component<{ en: string; jp: string }> = ({
   en,
   jp
 }) => {
-  return <span>{translation.value ? en : jp}</span>;
+  return <span>{translation() ? en : jp}</span>;
 };
 
-export const TranslateToggle: FunctionComponent = () => {
+export const TranslateToggle: Component = () => {
   return (
     <>
       <button
         id='translate'
         aria-label='Click here to translate Japanese phrases into English'
-        onClick={() => (translation.value = !translation.value)}
+        onClick={() => setTranslation(!translation())}
         class={`${
-          translation.value ? "bg-sky-900" : "bg-gray-300"
+          translation() ? "bg-sky-900" : "bg-gray-300"
         } relative inline-flex h-6 w-11 items-center rounded-full`}
       >
         <span
           class={`${
-            translation.value ? "translate-x-6" : "translate-x-1"
+            translation() ? "translate-x-6" : "translate-x-1"
           } inline-block h-4 w-4 rounded-full bg-white transition ease-out`}
         ></span>
       </button>

@@ -1,9 +1,9 @@
-import { useState } from "preact/hooks";
+import { createSignal } from "solid-js";
 import { translation } from "./translate";
 import { Text } from "./typography";
 
 export default function MobileMenu({ children }: { children: Element }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = createSignal(false);
 
   return (
     <>
@@ -27,13 +27,13 @@ export default function MobileMenu({ children }: { children: Element }) {
           />
         </svg>
       </button>
-      {isMenuOpen && (
+      {isMenuOpen() && (
         <nav
           class='absolute inset-x-2 top-2 z-10 animate-fade-down space-y-4 rounded-sm 
         bg-sky-900 p-6 text-white shadow-xl'
         >
           <div class='flex items-center justify-between text-lg font-bold'>
-            {translation ? "Jake Ord" : "オルドジェイク"}
+            {translation() ? "Jake Ord" : "オルドジェイク"}
             <button onClick={() => setIsMenuOpen(false)}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
