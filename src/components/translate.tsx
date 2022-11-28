@@ -16,7 +16,8 @@ export const TranslateToggle: Component = () => {
   };
 
   createEffect(() => {
-    setTranslation(!!localStorage.getItem("translation"));
+    if (localStorage.getItem("translation") === "true") setTranslation(true);
+    else setTranslation(false);
   });
 
   return (
