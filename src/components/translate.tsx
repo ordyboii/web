@@ -1,4 +1,4 @@
-import { type Component, createSignal } from "solid-js";
+import { type Component, createSignal, createEffect } from "solid-js";
 
 export const [translation, setTranslation] = createSignal(false);
 
@@ -10,12 +10,21 @@ export const TranslateText: Component<{ en: string; jp: string }> = ({
 };
 
 export const TranslateToggle: Component = () => {
+  const translate = () => {
+    setTranslation(!translation());
+    localStorage.setItem("translation", translation().toString());
+  };
+
+  createEffect(() => {
+    setTranslation(!!localStorage.getItem("translation"));
+  });
+
   return (
     <>
       <button
         id='translate'
         aria-label='Click here to translate Japanese phrases into English'
-        onClick={() => setTranslation(!translation())}
+        onClick={translate}
         class={`${
           translation() ? "bg-sky-900" : "bg-gray-300"
         } relative inline-flex h-6 w-11 items-center rounded-full`}
