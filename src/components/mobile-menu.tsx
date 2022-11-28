@@ -9,7 +9,7 @@ export default function MobileMenu({ children }: { children: Element }) {
     <>
       <button
         onClick={() => setIsMenuOpen(true)}
-        class='flex items-center gap-2 rounded-md bg-sky-900 px-3 py-2 text-white transition hover:bg-sky-500 md:hidden'
+        class='flex items-center gap-2 rounded-md bg-sky-900 px-3 py-2 text-white transition hover:bg-sky-500 focus:bg-sky-500 md:hidden'
       >
         <Text>Menu</Text>
         <svg

@@ -50,8 +50,8 @@ export const Text: ParentComponent<
 type Link = "default" | "inverse";
 
 const LINKS: Record<Link, string> = {
-  default: "hover:text-sky-900",
-  inverse: "hover:text-gray-900"
+  default: "hover:text-sky-900 focus:text-sky-900",
+  inverse: "hover:text-gray-900 focus:text-gray-900"
 };
 
 export const Link: ParentComponent<
