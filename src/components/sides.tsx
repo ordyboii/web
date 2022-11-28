@@ -34,7 +34,7 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
             class={`rounded border border-sky-900 px-4 py-2 ${
               sideShowing() === side.frontmatter.title
                 ? "bg-sky-900 text-white shadow-lg shadow-sky-900/50"
-                : "hover:bg-sky-50"
+                : "hover:bg-sky-50 focus:bg-sky-900"
             }`}
           >
             {side.frontmatter.title}

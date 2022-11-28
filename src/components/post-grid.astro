@@ -14,7 +14,7 @@ const { posts } = Astro.props as {
       <a
         href={post.url}
         class='cursor-pointer rounded-sm border-2 border-gray-900 bg-white 
-          transition hover:rotate-2 hover:scale-105'
+          transition hover:rotate-2 hover:scale-105 focus:rotate-2 focus:scale-105'
         aria-label={`Link to ${post.frontmatter.title}`}
       >
         <Image
