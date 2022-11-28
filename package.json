@@ -14,6 +14,7 @@
     "@astrojs/image": "^0.11.1",
     "@astrojs/solid-js": "^1.2.3",
     "@astrojs/tailwind": "^2.1.1",
+    "@fontsource/noto-sans": "^4.5.11",
     "@lottiefiles/lottie-player": "^1.6.0",
     "astro": "^1.6.1",
     "astro-icon": "^0.8.0",

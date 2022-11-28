@@ -13,8 +13,6 @@ export default function Sides({ sides }: { sides: MarkdownInstance<Side>[] }) {
     () => sides.filter(side => side.frontmatter.title === sideShowing())[0]
   );
 
-  console.log(filteredSide());
-
   return (
     <div class='space-y-4'>
       <Text>Projects and apps I've built in the past.</Text>
