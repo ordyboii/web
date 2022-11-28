@@ -3,6 +3,12 @@ import "@fontsource/noto-sans/400.css";
 import "@fontsource/noto-sans/600.css";
 import "@fontsource/noto-sans/700.css";
 import "@fontsource/noto-sans/900.css";
+
+import notoSans400 from "@fontsource/noto-sans/files/noto-sans-all-400-normal.woff2";
+import notoSans600 from "@fontsource/noto-sans/files/noto-sans-all-600-normal.woff2";
+import notoSans700 from "@fontsource/noto-sans/files/noto-sans-all-700-normal.woff2";
+import notoSans900 from "@fontsource/noto-sans/files/noto-sans-all-900-normal.woff2";
+
 import { Icon } from "astro-icon";
 import Header from "components/header.astro";
 import Social from "components/social.astro";
@@ -42,6 +48,10 @@ const canonical = new URL(Astro.url.pathname, Astro.url.origin);
     <meta name='og:description' content={description} />
     <link rel='canonical' href={canonical} />
     <link rel='icon' href='/favicon.svg' />
+    <link rel='preload' as='font' href={notoSans400} type='font/woff2' />
+    <link rel='preload' as='font' href={notoSans600} type='font/woff2' />
+    <link rel='preload' as='font' href={notoSans700} type='font/woff2' />
+    <link rel='preload' as='font' href={notoSans900} type='font/woff2' />
   </head>
   <body class='min-h-screen bg-amber-100 font-body'>
     <div class='mx-auto max-w-5xl p-8'>
