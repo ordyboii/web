@@ -1,6 +1,5 @@
 import { annotate } from "rough-notation";
-import { createRef } from "preact";
-import { useEffect } from "preact/hooks";
+import { createEffect } from "solid-js";
 import { HeadingOne, HeadingThree, HeadingTwo } from "./typography";
 
 type Props = {
@@ -10,10 +9,10 @@ type Props = {
 };
 
 export default function AnnotatedText({ type, component, content }: Props) {
-  const ref = createRef();
+  let ref: any = null;
 
-  useEffect(() => {
-    const annotation = annotate(ref.current, {
+  createEffect(() => {
+    const annotation = annotate(ref, {
       type: type,
       color: "#0c4a6e"
     });

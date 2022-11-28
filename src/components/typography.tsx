@@ -1,6 +1,6 @@
-import type { JSX, FunctionComponent } from "preact";
+import type { JSX, ParentComponent } from "solid-js";
 
-export const HeadingOne: FunctionComponent<
+export const HeadingOne: ParentComponent<
   JSX.HTMLAttributes<HTMLHeadingElement>
 > = props => {
   return (
@@ -10,7 +10,7 @@ export const HeadingOne: FunctionComponent<
   );
 };
 
-export const HeadingTwo: FunctionComponent<
+export const HeadingTwo: ParentComponent<
   JSX.HTMLAttributes<HTMLHeadingElement>
 > = props => {
   return (
@@ -20,7 +20,7 @@ export const HeadingTwo: FunctionComponent<
   );
 };
 
-export const HeadingThree: FunctionComponent<
+export const HeadingThree: ParentComponent<
   JSX.HTMLAttributes<HTMLHeadingElement>
 > = props => {
   return (
@@ -37,7 +37,7 @@ const TEXT_WEIGHTS: Record<Weights, string> = {
   bold: "font-semibold"
 };
 
-export const Text: FunctionComponent<
+export const Text: ParentComponent<
   JSX.HTMLAttributes<HTMLParagraphElement> & { weight?: Weights }
 > = ({ weight = "regular", ...props }) => {
   return (
@@ -54,8 +54,8 @@ const LINKS: Record<Link, string> = {
   inverse: "hover:text-gray-900"
 };
 
-export const Link: FunctionComponent<
-  JSX.HTMLAttributes<HTMLElement> & {
+export const Link: ParentComponent<
+  JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
     variant?: "icon";
     link?: "default" | "inverse";
   }
