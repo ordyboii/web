@@ -59,7 +59,7 @@ export default async function RootPage() {
             />
             <Text className='text-lg font-bold'>
               <TranslateText
-                en='I also speak a little Japanese'
+                en='Nice to meet you. I also speak a little Japanese'
                 jp='「初めまして、少し日本語も話せます」'
               />
             </Text>
