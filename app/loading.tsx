@@ -1,7 +1,7 @@
 import Animate from "./animate";
 import DragonAnimation from "./dragon";
 
-export default function loading() {
+export default function RootLoading() {
   return (
     <Animate>
       <section className='min-h-screen grid place-content-center'>

@@ -24,7 +24,7 @@ export default function Social({ inverse }: Props) {
         <FaTwitter className={socialClass} />
       </ExternalLink>
       <ExternalLink
-        href='https://www.Externallinkedin.com/in/ordyboii'
+        href='https://linkedin.com/in/ordyboii'
         target='_blank'
         rel='noreferrer'
         type={inverse ? "inverse" : "default"}
