@@ -115,7 +115,7 @@ export const getSides = cache(async () => {
           title: string;
           image: string;
           description: string;
-          link?: string;
+          link: string;
         }
       };
     })

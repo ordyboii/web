@@ -58,11 +58,11 @@ export default function RootLayout({
               <BsArrow90DegDown className='h-5 w-5' />
               <p>Translate me!</p>
             </div>
-            <li className='flex gap-4 rounded-xl border-2 border-gray-600 bg-white p-4'>
+            <aside className='flex gap-4 rounded-xl border-2 border-gray-600 bg-white p-4'>
               <strong>JP</strong>
               <TranslateToggle />
               <strong>EN</strong>
-            </li>
+            </aside>
           </div>
         </TranslateProvider>
       </body>
