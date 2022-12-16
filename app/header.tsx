@@ -18,23 +18,23 @@ const MenuItems = ({ inverse }: Props) => {
   const navClass = (path: string) =>
     `px-3 py-2 rounded-md transition ease-in cursor-pointer ${
       inverse
-        ? "hover:bg-sky-500 focus:bg-sky-500"
+        ? "hover:bg-sky-700 focus:bg-sky-700"
         : "hover:bg-sky-900 hover:text-white focus:bg-sky-900 focus:text-white"
     } ${!inverse && pathname === path && "bg-sky-900 text-white"} ${
-      inverse && pathname === path && "bg-sky-500 text-white"
+      inverse && pathname === path && "bg-sky-700 text-white"
     }`;
 
   return (
     <>
-      <li className='flex gap-2'>
+      <li className={`flex gap-2 ${inverse && "flex-col gap-2"}`}>
         <Link className={navClass("/")} href='/'>
           Home
         </Link>
-        <Link className={navClass("/projects")} href='/projects'>
-          Work
+        <Link className={navClass("/client-work")} href='/client-work'>
+          Client Work
         </Link>
-        <Link className={navClass("/blog")} href='/blog'>
-          Blog
+        <Link className={navClass("/thoughts")} href='/thoughts'>
+          Thoughts
         </Link>
         <Link
           className={navClass("/jakeord-cv.pdf")}
@@ -86,7 +86,7 @@ const MobileMenu = ({ children }: PropsWithChildren) => {
 
 export default function Header() {
   return (
-    <header className='flex items-center justify-between gap-8'>
+    <header className='fixed top-0 w-full z-50 p-6 flex items-center justify-between gap-8'>
       <Link
         href='/'
         className='text-3xl font-bold hover:opacity-60 focus:opacity-60'
@@ -100,7 +100,7 @@ export default function Header() {
       </ul>
 
       <MobileMenu>
-        <ul className='flex flex-wrap items-center justify-between gap-4'>
+        <ul className='space-y-4'>
           <MenuItems inverse />
         </ul>
       </MobileMenu>

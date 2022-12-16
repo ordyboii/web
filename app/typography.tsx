@@ -65,7 +65,7 @@ export const Text = ({
 }: HTMLAttributes<HTMLParagraphElement> & { weight?: Weights }) => {
   return (
     <p
-      className={`text-lg leading-relaxed ${TEXT_WEIGHTS[weight]} ${props.className}`}
+      className={`text-lg !leading-[1.8] ${TEXT_WEIGHTS[weight]} ${props.className}`}
       {...props}
     >
       {props.children}

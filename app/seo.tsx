@@ -5,7 +5,7 @@ export default function DefaultTags() {
       <meta name='viewport' content='width=device-width' />
       <meta
         name='keywords'
-        content='Jake Ord, jorddy, UX Designer, UX, UX/UI Newcastle-Upon-Tyne, Newcastle, design, coding, typescript, graphics, portfolio, web'
+        content='Jake Ord, jorddy, UX Designer, UX, UX/UI Newcastle-Upon-Tyne, Newcastle, design, coding, typescript, data, graphics, portfolio, web'
       />
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content='jakeord' />
@@ -15,11 +15,12 @@ export default function DefaultTags() {
       <meta name='og:image' content='/images/me-tenerife.jpg' />
       <meta
         name='og:title'
-        content='Jake Ord - UX designer that loves the web'
+        content='Jake Ord - UX designer that loves to create digital experiences'
       />
       <meta
         name='og:description'
-        content='Product designer and typescript nerd. Based in Newcastle-Upon-Tyne. I blend together product, usability, accessibility and technical design to deliver research-validated solutions that drive business growth.'
+        content='UX designer and data visulation nerd. I blend together UX, accessibility and data to deliver
+        research-validated solutions.'
       />
       <link rel='icon' href='/favicon.svg' />
     </>

@@ -10,9 +10,10 @@ type Props = {
 export default function PostGrid({ posts }: Props) {
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
-      {posts.map(post => (
+      {posts.map((post, idx) => (
         <Link
-          href={`/blog/${post.slug}`}
+          key={idx}
+          href={`/thoughts/${post.slug}`}
           className='cursor-pointer rounded-sm border-2 border-gray-900 bg-white 
           transition hover:rotate-2 hover:scale-105 focus:rotate-2 focus:scale-105'
           aria-label={`Link to ${post.frontmatter.title}`}
