@@ -23,9 +23,7 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body
-        className={`${notoSans.className} min-h-screen bg-amber-100 mx-auto max-w-5xl p-8`}
-      >
+      <body className={`${notoSans.className} min-h-screen bg-amber-100`}>
         <a
           href='#translate'
           className='absolute -top-24 left-4 z-50 rounded-sm bg-sky-900 p-4 text-white focus:top-4'
@@ -42,9 +40,14 @@ export default function RootLayout({
 
         <TranslateProvider>
           <Header />
-          <main id='content'>{children}</main>
+          <main className='mx-auto max-w-5xl p-8' id='content'>
+            {children}
+          </main>
 
-          <footer className='flex flex-col justify-between gap-4 border-t border-gray-500 pt-4 sm:flex-row sm:gap-0'>
+          <footer
+            className='mx-auto max-w-5xl p-8 flex flex-col justify-between gap-4 border-t 
+          border-gray-500 pt-4 sm:flex-row sm:gap-0'
+          >
             <Text>
               © {new Date().getFullYear()}, Made with ❤️ and 🐉 by Jake Ord
             </Text>

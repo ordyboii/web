@@ -4,7 +4,7 @@ export default function BlogHead() {
   return (
     <>
       <DefaultTags />
-      <title>Projects - Jake Ord</title>
+      <title>Thoughts - Jake Ord</title>
     </>
   );
 }

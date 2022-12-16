@@ -1,10 +1,10 @@
 import Animate from "@app/animate";
 import AnnotatedText from "@app/annotated-text";
-import ProjectGrid from "@app/project-grid";
-import { getProjects } from "@content/parse";
+import PostGrid from "@app/post-grid";
+import { getPosts } from "@content/parse";
 
-export default async function ProjectsPage() {
-  const projects = await getProjects();
+export default async function BlogPage() {
+  const posts = await getPosts();
 
   return (
     <Animate>
@@ -12,9 +12,9 @@ export default async function ProjectsPage() {
         <AnnotatedText
           component='HeadingOne'
           type='underline'
-          content='My Work'
+          content='Thoughts'
         />
-        <ProjectGrid projects={projects} />
+        <PostGrid posts={posts} />
       </section>
     </Animate>
   );
