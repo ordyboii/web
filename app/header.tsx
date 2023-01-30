@@ -36,14 +36,6 @@ const MenuItems = ({ inverse }: Props) => {
         <Link className={navClass("/thoughts")} href='/thoughts'>
           Thoughts
         </Link>
-        <Link
-          className={navClass("/jakeord-cv.pdf")}
-          href='/jakeord-cv.pdf'
-          target='_blank'
-          rel='noopener'
-        >
-          My CV
-        </Link>
       </li>
 
       <li className='flex gap-3'>
@@ -86,7 +78,7 @@ const MobileMenu = ({ children }: PropsWithChildren) => {
 
 export default function Header() {
   return (
-    <header className='fixed top-0 w-full z-50 p-6 flex items-center justify-between gap-8'>
+    <header className='max-w-5xl mx-auto p-6 flex items-center justify-between gap-8'>
       <Link
         href='/'
         className='text-3xl font-bold hover:opacity-60 focus:opacity-60'

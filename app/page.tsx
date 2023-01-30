@@ -19,7 +19,7 @@ export default async function RootPage() {
 
   return (
     <Animate>
-      <section className='flex flex-col items-center py-24 gap-6 md:flex-row md:gap-20'>
+      <section className='flex flex-col items-center pt-6 pb-16 gap-6 md:flex-row md:gap-20'>
         <div className='max-w-xl space-y-8'>
           <HeadingOne aria-label='Hi I am Jake, a product designer that loves the web'>
             Hi, I'm Jake. A <AnnotatedText type='box' content='UX designer ' />
@@ -117,7 +117,7 @@ export default async function RootPage() {
         />
         <div className='flex flex-col gap-12 md:flex-row'>
           <div className='space-y-4'>
-            <HeadingThree>"So, who are you?"</HeadingThree>
+            <HeadingThree>So, who are you?</HeadingThree>
 
             <Text>
               I am a British-born designer based in Newcastle, UK. As a child, I
@@ -135,7 +135,7 @@ export default async function RootPage() {
             </Text>
 
             <HeadingThree>
-              "That was a nice backstory. But where are you now?"
+              That was a nice backstory. But where are you now?
             </HeadingThree>
 
             <Text>
@@ -173,7 +173,6 @@ export default async function RootPage() {
             </Text>
 
             <div className='flex gap-4'>
-              <ExternalLink href='/jakeord-cv.pdf'>Read my CV</ExternalLink>
               <ExternalLink href='mailto:jake.ord345@gmail.com'>
                 Contact me
               </ExternalLink>
