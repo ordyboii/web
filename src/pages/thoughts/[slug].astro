@@ -1,0 +1,15 @@
+---
+import { getCollection, getEntryBySlug } from "astro:content";
+import Layout from "../../components/layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map(post => ({ params: post.slug }));
+}
+
+const post = await getEntryBySlug("posts", Astro.params.slug!);
+---
+
+<Layout>
+  <pre>{JSON.stringify(post, null, 2)}</pre>
+</Layout>

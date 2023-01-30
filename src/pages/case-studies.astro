@@ -1,0 +1,10 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../components/layout.astro";
+
+const projects = await getCollection("projects");
+---
+
+<Layout>
+  <h1>hi</h1>
+</Layout>
