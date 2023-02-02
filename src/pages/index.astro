@@ -1,8 +1,43 @@
 ---
+import "@fontsource/noto-sans/400.css";
+import "@fontsource/noto-sans/700.css";
+import "@fontsource/noto-serif/400.css";
+import "@fontsource/noto-serif/700.css";
 import Layout from "../components/layout.astro";
 ---
 
 <Layout>
-  <h1>hi</h1>
-  <img src='/logo.svg' alt='Logo' />
+  <section class='l-flow'>
+    <h1>Jake Ord - UX Designer.</h1>
+    <p>
+      A UX designer that loves to create super simple digital experiences.
+      Currently a <strong>UX designer at DEF Software Ltd.</strong>
+    </p>
+    <div class='intro l-flex l-flex-center'>
+      <img
+        src='/me-profile.jpg'
+        alt='Profile shot of Jake Ord with a sunset in the background'
+      />
+      <p data-width='wide'>
+        「初めまして、少し日本語も話せます」<em
+          >(Nice to meet you, I also speak a little Japanese)</em
+        >
+      </p>
+    </div>
+    <p>
+      I blend together UX, accessibility and data to deliver research-validated
+      solutions. Nerdy about all things data, code and data visualisation. Oh,
+      and dragons too!
+    </p>
+  </section>
 </Layout>
+
+<style>
+  .intro img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100vmax;
+    object-fit: cover;
+    border: 4px solid var(--neutralBase);
+  }
+</style>

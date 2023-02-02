@@ -1,0 +1,74 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<header class='header l-flex l-flex-wrap'>
+  <svg fill='white' width='50' height='80'>
+    <title>Logo for Jake Ord, features the katakana ジェイク in a square</title>
+    <use fill='currentColor' href='/logo.svg#logo'></use>
+  </svg>
+  <nav class='l-flex l-flex-center l-flex-wrap' aria-label='Website navigation'>
+    <ul class='l-flex l-flex-wrap'>
+      <li>
+        <a
+          href='/'
+          class='header-link'
+          data-active={pathname === "/" ? "true" : "false"}>Home</a
+        >
+      </li>
+      <li>
+        <a
+          href='/case-studies'
+          class='header-link'
+          data-active={pathname === "/case-studies" ? "true" : "false"}
+          >Case Studies
+        </a>
+      </li>
+      <li>
+        <a
+          href='/writing'
+          class='header-link'
+          data-active={pathname === "/writing" ? "true" : "false"}
+          >Writing
+        </a>
+      </li>
+      <li>
+        <a
+          href='/about'
+          class='header-link'
+          data-active={pathname === "/about" ? "true" : "false"}>About</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .header {
+    --flexGap: 1rem;
+  }
+
+  @media (min-width: 50em) {
+    .header {
+      --flexGap: 1.4rem;
+    }
+  }
+
+  .header-link {
+    padding: 0.4rem 0.8rem;
+  }
+
+  @media (min-width: 50em) {
+    .header-link {
+      padding: 0.8rem 1.2rem;
+    }
+  }
+
+  .header-link:is(:hover, :focus),
+  .header-link[data-active="true"] {
+    background-color: var(--themeElement);
+    color: var(--themeText);
+    border-radius: var(--radius);
+    text-decoration: underline;
+  }
+</style>

@@ -1,6 +1,6 @@
 ---
 title: Upsurge
-image: /images/upsurge.png
+image: /upsurge.png
 link: https://upsurge.up.railway.app
 ---
 

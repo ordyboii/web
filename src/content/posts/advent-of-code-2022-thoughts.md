@@ -1,7 +1,7 @@
 ---
 title: Advent Of Code 2022 - My Thoughts As A Designer
 summary: At the time of writing this I'm currently at day 16 of Advent Of Code 2022 and it's been a hell of a ride so far.
-image: /images/advent.jpg
+image: /advent.jpg
 date: 2022-12-16
 ---
 
@@ -29,6 +29,6 @@ Advent Of Code has been a wonderful event to take part in, even if half of the d
 
 If you haven't had the chance to take part in this year's Advent Of Code, I highly recommend you do so, or you can keep an eye on my Github repo for my progress so far.
 
-### [My progress so far](https://github.com/ordyboii/Advent-Of-Code-2022)
+[My progress so far](https://github.com/ordyboii/Advent-Of-Code-2022)
 
-### [Advent Of Code 2022](https://adventofcode.com/2022)
+[Advent Of Code 2022](https://adventofcode.com/2022)

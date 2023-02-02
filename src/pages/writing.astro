@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../components/layout.astro";
+
+const posts = await getCollection("posts");
+---
+
+<Layout title='Writing'>
+  <section class='writing l-flow'>
+    <h1>Writing</h1>
+    <ul class='l-flow'>
+      {
+        posts.map(post => (
+          <li>
+            <a class='post l-flow' href={`/writing/${post.slug}`}>
+              <h3>{post.data.title}</h3>
+              <p>
+                {post.data.date.toLocaleDateString("en-gb", {
+                  dateStyle: "long"
+                })}
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .writing {
+    --flowSpace: 2rem;
+  }
+
+  .post {
+    --flowSpace: 1rem;
+  }
+</style>

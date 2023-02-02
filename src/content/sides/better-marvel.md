@@ -1,6 +1,6 @@
 ---
 title: Which Marvel Movie Is Better?
-image: /images/marvel.png
+image: /marvel.png
 link: https://marvel.up.railway.app
 ---
 

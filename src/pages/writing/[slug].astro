@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntryBySlug } from "astro:content";
+import Layout from "../../components/layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map(post => ({
+    params: { slug: post.slug }
+  }));
+}
+
+const post = await getEntryBySlug("posts", Astro.params.slug!);
+---
+
+<Layout title={post?.data.title} description={post?.data.summary}>
+  <section class='l-flow'>
+    <h1>{post?.data.title}</h1>
+    <p>
+      {post?.data.date.toLocaleDateString("en-gb", { dateStyle: "long" })}
+    </p>
+    <hr />
+    <p>{post?.data.summary}</p>
+    <img src={post?.data.image} alt={`${post?.data.title} hero image`} />
+    <article class='l-flow'>
+      {post?.render().then(({ Content }) => <Content />)}
+    </article>
+  </section>
+</Layout>

@@ -4,12 +4,23 @@ import Layout from "../../components/layout.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-  return projects.map(project => ({ params: project.slug }));
+  return projects.map(project => ({
+    params: { slug: project.slug }
+  }));
 }
 
 const project = await getEntryBySlug("projects", Astro.params.slug!);
 ---
 
-<Layout>
-  <pre>{JSON.stringify(project, null, 2)}</pre>
+<Layout title={project?.data.title} description={project?.data.summary}>
+  <section class='l-flow'>
+    <h1>{project?.data.title}</h1>
+    <p>{project?.data.client}</p>
+    <hr />
+    <p>{project?.data.summary}</p>
+    <img src={project?.data.image} alt={`${project?.data.title} hero image`} />
+    <article class='l-flow'>
+      {project?.render().then(({ Content }) => <Content />)}
+    </article>
+  </section>
 </Layout>
