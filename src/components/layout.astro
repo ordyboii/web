@@ -1,0 +1,249 @@
+---
+import Header from "./header.astro";
+import SocialLinks from "./social-links.astro";
+
+const {
+  title = "Jake Ord, UX designer, creator of interactive experiences, based in Newcastle, UK.",
+  description = "Jake Ord, UX designer, creator of interactive experiences, based in Newcastle, UK."
+} = Astro.props as {
+  title: string;
+  description: string;
+};
+---
+
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title ? `${title} | Jake Ord` : title}</title>
+    <meta name='description' content={description} />
+    <link rel='icon' href='/favicon.png' />
+    <meta name='og:title' content={title} />
+    <meta name='og:description' content={description} />
+    <meta name='og:site_name' content='jakeord.up.railway.app' />
+    <meta name='og:locale' content='en_GB' />
+    <meta name='og:type' content='website' />
+    <meta name='og:image' content='/assets/me-tenerife.jpg' />
+    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:site' content='@ordyboii' />
+    <meta name='twitter:image' content='/assets/me-tenerife.jpg' />
+    <meta name='twitter:description' content='/assets/me-tenerife.jpg' />
+  </head>
+  <body class='l-flow'>
+    <Header />
+    <main class='content'>
+      <SocialLinks />
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  .content {
+    display: grid;
+    gap: 3rem;
+  }
+
+  @media (min-width: 50em) {
+    .content {
+      grid-template-columns: auto 1fr;
+    }
+  }
+</style>
+
+<style is:global>
+  /* TOKENS & RESET */
+
+  :root {
+    --accent: hsl(53, 92%, 50%);
+    --neutralWhite: hsl(0, 0%, 100%);
+    --neutralOffset: hsl(0, 0%, 92%);
+    --neutralBase: hsl(0, 0%, 19%);
+    --neutralDark: hsl(0, 0%, 9%);
+
+    --fontSerif: "Noto Serif", serif;
+    --fontSans: "Noto Sans", sans-serif;
+
+    --textBold: 700;
+    --textRegular: 400;
+
+    --textBase: 1rem;
+    --textScale: 4vw;
+
+    --textSizeXxl: clamp(
+      1.9 * var(--textBase),
+      var(--textScale),
+      3 * var(--textBase)
+    );
+    --textSizeXl: clamp(
+      1.5 * var(--textBase),
+      var(--textScale),
+      1.9 * var(--textBase)
+    );
+    --textSizeLg: clamp(
+      1.25 * var(--textBase),
+      var(--textScale),
+      1.5 * var(--textBase)
+    );
+
+    --themeBg: var(--neutralWhite);
+    --themeText: var(--neutralDark);
+    --themeElement: var(--neutralOffset);
+
+    --radius: 0.8rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --themeText: var(--neutralWhite);
+      --themeBg: var(--neutralDark);
+      --themeElement: var(--neutralBase);
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select,
+  a {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* LAYOUT */
+
+  body {
+    --flowSpace: 2.4rem;
+
+    font-family: var(--fontSans);
+    line-height: 1.6;
+    background-color: var(--themeBg);
+    color: var(--themeText);
+    isolation: isolate;
+
+    max-width: 1000px;
+    margin-inline: auto;
+    padding: 1.2rem;
+  }
+
+  @media (min-width: 50em) {
+    body {
+      margin-block: 3rem;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--fontSerif);
+    font-weight: var(--textBold);
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: var(--textSizeXxl);
+  }
+
+  h2 {
+    font-size: var(--textSizeXl);
+  }
+
+  h3 {
+    font-size: var(--textSizeLg);
+  }
+
+  p {
+    max-width: 50ch;
+  }
+
+  p[data-width="wide"] {
+    max-width: 100%;
+  }
+
+  hr {
+    border: 0.5px solid var(--themeElement);
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:is(:hover, :focus, :active) {
+    text-decoration: underline;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--neutralDark);
+  }
+
+  :focus-visible {
+    background-color: var(--accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .l-flex {
+    display: flex;
+    gap: var(--flexGap, 1rem);
+  }
+
+  .l-flex-col {
+    flex-direction: column;
+  }
+
+  .l-flex-center {
+    align-items: center;
+  }
+
+  .l-flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .l-even-grid {
+    display: grid;
+    gap: var(--evenGridGap, 3rem);
+  }
+
+  @media (min-width: 50em) {
+    .l-even-grid {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+    }
+  }
+
+  :where(.l-flow > :not(:first-child)) {
+    margin-top: var(--flowSpace, 1rem);
+  }
+</style>
