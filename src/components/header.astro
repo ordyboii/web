@@ -1,5 +1,5 @@
 ---
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
 ---
 
 <header class='header l-flex l-flex-wrap'>
@@ -13,14 +13,14 @@ const pathname = new URL(Astro.request.url).pathname;
         <a
           href='/'
           class='header-link'
-          data-active={pathname === "/" ? "true" : "false"}>Home</a
+          data-active={pathname === "" ? "true" : "false"}>Home</a
         >
       </li>
       <li>
         <a
           href='/case-studies'
           class='header-link'
-          data-active={pathname === "/case-studies" ? "true" : "false"}
+          data-active={pathname === "case-studies" ? "true" : "false"}
           >Case Studies
         </a>
       </li>
@@ -28,7 +28,7 @@ const pathname = new URL(Astro.request.url).pathname;
         <a
           href='/writing'
           class='header-link'
-          data-active={pathname === "/writing" ? "true" : "false"}
+          data-active={pathname === "writing" ? "true" : "false"}
           >Writing
         </a>
       </li>
@@ -36,7 +36,7 @@ const pathname = new URL(Astro.request.url).pathname;
         <a
           href='/about'
           class='header-link'
-          data-active={pathname === "/about" ? "true" : "false"}>About</a
+          data-active={pathname === "about" ? "true" : "false"}>About</a
         >
       </li>
     </ul>
