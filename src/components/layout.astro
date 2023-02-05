@@ -218,26 +218,25 @@ const {
     display: flex;
     gap: var(--flexGap, 1rem);
   }
-
-  .l-flex-col {
+  .l-flex[data-direction="column"] {
     flex-direction: column;
   }
 
-  .l-flex-center {
+  .l-flex[data-items="center"] {
     align-items: center;
   }
 
-  .l-flex-wrap {
+  .l-flex[data-wrap] {
     flex-wrap: wrap;
   }
 
-  .l-even-grid {
+  .l-grid {
     display: grid;
-    gap: var(--evenGridGap, 3rem);
+    gap: var(--gridGap, 3rem);
   }
 
   @media (min-width: 50em) {
-    .l-even-grid {
+    .l-grid[data-cols="even"] {
       grid-auto-flow: column;
       grid-auto-columns: 1fr;
     }
@@ -245,5 +244,11 @@ const {
 
   :where(.l-flow > :not(:first-child)) {
     margin-top: var(--flowSpace, 1rem);
+  }
+
+  /* UTILITIES */
+
+  .u-flex-shrink-none {
+    flex-shrink: 0;
   }
 </style>
