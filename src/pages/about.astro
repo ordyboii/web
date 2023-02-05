@@ -7,7 +7,7 @@ export const prerender = true;
   <section class='l-flow'>
     <h1>About Me</h1>
 
-    <div class='l-even-grid'>
+    <div class='about l-grid' data-cols='even'>
       <article class='l-flow'>
         <p>
           I am a British-born designer based in Newcastle, UK. As a child, I was
@@ -44,3 +44,11 @@ export const prerender = true;
     </div>
   </section>
 </Layout>
+
+<style>
+  @media (max-width: 50em) {
+    .about > img {
+      grid-row: 1;
+    }
+  }
+</style>

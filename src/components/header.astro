@@ -2,13 +2,24 @@
 const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
 ---
 
-<header class='header l-flex l-flex-wrap'>
-  <svg fill='white' width='50' height='80'>
+<header class='header l-flex'>
+  <svg
+    class='u-flex-shrink-none'
+    fill='white'
+    width='50'
+    height='80'
+    min-width='50'
+  >
     <title>Logo for Jake Ord, features the katakana ジェイク in a square</title>
     <use fill='currentColor' href='/logo.svg#logo'></use>
   </svg>
-  <nav class='l-flex l-flex-center l-flex-wrap' aria-label='Website navigation'>
-    <ul class='l-flex l-flex-wrap'>
+  <nav
+    class='l-flex'
+    data-items='center'
+    data-wrap
+    aria-label='Website navigation'
+  >
+    <ul class='l-flex' data-wrap>
       <li>
         <a
           href='/'
