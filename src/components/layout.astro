@@ -35,10 +35,13 @@ const backup =
     />
   </head>
   <body class='l-flow'>
+    <a class='skip-link' href='#content'>Skip to content</a>
     <Header />
     <main class='content'>
       <SocialLinks />
-      <slot />
+      <div id='content'>
+        <slot />
+      </div>
     </main>
   </body>
 </html>
@@ -53,6 +56,20 @@ const backup =
     .content {
       grid-template-columns: auto 1fr;
     }
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--themeElement);
+    color: var(--themeText);
+    opacity: 0;
+  }
+
+  .skip-link:focus {
+    opacity: 1;
   }
 </style>
 
