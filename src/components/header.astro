@@ -24,14 +24,14 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
         <a
           href='/'
           class='header-link'
-          data-active={pathname === "" ? "true" : "false"}>Home</a
+          aria-current={pathname === "" ? "page" : "false"}>Home</a
         >
       </li>
       <li>
         <a
           href='/case-studies'
           class='header-link'
-          data-active={pathname === "case-studies" ? "true" : "false"}
+          aria-current={pathname === "case-studies" ? "page" : "false"}
           >Case Studies
         </a>
       </li>
@@ -39,7 +39,7 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
         <a
           href='/writing'
           class='header-link'
-          data-active={pathname === "writing" ? "true" : "false"}
+          aria-current={pathname === "writing" ? "page" : "false"}
           >Writing
         </a>
       </li>
@@ -47,7 +47,7 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
         <a
           href='/about'
           class='header-link'
-          data-active={pathname === "about" ? "true" : "false"}>About</a
+          aria-current={pathname === "about" ? "page" : "false"}>About</a
         >
       </li>
     </ul>
@@ -76,7 +76,7 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
   }
 
   .header-link:is(:hover, :focus),
-  .header-link[data-active="true"] {
+  .header-link[aria-current="page"] {
     background-color: var(--themeElement);
     color: var(--themeText);
     border-radius: var(--radius);
