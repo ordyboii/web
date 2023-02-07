@@ -2,13 +2,13 @@
 import Header from "./header.astro";
 import SocialLinks from "./social-links.astro";
 
-const {
-  title = "Jake Ord, UX designer, creator of interactive experiences, based in Newcastle, UK.",
-  description = "Jake Ord, UX designer, creator of interactive experiences, based in Newcastle, UK."
-} = Astro.props as {
+const { title, description } = Astro.props as {
   title: string;
   description: string;
 };
+
+const backup =
+  "Jake Ord, UX designer, creator of interactive experiences, based in Newcastle, UK.";
 ---
 
 <html lang='en'>
@@ -17,19 +17,22 @@ const {
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
-    <title>{title ? `${title} | Jake Ord` : title}</title>
-    <meta name='description' content={description} />
+    <title>{title ? `${title} | Jake Ord` : backup}</title>
+    <meta name='description' content={description ? description : backup} />
     <link rel='icon' href='/favicon.png' />
-    <meta name='og:title' content={title} />
-    <meta name='og:description' content={description} />
+    <meta name='og:title' content={title ? title : backup} />
+    <meta name='og:description' content={description ? description : backup} />
     <meta name='og:site_name' content='jakeord.up.railway.app' />
     <meta name='og:locale' content='en_GB' />
     <meta name='og:type' content='website' />
-    <meta name='og:image' content='/assets/me-tenerife.jpg' />
+    <meta name='og:image' content='/me-london.jpg' />
     <meta name='twitter:card' content='summary' />
     <meta name='twitter:site' content='@ordyboii' />
-    <meta name='twitter:image' content='/assets/me-tenerife.jpg' />
-    <meta name='twitter:description' content='/assets/me-tenerife.jpg' />
+    <meta name='twitter:image' content='/me-london.jpg' />
+    <meta
+      name='twitter:description'
+      content={description ? description : backup}
+    />
   </head>
   <body class='l-flow'>
     <Header />
@@ -208,18 +211,9 @@ const {
     color: var(--neutralDark);
   }
 
-  :focus-visible {
-    background-color: var(--accent);
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
-
   .l-flex {
     display: flex;
     gap: var(--flexGap, 1rem);
-  }
-  .l-flex[data-direction="column"] {
-    flex-direction: column;
   }
 
   .l-flex[data-items="center"] {
