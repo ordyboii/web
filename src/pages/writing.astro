@@ -2,8 +2,6 @@
 import { getCollection } from "astro:content";
 import Layout from "../components/layout.astro";
 
-export const prerender = true;
-
 const posts = await getCollection("posts");
 ---
 
