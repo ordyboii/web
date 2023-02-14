@@ -19,7 +19,7 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
     data-wrap
     aria-label='Website navigation'
   >
-    <ul class='l-flex' data-wrap>
+    <ul role='list' class='l-flex' data-wrap>
       <li>
         <a
           href='/'
@@ -80,6 +80,6 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
     background-color: var(--themeElement);
     color: var(--themeText);
     border-radius: var(--radius);
-    text-decoration: underline;
+    text-decoration: none;
   }
 </style>
