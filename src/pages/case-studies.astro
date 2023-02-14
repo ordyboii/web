@@ -13,7 +13,7 @@ const sides = await getCollection("sides");
     <div class='l-grid' data-cols='even'>
       <div class='l-flow'>
         <h2>Client Work</h2>
-        <ul class='l-flow'>
+        <ul role='list' class='l-flow'>
           {
             projects.map(project => (
               <li>
@@ -36,7 +36,7 @@ const sides = await getCollection("sides");
       </div>
       <div class='l-flow'>
         <h2>On The Side</h2>
-        <ul class='l-flow'>
+        <ul role='list' class='l-flow'>
           {
             sides.map(side => (
               <li class='card'>
@@ -76,6 +76,7 @@ const sides = await getCollection("sides");
   }
 
   .card img {
+    max-height: 20rem;
     object-fit: cover;
     height: 100%;
   }

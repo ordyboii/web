@@ -8,7 +8,7 @@ const posts = await getCollection("posts");
 <Layout title='Writing'>
   <section class='writing l-flow'>
     <h1>Writing</h1>
-    <ul class='l-flow'>
+    <ul role='list' class='l-flow'>
       {
         posts.map(post => (
           <li>

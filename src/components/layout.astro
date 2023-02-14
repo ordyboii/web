@@ -72,7 +72,6 @@ const backup =
 
 <style is:global>
   /* TOKENS & RESET */
-
   :root {
     --accent: hsl(53, 92%, 50%);
     --neutralWhite: hsl(0, 0%, 100%);
@@ -128,7 +127,6 @@ const backup =
 
   * {
     margin: 0;
-    padding: 0;
   }
 
   html,
@@ -154,7 +152,7 @@ const backup =
     color: inherit;
   }
 
-  /* LAYOUT */
+  /* BASE */
 
   body {
     --flowSpace: 2.4rem;
@@ -181,7 +179,7 @@ const backup =
   h3 {
     font-family: var(--fontSerif);
     font-weight: var(--textBold);
-    line-height: 1.2;
+    line-height: 1;
   }
 
   h1 {
@@ -194,10 +192,11 @@ const backup =
 
   h3 {
     font-size: var(--textSizeLg);
+    line-height: 1.2;
   }
 
   p {
-    max-width: 50ch;
+    max-width: 60ch;
   }
 
   p[data-width="wide"] {
@@ -208,22 +207,25 @@ const backup =
     border: 0.5px solid var(--themeElement);
   }
 
-  ul {
+  ul[role="list"] {
     list-style: none;
+    padding: 0;
   }
 
   a {
-    text-decoration: none;
+    color: currentColor;
   }
 
-  a:is(:hover, :focus, :active) {
-    text-decoration: underline;
+  a:where(:hover, :focus, :active) {
+    text-decoration: none;
   }
 
   ::selection {
     background-color: var(--accent);
     color: var(--neutralDark);
   }
+
+  /* LAYOUT */
 
   .l-flex {
     display: flex;
