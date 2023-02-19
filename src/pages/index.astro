@@ -1,12 +1,8 @@
 ---
-import "@fontsource/noto-sans/400.css";
-import "@fontsource/noto-sans/700.css";
-import "@fontsource/noto-serif/400.css";
-import "@fontsource/noto-serif/700.css";
-import Layout from "../components/layout.astro";
+import BaseLayout from "../components/base.astro";
 ---
 
-<Layout>
+<BaseLayout>
   <section class='l-flow'>
     <h1>Jake Ord - UX Designer.</h1>
     <p>
@@ -31,14 +27,14 @@ import Layout from "../components/layout.astro";
       and dragons too!
     </p>
   </section>
-</Layout>
+</BaseLayout>
 
 <style>
   .avatar {
-    width: 4rem;
-    height: 4rem;
+    width: 4.5rem;
+    height: 4.5rem;
     border-radius: 100vmax;
     object-fit: cover;
-    border: 4px solid var(--neutralBase);
+    border: 3px solid var(--primary);
   }
 </style>

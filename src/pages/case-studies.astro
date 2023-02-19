@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../components/layout.astro";
+import BaseLayout from "../components/base.astro";
 
 const projects = await getCollection("projects");
 const sides = await getCollection("sides");
 ---
 
-<Layout title='Case Studies'>
+<BaseLayout title='Case Studies'>
   <section class='l-flow'>
     <h1>Case Studies</h1>
 
@@ -60,12 +60,13 @@ const sides = await getCollection("sides");
       </div>
     </div>
   </section>
-</Layout>
+</BaseLayout>
 
 <style>
   .card {
     display: grid;
-    background-color: var(--themeElement);
+    background-color: var(--primary);
+    color: var(--secondary);
     box-shadow: 0 8px 16px hsl(0 0% 0% / 0.1);
     border-radius: var(--radius);
     overflow: hidden;

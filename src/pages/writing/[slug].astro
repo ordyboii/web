@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntryBySlug } from "astro:content";
-import Layout from "../../components/layout.astro";
+import BaseLayout from "../../components/base.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 const post = await getEntryBySlug("posts", Astro.params.slug!);
 ---
 
-<Layout title={post?.data.title} description={post?.data.summary}>
+<BaseLayout title={post?.data.title} description={post?.data.summary}>
   <section class='l-flow'>
     <h1>{post?.data.title}</h1>
     <p>
@@ -25,4 +25,4 @@ const post = await getEntryBySlug("posts", Astro.params.slug!);
       {post?.render().then(({ Content }) => <Content />)}
     </article>
   </section>
-</Layout>
+</BaseLayout>

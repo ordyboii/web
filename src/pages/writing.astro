@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../components/layout.astro";
+import BaseLayout from "../components/base.astro";
 
 const posts = await getCollection("posts");
 ---
 
-<Layout title='Writing'>
+<BaseLayout title='Writing'>
   <section class='writing l-flow'>
     <h1>Writing</h1>
     <ul role='list' class='l-flow'>
@@ -25,7 +25,7 @@ const posts = await getCollection("posts");
       }
     </ul>
   </section>
-</Layout>
+</BaseLayout>
 
 <style>
   .writing {
