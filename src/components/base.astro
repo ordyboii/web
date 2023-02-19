@@ -1,4 +1,8 @@
 ---
+import "@fontsource/noto-sans/400.css";
+import "@fontsource/noto-sans/700.css";
+import "@fontsource/noto-serif/400.css";
+import "@fontsource/noto-serif/700.css";
 import Header from "./header.astro";
 import SocialLinks from "./social-links.astro";
 
@@ -60,8 +64,8 @@ const backup =
     top: 1rem;
     left: 1rem;
     padding: 0.8rem 1.2rem;
-    background-color: var(--themeElement);
-    color: var(--themeText);
+    background-color: var(--primary);
+    color: var(--secondary);
     opacity: 0;
   }
 
@@ -73,50 +77,32 @@ const backup =
 <style is:global>
   /* TOKENS & RESET */
   :root {
-    --accent: hsl(53, 92%, 50%);
-    --neutralWhite: hsl(0, 0%, 100%);
-    --neutralOffset: hsl(0, 0%, 92%);
-    --neutralBase: hsl(0, 0%, 19%);
-    --neutralDark: hsl(0, 0%, 9%);
+    --primary: hsl(50, 20%, 77%);
+    --secondary: hsl(200, 42%, 14%);
 
     --fontSerif: "Noto Serif", serif;
     --fontSans: "Noto Sans", sans-serif;
-
-    --textBold: 700;
-    --textRegular: 400;
-
-    --textBase: 1rem;
-    --textScale: 4vw;
-
-    --textSizeXxl: clamp(
-      1.9 * var(--textBase),
-      var(--textScale),
-      3 * var(--textBase)
+    --fontBold: 700;
+    --fontRegular: 400;
+    --fontBase: 1rem;
+    --fontScale: 4vw;
+    --font2xl: clamp(
+      1.9 * var(--fontBase),
+      var(--fontScale),
+      3 * var(--fontBase)
     );
-    --textSizeXl: clamp(
-      1.5 * var(--textBase),
-      var(--textScale),
-      1.9 * var(--textBase)
+    --fontXl: clamp(
+      1.5 * var(--fontBase),
+      var(--fontScale),
+      1.9 * var(--fontBase)
     );
-    --textSizeLg: clamp(
-      1.25 * var(--textBase),
-      var(--textScale),
-      1.5 * var(--textBase)
+    --fontL: clamp(
+      1.25 * var(--fontBase),
+      var(--fontScale),
+      1.5 * var(--fontBase)
     );
-
-    --themeBg: var(--neutralWhite);
-    --themeText: var(--neutralDark);
-    --themeElement: var(--neutralOffset);
 
     --radius: 0.8rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --themeText: var(--neutralWhite);
-      --themeBg: var(--neutralDark);
-      --themeElement: var(--neutralBase);
-    }
   }
 
   *,
@@ -145,7 +131,7 @@ const backup =
 
   input,
   button,
-  textarea,
+  fontarea,
   select,
   a {
     font: inherit;
@@ -159,13 +145,14 @@ const backup =
 
     font-family: var(--fontSans);
     line-height: 1.6;
-    background-color: var(--themeBg);
-    color: var(--themeText);
-    isolation: isolate;
-
+    letter-spacing: 0.03ch;
+    background-color: var(--secondary);
+    color: var(--primary);
     max-width: 1000px;
     margin-inline: auto;
     padding: 1.2rem;
+    isolation: isolate;
+    overflow-x: hidden;
   }
 
   @media (min-width: 50em) {
@@ -178,21 +165,20 @@ const backup =
   h2,
   h3 {
     font-family: var(--fontSerif);
-    font-weight: var(--textBold);
-    line-height: 1;
+    font-weight: var(--fontBold);
+    line-height: 1.2;
   }
 
   h1 {
-    font-size: var(--textSizeXxl);
+    font-size: var(--font2xl);
   }
 
   h2 {
-    font-size: var(--textSizeXl);
+    font-size: var(--fontXl);
   }
 
   h3 {
-    font-size: var(--textSizeLg);
-    line-height: 1.2;
+    font-size: var(--fontL);
   }
 
   p {
@@ -204,7 +190,7 @@ const backup =
   }
 
   hr {
-    border: 0.5px solid var(--themeElement);
+    border: 0.5px solid var(--primary);
   }
 
   ul[role="list"] {
@@ -217,12 +203,12 @@ const backup =
   }
 
   a:where(:hover, :focus, :active) {
-    text-decoration: none;
+    font-decoration: none;
   }
 
   ::selection {
-    background-color: var(--accent);
-    color: var(--neutralDark);
+    background-color: var(--primary);
+    color: var(--secondary);
   }
 
   /* LAYOUT */
@@ -260,5 +246,15 @@ const backup =
 
   .u-flex-shrink-none {
     flex-shrink: 0;
+  }
+
+  .u-desktop-only {
+    display: none;
+  }
+
+  @media (min-width: 50em) {
+    .u-desktop-only {
+      display: block;
+    }
   }
 </style>

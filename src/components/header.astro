@@ -55,16 +55,6 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
 </header>
 
 <style>
-  .header {
-    --flexGap: 1rem;
-  }
-
-  @media (min-width: 50em) {
-    .header {
-      --flexGap: 1.4rem;
-    }
-  }
-
   .header-link {
     padding: 0.4rem 0.8rem;
   }
@@ -77,8 +67,8 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
 
   .header-link:is(:hover, :focus),
   .header-link[aria-current="page"] {
-    background-color: var(--themeElement);
-    color: var(--themeText);
+    background-color: var(--primary);
+    color: var(--secondary);
     border-radius: var(--radius);
     text-decoration: none;
   }

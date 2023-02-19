@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntryBySlug } from "astro:content";
-import Layout from "../../components/layout.astro";
+import BaseLayout from "../../components/base.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 const project = await getEntryBySlug("projects", Astro.params.slug!);
 ---
 
-<Layout title={project?.data.title} description={project?.data.summary}>
+<BaseLayout title={project?.data.title} description={project?.data.summary}>
   <section class='l-flow'>
     <h1>{project?.data.title}</h1>
     <p>{project?.data.client}</p>
@@ -23,4 +23,4 @@ const project = await getEntryBySlug("projects", Astro.params.slug!);
       {project?.render().then(({ Content }) => <Content />)}
     </article>
   </section>
-</Layout>
+</BaseLayout>
