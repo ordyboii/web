@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../components/base.astro";
+import { Image } from "@astrojs/image/components";
 ---
 
 <BaseLayout>
@@ -10,7 +11,10 @@ import BaseLayout from "../components/base.astro";
       Currently a <strong>UX designer at DEF Software Ltd.</strong>
     </p>
     <div class='l-flex' data-items='center'>
-      <img
+      <Image
+        format='webp'
+        width={200}
+        height={200}
         class='avatar u-flex-shrink-none'
         src='/me-profile.jpg'
         alt='Profile shot of Jake Ord with a sunset in the background'
