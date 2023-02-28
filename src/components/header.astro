@@ -13,13 +13,8 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
     <title>Logo for Jake Ord, features the katakana ジェイク in a square</title>
     <use fill='currentColor' href='/logo.svg#logo'></use>
   </svg>
-  <nav
-    class='stack'
-    data-items='center'
-    data-wrap
-    aria-label='Website navigation'
-  >
-    <ul role='list' class='stack' data-wrap>
+  <nav class='stack' aria-label='Website navigation'>
+    <ul class='stack'>
       <li>
         <a href='/' aria-current={pathname === "" ? "page" : "false"}>Home</a>
       </li>
