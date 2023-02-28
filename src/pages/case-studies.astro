@@ -8,13 +8,13 @@ const sides = await getCollection("sides");
 ---
 
 <BaseLayout title='Case Studies'>
-  <section class='l-flow'>
+  <section class='flow'>
     <h1>Case Studies</h1>
 
-    <div class='l-grid' data-cols='even'>
-      <div class='l-flow'>
+    <div class='grid'>
+      <div class='flow'>
         <h2>Client Work</h2>
-        <ul role='list' class='l-flow'>
+        <ul role='list' class='flow'>
           {
             projects.map(project => (
               <li>
@@ -26,7 +26,7 @@ const sides = await getCollection("sides");
                     src={project.data.image}
                     alt={`${project.data.title} hero image`}
                   />
-                  <div class='l-flow'>
+                  <div class='flow'>
                     <h3>{project.data.title}</h3>
                     <p>
                       <strong>Client:</strong> {project.data.client}
@@ -38,9 +38,9 @@ const sides = await getCollection("sides");
           }
         </ul>
       </div>
-      <div class='l-flow'>
+      <div class='flow'>
         <h2>On The Side</h2>
-        <ul role='list' class='l-flow'>
+        <ul class='flow'>
           {
             sides.map(side => (
               <li class='card'>
@@ -51,7 +51,7 @@ const sides = await getCollection("sides");
                   src={side.data.image}
                   alt={`${side.data.title} hero image`}
                 />
-                <div class='l-flow'>
+                <div class='flow'>
                   <h3>{side.data.title}</h3>
                   <p>
                     {side.render().then(({ Content }) => (
@@ -70,10 +70,16 @@ const sides = await getCollection("sides");
 </BaseLayout>
 
 <style>
+  @media (min-width: 50em) {
+    section > div {
+      --grid-columns: 1fr 1fr;
+    }
+  }
+
   .card {
-    display: grid;
-    background-color: var(--primary);
-    color: var(--secondary);
+    display: block;
+    background-color: var(--colour-primary);
+    color: var(--colour-secondary);
     box-shadow: 0 8px 16px hsl(0 0% 0% / 0.1);
     border-radius: var(--radius);
     overflow: hidden;

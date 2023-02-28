@@ -2,9 +2,9 @@
 const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
 ---
 
-<header class='header l-flex'>
+<header class='header stack'>
   <svg
-    class='u-flex-shrink-none'
+    class='flex-shrink-none'
     fill='white'
     width='50'
     height='80'
@@ -14,23 +14,18 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
     <use fill='currentColor' href='/logo.svg#logo'></use>
   </svg>
   <nav
-    class='l-flex'
+    class='stack'
     data-items='center'
     data-wrap
     aria-label='Website navigation'
   >
-    <ul role='list' class='l-flex' data-wrap>
+    <ul role='list' class='stack' data-wrap>
       <li>
-        <a
-          href='/'
-          class='header-link'
-          aria-current={pathname === "" ? "page" : "false"}>Home</a
-        >
+        <a href='/' aria-current={pathname === "" ? "page" : "false"}>Home</a>
       </li>
       <li>
         <a
           href='/case-studies'
-          class='header-link'
           aria-current={pathname === "case-studies" ? "page" : "false"}
           >Case Studies
         </a>
@@ -38,16 +33,13 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
       <li>
         <a
           href='/writing'
-          class='header-link'
           aria-current={pathname === "writing" ? "page" : "false"}
           >Writing
         </a>
       </li>
       <li>
-        <a
-          href='/about'
-          class='header-link'
-          aria-current={pathname === "about" ? "page" : "false"}>About</a
+        <a href='/about' aria-current={pathname === "about" ? "page" : "false"}
+          >About</a
         >
       </li>
     </ul>
@@ -55,20 +47,20 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
 </header>
 
 <style>
-  .header-link {
+  a {
     padding: 0.4rem 0.8rem;
   }
 
   @media (min-width: 50em) {
-    .header-link {
+    a {
       padding: 0.8rem 1.2rem;
     }
   }
 
-  .header-link:is(:hover, :focus),
-  .header-link[aria-current="page"] {
-    background-color: var(--primary);
-    color: var(--secondary);
+  a:is(:hover, :focus),
+  a[aria-current="page"] {
+    background-color: var(--colour-primary);
+    color: var(--colour-secondary);
     border-radius: var(--radius);
     text-decoration: none;
   }

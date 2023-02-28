@@ -6,13 +6,13 @@ const posts = await getCollection("posts");
 ---
 
 <BaseLayout title='Writing'>
-  <section class='writing l-flow'>
+  <section class='flow'>
     <h1>Writing</h1>
-    <ul role='list' class='l-flow'>
+    <ul class='flow'>
       {
         posts.map(post => (
           <li>
-            <a class='post l-flow' href={`/writing/${post.slug}`}>
+            <a class='flow' href={`/writing/${post.slug}`}>
               <h3>{post.data.title}</h3>
               <p>
                 {post.data.date.toLocaleDateString("en-gb", {
@@ -28,11 +28,11 @@ const posts = await getCollection("posts");
 </BaseLayout>
 
 <style>
-  .writing {
-    --flowSpace: 2rem;
+  section {
+    --flow: 2rem;
   }
 
-  .post {
-    --flowSpace: 1rem;
+  a {
+    --flow: 1rem;
   }
 </style>

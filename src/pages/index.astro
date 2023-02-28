@@ -4,18 +4,18 @@ import { Image } from "@astrojs/image/components";
 ---
 
 <BaseLayout>
-  <section class='l-flow'>
+  <section class='flow'>
     <h1>Jake Ord - UX Designer.</h1>
     <p>
       A UX designer that loves to create super simple digital experiences.
       Currently a <strong>UX designer at DEF Software Ltd.</strong>
     </p>
-    <div class='l-flex' data-items='center'>
+    <div class='stack'>
       <Image
         format='webp'
         width={200}
         height={220}
-        class='avatar u-flex-shrink-none'
+        class='avatar flex-shrink-none'
         src='/me-profile.jpg'
         alt='Profile shot of Jake Ord with a sunset in the background'
       />
@@ -34,11 +34,15 @@ import { Image } from "@astrojs/image/components";
 </BaseLayout>
 
 <style>
+  section > div {
+    --stack-wrap: nowrap;
+  }
+
   .avatar {
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 100vmax;
     object-fit: cover;
-    border: 3px solid var(--primary);
+    border: 3px solid var(--colour-primary);
   }
 </style>

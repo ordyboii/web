@@ -14,7 +14,7 @@ const project = await getEntryBySlug("projects", Astro.params.slug!);
 ---
 
 <BaseLayout title={project?.data.title} description={project?.data.summary}>
-  <section class='l-flow'>
+  <section class='flow'>
     <h1>{project?.data.title}</h1>
     <p>{project?.data.client}</p>
     <hr />
@@ -26,7 +26,7 @@ const project = await getEntryBySlug("projects", Astro.params.slug!);
       src={project?.data.image!}
       alt={`${project?.data.title} hero image`}
     />
-    <article class='l-flow'>
+    <article class='flow'>
       {project?.render().then(({ Content }) => <Content />)}
     </article>
   </section>

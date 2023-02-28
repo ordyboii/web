@@ -14,7 +14,7 @@ const post = await getEntryBySlug("posts", Astro.params.slug!);
 ---
 
 <BaseLayout title={post?.data.title} description={post?.data.summary}>
-  <section class='l-flow'>
+  <section class='flow'>
     <h1>{post?.data.title}</h1>
     <p>
       {post?.data.date.toLocaleDateString("en-gb", { dateStyle: "long" })}
@@ -28,7 +28,7 @@ const post = await getEntryBySlug("posts", Astro.params.slug!);
       src={post?.data.image!}
       alt={`${post?.data.title} hero image`}
     />
-    <article class='l-flow'>
+    <article class='flow'>
       {post?.render().then(({ Content }) => <Content />)}
     </article>
   </section>
