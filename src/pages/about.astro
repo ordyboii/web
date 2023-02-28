@@ -4,11 +4,11 @@ import BaseLayout from "../components/base.astro";
 ---
 
 <BaseLayout title='About Me'>
-  <section class='l-flow'>
+  <section class='flow'>
     <h1>About Me</h1>
 
-    <div class='about l-grid' data-cols='even'>
-      <article class='l-flow'>
+    <div class='about grid'>
+      <article class='flow'>
         <p>
           I am a British-born designer based in Newcastle, UK. As a child, I was
           fascinated by mythology and art, and how it made people feel. In 2011,
@@ -50,6 +50,12 @@ import BaseLayout from "../components/base.astro";
 </BaseLayout>
 
 <style>
+  @media (min-width: 50em) {
+    section > div {
+      --grid-columns: 1fr 1fr;
+    }
+  }
+
   @media (max-width: 50em) {
     .about > img {
       grid-row: 1;
