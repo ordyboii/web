@@ -1,7 +1,7 @@
 ---
 title: Improving the experience of finding planning applications
 summary: I lead the redesign of the old Norfolk planning register to improve the experience of finding applications, which receives hundreds of visits from members of the public every week.
-image: /norfolk-register-cover.png
+image: norfolk-register-cover.png
 client: Norfolk County Council
 ---
 
@@ -28,17 +28,17 @@ To combat this constraint, I decided to reach out to Norfolk directly to ask abo
 
 Many of the pain points users were hitting were mainly on mobile but the website also had severe accessibility issues that were preventing some members of the public from using the register at all.
 
-![Picture of the old register](/norfolk-register-1.png)
+![Picture of the old register](../../assets/norfolk-register-1.png)
 
 > The old register
 
 One of the biggest hurdles was that the current Norfolk Council website was a modern, accessible site people could access but the minute they accessed the register, some users felt like they were on a different website (this could cause security concern).
 
-![Another picture this time detialing the nice branded page before accessing the register](/norfolk-register-2.png)
+![Another picture this time detialing the nice branded page before accessing the register](../../assets/norfolk-register-2.png)
 
 > The page to access the old register
 
-![Another picture detailing how hard it is to see application information](/norfolk-register-3.png)
+![Another picture detailing how hard it is to see application information](../../assets/norfolk-register-3.png)
 
 > The old register
 
@@ -50,9 +50,9 @@ One of my biggest gripes with the old register (and backed up by the research th
 
 So I got to work exploring concepts/task flows to understand the process of the new register I’d design.
 
-![Process flows and task flows](/norfolk-register-4.png)
+![Process flows and task flows](../../assets/norfolk-register-4.png)
 
-![Concept sketches](/norfolk-register-5.jpeg)
+![Concept sketches](../../assets/norfolk-register-5.jpeg)
 
 Aside from cleaning up the UI one of my major ideas I proposed was instead of many fields on the search page to replace them with a single search bar that would be capable of searching for addresses and application numbers.
 
@@ -60,9 +60,9 @@ Aside from cleaning up the UI one of my major ideas I proposed was instead of ma
 
 By having one search bar on the screen users would feel confident knowing they won’t have to fret about putting the wrong information in the wrong field. By empowering the field with the ability to search for not just address but application number, I hypothesised that this would still give choice to the user whichever way they wanted to search.
 
-![High-fidelity design of the simplified search screen](/norfolk-register-6.png)
+![High-fidelity design of the simplified search screen](../../assets/norfolk-register-6.png)
 
-![High-fidelity design of advanced search](/norfolk-register-7.png)
+![High-fidelity design of advanced search](../../assets/norfolk-register-7.png)
 
 But I didn’t want to neglect the members of the public who do use advanced search, e.g. ward officers. The idea of advanced search was inspired by a developer on a separate team at DEF who had built it for another council. Advanced search allowed users who were knowledgeable about planning applications to do a more complex, filtered search.
 
@@ -72,8 +72,8 @@ We also hypothesised by having one search we’d improve accessibility by allowi
 
 Upon the developers building my prototype and running a test environment with members of the council and members of the public. The designs were a big success we saw a number of users who expressed delight in finding their application within a couple of taps on their mobile device and a few ward officers who were glad we didn’t remove the advanced search capabilities.
 
-![Mobile design of the search screen](/norfolk-register-8.png)
+![Mobile design of the search screen](../../assets/norfolk-register-8.png)
 
-![Mobile design of the application page](/norfolk-register-9.png)
+![Mobile design of the application page](../../assets/norfolk-register-9.png)
 
 > Addressing mobile

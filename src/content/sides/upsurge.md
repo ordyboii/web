@@ -1,6 +1,6 @@
 ---
 title: Upsurge
-image: /upsurge.png
+image: upsurge.png
 link: https://upsurge.vercel.app
 ---
 

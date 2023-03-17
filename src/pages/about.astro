@@ -1,6 +1,7 @@
 ---
-import { Image } from "@astrojs/image/components";
 import BaseLayout from "../components/base.astro";
+import { Image } from "astro:assets";
+import me from "../assets/me-london.jpg";
 ---
 
 <BaseLayout title='About Me'>
@@ -39,11 +40,12 @@ import BaseLayout from "../components/base.astro";
         </p>
       </article>
       <Image
-        format='webp'
-        width={500}
-        height={400}
-        src='/me-london.jpg'
+        src={me.src}
         alt='Jake Ord looking out to Trafalgar Square in London'
+        class:list='content-image'
+        format='webp'
+        width={me.width}
+        height={me.height}
       />
     </div>
   </section>

@@ -1,6 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../components/base.astro";
-import { Image } from "@astrojs/image/components";
+import me from "../assets/me-profile.jpg";
 ---
 
 <BaseLayout>
@@ -12,12 +13,12 @@ import { Image } from "@astrojs/image/components";
     </p>
     <div class='stack'>
       <Image
-        format='webp'
-        width={200}
-        height={220}
-        class='avatar flex-shrink-none'
-        src='/me-profile.jpg'
+        src={me.src}
         alt='Profile shot of Jake Ord with a sunset in the background'
+        class='avatar flex-shrink-none'
+        format='webp'
+        width={me.width}
+        height={me.height}
       />
       <p data-width='wide'>
         「初めまして、少し日本語も話せます」<em
