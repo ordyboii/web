@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { Image } from "astro:assets";
 import { CollectionEntry, getCollection } from "astro:content";
+import { Image } from "@astrojs/image/components";
 import BaseLayout from "../../components/base.astro";
 
 export const getStaticPaths: GetStaticPaths = async function () {
@@ -23,12 +23,12 @@ const { Content } = await project.render();
     <hr />
     <p>{project.data.summary}</p>
     <Image
-      src={project.data.image.src}
+      src={project.data.image}
       alt={`${project.data.title} hero image`}
       class='content-image'
       format='webp'
-      width={project.data.image.width}
-      height={project.data.image.height}
+      width={1600}
+      height={700}
     />
     <article class='flow'>
       <Content />

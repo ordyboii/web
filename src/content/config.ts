@@ -1,11 +1,11 @@
-import { defineCollection, image, z } from "astro:content";
+import { defineCollection, z } from "astro:content";
 
 export const collections = {
   projects: defineCollection({
     schema: z.object({
       title: z.string(),
       summary: z.string(),
-      image: image(),
+      image: z.string(),
       client: z.string()
     })
   }),
@@ -13,14 +13,14 @@ export const collections = {
     schema: z.object({
       title: z.string(),
       summary: z.string(),
-      image: image(),
+      image: z.string(),
       date: z.date()
     })
   }),
   sides: defineCollection({
     schema: z.object({
       title: z.string(),
-      image: image(),
+      image: z.string(),
       link: z.string()
     })
   })

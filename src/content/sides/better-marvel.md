@@ -1,7 +1,7 @@
 ---
 title: Which Marvel Movie Is Better?
-image: marvel.png
-link: https://rate-the-better-marvel.vercel.app
+image: /marvel.png
+link: https://bettermarvel.pages.dev
 ---
 
-The most important question in life! Or, at least the debate between friends and myself. To conclude a 4 year debate I built a web app to find once and for all which is the better Marvel movie. Also, contains a results page ordered by votes.
+The most important question I had to find the answer for, or at least settle a debate between friends and myself, was which is the better Marvel movie. To conclude a four-year debate, I built a web app that finds out once and for all and includes a results page ordered by votes.
