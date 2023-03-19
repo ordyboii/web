@@ -20,11 +20,11 @@ const sides = await getCollection("sides");
               <li>
                 <a class='card' href={`/case-studies/${project.slug}`}>
                   <Image
-                    format='webp'
-                    width={1600}
-                    aspectRatio={`${16}:${9}`}
                     src={project.data.image}
                     alt={`${project.data.title} hero image`}
+                    format='webp'
+                    width={1600}
+                    height={700}
                   />
                   <div class='flow'>
                     <h3>{project.data.title}</h3>
@@ -45,11 +45,11 @@ const sides = await getCollection("sides");
             sides.map(side => (
               <li class='card'>
                 <Image
+                  src={side.data.image}
+                  alt={`${side.data.title} hero image`}
                   format='webp'
                   width={1600}
                   height={900}
-                  src={side.data.image}
-                  alt={`${side.data.title} hero image`}
                 />
                 <div class='flow'>
                   <h3>{side.data.title}</h3>

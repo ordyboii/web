@@ -1,35 +1,39 @@
 ---
+import type { GetStaticPaths } from "astro";
+import { getCollection, CollectionEntry } from "astro:content";
 import { Image } from "@astrojs/image/components";
-import { getCollection, getEntryBySlug } from "astro:content";
 import BaseLayout from "../../components/base.astro";
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async function () {
   const posts = await getCollection("posts");
   return posts.map(post => ({
-    params: { slug: post.slug }
+    params: { slug: post.slug },
+    props: { post }
   }));
-}
+};
 
-const post = await getEntryBySlug("posts", Astro.params.slug!);
+const { post } = Astro.props as { post: CollectionEntry<"posts"> };
+const { Content } = await post.render();
 ---
 
-<BaseLayout title={post?.data.title} description={post?.data.summary}>
+<BaseLayout title={post.data.title} description={post.data.summary}>
   <section class='flow'>
-    <h1>{post?.data.title}</h1>
+    <h1>{post.data.title}</h1>
     <p>
-      {post?.data.date.toLocaleDateString("en-gb", { dateStyle: "long" })}
+      {post.data.date.toLocaleDateString("en-gb", { dateStyle: "long" })}
     </p>
     <hr />
-    <p>{post?.data.summary}</p>
+    <p>{post.data.summary}</p>
     <Image
+      src={post.data.image}
+      alt={`${post.data.title} hero image`}
+      class='content-image'
       format='webp'
-      width={1000}
-      height={600}
-      src={post?.data.image!}
-      alt={`${post?.data.title} hero image`}
+      width={1600}
+      height={900}
     />
     <article class='flow'>
-      {post?.render().then(({ Content }) => <Content />)}
+      <Content />
     </article>
   </section>
 </BaseLayout>

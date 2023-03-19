@@ -32,11 +32,6 @@ const pathname = new URL(Astro.request.url).pathname.replaceAll("/", "");
           >Writing
         </a>
       </li>
-      <li>
-        <a href='/about' aria-current={pathname === "about" ? "page" : "false"}
-          >About</a
-        >
-      </li>
     </ul>
   </nav>
 </header>
