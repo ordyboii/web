@@ -1,6 +1,6 @@
 ---
 title: PlanBot, an AI assistant for planning developemnt?
-image: /marvel.png
+image: /planbot.png
 link: https://planbot.pages.dev
 ---
 
