@@ -34,9 +34,11 @@ Most of the research I did at the start was trying to understand our customers, 
 > Goal: To design an adaptable, accessible, user-friendly product that replaces the MasterGov suite of tools but goes further to improve the agile process for support, developers and user feedback iteration.
 
 ![User personas](/manifold-1.png)
+
 _Early user personas_
 
 ![Process flow outlined by PlanX](/manifold-2.png)
+
 _Figure by PlanX describing the Planning Process_
 
 ## Manifold as a service design
@@ -44,6 +46,7 @@ _Figure by PlanX describing the Planning Process_
 Quickly I realised this project involved more than the user. This product represented a chance to change the business practises, developer processes and the agile process to be more efficient. I began by outlining a sprint process I think best suited the project.
 
 ![Outline of my sprint process](/manifold-3.jpeg)
+
 _Outline of my sprint process_
 
 The sprint process had a timeline of about 1 month (with being the sole UX designer I figured this was realistic). I presented my research and my conclusions to the project lead and developers and they were more than happy for me to take the lead on implementing this myself.
@@ -51,9 +54,11 @@ The sprint process had a timeline of about 1 month (with being the sole UX desig
 Eventually, Telford and Wrekin Council joined the project as stakeholders/project partners and started taking a more direct interest in my designs, with this we took the reins and collaborated on the sprints. Teaching them about the design process so they could comment more on the designs.
 
 ![Sketch of some designs provided by stakeholder collaboration](/manifold-4.jpeg)
+
 _Sketch of some designs provided by stakeholder collaboration_
 
 ![Picture of a whiteboard session around a sprint](/manifold-5.png)
+
 _Picture of a whiteboard session around a sprint_
 
 ## A product for multiple jobs
@@ -69,6 +74,7 @@ When I begin working on a feature for a sprint, I always ask myself what could b
 A recent sprint we finished up was around “Planning Consultations”. A big area of planning that was in need of some overhauls.
 
 ![Another whiteboard example covering a different sprint with sketches](/manifold-6.png)
+
 _Another whiteboard example covering a different sprint with sketches_
 
 After interviewing and surveying a bunch of our users myself and Telford and Wrekin deducted that consultations was not organised and we hypothesised that better organisation of data was key to our success. Many users sometimes complained it was hard to find neighbour responses to planning applications under the same address and that the data was hard to copy/paste into the reports that they write.
@@ -76,11 +82,13 @@ After interviewing and surveying a bunch of our users myself and Telford and Wre
 To fix this we organised the responses into a collapsible tree view which grouped neighbours by address but at the same time grouped responses by the same person in a table.
 
 ![High-fidelity design example of the consultations sprint](/manifold-7.png)
+
 _High-fidelity design example of the consultations sprint_
 
 We also heard from users at Telford and Wrekin that they tend to use the register to view comments as the structure in their current system was disorganised, again to fix this we came up with a few ideas.
 
 ![High-fidelity design example of the consultations sprint summary screen](/manifold-8.png)
+
 _High-fidelity design example of the consultations sprint summary screen_
 
 Upon demoing to the users, many loved the simple interface and how it brings the data to the front and organises by who sent the response. They also expressed a happy response to the fact they can now get map data within the consultations area to view responses by address.
@@ -88,6 +96,7 @@ Upon demoing to the users, many loved the simple interface and how it brings the
 One area they didn’t feel to comfortable with was that neighbours choose why they’re objecting/supporting. Officers confessed that this is a job they like to do themselves as they write it in a report. They also pointed out how busy the response totals area could get and expressed an interest in having objections per address.
 
 ![Improvement sketch provided by feedback from users](/manifold-9.png)
+
 _Improvement sketch provided by feedback from users_
 
 The team and I went back to the drawing board and analysed the prototype to find areas to improve upon. The new direction seemed promising.
@@ -99,6 +108,7 @@ A recent example of an area where Manifold aims to push boundaries but at the sa
 Upon building numerous prototypes, I realised that Manifold's development process could benefit from a design system. A system of components and rules the developers could use to develop features and build the product faster.
 
 ![Picture of the design system so far](/manifold-10.png)
+
 _Picture of the design system so far_
 
 ## The result
