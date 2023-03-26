@@ -1,5 +1,6 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
+import meProfile from "../assets/me-profile.jpg";
 import BaseLayout from "../components/base.astro";
 ---
 
@@ -14,12 +15,9 @@ import BaseLayout from "../components/base.astro";
     </p>
     <div class='stack'>
       <Image
-        src='/me-profile.jpg'
+        src={meProfile}
         alt='Profile shot of Jake Ord with a sunset in the background'
         class='avatar flex-shrink-none'
-        format='webp'
-        width={200}
-        height={220}
       />
       <p>
         "I take problems and turn them into simple, research-validated solutions

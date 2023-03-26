@@ -202,6 +202,15 @@ const backup =
     object-fit: cover;
   }
 
+  article {
+    max-width: 100%;
+  }
+
+  article > p > img {
+    max-height: 300px;
+    object-fit: contain;
+  }
+
   ::selection {
     background-color: var(--colour-primary);
     color: var(--colour-secondary);

@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import BaseLayout from "../components/base.astro";
 
@@ -22,9 +22,6 @@ const sides = await getCollection("sides");
                   <Image
                     src={project.data.image}
                     alt={`${project.data.title} hero image`}
-                    format='webp'
-                    width={1600}
-                    height={700}
                   />
                   <div class='flow'>
                     <h3>{project.data.title}</h3>
@@ -47,9 +44,6 @@ const sides = await getCollection("sides");
                 <Image
                   src={side.data.image}
                   alt={`${side.data.title} hero image`}
-                  format='webp'
-                  width={1600}
-                  height={900}
                 />
                 <div class='flow'>
                   <h3>{side.data.title}</h3>

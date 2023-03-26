@@ -1,6 +1,6 @@
 ---
 title: Which Marvel Movie Is Better?
-image: /marvel.png
+image: ../../assets/marvel.png
 link: https://rate-the-better-marvel.vercel.app
 ---
 

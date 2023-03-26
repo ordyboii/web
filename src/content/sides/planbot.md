@@ -1,6 +1,6 @@
 ---
 title: PlanBot, an AI assistant for planning developemnt?
-image: /planbot.png
+image: ../../assets/planbot.png
 link: https://planbot.vercel.app
 ---
 
