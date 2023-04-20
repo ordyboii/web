@@ -1,5 +1,5 @@
 ---
-title: Which Marvel Movie Is Better?
+title: Rate the Better Marvel Movie
 image: /marvel.png
 link: https://rate-the-better-marvel.vercel.app
 ---
