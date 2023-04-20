@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Header from "./header";
 import SocialLinks from "./social-links";
 import { config } from "~/.contentlayer/generated";
+import { Analytics } from "@vercel/analytics/react";
 
 export function generateMetadata(): Metadata {
   return {
@@ -59,6 +60,7 @@ export default function RootLayout({
           <SocialLinks />
           <div id='content'>{children}</div>
         </main>
+        <Analytics />
       </body>
     </html>
   );
