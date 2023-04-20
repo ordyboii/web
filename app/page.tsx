@@ -4,10 +4,10 @@ export default function Home() {
   return (
     <>
       <section className='home flow'>
-        <h1>Hello I'm Jake Ord, UX Designer.</h1>
+        <h1>Hello I&apos;m Jake Ord, UX Designer.</h1>
         <p>
           I make the case for empowering users with intuitive interfaces through
-          creating meaningful interactions. Right now, I'm a UX designer at{" "}
+          creating meaningful interactions. Right now, I am a UX designer at{" "}
           <a href='https://def.co.uk'>DEF Software Ltd.</a>
         </p>
         <div className='stack'>
@@ -19,8 +19,9 @@ export default function Home() {
             className='avatar flex-shrink-none'
           />
           <p>
-            "I take problems and turn them into simple, research-validated
-            solutions that drive business growth and bring value to end-users".
+            &quot;I take problems and turn them into simple, research-validated
+            solutions that drive business growth and bring value to
+            end-users&quot;.
           </p>
         </div>
 
@@ -33,9 +34,10 @@ export default function Home() {
 
         <h2>{new Date().getFullYear() - 2019} years doing design</h2>
         <p>
-          I've worked on a variety of projects, including back-office enterprise
-          SaaS products, mobile apps, and public-facing web platforms. In my
-          earlier days, I also worked on brand and marketing design.
+          I have worked on a variety of projects, including back-office
+          enterprise SaaS products, mobile apps, and public-facing web
+          platforms. In my earlier days, I also worked on brand and marketing
+          design.
         </p>
         <p>
           My work involves blending interaction design with user journey
@@ -45,7 +47,7 @@ export default function Home() {
 
         <h2>Outside of work</h2>
         <p>
-          You'll find me working out, drawing, spending time with family or
+          You will find me working out, drawing, spending time with family or
           engaged in my Japanese studies.
         </p>
 
