@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { allPosts } from "~/.contentlayer/generated";
 
 export default function WritingPage() {
@@ -7,14 +8,14 @@ export default function WritingPage() {
       <ul className='flow'>
         {allPosts.map(post => (
           <li key={post._id}>
-            <a className='flow' href={post.url}>
+            <Link className='flow' href={post.url}>
               <h3>{post.title}</h3>
               <p>
                 {new Date(post.date).toLocaleDateString("en-gb", {
                   dateStyle: "long"
                 })}
               </p>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
