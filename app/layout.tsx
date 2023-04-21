@@ -14,7 +14,6 @@ export function generateMetadata(): Metadata {
         : new URL("http://localhost:3000"),
     title: config.siteTitle,
     description: config.siteDescription,
-    icons: "/favicon.svg",
     openGraph: {
       title: config.siteTitle,
       description: config.siteDescription,

@@ -1,4 +1,5 @@
 /* TOKENS & RESET */
+
 :root {
   --colour-primary: hsl(50, 20%, 77%);
   --colour-secondary: hsl(200, 42%, 14%);
@@ -72,12 +73,6 @@ body {
   overflow-x: hidden;
 }
 
-@media (min-width: 50em) {
-  body {
-    margin-block: 3rem;
-  }
-}
-
 h1,
 h2,
 h3 {
@@ -127,6 +122,10 @@ img {
   max-width: 100%;
   object-fit: cover;
   height: auto;
+}
+
+details {
+  cursor: pointer;
 }
 
 ::selection {
@@ -250,6 +249,10 @@ img {
 
 .card img {
   max-height: 14rem;
+}
+
+.card a {
+  display: inline-block;
 }
 
 /* UTILITIES */
