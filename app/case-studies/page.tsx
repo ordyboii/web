@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { allProjects, allSides } from "~/.contentlayer/generated";
 
 export default function CaseStudiesPage() {
@@ -12,7 +13,7 @@ export default function CaseStudiesPage() {
           <ul className='flow'>
             {allProjects.map(project => (
               <li key={project._id}>
-                <a className='card' href={project.url}>
+                <Link className='card' href={project.url}>
                   <Image
                     src={project.image}
                     alt={`${project.title} hero image`}
@@ -25,7 +26,7 @@ export default function CaseStudiesPage() {
                       <strong>Client:</strong> {project.client}
                     </p>
                   </div>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
@@ -22,25 +23,25 @@ export default function Header() {
       <nav className='stack' aria-label='Website navigation'>
         <ul className='nav stack'>
           <li>
-            <a href='/' aria-current={pathname === "/" ? "page" : "false"}>
+            <Link href='/' aria-current={pathname === "/" ? "page" : "false"}>
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href='/case-studies'
               aria-current={pathname === "/case-studies" ? "page" : "false"}
             >
               Case Studies
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href='/writing'
               aria-current={pathname === "/writing" ? "page" : "false"}
             >
               Writing
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
