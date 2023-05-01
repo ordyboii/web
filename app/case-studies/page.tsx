@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { allProjects, allSides } from "~/.contentlayer/generated";
 
+export const runtime = "edge";
+
 export default function CaseStudiesPage() {
   return (
     <section className='case-studies flow'>
