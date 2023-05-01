@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { allPosts } from "~/.contentlayer/generated";
 
+export const runtime = "edge";
+
 export default function WritingPage() {
   return (
     <section className='writing flow'>
