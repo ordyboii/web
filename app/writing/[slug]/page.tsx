@@ -2,8 +2,6 @@ import Image from "next/image";
 import { allPosts } from "~/.contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
-export const runtime = "edge";
-
 export function generateStaticParams() {
   return allPosts.map(post => ({ slug: post.slug }));
 }

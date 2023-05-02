@@ -2,8 +2,6 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import { allProjects } from "~/.contentlayer/generated";
 
-export const runtime = "edge";
-
 export function generateStaticParams() {
   return allProjects.map(project => ({
     slug: project.slug
