@@ -19,44 +19,44 @@ export function generateMetadata(): Metadata {
       images: config.siteImage,
       siteName: config.siteName,
       locale: "en_GB",
-      type: "website"
+      type: "website",
     },
     twitter: {
       card: "summary",
       site: config.twitterHandle,
       title: config.siteTitle,
       description: config.siteDescription,
-      images: config.siteImage
-    }
+      images: config.siteImage,
+    },
   };
 }
 
 const notoSans = Noto_Sans({
   weight: ["400", "700"],
   subsets: ["latin"],
-  variable: "--font-sans"
+  variable: "--font-sans",
 });
 const notoSerif = Noto_Serif({
   weight: ["400", "700"],
   subsets: ["latin"],
-  variable: "--font-serif"
+  variable: "--font-serif",
 });
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={`flow ${notoSans.variable} ${notoSerif.variable}`}>
-        <a className='skip-link' href='#content'>
+        <a className="skip-link" href="#content">
           Skip to content
         </a>
         <Header />
-        <main className='content grid'>
+        <main className="content grid">
           <SocialLinks />
-          <div id='content'>{children}</div>
+          <div id="content">{children}</div>
         </main>
       </body>
     </html>

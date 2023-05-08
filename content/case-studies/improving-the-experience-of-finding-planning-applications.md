@@ -32,52 +32,27 @@ Q1 2021 - Q2 2021
 
 Norfolk County Council needed the register quickly, as they were about to go live with the new MasterGov updates in Q2 of 2021. To combat this constraint, I decided to reach out to Norfolk directly to ask about any complaints, reviews, or times they've spoken to the general public. I spoke with Nick, a senior planning officer from Norfolk, and he directed me to the web team who knew about the complaints.
 
-<Image
-  src='/norfolk-register-1.png'
-  alt='Picture of the old register'
-  width={1600}
-  height={400}
-/>
+![Picture of the old register](/norfolk-register-1.png)
 
 _The old register_
 
 Many of the pain points users were hitting were mainly on mobile, but the website also had severe accessibility issues that were preventing some members of the public from using the register at all.
 
-<Image
-  src='/norfolk-register-2.png'
-  alt='Another picture this time detailing the nice branded page before accessing the register'
-  width={1600}
-  height={400}
-/>
+![Another picture this time detailing the nice branded page before accessing the register](/norfolk-register-2.png)
 
 _The page to access the old register_
 
-<Image
-  src='/norfolk-register-3.png'
-  alt='Another picture detailing how hard it is to see application information'
-  width={1600}
-  height={200}
-/>
+![Another picture detailing how hard it is to see application information](/norfolk-register-3.png)
 
 ## Exploring Ideas
 
 One of my biggest gripes with the old register (and backed up by the research the web team did) was that when a user landed on the register, they were presented with all these fields that they did not know of. This created confusion, and I pointed out that many members of the public tend to think in terms of their address or the application number if they have it on hand.
 
-<Image
-  src='/norfolk-register-4.png'
-  alt='Process flows and task flows'
-  width={500}
-  height={600}
-/>
+![Process flows and task flows](/norfolk-register-4.png)
 
 _User journeys and stories_
 
-<Image
-  src='/norfolk-register-5.jpeg'
-  alt='Concept sketches'
-  width={500}
-  height={400}
-/>
+![Concept sketches](/norfolk-register-5.jpeg)
 
 _Initial ideas drawn up_
 
@@ -89,21 +64,11 @@ Aside from cleaning up the UI, one of my major ideas was to replace the many fie
 
 For users who were knowledgeable about planning applications and required more complex, filtered search capabilities, we implemented an advanced search option.
 
-<Image
-  src='/norfolk-register-6.png'
-  alt='High-fidelity design of the simplified search screen'
-  width={1600}
-  height={800}
-/>
+![High-fidelity design of the simplified search screen](/norfolk-register-6.png)
 
 _High fidelity design of the simplified search screen_
 
-<Image
-  src='/norfolk-register-7.png'
-  alt='High-fidelity design of advanced search'
-  width={1600}
-  height={800}
-/>
+![High-fidelity design of advanced search](/norfolk-register-7.png)
 
 _High fidelity design of advanced search_
 
@@ -113,20 +78,10 @@ Upon the developers building my prototype and running a test environment with me
 
 The new design significantly improved accessibility and the user experience, addressing the concerns of the general public.
 
-<Image
-  src='/norfolk-register-8.png'
-  alt='Mobile design of the search screen'
-  width={300}
-  height={600}
-/>
+![Mobile design of the search screen](/norfolk-register-8.png)
 
 _Mobile design of the search screen_
 
-<Image
-  src='/norfolk-register-9.png'
-  alt='Mobile design of the application page'
-  width={300}
-  height={600}
-/>
+![Mobile design of the application page](/norfolk-register-9.png)
 
 _Mobile design of the application page_

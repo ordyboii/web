@@ -21,12 +21,7 @@ I was brought into the project to help collaborate with Dorset on the designs fo
 
 ## Finding the weak spots
 
-<Image
-  src='/dorset-planning-online-1.png'
-  alt='Pain points with the old register in a bulleted list'
-  width={400}
-  height={200}
-/>
+![Pain points with the old register in a bulleted list](/dorset-planning-online-1.png)
 
 _Major pain points briefed at first Dorset meeting_
 
@@ -34,30 +29,15 @@ When I first got brought into the project I collaborated with Dorset to analyse 
 
 Originally, this was what I was first tasked with but I also wanted to take on board what I learnt from re-designing the Norfolk register and bring my findings over to this new platform. I also saw an opportunity to create a modern website that would serve as a good basis for all the future registers we create; I took this idea to my manager and he agreed it’d be a great time/cost saving if we get this right.
 
-<Image
-  src='/dorset-planning-online-2.png'
-  alt='Process flow diagram done in Miro'
-  width={1600}
-  height={400}
-/>
+![Process flow diagram done in Miro](/dorset-planning-online-2.png)
 
 _Process flow diagram_
 
-<Image
-  src='/dorset-ideas-1.png'
-  alt='Process mapping diagram from a Miro board'
-  width={1600}
-  height={400}
-/>
+![Process mapping diagram from a Miro board](/dorset-ideas-1.png)
 
 _Collaborative process mapping_
 
-<Image
-  src='/dorset-ideas-2.png'
-  alt='Collaborative process mapping in Miro'
-  width={1600}
-  height={400}
-/>
+![Collaborative process mapping in Miro](/dorset-ideas-2.png)
 
 _Collaborative process mapping in Miro_
 
@@ -65,45 +45,25 @@ _Collaborative process mapping in Miro_
 
 One of the major goals of the project was getting the alerting service to work well. Based on the pain points and user research Dorset had done, I was able to put together a rough prototype of my ideas which we reviewed and continued to iterate.
 
-<Image
-  src='/dorset-planning-online-3.png'
-  alt='One of the first low-fidelity wireframes'
-  width={600}
-  height={600}
-/>
+![One of the first low-fidelity wireframes](/dorset-planning-online-3.png)
 
 _One of the earliest prototypes_
 
 We wanted a simple dashboard for logged in users to view alerts and turn them off with ease, but the simple dashboard served a twofold: making alerts easier to view and allowed easy expansion for new areas of the platform that members of the public wouldn’t have access to e.g. consultation area. RBAC would control this, however, I wanted room in the prototype if we decided to add more features.
 
-<Image
-  src='/dorset-planning-online-4.png'
-  alt='Another low-fidelity wireframe'
-  width={500}
-  height={600}
-/>
+![Another low-fidelity wireframe](/dorset-planning-online-4.png)
 
 _More low-fi wireframes_
 
 We trailed out different ways of creating alerts: through a 2 step wizard and with maps. Ideally, we wanted different ways users could create these alert rules. For example, a ward officer may track applications in an area where as a member of the public may just want to receive updates on the extension their neighbour is getting.
 
-<Image
-  src='/dorset-planning-online-5.png'
-  alt='Designs around alert tracking to enhance application tracking'
-  width={1600}
-  height={500}
-/>
+![Designs around alert tracking to enhance application tracking](/dorset-planning-online-5.png)
 
 _Designs around alert tracking to enhance application tracking_
 
 We continued to iterate the prototype based on feedback from the team until we reached a higher fidelity state to user test with officers and the general public alike. The higher fidelity started to come together in the dashboard area where the user could configure and see all their alert rules
 
-<Image
-  src='/dorset-planning-online-6.png'
-  alt='High-fidelity designs for the dashboard of a user account'
-  width={500}
-  height={500}
-/>
+![High-fidelity designs for the dashboard of a user account](/dorset-planning-online-6.png)
 
 _High-fidelity designs for the dashboard of a user account_
 
@@ -111,23 +71,13 @@ _High-fidelity designs for the dashboard of a user account_
 
 Alongside the alerts I started pushing the other areas of the platform when I had time. Taking inspiration from other councils planning websites I implemented some new ideas for viewing an application’s lifecycle. This new design showed the lifecycle of the application from received all the way to decision but it broke down the steps in a timeline with a colour to indicate the status.
 
-<Image
-  src='/dorset-planning-online-7.png'
-  alt='High-fidelity design for the application page'
-  width={500}
-  height={600}
-/>
+![High-fidelity design for the application page](/dorset-planning-online-7.png)
 
 _High-fidelity design for the application page_
 
 I also started to push the designs for mobile on the side to make sure what we were designing on desktop could work on a smaller device.
 
-<Image
-  src='/dorset-planning-online-8.png'
-  alt='Example of the mobile design'
-  width={175}
-  height={400}
-/>
+![Example of the mobile design](/dorset-planning-online-8.png)
 
 _Example of the mobile design_
 
@@ -139,50 +89,25 @@ We also started user testing with residents and consultees which have responded 
 
 Some residents have expressed amazing feedback for the inclusion of features like a timeline of the application, or the fact that the map (showing the application site boundary plot) is visible on the page when they go to it.
 
-<Image
-  src='/dorset-recent-1.png'
-  alt='A recent design of the search page'
-  width={500}
-  height={600}
-/>
+![A recent design of the search page](/dorset-recent-1.png)
 
 _A recent of the search page_
 
-<Image
-  src='/dorset-recent-2.png'
-  alt='A recent design of the search results page'
-  width={500}
-  height={600}
-/>
+![A recent design of the search results page](/dorset-recent-2.png)
 
 _A recent design of the search results page_
 
-<Image
-  src='/dorset-recent-3.png'
-  alt='After user feedback, had also included table views'
-  width={500}
-  height={600}
-/>
+![After user feedback, had also included table views](/dorset-recent-3.png)
 
 _After user feedback, had also included table views_
 
-<Image
-  src='/dorset-recent-4.png'
-  alt='A recent design of application page'
-  width={600}
-  height={600}
-/>
+![A recent design of application page](/dorset-recent-4.png)
 
 _A recent design of application page_
 
 This project so far has not only delighted officers and members of the public, but is also pushing boundaries on what a "planning register" should be.
 
-<Image
-  src='/dorset-feedback.png'
-  alt='Some feedback from Dorset'
-  width={1600}
-  height={275}
-/>
+![Some feedback from Dorset](/dorset-feedback.png)
 
 _Feedback from the first steering group_
 
