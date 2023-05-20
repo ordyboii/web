@@ -15,7 +15,7 @@ useServerSeoMeta({
       ? `${titleChunk} | ${config.value.siteTitle}`
       : config.value.siteTitle;
   },
-  description: config.siteDescription,
+  description: config.value.siteDescription,
   ogType: "website",
   ogTitle: config.value.siteTitle,
   ogDescription: config.value.siteDescription,

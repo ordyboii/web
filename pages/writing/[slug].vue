@@ -7,6 +7,9 @@ const { data: post } = await useAsyncData(() =>
 useServerSeoMeta({
   title: post.value.title,
   description: post.value.summary,
+  ogTitle: post.value.title,
+  ogDescription: post.value.summary,
+  ogImage: post.value.image,
 });
 </script>
 
