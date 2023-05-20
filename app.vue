@@ -1,9 +1,117 @@
+<script setup>
+const route = useRoute();
+
+const { data: config } = await useAsyncData(() =>
+  queryContent("config").findOne()
+);
+
+useServerSeoMeta({
+  titleTemplate: (titleChunk) => {
+    return titleChunk
+      ? `${titleChunk} | ${config.value.siteTitle}`
+      : config.value.siteTitle;
+  },
+  description: config.siteDescription,
+  ogType: "website",
+  ogTitle: config.value.siteTitle,
+  ogDescription: config.value.siteDescription,
+  ogImage: config.value.siteImage,
+  ogImageAlt: config.value.siteTitle,
+  twitterTitle: config.value.siteTitle,
+  twitterDescription: config.value.siteDescription,
+  twitterImage: config.value.siteImage,
+  twitterImageAlt: config.value.siteTitle,
+  twitterCard: "summary",
+});
+</script>
+
+<template>
+  <a class="skip-link" href="#content"> Skip to content </a>
+  <header class="header stack">
+    <svg
+      class="flex-shrink-none"
+      fill="white"
+      width="50"
+      height="80"
+      min-width="50"
+    >
+      <title>
+        Logo for Jake Ord, features the katakana ジェイク in a square
+      </title>
+      <use fill="currentColor" href="/logo.svg#logo"></use>
+    </svg>
+    <nav class="stack" aria-label="Website navigation">
+      <ul class="nav stack">
+        <li>
+          <NuxtLink to="/" :aria-current="route.path === '/' ? 'page' : false">
+            Home
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink
+            to="/case-studies"
+            :aria-current="pathname === '/case-studies' ? 'page' : false"
+          >
+            Case Studies
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink
+            to="/writing"
+            :aria-current="pathname === '/writing' ? 'page' : false"
+          >
+            Writing
+          </NuxtLink>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="content grid">
+    <nav aria-label="Social links">
+      <ul class="social-links stack">
+        <li>
+          <a :href="config.twitter" aria-label="Link to my Twitter page">
+            <svg width="24" height="24">
+              <use stroke="currentColor" href="/twitter.svg#twitter"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a :href="config.linkedin" aria-label="Link to my LinkedIn page">
+            <svg width="24" height="24">
+              <use stroke="currentColor" href="/linkedin.svg#linkedin"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a :href="config.github" aria-label="Link to my Github page">
+            <svg width="24" height="24">
+              <use stroke="currentColor" href="/github.svg#github"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a :href="`mailto:${config.email}`" aria-label="Email me!">
+            <svg width="24" height="24">
+              <use stroke="currentColor" href="/mail.svg#mail"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div id="content"><NuxtPage /></div>
+  </main>
+</template>
+
+<style>
 /* TOKENS & RESET */
 
 :root {
   --colour-primary: hsl(50, 20%, 77%);
   --colour-secondary: hsl(200, 42%, 14%);
 
+  --font-sans: "Noto Sans", sans-serif;
+  --font-serif: "Noto Serif", serif;
   --font-bold: 700;
   --font-regular: 400;
 
@@ -34,7 +142,8 @@
 }
 
 html,
-body {
+body,
+#__nuxt {
   min-height: 100%;
 }
 
@@ -58,6 +167,10 @@ a {
 
 /* BASE */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   --flow: 2.4rem;
 
@@ -71,6 +184,10 @@ body {
   padding: 1.2rem;
   isolation: isolate;
   overflow-x: hidden;
+}
+
+#__nuxt > * + * {
+  margin-top: var(--flow, 1rem);
 }
 
 h1,
@@ -212,7 +329,8 @@ details {
   --stack-wrap: nowrap;
 }
 
-.avatar {
+.avatar > img {
+  flex-shrink: none;
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 100vmax;
@@ -255,6 +373,13 @@ details {
   display: inline-block;
 }
 
+.toc {
+  background-color: var(--colour-primary);
+  color: var(--colour-secondary);
+  border-radius: var(--radius);
+  padding: 1.8rem 2rem;
+}
+
 /* UTILITIES */
 
 .flex-shrink-none {
@@ -264,3 +389,4 @@ details {
 .content-image {
   max-height: 500px;
 }
+</style>

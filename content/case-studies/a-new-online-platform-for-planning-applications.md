@@ -5,6 +5,10 @@ image: /dorset-planning-online.png
 client: Dorset Council
 ---
 
+## Introduction
+
+Dorset Council had commissioned DEF to undertake transforming their entire planning online infrastructure. As part of this I was tasked with collaborating with Dorset’s UX team to re-imagine the online portal for different audiences - including members of the public, ward officers and consultees.
+
 ## An overhaul to planning online
 
 Dorset Council were going through a period of digital transformation in planning and as part of this had received funding from the Department for Levelling Up, Housing and Communities to help improve their services to the general public, consultees and ward/parish officers.
