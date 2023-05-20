@@ -5,6 +5,10 @@ const { data: config } = await useAsyncData(() =>
   queryContent("config").findOne()
 );
 
+useServerHead({
+  link: [{ rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
+});
+
 useServerSeoMeta({
   titleTemplate: (titleChunk) => {
     return titleChunk
