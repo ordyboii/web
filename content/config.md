@@ -1,8 +1,8 @@
 ---
 siteTitle: Jake Ord, UX designer, creator of interactive experiences, based in Newcastle, UK.
 siteDescription: Jake Ord, UX designer, creator of interactive experiences, based in Newcastle, UK.
-siteName: https://jake-ord.pages.dev
-siteImage: https://jake-ord.pages.dev/me-london.jpg
+siteName: https://jakeord.uk
+siteImage: /me-london.jpg
 twitter: https://twitter.com/ordyboii
 twitterHandle: "@ordyboii"
 linkedin: https://www.linkedin.com/in/jorddy/
