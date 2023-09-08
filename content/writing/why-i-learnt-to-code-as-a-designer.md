@@ -1,8 +1,8 @@
 ---
 title: Why I Learnt To Code As A UX Designer
 summary: Designers sometimes say that learning to code is not required. While that is true, I found the experience of learning to code enriched my understanding of my designs and helped me develop a closer relationship with the developers on my team.
-image: /coding.jpg
-date: 2022-09-26
+image: /assets/coding.jpg
+date: "2022-09-26"
 ---
 
 ## The elephant in the room

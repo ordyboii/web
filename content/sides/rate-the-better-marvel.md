@@ -1,6 +1,6 @@
 ---
 title: Rate the Better Marvel Movie
-image: /marvel.png
+image: /assets/marvel.png
 link: https://better-marvel.jakeord.uk
 ---
 
