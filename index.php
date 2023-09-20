@@ -1,16 +1,14 @@
 <?php
 
 declare(strict_types=1);
-require_once("vendor/autoload.php");
+require_once(__DIR__ . "/vendor/autoload.php");
 
 $page = [
   "base" => "Jake Ord, designer, creator of interactive experiences, based in Newcastle, UK.",
   "description" => "Jake Ord, designer, creator of interactive experiences, based in Newcastle, UK.",
-  "keywords" => "Designer, UX, UI, Interaction User Experience, Design, Newcastle, UK, Newcastle-Upon-Tyne, PHP, Coding, Programming",
+  "keywords" => "Designer, UX, UI, Interaction User Experience, Design, Newcastle, UK, Newcastle-Upon-Tyne, Interaction",
   "image" => "/assets/me-london.jpg",
   "name" => "https://jakeord.uk",
-  "twitter" => "https://twitter.com/ordyboii",
-  "twitterHandle" => "@ordyboii",
   "linkedin" => "https://www.linkedin.com/in/jorddy/",
   "github" => "https://github.com/ordyboii",
   "email" => "jake.ord345@gmail.com"
@@ -50,6 +48,8 @@ function parseMarkdown(string $file): array
   <meta name="og:type" content="website">
   <link rel="shortcut icon" href="/assets/icon.svg" type="image/x-icon">
   <style>
+    /* GLOBAL */
+
     :root {
       --colour-primary: hsl(50, 20%, 77%);
       --colour-secondary: hsl(200, 42%, 14%);
@@ -101,8 +101,6 @@ function parseMarkdown(string $file): array
       color: inherit;
     }
 
-    /* BASE */
-
     html {
       scroll-behavior: smooth;
     }
@@ -116,10 +114,16 @@ function parseMarkdown(string $file): array
       background-color: var(--colour-secondary);
       color: var(--colour-primary);
       max-width: 1000px;
+      padding: 2rem;
       margin-inline: auto;
-      padding: 5rem 0rem;
       isolation: isolate;
       overflow-x: hidden;
+    }
+
+    @media (min-width: 50em) {
+      body {
+        padding-block: 5rem;
+      }
     }
 
     h1,
@@ -211,7 +215,7 @@ function parseMarkdown(string $file): array
       margin-top: var(--flow, 1rem);
     }
 
-    /* BLOCKS */
+    /* BLOCKS & EXCEPTIONS */
 
     @media (min-width: 50em) {
       .content {
@@ -333,7 +337,7 @@ function parseMarkdown(string $file): array
   </style>
 </head>
 
-<body class="stack" hx-boost="true" hx-push-url="true">
+<body class="stack">
   <a class="skip-link" href="#content">
     Skip to content
   </a>
@@ -345,7 +349,7 @@ function parseMarkdown(string $file): array
       <use fill="currentColor" href="/assets/logo.svg#logo"></use>
     </svg>
     <nav class="stack" aria-label="Website navigation">
-      <ul class="nav stack">
+      <ul class="nav stack" hx-boost="true" hx-push-url="true">
         <li>
           <a href="/" aria-current="<?= $url == "/" ? "page" : "" ?>">Home</a>
         </li>
@@ -361,13 +365,6 @@ function parseMarkdown(string $file): array
   <main class="content grid">
     <nav aria-label="Social links">
       <ul class="social-links stack">
-        <li>
-          <a href="<?= $page['twitter'] ?>" aria-label="Link to my Twitter page">
-            <svg width="24" height="24">
-              <use stroke="currentColor" href="/assets/twitter.svg#twitter"></use>
-            </svg>
-          </a>
-        </li>
         <li>
           <a href="<?= $page['linkedin'] ?>" aria-label="Link to my LinkedIn page">
             <svg width="24" height="24">
