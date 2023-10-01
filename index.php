@@ -46,7 +46,7 @@ function parseMarkdown(string $file): array
   <meta name="og:url" content="<?= $page['name'] ?>">
   <meta name="og:image" content="<?= $page['image'] ?>">
   <meta name="og:type" content="website">
-  <link rel="shortcut icon" href="/assets/icon.svg" type="image/x-icon">
+  <link rel="icon" href="/assets/icon.svg" type="image/x-icon">
   <style>
     /* GLOBAL */
 
