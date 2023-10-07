@@ -16,6 +16,10 @@ $page = [
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+if ($url == "/the-best-person-you-will-ever-meet") {
+  $page["title"] = "Jake - The Best Person You Will Ever Meet
+}
+
 function parseMarkdown(string $file): array
 {
   $object = Spatie\YamlFrontMatter\YamlFrontMatter::parse(file_get_contents($file));
