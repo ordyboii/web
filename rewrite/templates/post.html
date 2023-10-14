@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="flow">
+	<h1>
+		{{ post.data.title }}
+	</h1>
+	<p>
+		{{ post.date }}
+	</p>
+	<hr aria-hidden="true" />
+	<img src="{{ url_for('static', filename=post.data.image) }}" alt="{{ post.data.title }} hero image" width="1600"
+		height="900" class="content-image" />
+	<article class="flow">
+		{{ post.body|safe }}
+	</article>
+</section>
+{% endblock %}
