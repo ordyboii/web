@@ -1,7 +1,7 @@
 ---
-title: Rate the Better Marvel Movie
-image: /assets/marvel.png
+title: Rate the Better Marvel
+image: marvel.png
 link: https://better-marvel.jakeord.uk
 ---
 
-The most important question I had to find the answer for, or at least settle a debate between friends and myself, was which is the better Marvel movie. To conclude a four-year debate, I built a web app that finds out once and for all and includes a results page ordered by votes.
+The most crucial question I had to resolve, and settle a long-standing debate with friends, was which Marvel movie is better. To put an end to our four-year dispute, I developed a web app that definitively determines the answer and displays results sorted by votes; it even has a graph.
