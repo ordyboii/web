@@ -143,7 +143,11 @@
 		}
 
 		a:where(:hover, :focus, :active) {
-			text-decoration: none;
+			color: lightblue;
+		}
+
+		div>a:where(:hover, :focus, :active) {
+			color: blue;
 		}
 
 		img {
@@ -285,6 +289,12 @@
 		}
 
 		/* UTILITIES */
+
+		.flex {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+		}
 
 		.flex-shrink-none {
 			flex-shrink: 0;

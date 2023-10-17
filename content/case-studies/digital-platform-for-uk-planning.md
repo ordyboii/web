@@ -1,8 +1,8 @@
 ---
-title: A new online platform for planning applications
-summary: Dorset Council had commissioned DEF to undertake transforming their entire planning online infrastructure. As part of this I was tasked with collaborating with Dorset’s UX team to re-imagine the online portal for different audiences - including members of the public, ward officers and consultees.
-image: dorset-planning-online.png
-client: Dorset Council
+title: "Digital platform for UK planning"
+summary: "Dorset Council had commissioned DEF to undertake transforming their entire planning online infrastructure. As part of this I was tasked with collaborating with Dorset’s UX team to re-imagine the online portal for different audiences - including members of the public, ward officers and consultees."
+image: "dorset-planning-online.png"
+client: "Dorset Council"
 ---
 
 ## Introduction
@@ -113,6 +113,4 @@ This project so far has not only delighted officers and members of the public, b
 
 ![Some feedback from Dorset](/static/dorset-feedback.png)
 
-_Feedback from the first steering group_
-
-**This project is still ongoing…**
+_Feedback from a steering group_

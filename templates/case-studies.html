@@ -41,7 +41,10 @@
 						<p>
 							{{ side.body|safe }}
 						</p>
-						<a href="{{ side.data.link|safe }}">View Project</a>
+						<div class="flex">
+							<a href="{{ side.data.link }}">View project</a>
+							<a href="{{ side.data.github }}">View code</a>
+						</div>
 					</div>
 				</li>
 				{% endfor %}

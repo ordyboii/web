@@ -1,8 +1,8 @@
 ---
-title: Designing a Flexible Web-Based Planning System for UK Local Authorities
-summary: I was tasked with leading the UX/UI process of Manifold, a web-based replacement for back-office planning solutions. Everything from research analysis, stakeholder/developer collaboration, design system, and UI/wireframing.
-image: manifold.png
-client: Local authorities across the UK
+title: "Enterprise back-office planning system for local councils"
+summary: "I was tasked with leading the UX/UI process of Manifold, a web-based replacement for a back-office planning solution called MasterGov. Everything from research analysis, stakeholder/developer collaboration, design system, and UI/wireframing."
+image: "manifold.png"
+client: "Local UK councils"
 ---
 
 ## A “modern” approach to back-office planning
@@ -118,5 +118,3 @@ Overtime this project saw increasing interest from all of our current customers 
 We were also seeing some interest in the project from other councils that weren’t on MasterGov.
 
 The project has also been well received by the developers on our team (that work on MasterGov) and users within Telford and Wrekin Council have expressed excitement in the prototypes demoed to them that myself and the team have collaborated on.
-
-**This project is still ongoing…**
