@@ -70,7 +70,9 @@ app.get("/writing/:slug", (request, response) => {
   )
 });
 
-app.listen({ port: 4000 });
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => console.log(`Server listening on port ${port}`));
 
 function formatFile(slug, dir) {
   const file = fs.readFileSync(`content/${dir}/${slug}.md`);
