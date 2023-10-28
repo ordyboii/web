@@ -1,7 +1,7 @@
 ---
 title: "Advent Of Code 2022 - My Thoughts As A Designer"
 summary: "At the time of writing this I'm currently at day 16 of Advent Of Code 2022 and it's been a hell of a ride so far."
-image: "advent.jpg"
+image: "/advent.jpg"
 date: "2022-12-16"
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "Sensei Wong"
-image: "sensei-wong.png"
-link: "https://link-to-a-video-I-will-create-eventually"
+image: "/sensei-wong.png"
 github: "https://github.com/ordyboii/sensei-wong"
 ---
 

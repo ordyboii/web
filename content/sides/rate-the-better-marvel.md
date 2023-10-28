@@ -1,7 +1,6 @@
 ---
 title: "Rate the Better Marvel"
-image: "marvel.png"
-link: "https://better-marvel.jakeord.uk"
+image: "/marvel.png"
 github: "https://github.com/ordyboii/better-marvel"
 ---
 
