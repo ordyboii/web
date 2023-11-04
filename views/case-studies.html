@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="case-studies flow">
+    <h1>Case Studies</h1>
+
+    <div class="grid">
+      <div class="flow">
+        <h2>Client Work</h2>
+        <ul class="flow">
+          {% for project in projects %}
+            <li class="card">
+              <a href="/case-studies/{{ project.slug }}" class="card">
+                <img src="{{ project.data.image }}" alt="{{ project.data.title }} hero image" width="1600" height="900" />
+                <div class="flow">
+                  <h3>{{ project.data.title }}</h3>
+                  <p><strong>Client:</strong> {{ project.data.client }}</p>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="flow">
+        <h2>On The Side</h2>
+        <ul class="flow">
+          {% for side in sides %}
+            <li class="card">
+              <img src="{{ side.data.image }}" alt="{{ side.data.title }} hero image" width="1600" height="900" />
+              <div class="flow">
+                <h3>{{ side.data.title }}</h3>
+                <p>{{ side.body | safe }}</p>
+                <a href="{{ side.data.github }}">View code</a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+{% endblock %}

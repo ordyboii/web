@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ project.data.title }}
+{% endblock %}
+
+{% block content %}
+  <section class="flow">
+    <h1>{{ project.data.title }}</h1>
+    <p>{{ project.data.client }}</p>
+    <hr aria-hidden="true" />
+    <img src="{{ project.data.image }}" alt="{{ project.data.title }} hero image" width="1600" height="900" class="content-image" />
+    <article class="flow">{{ project.body | safe }}</article>
+  </section>
+{% endblock %}
