@@ -65,6 +65,18 @@ app.listen(port, () => {
   console.log(`Listening on port http://localhost:${port}`)
 })
 
+/**
+ * @typedef ParsedFile
+ * @property {string} slug
+ * @property {Object} data
+ * @property {string} body 
+*/
+
+/**
+ * @param {string} slug 
+ * @param {string} dir 
+ * @returns {ParsedFile}
+*/
 function formatFile(slug, dir) {
   const file = fs.readFileSync(`content/${dir}/${slug}.md`);
   const contents = matter(file);
