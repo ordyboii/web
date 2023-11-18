@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-  <section class="flow">
-    <h1>{{ project.data.title }}</h1>
-    <p>{{ project.data.client }}</p>
-    <hr aria-hidden="true" />
-    <img src="{{ project.data.image }}" alt="{{ project.data.title }} hero image" width="1600" height="900" class="content-image" />
-    <article class="flow">{{ project.body | safe }}</article>
+  <section class="ob-flow">
+    <h1 class="ob-heading-xl">{{ project.data.title }}</h1>
+    <p clas="ob-body">{{ project.data.client }}</p>
+    <hr class="ob-rule" aria-hidden="true" />
+    <img src="{{ project.data.image }}" alt="{{ project.data.title }} hero image" width="1600" height="900" class="ob-content-image" />
+    <article class="ob-flow">{{ project.body | safe }}</article>
   </section>
 {% endblock %}

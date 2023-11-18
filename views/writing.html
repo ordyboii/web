@@ -3,14 +3,14 @@
 {% block title %}Writing{% endblock%}
 
 {% block content %}
-  <section class="writing flow">
-    <h1>Writing</h1>
-    <ul class="flow">
+  <section class="ob-writing ob-flow">
+    <h1 class="ob-heading-xl">Writing</h1>
+    <ul class="ob-list ob-flow">
       {% for post in posts %}
         <li>
-          <a href="/writing/{{ post.slug }}" class="flow">
-            <h3>{{ post.data.title }}</h3>
-            <p>{{ post.data.date | format("MMMM MM, yyy") }}</p>
+          <a href="/writing/{{ post.slug }}" class="ob-link ob-flow">
+            <h3 class="ob-heading-m">{{ post.data.title }}</h3>
+            <p class="ob-body">{{ post.data.date | format("MMMM MM, yyy") }}</p>
           </a>
         </li>
       {% endfor %}

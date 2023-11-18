@@ -3,36 +3,36 @@
 {% block title %}Case Studies{% endblock%}
 
 {% block content %}
-  <section class="case-studies flow">
-    <h1>Case Studies</h1>
+  <section class="ob-case-studies ob-flow">
+    <h1 class="ob-heading-xl">Case Studies</h1>
 
-    <div class="grid">
-      <div class="flow">
-        <h2>Client Work</h2>
-        <ul class="flow">
+    <div class="ob-grid">
+      <div class="ob-flow">
+        <h2 class="ob-heading-l">Client Work</h2>
+        <ul class="ob-list ob-flow">
           {% for project in projects %}
-            <li class="card">
-              <a href="/case-studies/{{ project.slug }}" class="card">
+            <li class="ob-card">
+              <a href="/case-studies/{{ project.slug }}" class="ob-link ob-card">
                 <img src="{{ project.data.image }}" alt="{{ project.data.title }} hero image" width="1600" height="900" />
-                <div class="flow">
-                  <h3>{{ project.data.title }}</h3>
-                  <p><strong>Client:</strong> {{ project.data.client }}</p>
+                <div class="ob-flow">
+                  <h3 class="ob-heading-m">{{ project.data.title }}</h3>
+                  <p class="ob-body"><strong>Client:</strong> {{ project.data.client }}</p>
                 </div>
               </a>
             </li>
           {% endfor %}
         </ul>
       </div>
-      <div class="flow">
-        <h2>On The Side</h2>
-        <ul class="flow">
+      <div class="ob-flow">
+        <h2 class="ob-heading-l">On The Side</h2>
+        <ul class="ob-list ob-flow">
           {% for side in sides %}
-            <li class="card">
+            <li class="ob-card">
               <img src="{{ side.data.image }}" alt="{{ side.data.title }} hero image" width="1600" height="900" />
-              <div class="flow">
-                <h3>{{ side.data.title }}</h3>
-                <p>{{ side.body | safe }}</p>
-                <a href="{{ side.data.github }}">View code</a>
+              <div class="ob-flow">
+                <h3 class="ob-heading-m">{{ side.data.title }}</h3>
+                <p class="ob-body">{{ side.body | safe }}</p>
+                <a class="ob-link" href="{{ side.data.github }}">View code</a>
               </div>
             </li>
           {% endfor %}

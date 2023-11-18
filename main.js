@@ -1,9 +1,9 @@
-const express = require("express");
-const nunjucks = require("nunjucks");
-const date = require("date-fns");
-const fs = require("fs");
-const matter = require("gray-matter");
-const marked = require("marked");
+import express from "express";
+import nunjucks from "nunjucks";
+import date from "date-fns";
+import fs from "fs";
+import matter from "gray-matter";
+import { parse } from "marked";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -68,13 +68,13 @@ app.listen(port, () => {
 /**
  * @typedef ParsedFile
  * @property {string} slug
- * @property {Object} data
+ * @property {matter.GrayMatterFile.data} data
  * @property {string} body 
 */
 
 /**
  * @param {string} slug 
- * @param {string} dir 
+ * @param {"case-studies" | "sides" | "writing"} dir 
  * @returns {ParsedFile}
 */
 function formatFile(slug, dir) {
@@ -84,6 +84,6 @@ function formatFile(slug, dir) {
   return {
     slug: slug.replace(".md", ""),
   	data: contents.data,
-  	body: marked.parse(contents.content)
+  	body: parse(contents.content)
   }
 }
