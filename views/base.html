@@ -14,7 +14,7 @@
     <meta name="keywords" content="{{ data.keywords }}" />
     <link rel="icon" href="/icon.svg" type="image/x-icon" />
     <style>
-      {# Global #}
+      /* Global */
 
       :root {
         --colour-primary: hsl(50, 20%, 77%);
@@ -85,11 +85,11 @@
       }
 
       ::selection {
-        background-color: var(--colour-primary);
-        color: var(--colour-secondary);
+        background: yellow;
+        color: black;
       }
 
-      {# BLOCKS #}
+      /* Blocks */
 
       .ob-heading-xl,
       .ob-heading-l,
@@ -148,10 +148,6 @@
         color: black;
       }
 
-      .ob-nav .ob-link:focus {
-        border-radius: var(--radius);
-      }
-
       .ob-stack {
         display: flex;
         gap: var(--gutter, 1rem);
@@ -166,13 +162,6 @@
         gap: var(--gutter, 3rem);
         grid-template-columns: var(--grid-columns, auto);
         grid-template-rows: var(--grid-rows, auto);
-      }
-
-      @media (min-width: 50em) {
-        .ob-grid[data-cols="even"] {
-          grid-auto-flow: column;
-          grid-auto-columns: 1fr;
-        }
       }
 
       :where(.ob-flow > :not(:first-child)) {
@@ -270,7 +259,7 @@
         display: inline-block;
       }
 
-      {# Utilities #}
+      /* Utilities */
 
       .ob-flex {
         display: flex;
