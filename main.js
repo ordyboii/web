@@ -10,12 +10,14 @@ const port = process.env.PORT || 4000;
 
 nunjucks.configure("views", {
   autoescape: true,
-  express: app
+  express: app,
+  watch: true
 }).addFilter("format", (string, format) => {
   return date.format(new Date(string), format);
 });
 
 app.use(express.static("public"));
+
 app.locals.data = {
   base: "Designer, creator of interactive experiences, based in Newcastle, UK",
   description: "Designer, creator of interactive experiences, based in Newcastle, UK",
