@@ -1,14 +1,18 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node main.js",
-    "dev": "node --watch main.js"
+    "start": "tsx main.tsx",
+    "dev": "tsx watch main.tsx",
+    "css:dev": "tailwindcss -w -i tailwind.css -o assets/styles.css",
+    "css:build": "tailwindcss -m -i tailwind.css -o assets/styles.css"
   },
   "dependencies": {
+    "@hono/node-server": "^1.8.2",
+    "@tailwindcss/cli": "^4.0.0-alpha.5",
+    "@types/node": "^20.11.25",
     "date-fns": "^2.30.0",
-    "express": "^4.18.2",
-    "gray-matter": "^4.0.3",
-    "marked": "^9.1.5",
-    "nunjucks": "^3.2.4"
+    "hono": "^4.0.10",
+    "tailwindcss": "^4.0.0-alpha.5",
+    "tsx": "^4.7.1"
   }
 }
