@@ -7,7 +7,7 @@ The main branch is locked by default. You must create a Pull Request to contribu
 
 Use git to clone the repository to your machine.
 
-```bash 
+```bash
 git clone [git-repo-url]
 ```
 
