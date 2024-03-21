@@ -1,18 +1,27 @@
 {
-  "type": "module",
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
-    "start": "tsx main.tsx",
-    "dev": "tsx watch main.tsx",
-    "css:dev": "tailwindcss -w -i tailwind.css -o assets/styles.css",
-    "css:build": "tailwindcss -m -i tailwind.css -o assets/styles.css"
+    "build": "esbuild src/main.ts --outfile=dist/main.js --bundle --platform=node",
+    "start": "npm run build && node .dist/main.js",
+    "dev": "nodemon --watch src --ext ts,html --exec npm start",
+    "prepare": "husky"
   },
   "dependencies": {
-    "@hono/node-server": "^1.8.2",
-    "@tailwindcss/cli": "^4.0.0-alpha.5",
-    "@types/node": "^20.11.25",
     "date-fns": "^2.30.0",
-    "hono": "^4.0.10",
-    "tailwindcss": "^4.0.0-alpha.5",
-    "tsx": "^4.7.1"
+    "express": "^4.19.1",
+    "gray-matter": "^4.0.3",
+    "marked": "^12.0.1",
+    "nodemon": "^3.1.0",
+    "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.30",
+    "@types/nunjucks": "^3.2.6",
+    "esbuild": "^0.20.2",
+    "husky": "^9.0.11",
+    "prettier": "^3.2.5"
   }
 }
