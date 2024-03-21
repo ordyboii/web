@@ -5,6 +5,13 @@ The main branch is locked by default. You must create a Pull Request to contribu
 
 ## Get started
 
+This repo uses:
+
+- Docker, for production
+- Docker compose, for development
+- Husky, pre-commit formatting with Prettier
+- Node.js, runtime
+
 Use git to clone the repository to your machine.
 
 ```bash
