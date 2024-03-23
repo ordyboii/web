@@ -1,7 +1,8 @@
 # Jake’s portfolio site
 
 All projects I have ever created.
-The main branch is locked by default. You must create a Pull Request to contribute.
+This project has commit signing enabled and the main branch locked.
+You must create a pull request to contribute.
 
 ## Get started
 
@@ -10,7 +11,7 @@ This repo uses:
 - Docker, for production
 - Docker compose, for development
 - Husky, pre-commit formatting with Prettier
-- Node.js, runtime
+- Typescript, Nunjucks and Node.js, language, templating and runtime
 
 Use git to clone the repository to your machine.
 

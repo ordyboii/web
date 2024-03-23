@@ -1,3 +1,4 @@
+import * as elements from 'typed-html';
 import express from "express";
 import nunjucks from "nunjucks";
 import date from "date-fns";
@@ -33,7 +34,7 @@ app.locals.data = {
 };
 
 app.get("/", (req, res) => {
-  res.render("home.html", { req });
+  res.send(<h1>hello</h1>);
 });
 
 app.get("/the-best", (req, res) => {
