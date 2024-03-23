@@ -1,4 +1,4 @@
-import * as elements from 'typed-html';
+import * as elements from "typed-html";
 import express from "express";
 import nunjucks from "nunjucks";
 import date from "date-fns";
