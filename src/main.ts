@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 const nunjucks = configure("src/views", {
   autoescape: true,
   watch: true,
-  express: app
+  express: app,
 });
 
 nunjucks.addFilter("format", (string, format) => {

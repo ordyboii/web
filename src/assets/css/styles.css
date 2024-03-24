@@ -7,8 +7,7 @@
 @font-face {
   font-family: "Geist";
   font-weight: 400;
-  src: 
-    url("../fonts/Geist-Regular.woff2") format("woff2") 
+  src: url("../fonts/Geist-Regular.woff2") format("woff2")
     url("../fonts/Geist-Regular.otf") format("opentype");
 }
 
@@ -16,7 +15,8 @@ body {
   font-family: "Geist", Arial, sans-serif;
 }
 
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   /* Add if not using autoprefixer */
   -webkit-appearance: none;
   appearance: none;
@@ -38,7 +38,8 @@ input[type="radio"] {
   border-radius: 50%;
 }
 
-input[type="checkbox"]::before, input[type="radio"]::before {
+input[type="checkbox"]::before,
+input[type="radio"]::before {
   content: "";
   width: 1.4em;
   height: 1.4em;
@@ -56,26 +57,29 @@ input[type="radio"]::before {
   border-radius: 50%;
 }
 
-input[type="checkbox"]:checked::before, input[type="radio"]:checked::before {
+input[type="checkbox"]:checked::before,
+input[type="radio"]:checked::before {
   transform: scale(1);
 }
 
-input[type="checkbox"]:focus, input[type="radio"]:focus {
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
   border-width: 0.3em;
   outline: 0.3em solid #facc15;
 }
 
-input[type="checkbox"]:disabled, input[type="radio"]:disabled {
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled {
   color: grey;
   cursor: not-allowed;
 }
 
-.checkbox, .radio {
+.checkbox,
+.radio {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 
 .flow > * + * {
   margin-top: var(--flow-space, 1em);
@@ -89,5 +93,5 @@ label {
   font-family: arial;
   font-size: 1rem;
   line-height: 1.25rem;
-  font-weight: 400
+  font-weight: 400;
 }
