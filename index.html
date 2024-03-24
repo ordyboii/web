@@ -8,47 +8,49 @@
     <link rel="icon" href="/assets/svg/icon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="/assets/css/styles.css">
   </head>
-  <body>
-    <a class="ordyboii-skip-link" href="#content">Skip to content</a>
+  <body class="ordyboii-template">
+    <section aria-label="Skip link">
+      <a class="ordyboii-skip-link" href="#template-main">Skip to content</a>
+    </section>
     <header class="ordyboii-header">
       <svg
         class="ob-flex-shrink-none"
         fill="white"
-        width="50"
-        height="80"
+        width="35"
+        height="60"
         minWidth="50"
         aria-hidden="true"
       >
         <use fill="currentColor" href="/assets/svg/logo.svg#logo"></use>
       </svg>
-      <h1 class="ordyboii-heading">Jake Ord</h1>
-      <span class="ordyboii-caption">Interaction Designer</span>
+      <h1 class="ordyboii-heading">
+        Jake Ord<br>
+        <span class="ordyboii-caption">Interaction Designer</span>
+      </h1>
     </header>
-    <main class="ordyboii-container">
-      <section aria-label="Work history">
-
+    <main class="ordyboii-template__main" id="template-main">
+      <section class="ordyboii-template__section ordyboii-flow" aria-label="Work history">
+        <h2 class="ordyboii-heading">About me</h2>
+        <p class="ordyboii-body">
+          Some stuff about me
+        </p>
       </section>
 
-      <section aria-label="More from Jake Ord">
-        You can see my work on 
-        <a class="ordyboii-link" href="https://github.com/ordyboii">Github</a> or 
-        <a class="ordyboii-link" href="mailto:jake.ord345@gmail.com">Email</a> me.
+      <section class="ordyboii-template__section ordyboii-flow" aria-label="Work history">
+        <h2 class="ordyboii-heading">Work</h2>
+        <p class="ordyboii-body">
+          Some stuff about work
+        </p>
       </section>
 
-      <nav aria-label="Website links">
-        <ul class="ordyboii-list ordyboii-list--horizontal">
-          <li>
-            <a class="ordyboii-link" href="https://github.com/ordyboii">
-              Github
-            </a>
-          </li>
-          <li>
-            <a class="ordyboii-link" href="mailto:jake.ord345@gmail.com">
-              Email
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <section class="ordyboii-template__section ordyboii-flow" aria-label="More from Jake Ord">
+        <h2 class="ordyboii-heading">More</h2>
+        <p class="ordyboii-body">
+          You can see my work on 
+          <a class="ordyboii-link" href="https://github.com/ordyboii">Github</a> or 
+          <a class="ordyboii-link" href="mailto:jake.ord345@gmail.com">email</a> me.
+        </p>
+      </section>
     </main>
   </body>
 </html>

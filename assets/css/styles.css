@@ -11,87 +11,84 @@
     url("../fonts/Geist-Regular.otf") format("opentype");
 }
 
-body {
+@font-face {
+  font-family: "Geist";
+  font-weight: 600;
+  src: url("../fonts/Geist-SemiBold.woff2") format("woff2")
+    url("../fonts/Geist-SemiBold.otf") format("opentype");
+}
+
+:root {
+  --ordyboii-focus: #ffdd00;
+  --ordyboii-black: #0a0a0a;
+  --ordyboii-mid-black: #d4d4d8;
+  --ordyboii-white: #f5f5f5;
+
+  --ordyboii-font-size-body: 19px;
+  --ordyboii-font-weight-semibold: 600;
+  --ordyboii-font-weight-regular: 400;
+}
+
+.ordyboii-template {
   font-family: "Geist", Arial, sans-serif;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  /* Add if not using autoprefixer */
-  -webkit-appearance: none;
-  appearance: none;
-  /* For iOS < 15 to remove gradient background */
-  background-color: #fff;
-  /* Not removed via appearance */
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 40px;
-  height: 40px;
-  border: 0.18em solid currentColor;
-  transform: translateY(-0.075em);
-  display: grid;
-  place-content: center;
-}
-
-input[type="radio"] {
-  border-radius: 50%;
-}
-
-input[type="checkbox"]::before,
-input[type="radio"]::before {
-  content: "";
-  width: 1.4em;
-  height: 1.4em;
-  transform: scale(0);
-  box-shadow: inset 1em 1em black;
-  background-color: CanvasText;
-}
-
-input[type="checkbox"]::before {
-  transform-origin: bottom left;
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-}
-
-input[type="radio"]::before {
-  border-radius: 50%;
-}
-
-input[type="checkbox"]:checked::before,
-input[type="radio"]:checked::before {
-  transform: scale(1);
-}
-
-input[type="checkbox"]:focus,
-input[type="radio"]:focus {
-  border-width: 0.3em;
-  outline: 0.3em solid #facc15;
-}
-
-input[type="checkbox"]:disabled,
-input[type="radio"]:disabled {
-  color: grey;
-  cursor: not-allowed;
-}
-
-.checkbox,
-.radio {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.flow > * + * {
-  margin-top: var(--flow-space, 1em);
-}
-
-.flow {
+  line-height: 1.5;
+  background-color: var(--ordyboii-black);
+  color: var(--ordyboii-white);
+  max-width: 600px;
+  margin-inline: auto;
   padding: 10px;
+  padding-top: 50px;
+  font-size: var(--ordyboii-font-size-body);
 }
 
-label {
-  font-family: arial;
-  font-size: 1rem;
-  line-height: 1.25rem;
-  font-weight: 400;
+.ordyboii-template__section {
+  padding-block: 40px;
 }
+
+.ordyboii-link {
+  color: var(--ordyboii-mid-black);
+}
+
+.ordyboii-link:hover {
+  color: var(--ordyboii-focus);
+}
+
+.ordyboii-link:focus {
+  background-color: var(--ordyboii-focus);
+  color: var(--ordyboii-black);
+}
+
+.ordyboii-heading {
+  font-weight: 600;
+  font-size: var(--ordyboii-font-size-body);
+}
+
+.ordyboii-body {
+  font-size: var(--ordyboii-font-size-body);
+}
+
+.ordyboii-caption {
+  font-size: 16px;
+  color: var(--ordyboii-mid-black);
+}
+
+.ordyboii-header {
+  display: flex;
+  gap: 15px;
+}
+
+.ordyboii-skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--ordyboii-focus);
+  color: var(--ordyboii-black);
+  padding: 10px;
+  opacity: 0;
+}
+
+.ordyboii-skip-link:focus {
+  opacity: 1;
+}
+
