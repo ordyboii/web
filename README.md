@@ -1,34 +1,18 @@
-# Jake’s portfolio site
+# ordyboii.github.io
 
-All projects I have ever created.
-This project has commit signing enabled and the main branch locked.
-You must create a pull request to contribute.
+My simple website built with:
 
-## Get started
+- HTML
+- CSS
 
-This repo uses:
+and hosted on Github Pages. 
 
-- Docker, for production
-- Docker compose, for development
-- Husky, pre-commit formatting with Prettier
-- Typescript, Nunjucks and Node.js, language, templating and runtime
+## Running this project
 
-Use git to clone the repository to your machine.
+Download the latest Node.js version and NPM and run
 
 ```bash
-git clone [git-repo-url]
+npx serve
 ```
 
-Install Docker and Docker compose on your machine.
-
-Then run the docker compose command.
-
-```bash
-docker compose up --build
-```
-
-This website is created in Node.js.
-
-This command will allow you to run the Node.js environment in a Docker container, with automatic reload.
-
-If you add new packages from npm, you will have to close the container and run `docker compose up --build` again.
+This will spin up a local http server for you.
