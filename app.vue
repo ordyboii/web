@@ -3,7 +3,6 @@ useSeoMeta({
   title: "Jake Ord - Interaction Designer",
   description:
     "Interaction designer based in Newcastle Upon Tyne, UK working at HMRC.",
-  icons: ["/icon.svg"],
 });
 
 useHead({
@@ -13,6 +12,7 @@ useHead({
   bodyAttrs: {
     class: "ordyboii-template",
   },
+  link: [{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }],
 });
 </script>
 
