@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["nuxt-svgo"],
   routeRules: {
-    "/": { prerender: true },
+    "/": {
+      prerender: true,
+      experimentalNoScripts: true,
+    },
   },
 });
