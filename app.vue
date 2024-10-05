@@ -130,91 +130,101 @@ useHead({
 }
 
 :root {
+  --colourBlack5: #d4d4d8;
+  --colourBlack9: #0a0a0a;
+  --colourWhite1: #f5f5f5;
   --colourFocus: #ffdd00;
-  --colourBlack: #0a0a0a;
-  --colourMidBlack: #d4d4d8;
-  --colourWhite: #f5f5f5;
-  --fsBody: 19px;
-  --fwBold: 600;
-  --fwRegular: 400;
+
+  --textSize4: 18px;
+  --textKerning4: -0.0025em;
+  --textLeading4: 26px;
+  --textRegular: 400;
+  --textBold: 700;
+
+  --size1: 0.25rem;
+  --size2: 0.5rem;
+  --size3: 0.75rem;
+  --size4: 1rem;
+  --size5: 1.5rem;
+  --size6: 2rem;
+  --size7: 2.5rem;
+  --size8: 3rem;
+  --size9: 4rem;
 }
 
 .ordyboii-template {
   font-family: "Inter", Arial, sans-serif;
-  line-height: 1.5;
-  background-color: var(--colourBlack);
-  color: var(--colourWhite);
+  background-color: var(--colourBlack9);
+  color: var(--colourWhite1);
   max-width: 36rem;
   margin-inline: auto;
-  padding: 1rem;
-  padding-top: 4rem;
-  font-size: var(--fsBody);
+  padding: var(--size4);
+  font-size: var(--textSize4);
+  letter-spacing: var(--textKerning4);
+  line-height: var(--textLeading4);
 
   &__section {
-    padding-block: 2rem;
+    padding-block: var(--size6);
   }
 }
 
 .ordyboii-link {
-  color: var(--colourMidBlack);
+  color: var(--colourBlack5);
 
   &:hover {
     color: var(--colourFocus);
   }
 
   &:visited {
-    color: var(--colourMidBlack);
+    color: var(--colourBlack5);
   }
 
   &:focus {
     background-color: var(--colourFocus);
-    color: var(--colourBlack);
+    color: var(--colourBlack9);
   }
 }
 
 .ordyboii-heading {
-  font-weight: 600;
-  font-size: var(--fsBody);
+  font-weight: var(--textBold);
+  font-size: var(--textBody);
+  letter-spacing: var(--textKerning4);
+  line-height: var(--textLeading4);
+}
+
+.ordyboii-body {
+  font-size: var(--textSize4);
+  letter-spacing: var(--textKerning4);
+  line-height: var(--textLeading4);
 }
 
 .ordyboii-flex {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--size4);
 }
 
 .ordyboii-flow > * + * {
-  margin-top: 1.6rem;
-}
-
-.ordyboii-body {
-  font-size: var(--fsBody);
+  margin-top: var(--size5);
 }
 
 .ordyboii-caption {
-  font-size: 16px;
-  color: var(--colourMidBlack);
+  color: var(--colourBlack5);
+  font-size: var(--textSize4);
+  letter-spacing: var(--textKerning4);
+  line-height: var(--textLeading4);
 }
 
 .ordyboii-skip-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--colourFocus);
-  color: var(--colourBlack);
-  padding: 1rem;
+  display: block;
   opacity: 0;
+  background-color: var(--colourFocus);
+  color: var(--colourBlack9);
+  padding: var(--size3);
+  margin-bottom: var(--size2);
 
   &:focus {
     opacity: 1;
   }
-}
-
-.ordyboii-profile {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
 }
 </style>
