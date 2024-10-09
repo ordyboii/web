@@ -1,20 +1,19 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "vigorous-virgo",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@nuxt/fonts": "^0.9.2",
-    "@nuxt/image": "^1.8.0",
-    "nuxt": "^3.13.0",
-    "sass": "^1.79.4",
-    "vue": "latest",
-    "vue-router": "latest"
+    "@astrojs/check": "^0.9.4",
+    "@fontsource/inter": "^5.1.0",
+    "astro": "^4.15.12",
+    "open-props": "^1.7.7",
+    "typescript": "^5.6.3"
   }
 }

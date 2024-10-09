@@ -1,23 +1,22 @@
-<script setup>
-useSeoMeta({
-  title: "Jake Ord - Interaction Designer",
-  description:
-    "Interaction designer based in Newcastle Upon Tyne, UK working at HMRC.",
-});
+---
+import "@fontsource/inter";
+import { Image } from "astro:assets";
+---
 
-useHead({
-  htmlAttrs: {
-    lang: "en",
-  },
-  link: [{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }],
-});
-</script>
-
-<template>
-  <NuxtRouteAnnouncer />
-  <a class="ordyboii-skip-link" href="#template-main"> Skip to content </a>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Jake Ord - Interaction Designer</title>
+		<meta name="description" content="Interaction designer based in Newcastle Upon Tyne, UK working at HMRC.">
+	</head>
+	<body>
+		<a class="ordyboii-skip-link" href="#template-main"> Skip to content </a>
+		<div class="ordyboii-container">
   <header class="ordyboii-flex">
-    <NuxtImg src="/logo.svg" width="40" height="50" aria-hidden="true" />
+    <Image src="/logo.svg" alt="" width="40" height="50" aria-hidden="true" />
     <h1 class="ordyboii-heading">
       Jake Ord
       <br />
@@ -111,85 +110,82 @@ useHead({
       </p>
     </section>
   </main>
-</template>
+</div>
+	</body>
+</html>
 
-<style lang="scss">
-@use "~/assets/reset";
-@use "~/assets/theme";
+<style is:global>
+@import "open-props/style";
+@import "open-props/normalize";
 
 body {
   font-family: "Inter", Arial, sans-serif;
-  background-color: var(--colourBlack9);
-  color: var(--colourWhite1);
+  background-color: var(--gray-10);
+  color: var(--gray-1);
+  padding: var(--size-4);
+  font-size: var(--font-size-2);
+  line-height: var(--font-lineheight-3);
+}
+
+.ordyboii-container {
   max-width: 36rem;
   margin-inline: auto;
-  padding: var(--size4);
-  font-size: var(--textSize4);
-  letter-spacing: var(--textKerning4);
-  line-height: var(--textLeading4);
 }
 
 .ordyboii-section {
-  padding-block: var(--size6);
+  padding-block: var(--size-6);
 }
 
-.ordyboii-link {
-  color: var(--colourBlack5);
-
-  &:hover {
-    color: var(--colourFocus);
-  }
-
-  &:visited {
-    color: var(--colourBlack5);
-  }
-
-  &:focus {
-    background-color: var(--colourFocus);
-    color: var(--colourBlack9);
-  }
+.ordyboii-link, .ordyboii-link:visited {
+  color: var(--gray-5);
+	text-decoration: underline;
+}
+.ordyboii-link:hover {
+  color: var(--yellow-4);
+}
+.ordyboii-link:focus {
+	outline: none;
+	background-color: var(--yellow-4);
+	color: var(--gray-10);
 }
 
 .ordyboii-heading {
-  font-weight: var(--textBold);
-  font-size: var(--textBody);
-  letter-spacing: var(--textKerning4);
-  line-height: var(--textLeading4);
+  font-weight: var(--font-weight-7);
+  font-size: var(--font-size-3);
+  line-height: var(--font-lineheight-2);
 }
 
 .ordyboii-body {
-  font-size: var(--textSize4);
-  letter-spacing: var(--textKerning4);
-  line-height: var(--textLeading4);
+  font-size: var(--font-size-2);
+  line-height: var(--font-lineheight-3);
 }
 
 .ordyboii-flex {
   display: flex;
   align-items: center;
-  gap: var(--size4);
+  gap: var(--size-3);
 }
 
 .ordyboii-flow > * + * {
-  margin-top: var(--size5);
+  margin-top: var(--size-4);
 }
 
 .ordyboii-caption {
-  color: var(--colourBlack5);
-  font-size: var(--textSize4);
-  letter-spacing: var(--textKerning4);
-  line-height: var(--textLeading4);
+  color: var(--gray-5);
 }
 
 .ordyboii-skip-link {
+	outline: none;
   display: block;
   opacity: 0;
-  background-color: var(--colourFocus);
-  color: var(--colourBlack9);
-  padding: var(--size3);
-  margin-bottom: var(--size2);
-
-  &:focus {
-    opacity: 1;
-  }
+  background-color: var(--yellow-4);
+  color: var(--gray-10);
+  padding: var(--size-2);
+  margin-bottom: var(--size-2);
+}
+.ordyboii-skip-link:focus {
+	opacity: 1
 }
 </style>
+
+
