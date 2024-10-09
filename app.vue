@@ -9,9 +9,6 @@ useHead({
   htmlAttrs: {
     lang: "en",
   },
-  bodyAttrs: {
-    class: "ordyboii-template",
-  },
   link: [{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }],
 });
 </script>
@@ -27,11 +24,8 @@ useHead({
       <span class="ordyboii-caption">Interaction Designer</span>
     </h1>
   </header>
-  <main class="ordyboii-template__main" id="template-main">
-    <section
-      class="ordyboii-template__section ordyboii-flow"
-      aria-label="Introduction"
-    >
+  <main id="template-main">
+    <section class="ordyboii-section ordyboii-flow" aria-label="Introduction">
       <h2 class="ordyboii-heading">Hey, I am Jake 🐉</h2>
       <p class="ordyboii-body">
         I am an interaction designer and accessibility advocate. I have been
@@ -45,10 +39,7 @@ useHead({
       </p>
     </section>
 
-    <section
-      class="ordyboii-template__section ordyboii-flow"
-      aria-label="Work history"
-    >
+    <section class="ordyboii-section ordyboii-flow" aria-label="Work history">
       <h2 class="ordyboii-heading">Work</h2>
       <p class="ordyboii-body">
         I have contributed and helped design a lot of services throughout my
@@ -108,7 +99,7 @@ useHead({
     </section>
 
     <section
-      class="ordyboii-template__section ordyboii-flow"
+      class="ordyboii-section ordyboii-flow"
       aria-label="More from Jake Ord"
     >
       <h2 class="ordyboii-heading">More</h2>
@@ -123,36 +114,10 @@ useHead({
 </template>
 
 <style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@use "~/assets/reset";
+@use "~/assets/theme";
 
-:root {
-  --colourBlack5: #d4d4d8;
-  --colourBlack9: #0a0a0a;
-  --colourWhite1: #f5f5f5;
-  --colourFocus: #ffdd00;
-
-  --textSize4: 18px;
-  --textKerning4: -0.0025em;
-  --textLeading4: 26px;
-  --textRegular: 400;
-  --textBold: 700;
-
-  --size1: 0.25rem;
-  --size2: 0.5rem;
-  --size3: 0.75rem;
-  --size4: 1rem;
-  --size5: 1.5rem;
-  --size6: 2rem;
-  --size7: 2.5rem;
-  --size8: 3rem;
-  --size9: 4rem;
-}
-
-.ordyboii-template {
+body {
   font-family: "Inter", Arial, sans-serif;
   background-color: var(--colourBlack9);
   color: var(--colourWhite1);
@@ -162,10 +127,10 @@ useHead({
   font-size: var(--textSize4);
   letter-spacing: var(--textKerning4);
   line-height: var(--textLeading4);
+}
 
-  &__section {
-    padding-block: var(--size6);
-  }
+.ordyboii-section {
+  padding-block: var(--size6);
 }
 
 .ordyboii-link {
