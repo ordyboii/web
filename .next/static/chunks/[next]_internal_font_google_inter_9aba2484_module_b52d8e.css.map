@@ -2,6 +2,6 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["[next]/internal/font/google/inter_9aba2484.module.css"],"sourcesContent":["@font-face {\n    font-family: '__Inter_Fallback_9aba24';\n    src: local(\"Arial\");\n    ascent-override: 90.49%;\ndescent-override: 22.56%;\nline-gap-override: 0.00%;\nsize-adjust: 107.06%;\n\n}\n.className {\n    font-family: '__Inter_9aba24', '__Inter_Fallback_9aba24';\n    font-style: normal;\n\n}\n.variable {\n    --font-inter: '__Inter_9aba24', '__Inter_Fallback_9aba24';\n}\n"],"names":[],"mappings":"AAAA;;;;;;;;;AASA;;;;;AAKA"}},
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack://[next]/internal/font/google/inter_9aba2484.module.css"],"sourcesContent":["@font-face {\n    font-family: 'Inter Fallback';\n    src: local(\"Arial\");\n    ascent-override: 90.49%;\ndescent-override: 22.56%;\nline-gap-override: 0.00%;\nsize-adjust: 107.06%;\n\n}\n.className {\n    font-family: 'Inter', 'Inter Fallback';\n    font-style: normal;\n\n}\n.variable {\n    --font-inter: 'Inter', 'Inter Fallback';\n}\n"],"names":[],"mappings":"AAAA;;;;;;;;;AASA;;;;;AAKA","ignoreList":[0]}},
     {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
 }

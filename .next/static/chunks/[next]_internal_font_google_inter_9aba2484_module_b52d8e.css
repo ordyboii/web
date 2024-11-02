@@ -1,6 +1,6 @@
 /* [next]/internal/font/google/inter_9aba2484.module.css [app-client] (css) */
 @font-face {
-  font-family: __Inter_Fallback_9aba24;
+  font-family: Inter Fallback;
   src: local(Arial);
   ascent-override: 90.49%;
   descent-override: 22.56%;
@@ -9,12 +9,12 @@
 }
 
 .inter_9aba2484-module__5ol9tW__className {
-  font-family: __Inter_9aba24, __Inter_Fallback_9aba24;
+  font-family: Inter, Inter Fallback;
   font-style: normal;
 }
 
 .inter_9aba2484-module__5ol9tW__variable {
-  --font-inter: "__Inter_9aba24", "__Inter_Fallback_9aba24";
+  --font-inter: "Inter", "Inter Fallback";
 }
 
 /*# sourceMappingURL=%5Bnext%5D_internal_font_google_inter_9aba2484_module_b52d8e.css.map*/
