@@ -1,4 +1,4 @@
-import "./global.css";
+import "./globals.css";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { PropsWithChildren } from "react";
@@ -7,7 +7,6 @@ import { Metadata } from "next";
 const inter = Inter({
   weight: ["400", "700"],
   subsets: ["latin"],
-  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -22,12 +21,15 @@ export const metadata: Metadata = {
 export default function RootLayout(props: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={inter.variable}>
-        <a className="ordyboii-skip-link" href="#template-main">
+      <body className={`${inter.className} bg-gray-950 text-white`}>
+        <a
+          className="sr-only underline text-gray-950 bg-yellow-400 focus:block focus:p-2 focus:not-sr-only"
+          href="#main-content"
+        >
           Skip to content
         </a>
-        <div className="ordyboii-container">
-          <header className="ordyboii-flex">
+        <div className="max-w-xl mx-auto py-8">
+          <header className="flex items-center gap-4">
             <Image
               src="/logo.svg"
               alt=""
@@ -35,13 +37,13 @@ export default function RootLayout(props: PropsWithChildren) {
               height="50"
               aria-hidden="true"
             />
-            <h1 className="ordyboii-heading">
+            <h1 className="text-2xl font-bold">
               Jake Ord
               <br />
-              <span className="ordyboii-caption">Interaction Designer</span>
+              <span className="text-gray-400">Interaction Designer</span>
             </h1>
           </header>
-          <main id="template-main">{props.children}</main>
+          <main id="main-content">{props.children}</main>
         </div>
       </body>
     </html>
