@@ -1,41 +1,4 @@
-<script setup lang="ts">
-useServerSeoMeta({
-  title: "Jake Ord - Interaction Designer",
-  description:
-    "Interaction designer based in Newcastle Upon Tyne, UK working at HMRC.",
-});
-
-useServerHead({
-  link: [{ rel: "icon", href: "/favicon.svg" }],
-});
-</script>
-
-<template>
-  <a class="ob-skip-link" href="#main-content"> Skip to main content </a>
-  <div class="ob-container">
-    <header class="ob-cluster">
-      <NuxtImg
-        src="/logo.svg"
-        alt=""
-        width="40"
-        height="50"
-        aria-hidden="true"
-      />
-      <h1>
-        Jake Ord
-        <br />
-        <span style="color: var(--colour-grey)"> Interaction Designer </span>
-      </h1>
-    </header>
-    <main id="main-content">
-      <NuxtPage />
-    </main>
-  </div>
-</template>
-
-<style lang="scss">
 // DESIGN TOKENS
-
 :root {
   --colour-grey: #ced4da;
   --colour-grey-1: color-mix(in oklch, var(--colour-grey) 10%, white);
@@ -47,7 +10,6 @@ useServerHead({
   --radius: 0.3rem;
   --resize: 4vw;
 
-  --font-inter: "Inter", Arial, sans-serif;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
   --font-size-xxl: clamp(3.815rem, var(--resize), 3.052rem);
@@ -60,7 +22,8 @@ useServerHead({
 @mixin ob-spacing($property, $value, $variable: null) {
   @if ($variable) {
     #{$property}: var(#{$variable}, calc(var(--spacing) * #{$value}));
-  } @else {
+  }
+  @else {
     #{$property}: calc(var(--spacing) * #{$value});
   }
 }
@@ -172,4 +135,3 @@ a {
     top: 0;
   }
 }
-</style>
