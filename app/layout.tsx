@@ -2,6 +2,7 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -44,6 +45,10 @@ export default function RootLayout({
           </header>
           <main id="main-content">{children}</main>
         </div>
+        <Script
+          src="https://analytics.jakeord.com/script.js"
+          data-website-id="98ff435e-ca06-4ccf-9110-d3cee334a32a"
+        />
       </body>
     </html>
   );
