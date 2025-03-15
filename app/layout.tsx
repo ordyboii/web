@@ -47,7 +47,7 @@ export default function RootLayout({
         </div>
         <Script
           src="https://analytics.jakeord.com/script.js"
-          data-website-id="5814863e-fffd-42c5-a3bb-7b65915776a9"
+          data-website-id="035b8baf-84f6-4736-93c7-3c0035b3a16a"
         />
       </body>
     </html>
