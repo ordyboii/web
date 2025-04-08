@@ -1,0 +1,187 @@
+---
+import "@fontsource/nunito-sans";
+import "@radix-ui/colors/gray.css";
+import "@radix-ui/colors/yellow.css";
+import logo from "./logo.svg";
+import { Image } from "astro:assets";
+
+const { title } = Astro.props as {
+  title?: string;
+}
+---
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.svg">
+    <title>{title ? `${title} — Jake Ord` : "Jake Ord — Interaction Designer"}</title>
+    <meta name="description" content="Interaction desiger based in Newcastle Upon Tyne, UK">
+  </head>
+  <body>
+    <a class="ob-skip-link" href="#main-content">
+      Skip to main content
+    </a>
+    <div class="ob-container">
+      <header class="ob-header ob-cluster">
+        <Image src={logo} alt="" width="40" height="50" aria-hidden="true" />
+        <a href="/" class="ob-logo">
+          Jake Ord <br />
+          <span>Interaction Designer</span>
+        </a>
+      </header>
+      <main class="ob-flow" id="main-content">
+        <slot> 
+      </main> 
+    </div>
+  </body>
+</html>
+
+<style lang="scss" is:global>
+:root {
+  --spacing: 0.25rem;
+  --radius: 0.3rem;
+  --resize: 5vw;
+
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --fs-xxl: clamp(3.815rem, var(--resize), 3.052rem);
+  --fs-xl: clamp(3.052rem, var(--resize), 2.441rem);
+  --fs-lg: clamp(2.441rem, var(--resize), 1.953rem);
+  --fs-md: clamp(1.953rem, var(--resize), 1.563rem);
+  --fs-sm: clamp(1.563rem, var(--resize), 1.25rem);
+}
+
+@mixin ob-spacing($property, $value, $variable: null) {
+  @if ($variable) {
+    #{$property}: var(#{$variable}, calc(var(--spacing) * #{$value}));
+  }
+
+  @else {
+    #{$property}: calc(var(--spacing) * #{$value});
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  line-height: 1.6;
+  background-color: var(--gray-12);
+  color: var(--gray-1);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  max-width: 60ch;
+}
+
+h1,
+h2,
+.ob-logo {
+  line-height: 1.1;
+}
+
+[role="list"] {
+  list-style: none;
+}
+
+h1,
+.ob-logo {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+
+h2 {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+
+h3 {
+  font-weight: var(--fw-bold);
+}
+
+a {
+  color: var(--c-grey);
+
+  &:focus {
+    background-color: var(--yellow-4);
+    outline: 2px solid var(--gray-12);
+    color: var(--gray-12);
+    font-weight: var(--fw-bold);
+  }
+}
+
+.ob-cluster {
+  display: flex;
+  flex-direction: var(--cluster-direction, row);
+  align-items: var(--cluster-align, center);
+  @include ob-spacing("gap", 4, "--cluster-gap");
+}
+
+.ob-flow {
+  display: grid;
+  @include ob-spacing("gap", 4, "--flow-gap");
+}
+
+.ob-region {
+  @include ob-spacing("padding-block", 8, "--region-padding");
+}
+
+.ob-container {
+  max-width: 600px;
+  margin-inline: auto;
+  @include ob-spacing("padding", 8);
+}
+
+.ob-header {
+  @include ob-spacing("padding-bottom", 8);
+}
+
+.ob-logo {
+  text-decoration: none;
+
+  span {
+    color: var(--gray-8);
+  }
+  
+  &:focus span {
+    color: var(--gray-12);
+  }
+}
+
+.ob-skip-link {
+  @include ob-spacing("padding", 1);
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background-color: var(--gray-9);
+  color: var(--gray-12);
+  text-decoration: none;
+
+  &:focus {
+    top: 0;
+    position: relative;
+    display: block;
+  }
+}
+</style>
