@@ -1,53 +1,48 @@
----
-import "@fontsource/nunito-sans";
-import "@radix-ui/colors/gray.css";
-import "@radix-ui/colors/yellow.css";
-import logo from "./logo.svg";
-import { Image } from "astro:assets";
+<script setup lang="ts">
+const route = useRoute();
+const { data: page } = await useAsyncData(() => queryCollection("content").path(route.path).first())
 
-const { title } = Astro.props as {
-  title?: string;
-}
----
+useSeoMeta({
+  title: page.value?.title ? `${page.value.title} — Jake Ord` : "Jake Ord — Interaction Designer",
+  description: "Interaction desiger based in Newcastle Upon Tyne, UK"
+})
 
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/favicon.svg">
-    <title>{title ? `${title} — Jake Ord` : "Jake Ord — Interaction Designer"}</title>
-    <meta name="description" content="Interaction desiger based in Newcastle Upon Tyne, UK">
-  </head>
-  <body>
-    <a class="ob-skip-link" href="#main-content">
-      Skip to main content
-    </a>
-    <div class="ob-container">
-      <header class="ob-header ob-cluster">
-        <Image src={logo} alt="" width="40" height="50" aria-hidden="true" />
-        <a href="/" class="ob-logo">
-          Jake Ord <br />
-          <span>Interaction Designer</span>
-        </a>
-      </header>
-      <main class="ob-flow" id="main-content">
-        <slot> 
-      </main> 
-    </div>
-  </body>
-</html>
-
-<!-- Google tag (gtag.js) -->
-<script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-78YQK5LSSD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-78YQK5LSSD');
+useHead({
+  link: [{ rel: "icon", href: "/favicon.svg" }]
+});
 </script>
 
-<style lang="scss" is:global>
+<template>
+  <NuxtRouteAnnouncer />
+  <a class="ob-skip-link" href="#main-content">
+    Skip to main content
+  </a>
+  <div class="ob-container">
+    <header class="ob-header ob-cluster">
+      <NuxtImg src="/logo.svg" alt="" width="40" height="50" aria-hidden="true" />
+      <NuxtLink to="/" class="ob-logo">
+        Jake Ord <br />
+        <span>Interaction Designer</span>
+      </NuxtLink>
+    </header>
+    <main id="main-content">
+      <ContentRenderer class="ob-flow" v-if="page" :value="page" />
+      <div class="ob-flow" v-else>
+        <h1>Page not found</h1>
+        <p>If you typed the web address, check it is correct.</p>
+        <p>
+          If the web address is correct, you can <NuxtLink to="/">return to the homepage</NuxtLink>.
+        </p>
+      </div>
+    </main>
+  </div>
+</template>
+
+
+<style lang="scss">
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/yellow.css";
+
 :root {
   --spacing: 0.25rem;
   --radius: 0.3rem;
@@ -173,7 +168,7 @@ a {
   span {
     color: var(--gray-8);
   }
-  
+
   &:focus span {
     color: var(--gray-12);
   }

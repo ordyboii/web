@@ -1,7 +1,3 @@
----
-layout: ../layout.astro
----
-
 # Hey, I am Jake 🐉
 
 I am an interaction designer and accessibility advocate.
@@ -45,3 +41,4 @@ with customers and grew a UX culture within the wider team.
 
 You can see my work on [Github]("https://github.com/ordyboii") or get
 in contact with me by [email]("mailto:jake.ord345@gmail.com").
+
