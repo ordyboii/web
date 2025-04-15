@@ -5,7 +5,7 @@ const { data: page } = await useAsyncData(() => queryCollection("content").path(
 useSeoMeta({
   title: page.value?.title ? `${page.value.title} — Jake Ord` : "Jake Ord — Interaction Designer",
   description: "Interaction desiger based in Newcastle Upon Tyne, UK"
-})
+});
 
 useHead({
   link: [{ rel: "icon", href: "/favicon.svg" }]
