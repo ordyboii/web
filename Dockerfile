@@ -1,23 +1,27 @@
-# Builder
-FROM node:22 as builder
+FROM node:22-alpine AS base
 
+FROM base as deps 
 WORKDIR /app
 
-COPY . .
+COPY package*.json ./
+# Install dependencies.  Use --frozen-lockfile for production builds
+RUN npm install --frozen-lockfile
 
-RUN npm install
+FROM base as builder 
+WORKDIR /app
+
+# Copy all code and build
+COPY . .
 RUN npm run build
 
-# Production
-FROM node:22-alpine
-
+# Use a smaller image for the final stage
+FROM base as runner
 WORKDIR /app
+ENV NODE_ENV=production
 
-COPY --from=builder /app/.output  /app/.output
+# Copy the built Next.js files from the builder stage
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
-ENV NITRO_PORT=8080
-
-EXPOSE 8080
-
-CMD [ "node", ".output/server/index.mjs" ]
-
+EXPOSE 3000
+CMD ["node", "server.js"]
