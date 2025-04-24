@@ -1,17 +1,11 @@
 FROM node:22-alpine AS base
 
-FROM base as deps 
+FROM base as builder
 WORKDIR /app
 
-COPY package*.json ./
 # Install dependencies.  Use --frozen-lockfile for production builds
+COPY package*.json ./
 RUN npm install --frozen-lockfile
-
-FROM base as builder 
-WORKDIR /app
-
-# Copy all code and build
-COPY --from=deps /app/node_modules ./
 COPY . .
 RUN npm run build
 
