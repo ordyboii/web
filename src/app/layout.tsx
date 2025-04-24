@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import "@/sass/app.scss";
+import logo from "./logo.svg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -29,13 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={geistSans.variable}>
         <a className="ob-skip-link" href="#main-content">
           Skip to main content
         </a>
         <div className="ob-container">
           <header className="ob-header ob-cluster">
-            <Image src="/logo.svg" alt="" width="40" height="50" aria-hidden="true" />
+            <Image src={logo} alt="" width="40" height="50" aria-hidden="true" />
             <Link href="/" className="ob-logo">
               Jake Ord <br />
               <span>Interaction Designer</span>
