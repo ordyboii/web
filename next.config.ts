@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
 
 export default {
-  output: "export",
+  output: "standalone",
 } satisfies NextConfig;
